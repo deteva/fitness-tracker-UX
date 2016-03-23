@@ -2,8 +2,8 @@
  * Created by tmin_lim on 16. 3. 23..
  */
 // Load the module dependencies
-var	config = require('./config'),
-    mongoose = require('mongoose');
+var	config = require('./config');
+var mongoose = require('mongoose');
 
 // Define the Mongoose configuration method
 module.exports = function() {

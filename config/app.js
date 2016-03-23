@@ -5,10 +5,13 @@ var compress = require('compression');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
+var mongoose = require('./mongoose');
 
 // Define the Express configuration method
 module.exports = function() {
 	var app = express();
+	// Create a new Mongoose connection instance
+	var db = mongoose();
 
 	// Use the 'NDOE_ENV' variable to activate the 'morgan' logger or 'compress' middleware
 	if (process.env.NODE_ENV === 'development') {

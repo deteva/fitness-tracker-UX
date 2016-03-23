@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
 
 // Define a new 'ActivitySchema'
 var ActivitySchema = new Schema({
-
+    name: String
 });
 
 // Create the 'Activity'
 // model out of the 'ActivitySchema'
-mongoose.model('Activity', ActivitySchema);
+ mongoose.model('Activity', ActivitySchema);

@@ -4,17 +4,13 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 /* Module dependencies */
 var express = require('../config/app');
-var mongoose = require('../config/mongoose');
 var debug = require('debug')('bodybel:server');
 var http = require('http');
 var winston = require('winston');
 
 
-
 // Create a new Express application instance
 var app = express();
-// Create a new Mongoose connection instance
-var db = mongoose();
 
 /**
  * Get port from environment and store in Express.
@@ -103,3 +99,4 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
