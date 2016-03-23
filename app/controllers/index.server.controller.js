@@ -15,7 +15,7 @@ exports.getFitbitData = function(req, res) {
 	client.getAccessToken(req.query.code, config.fitbit.callbackURL).then(function (result) {
 
 		var get1 = function(cb) {
-			client.get("/activities/steps/date/2016-03-17/7d.json", result.access_token).then(function (res) {
+			client.get("/activities/steps/date/today/7d.json", result.access_token).then(function (res) {
 				//res.send(results[0]);
 				console.log(res[0]);
 				cb(null, res[0]);
@@ -23,7 +23,7 @@ exports.getFitbitData = function(req, res) {
 		};
 
 		var get2 = function(cb) {
-			client.get("/sleep/goal.json", result.access_token).then(function (res) {
+			client.get("/activities/date/today.json", result.access_token).then(function (res) {
 				//res.send(results[0]);
 				console.log(res[0]);
 				cb(null, res[0]);
