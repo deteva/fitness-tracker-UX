@@ -1,5 +1,6 @@
 /**
- * Created by tmin_lim on 16. 3. 22..
+ * Created by tmin_lim on 16.
+ * 3. 24..
  */
 module.exports = {
 	//fitbit API specific configuration
