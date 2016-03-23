@@ -1,10 +1,9 @@
 #!/usr/bin/env node
+// Set the 'NODE_ENV' variable
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-/**
- * Module dependencies.
- */
-
-var app = require('../app');
+/* Module dependencies */
+var app = require('../config/app');
 var debug = require('debug')('bodybel:server');
 var http = require('http');
 

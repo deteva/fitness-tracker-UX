@@ -5,8 +5,8 @@
 module.exports = {
     //fitbit API specific configuration
     fitbit: {
-        clientID: '',
-        clientSecret: '',
+        clientID: 'clientID',
+        clientSecret: 'clientSecret',
         callbackURL: 'http://localhost:3000/auth/callback'
     },
     // MongoDB connection options
