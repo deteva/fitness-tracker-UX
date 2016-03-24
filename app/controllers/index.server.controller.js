@@ -19,6 +19,8 @@ var moment = require('moment');
 var fitbitApi = require('fitbit-node');
 var client = new fitbitApi(config.fitbit.clientID, config.fitbit.clientSecret );
 
+var dataByfitbit= {};
+
 //get a average value from last week
 var averageLastWeek = function (weeksArray, nDigit) {
 	var averageWeek = 0;
@@ -39,11 +41,13 @@ exports.connectFitbit = function(req, res, next) {
 
 exports.getFitbitData = function(req, res) {
 	client.getAccessToken(req.query.code, config.fitbit.callbackURL).then(function (result) {
+
 		var activity = {goals:{}, calories:{}, steps:{}, distance:{}, floors:{}, activityCalories:{}};
+		var heartrate = {};
+
 		var nToday = moment().format('YYYY-MM-DD');
 		var baseDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
-		winston.info('today' +
-			' is ' + nToday+ ' baseDate is ' + baseDate);
+		winston.info('today is ' + nToday+ ' baseDate is ' + baseDate);
 
 		var getDailyActivity = function(callback) {
 			client.get('/activities/date/'+ nToday + '.json', result.access_token).then(function (res) {
@@ -101,7 +105,7 @@ exports.getFitbitData = function(req, res) {
 			client.get('/activities/floors/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["activities-floors"];
 				var nLen = responseObj.length;
-				winston.info(responseObj);
+				//winston.info(responseObj);
 				activity.floors.weekAgoToday = parseInt(responseObj[0].value);
 				activity.floors.yesterday = parseInt(responseObj[nLen - 2].value);
 				activity.floors.today = parseInt(responseObj[nLen - 1].value);
@@ -114,11 +118,19 @@ exports.getFitbitData = function(req, res) {
 			client.get('/activities/activityCalories/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["activities-activityCalories"];
 				var nLen = responseObj.length;
-				winston.info(res[0]);
+				//winston.info(res[0]);
 				activity.activityCalories.weekAgoToday = parseInt(responseObj[0].value);
 				activity.activityCalories.yesterday = parseInt(responseObj[nLen - 2].value);
 				activity.activityCalories.today = parseInt(responseObj[nLen - 1].value);
 				activity.activityCalories.lastWeek = averageLastWeek(responseObj);
+				callback();
+			});
+		};
+
+		var getHeartRate = function(callback) {
+			client.get('/activities/heart/date/today/1d.json', result.access_token).then(function (res) {
+				winston.info(res[0]["activities-heart"][0].value.restingHeartRate);
+				heartrate.restingHeartRate = parseInt(res[0]["activities-heart"][0].value.restingHeartRate);
 				callback();
 			});
 		};
@@ -130,7 +142,11 @@ exports.getFitbitData = function(req, res) {
 			getStepsSeries,
 			getDistanceSeries,
 			getFloorsSeries,
-			getActivityCaloriesSeries
+			getActivityCaloriesSeries,
+
+			//heartrate model
+			getHeartRate
+
 
 
 
@@ -138,7 +154,9 @@ exports.getFitbitData = function(req, res) {
 			if(err) {
 				console.log('error'+ err);
 			}
-			res.send(activity);
+			dataByfitbit.activity = activity;
+			dataByfitbit.heartrate = heartrate;
+			res.send(dataByfitbit);
 			//res.render('index', { title: activity });
 		})
 
