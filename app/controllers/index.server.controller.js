@@ -43,8 +43,10 @@ exports.getFitbitData = function(req, res) {
 	client.getAccessToken(req.query.code, config.fitbit.callbackURL).then(function (result) {
 
 		var activity = {goals:{}, calories:{}, steps:{}, distance:{}, floors:{}, activityCalories:{}};
-		var heartrate = {};
-		var water = {};
+		var heartrate = {},
+			 water = {},
+			 sleep = {startTime:{}, timeInBed:{},minutesAsleep: {},efficiency:{}},
+			 friend = {};
 
 		var nToday = moment().format('YYYY-MM-DD');
 		var baseDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
@@ -158,6 +160,79 @@ exports.getFitbitData = function(req, res) {
 			});
 		};
 
+//timeInBed = minutesToFallAsleep + minutesAsleep + minutesAwake + minutesAfterWakeup
+//		{
+//			dateTime: "2016-03-24",
+//				value: "05:50"
+//		},
+//		{
+//			dateTime: "2016-03-25",
+//				value: ""
+//		}
+		var getStartTimeSeries = function(callback) {
+			client.get('/sleep/startTime/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				var responseObj = res[0]["sleep-startTime"];
+				var nLen = responseObj.length;
+				//winston.info(res[0]);
+				sleep.startTime.weekAgoToday = responseObj[0].value;
+				sleep.startTime.yesterday = responseObj[nLen - 2].value;
+				sleep.startTime.today = responseObj[nLen - 1].value;
+				//Instead of a 'sleep.lastWeek', there will be a 'sleep.weekAgoToday'.
+				sleep.startTime.lastWeek = sleep.weekAgoToday;
+				callback();
+			});
+		};
+
+		var getTimeInBedSeries = function(callback) {
+			client.get('/sleep/timeInBed/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				var responseObj = res[0]["sleep-timeInBed"];
+				var nLen = responseObj.length;
+				//winston.info(res[0]);
+				sleep.timeInBed.weekAgoToday = parseInt(responseObj[0].value);
+				sleep.timeInBed.yesterday = parseInt(responseObj[nLen - 2].value);
+				sleep.timeInBed.today = parseInt(responseObj[nLen - 1].value);
+				sleep.timeInBed.lastWeek = averageLastWeek(responseObj);
+				callback();
+			});
+		};
+
+		var getMinutesAsleepSeries = function(callback) {
+			client.get('/sleep/minutesAsleep/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				var responseObj = res[0]["sleep-minutesAsleep"];
+				var nLen = responseObj.length;
+				//winston.info(res[0]);
+				sleep.minutesAsleep.weekAgoToday = parseInt(responseObj[0].value);
+				sleep.minutesAsleep.yesterday = parseInt(responseObj[nLen - 2].value);
+				sleep.minutesAsleep.today = parseInt(responseObj[nLen - 1].value);
+				sleep.minutesAsleep.lastWeek = averageLastWeek(responseObj);
+				callback();
+			});
+		};
+
+
+		var getEfficiencySeries = function(callback) {
+			client.get('/sleep/efficiency/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				var responseObj = res[0]["sleep-efficiency"];
+				var nLen = responseObj.length;
+				//winston.info(res[0]);
+				sleep.efficiency.weekAgoToday = parseInt(responseObj[0].value);
+				sleep.efficiency.yesterday = parseInt(responseObj[nLen - 2].value);
+				sleep.efficiency.today = parseInt(responseObj[nLen - 1].value);
+				sleep.efficiency.lastWeek = averageLastWeek(responseObj);
+				callback();
+			});
+		};
+
+
+
+		var getGoalSleep = function(callback) {
+			client.get('/sleep/goal.json', result.access_token).then(function (res) {
+				//winston.info(res[0].goal.goal);
+				sleep.goal = res[0].goal.minDuration;
+				callback();
+			});
+		};
+
 		async.series([
 			//activity model
 			getDailyActivity,
@@ -172,9 +247,14 @@ exports.getFitbitData = function(req, res) {
 
 			//nutrition namely, water model
 			getWaterSeries,
-			getGoalWater
+			getGoalWater,
 
 			//sleep model
+			getStartTimeSeries,
+			getTimeInBedSeries,
+			getMinutesAsleepSeries,
+			getEfficiencySeries,
+			getGoalSleep
 
 
 		], function(err, results){
@@ -184,6 +264,7 @@ exports.getFitbitData = function(req, res) {
 			dataByfitbit.activity = activity;
 			dataByfitbit.heartrate = heartrate;
 			dataByfitbit.water = water;
+			dataByfitbit.sleep = sleep;
 			res.send(dataByfitbit);
 			//res.render('index', { title: activity });
 		})

@@ -16,9 +16,9 @@ var HeartrateSchema = new Schema({
 // 'achievementSyncHeartrate'
 // virtual property
 HeartrateSchema.virtual('achievementSyncHeartrate').get(function () {
-	if ((this.restingHeartRate !== 'undefined') || (this.restingHeartRate !== 0)) return 100;
+	if ((this.restingHeartRate === 'undefined') || (this.restingHeartRate === 0) || (this.restingHeartRate === "")) return 0;
 	else
-		return 0;
+		return 100;
 });
 
 HeartrateSchema.set('toJSON', {
@@ -29,3 +29,4 @@ HeartrateSchema.set('toJSON', {
 // model out of the
 // 'HeartrateSchema'
 mongoose.model('Heartrate', HeartrateSchema);
+
