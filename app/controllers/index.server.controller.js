@@ -44,6 +44,7 @@ exports.getFitbitData = function(req, res) {
 
 		var activity = {goals:{}, calories:{}, steps:{}, distance:{}, floors:{}, activityCalories:{}};
 		var heartrate = {};
+		var water = {};
 
 		var nToday = moment().format('YYYY-MM-DD');
 		var baseDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
@@ -129,8 +130,30 @@ exports.getFitbitData = function(req, res) {
 
 		var getHeartRate = function(callback) {
 			client.get('/activities/heart/date/today/1d.json', result.access_token).then(function (res) {
-				winston.info(res[0]["activities-heart"][0].value.restingHeartRate);
+				//winston.info(res[0]["activities-heart"][0].value.restingHeartRate);
 				heartrate.restingHeartRate = parseInt(res[0]["activities-heart"][0].value.restingHeartRate);
+				callback();
+			});
+		};
+
+		var getWaterSeries = function(callback) {
+			client.get('/foods/log/water/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				var responseObj = res[0]["foods-log-water"];
+				var nLen = responseObj.length;
+				//winston.info(res[0]);
+				water.weekAgoToday = parseInt(responseObj[0].value);
+				water.yesterday = parseInt(responseObj[nLen - 2].value);
+				water.today = parseInt(responseObj[nLen - 1].value);
+				water.lastWeek = averageLastWeek(responseObj);
+				callback();
+			});
+		};
+
+
+		var getGoalWater = function(callback) {
+			client.get('/foods/log/water/goal.json', result.access_token).then(function (res) {
+				//winston.info(res[0].goal.goal);
+				water.goal = res[0].goal.goal;
 				callback();
 			});
 		};
@@ -145,9 +168,13 @@ exports.getFitbitData = function(req, res) {
 			getActivityCaloriesSeries,
 
 			//heartrate model
-			getHeartRate
+			getHeartRate,
 
+			//nutrition namely, water model
+			getWaterSeries,
+			getGoalWater
 
+			//sleep model
 
 
 		], function(err, results){
@@ -156,6 +183,7 @@ exports.getFitbitData = function(req, res) {
 			}
 			dataByfitbit.activity = activity;
 			dataByfitbit.heartrate = heartrate;
+			dataByfitbit.water = water;
 			res.send(dataByfitbit);
 			//res.render('index', { title: activity });
 		})
