@@ -57,44 +57,43 @@ exports.getFitbitData = function(req, res) {
 				activity.calories.yesterday = parseInt(responseObj[nLen - 2].value);
 				activity.calories.today = parseInt(responseObj[nLen - 1].value);
 				activity.calories.lastWeek = averageLastWeek(responseObj);
-				winston.info(activity);
 				callback();
 			});
 		};
 
-//		var getStepsSeries = function(cb) {
-//			client.get('/activities/steps/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
-//				//res.send(results[0]);
-//				//console.log(res[0]);
-//				cb();
-//			});
-//		};
-//
-//		var getDistanceSeries = function(callback) {
-//			client.get('/activities/distance/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
-//				//winston.info(res[0]);
-//				callback();
-//			});
-//		};
-//
-//		var getFloorsSeries = function(callback) {
-//			client.get('/activities/floors/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
-//				//winston.info(res[0]);
-//				callback();
-//			});
-//		};
-//
-//		var getActivityCaloriesSeries = function(callback) {
-//			client.get('/activities/activityCalories/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
-//				//winston.info(res[0]);
-//				callback(null, res[0]);
-//			});
-//		};
+		var getStepsSeries = function(callback) {
+			client.get('/activities/steps/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				winston.log(res[0]["activities-steps"]);
+				console.log(res[0]);
+				callback();
+			});
+		};
+
+		var getDistanceSeries = function(callback) {
+			client.get('/activities/distance/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
+				//winston.info(res[0]);
+				callback();
+			});
+		};
+
+		var getFloorsSeries = function(callback) {
+			client.get('/activities/floors/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
+				//winston.info(res[0]);
+				callback();
+			});
+		};
+
+		var getActivityCaloriesSeries = function(callback) {
+			client.get('/activities/activityCalories/date/'+ nToday + '/7d.json', result.access_token).then(function (res) {
+				//winston.info(res[0]);
+				callback(null, res[0]);
+			});
+		};
 
 		async.series([
 			getDailyActivity,
-			getCaloriesSeries
-//			getStepsSeries,
+			getCaloriesSeries,
+			getStepsSeries
 //			getDistanceSeries,
 //			getFloorsSeries,
 //			getActivityCaloriesSeries
@@ -105,6 +104,8 @@ exports.getFitbitData = function(req, res) {
 			}
 			//console.log(typeof results);
 			res.send(activity);
+			//res.render('index', { title: activity });
+
 		})
 
 	}).catch(function (error) {
