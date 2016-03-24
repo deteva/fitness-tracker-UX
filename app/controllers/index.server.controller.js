@@ -25,10 +25,17 @@ var dataByfitbit= {};
 var averageLastWeek = function (weeksArray, nDigit) {
 	var averageWeek = 0;
 	var totalWeek = 0;
+	var nLen = weeksArray.length;
+
+	//average measurement 'nLen', not counting unmeasured day
 	weeksArray.forEach(function (eachDay) {
+		if(eachDay["value"] === "" || eachDay["value"] === "0"){
+			--nLen;
+		}
 		totalWeek += eachDay["value"]*1;
-		return averageWeek = totalWeek / weeksArray.length;
+		return averageWeek = totalWeek / nLen;
 	});
+
 	if(nDigit !== undefined) {
 		return averageWeek.toFixed(nDigit) * 1;
 	}
@@ -200,7 +207,7 @@ exports.getFitbitData = function(req, res) {
 			client.get('/sleep/minutesAsleep/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["sleep-minutesAsleep"];
 				var nLen = responseObj.length;
-				//winston.info(res[0]);
+				winston.info(res[0]);
 				sleep.minutesAsleep.weekAgoToday = parseInt(responseObj[0].value);
 				sleep.minutesAsleep.yesterday = parseInt(responseObj[nLen - 2].value);
 				sleep.minutesAsleep.today = parseInt(responseObj[nLen - 1].value);
