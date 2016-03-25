@@ -1,7 +1,9 @@
 /**
- * Created by tmin_lim on 16. 3. 23..
+ * Created by tmin_lim on 16.
+ * 3. 23..
  */
-// Invoke 'strict' JavaScript mode
+// Invoke 'strict' JavaScript
+// mode
 'use strict';
 
 var mongoose = require('mongoose'),
@@ -21,13 +23,16 @@ var client = new fitbitApi(config.fitbit.clientID, config.fitbit.clientSecret );
 
 var dataByfitbit= {};
 
-//get a average value from last week
+//get a average value from
+// last week
 var averageLastWeek = function (weeksArray, nDigit) {
 	var averageWeek = 0;
 	var totalWeek = 0;
 	var nLen = weeksArray.length;
 
-	//average measurement 'nLen', not counting unmeasured day
+	//average measurement
+	// 'nLen', not counting
+	// unmeasured day
 	weeksArray.forEach(function (eachDay) {
 		if(eachDay["value"] === "" || eachDay["value"] === "0"){
 			--nLen;
@@ -167,15 +172,12 @@ exports.getFitbitData = function(req, res) {
 			});
 		};
 
-//timeInBed = minutesToFallAsleep + minutesAsleep + minutesAwake + minutesAfterWakeup
-//		{
-//			dateTime: "2016-03-24",
-//				value: "05:50"
-//		},
-//		{
-//			dateTime: "2016-03-25",
-//				value: ""
-//		}
+//timeInBed =
+// minutesToFallAsleep +
+// minutesAsleep +
+// minutesAwake +
+// minutesAfterWakeup
+
 		var getStartTimeSeries = function(callback) {
 			client.get('/sleep/startTime/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["sleep-startTime"];
@@ -184,8 +186,12 @@ exports.getFitbitData = function(req, res) {
 				sleep.startTime.weekAgoToday = responseObj[0].value;
 				sleep.startTime.yesterday = responseObj[nLen - 2].value;
 				sleep.startTime.today = responseObj[nLen - 1].value;
-				//Instead of a 'sleep.lastWeek', there will be a 'sleep.weekAgoToday'.
-				sleep.startTime.lastWeek = sleep.weekAgoToday;
+				//Instead of a
+				// 'sleep.lastWeek',
+				// there will be
+				// a
+				// 'sleep.weekAgoToday'.
+				sleep.startTime.lastWeek = sleep.startTime.weekAgoToday;
 				callback();
 			});
 		};
@@ -207,7 +213,7 @@ exports.getFitbitData = function(req, res) {
 			client.get('/sleep/minutesAsleep/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["sleep-minutesAsleep"];
 				var nLen = responseObj.length;
-				winston.info(res[0]);
+				//winston.info(res[0]);
 				sleep.minutesAsleep.weekAgoToday = parseInt(responseObj[0].value);
 				sleep.minutesAsleep.yesterday = parseInt(responseObj[nLen - 2].value);
 				sleep.minutesAsleep.today = parseInt(responseObj[nLen - 1].value);
@@ -230,14 +236,35 @@ exports.getFitbitData = function(req, res) {
 			});
 		};
 
-
-
 		var getGoalSleep = function(callback) {
 			client.get('/sleep/goal.json', result.access_token).then(function (res) {
 				//winston.info(res[0].goal.goal);
 				sleep.goal = res[0].goal.minDuration;
 				callback();
 			});
+		};
+
+		var getFriends = function(callback) {
+			client.get('/friends/leaderboard.json', result.access_token).then(function (res) {
+				//winston.info(res[0]);
+				var responseObj = res[0]["friends"];
+				var medalRankingFriends = {};
+
+				function createHonorableFriend(eachFriend, ranking) {
+					var myHeathyFriend = {};
+					var noRank = ranking + 1;
+					myHeathyFriend.rank = eachFriend.rank.steps;
+					myHeathyFriend.displayName = eachFriend.user.displayName;
+					myHeathyFriend.avatar = eachFriend.user.avatar;
+					myHeathyFriend.summary = eachFriend.summary.steps;
+					myHeathyFriend.average = eachFriend.average.steps;
+
+					medalRankingFriends['no' + noRank] = myHeathyFriend;
+				}
+				responseObj.forEach(createHonorableFriend);
+				friend = medalRankingFriends;
+				callback();
+			})
 		};
 
 		async.series([
@@ -252,7 +279,8 @@ exports.getFitbitData = function(req, res) {
 			//heartrate model
 			getHeartRate,
 
-			//nutrition namely, water model
+			//nutrition namely,
+			// water model
 			getWaterSeries,
 			getGoalWater,
 
@@ -261,7 +289,10 @@ exports.getFitbitData = function(req, res) {
 			getTimeInBedSeries,
 			getMinutesAsleepSeries,
 			getEfficiencySeries,
-			getGoalSleep
+			getGoalSleep,
+
+			//friend model
+			getFriends
 
 
 		], function(err, results){
@@ -272,8 +303,11 @@ exports.getFitbitData = function(req, res) {
 			dataByfitbit.heartrate = heartrate;
 			dataByfitbit.water = water;
 			dataByfitbit.sleep = sleep;
+			dataByfitbit.friends = friend;
 			res.send(dataByfitbit);
-			//res.render('index', { title: activity });
+			//res.render('index',
+			// { title: activity
+			// });
 		})
 
 	}).catch(function (error) {

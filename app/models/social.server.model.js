@@ -7,7 +7,27 @@ var mongoose = require('mongoose'),
 
 // Define a new 'SocialSchema'
 var SocialSchema = new Schema({
-
+	no1:{
+		rank: Number,
+		displayName: String,
+		avatar: String,
+		summary: Number,
+		average: Number
+	},
+	no2:{
+		rank: Number,
+		displayName: String,
+		avatar: String,
+		summary: Number,
+		average: Number
+	},
+	no3: {
+		rank: Number,
+		displayName: String,
+		avatar: String,
+		summary: Number,
+		average: Number
+	}
 });
 
 // Create the 'Social' model out of the 'SocialSchema'

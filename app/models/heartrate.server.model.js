@@ -16,7 +16,7 @@ var HeartrateSchema = new Schema({
 // 'achievementSyncHeartrate'
 // virtual property
 HeartrateSchema.virtual('achievementSyncHeartrate').get(function () {
-	if ((this.restingHeartRate === 'null') || (this.restingHeartRate === 0) || (this.restingHeartRate === "")) return 0;
+	if ((this.restingHeartRate === 'null') || (this.restingHeartRate === "0") || (this.restingHeartRate === "")) return 0;
 	else
 		return 100;
 });
