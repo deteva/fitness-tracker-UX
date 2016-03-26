@@ -17,6 +17,13 @@ module.exports = function() {
     require('../app/models/sleep.server.model');
     require('../app/models/social.server.model');
 
+    process.on('SIGINT', function() {
+        mongoose.connection.close(function () {
+            console.log('Mongoose default connection disconnected');
+            process.exit(0);
+        });
+    });
+
     // Return the Mongoose connection instance
     return db;
 };
