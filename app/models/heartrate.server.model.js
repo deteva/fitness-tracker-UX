@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 // Define a new
 // 'HeartrateSchema'
 var HeartrateSchema = new Schema({
-	restingHeartRate: {type: Number}
+	restingHeartRate: [Schema.Types.Mixed]
 });
 // Set the
 // 'achievementSyncHeartrate'

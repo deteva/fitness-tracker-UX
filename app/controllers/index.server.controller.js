@@ -7,7 +7,7 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-	Activity = mongoose.model('Activity'),
+ 	Activity = mongoose.model('Activity'),
 	Heartrate = mongoose.model('Heartrate'),
 	Nutrition = mongoose.model('Nutrition'),
 	Sleep = mongoose.model('Sleep'),
@@ -45,6 +45,17 @@ var averageLastWeek = function (weeksArray, nDigit) {
 		return averageWeek.toFixed(nDigit) * 1;
 	}
 	return parseInt(averageWeek);
+};
+
+// Create a new error handling controller method
+var getErrorMessage = function(err) {
+	if (err.errors) {
+		for (var errName in err.errors) {
+			if (err.errors[errName].message) return err.errors[errName].message;
+		}
+	} else {
+		return 'Unknown server error';
+	}
 };
 
 exports.connectFitbit = function(req, res, next) {
@@ -138,7 +149,15 @@ exports.getFitbitData = function(req, res) {
 				activity.activityCalories.yesterday = parseInt(responseObj[nLen - 2].value);
 				activity.activityCalories.today = parseInt(responseObj[nLen - 1].value);
 				activity.activityCalories.lastWeek = averageLastWeek(responseObj);
-				callback();
+
+				// Try saving the Activity
+				var newActivity = new Activity(activity);
+				newActivity.save(function(err) {
+					if(err) {
+						return callback(getErrorMessage(err));
+					} else
+						callback();
+				});
 			});
 		};
 
@@ -146,12 +165,43 @@ exports.getFitbitData = function(req, res) {
 			client.get('/activities/heart/date/today/1d.json', result.access_token).then(function (res) {
 				//winston.info(res[0]["activities-heart"][0].value.restingHeartRate);
 				heartrate.restingHeartRate = parseInt(res[0]["activities-heart"][0].value.restingHeartRate);
-				callback();
+
+				// Try saving the Heartrate
+				var newHeartrate = new Heartrate(heartrate);
+				newHeartrate.save(function(err) {
+					if(err) {
+						return callback(getErrorMessage(err));
+					} else
+						callback();
+				});
 			});
 		};
 
 		var getWaterSeries = function(callback) {
 			client.get('/foods/log/water/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
+				//extract the '_id' value of last document
+				Nutrition.find()
+					.sort({_id:-1})
+					.limit(1)
+					.exec(function(error, recentDoc){
+						if(error){
+							return getErrorMessage(error);
+						}
+						//oh! retrieve the virtual field 'achievementWater'
+						var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
+						var sObjectId = lastDoc._id;
+						var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
+						winston.info(lastObjectId);
+
+						//to remove all document except last one
+						Nutrition.remove({ _id : {$ne : lastObjectId}}, function(err, results){
+							winston.info(results.result);
+							if (err) {
+								getErrorMessage(err);
+							}
+						});
+					});
+
 				var responseObj = res[0]["foods-log-water"];
 				var nLen = responseObj.length;
 				//winston.info(res[0]);
@@ -159,25 +209,28 @@ exports.getFitbitData = function(req, res) {
 				water.yesterday = parseInt(responseObj[nLen - 2].value);
 				water.today = parseInt(responseObj[nLen - 1].value);
 				water.lastWeek = averageLastWeek(responseObj);
+
 				callback();
 			});
 		};
-
 
 		var getGoalWater = function(callback) {
 			client.get('/foods/log/water/goal.json', result.access_token).then(function (res) {
 				//winston.info(res[0].goal.goal);
 				water.goal = res[0].goal.goal;
-				callback();
+
+				 //Try saving the Water
+				var newNutrition = new Nutrition(water);
+				newNutrition.save(function(err) {
+					if(err) {
+						return callback(getErrorMessage(err));
+					} else
+						callback();
+				});
 			});
 		};
 
-//timeInBed =
-// minutesToFallAsleep +
-// minutesAsleep +
-// minutesAwake +
-// minutesAfterWakeup
-
+//timeInBed =minutesToFallAsleep + minutesAsleep + minutesAwake + minutesAfterWakeup
 		var getStartTimeSeries = function(callback) {
 			client.get('/sleep/startTime/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["sleep-startTime"];
@@ -186,11 +239,7 @@ exports.getFitbitData = function(req, res) {
 				sleep.startTime.weekAgoToday = responseObj[0].value;
 				sleep.startTime.yesterday = responseObj[nLen - 2].value;
 				sleep.startTime.today = responseObj[nLen - 1].value;
-				//Instead of a
-				// 'sleep.lastWeek',
-				// there will be
-				// a
-				// 'sleep.weekAgoToday'.
+				//Instead of a 'sleep.lastWeek', there will be a 'sleep.weekAgoToday'.
 				sleep.startTime.lastWeek = sleep.startTime.weekAgoToday;
 				callback();
 			});
@@ -240,7 +289,15 @@ exports.getFitbitData = function(req, res) {
 			client.get('/sleep/goal.json', result.access_token).then(function (res) {
 				//winston.info(res[0].goal.goal);
 				sleep.goal = res[0].goal.minDuration;
-				callback();
+
+				// Try saving the Sleep
+				var newSleep = new Sleep(sleep);
+				newSleep.save(function(err) {
+					if(err) {
+						return callback(getErrorMessage(err));
+					} else
+						callback();
+				});
 			});
 		};
 
@@ -263,47 +320,53 @@ exports.getFitbitData = function(req, res) {
 				}
 				responseObj.forEach(createHonorableFriend);
 				friend = medalRankingFriends;
-				callback();
+
+				// Try saving the Social
+				var newSocial = new Social(friend);
+				newSocial.save(function(err) {
+					if(err) {
+						return callback(getErrorMessage(err));
+					} else
+						callback();
+				});
 			})
 		};
 
 		async.series([
 			//activity model
-			getDailyActivity,
-			getCaloriesSeries,
-			getStepsSeries,
-			getDistanceSeries,
-			getFloorsSeries,
-			getActivityCaloriesSeries,
-
+			//getDailyActivity,
+			//getCaloriesSeries,
+			//getStepsSeries,
+			//getDistanceSeries,
+			//getFloorsSeries,
+			//getActivityCaloriesSeries,
+			//
 			//heartrate model
-			getHeartRate,
+			//getHeartRate,
 
-			//nutrition namely,
-			// water model
+			//nutrition namely, water model
 			getWaterSeries,
-			getGoalWater,
+			getGoalWater
 
 			//sleep model
-			getStartTimeSeries,
-			getTimeInBedSeries,
-			getMinutesAsleepSeries,
-			getEfficiencySeries,
-			getGoalSleep,
+			//getStartTimeSeries,
+			//getTimeInBedSeries,
+			//getMinutesAsleepSeries,
+			//getEfficiencySeries,
+			//getGoalSleep,
 
 			//friend model
-			getFriends
-
-
+			//getFriends
 		], function(err, results){
 			if(err) {
 				console.log('error'+ err);
 			}
-			dataByfitbit.activity = activity;
-			dataByfitbit.heartrate = heartrate;
+			//dataByfitbit.activity = activity;
+			//dataByfitbit.heartrate = heartrate;
 			dataByfitbit.water = water;
-			dataByfitbit.sleep = sleep;
-			dataByfitbit.friends = friend;
+			//dataByfitbit.sleep = sleep;
+			//dataByfitbit.friends = friend;
+
 			res.send(dataByfitbit);
 			//res.render('index',
 			// { title: activity

@@ -14,7 +14,7 @@ var NutritionSchema = new Schema({
 	goal:{type: Number},
 });
 // Set the 'achievementSyncHeartrate' virtual property
-NutritionSchema.virtual('achievementSyncWater').get(function() {
+NutritionSchema.virtual('achievementWater').get(function() {
 	return Math.floor((this.today / this.goal ) * 100);
 });
 
