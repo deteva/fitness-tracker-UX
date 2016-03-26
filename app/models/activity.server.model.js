@@ -52,7 +52,7 @@ var ActivitySchema = new Schema({
 
 // Set the 'achievement' virtual property
 ActivitySchema.virtual('achievementActiveMinutes').get(function() {
-	return Math.floor((this.activeMinutes.today / this.goals.activeMinutes ) * 100);
+	return Math.floor((this.activityCalories.today / this.goals.activeMinutes ) * 100);
 });
 
 ActivitySchema.virtual('achievementCaloriesOut').get(function() {

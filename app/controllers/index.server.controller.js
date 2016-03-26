@@ -23,16 +23,13 @@ var client = new fitbitApi(config.fitbit.clientID, config.fitbit.clientSecret );
 
 var dataByfitbit= {};
 
-//get a average value from
-// last week
+//get a average value from last week
 var averageLastWeek = function (weeksArray, nDigit) {
 	var averageWeek = 0;
 	var totalWeek = 0;
 	var nLen = weeksArray.length;
 
-	//average measurement
-	// 'nLen', not counting
-	// unmeasured day
+	//average measurement 'nLen', not counting unmeasured day
 	weeksArray.forEach(function (eachDay) {
 		if(eachDay["value"] === "" || eachDay["value"] === "0"){
 			--nLen;
@@ -46,6 +43,31 @@ var averageLastWeek = function (weeksArray, nDigit) {
 	}
 	return parseInt(averageWeek);
 };
+
+//extract the '_id' value of last document
+var removeExceptLastDocument = function (model) {
+	model.find()
+		.sort({_id:-1})
+		.limit(1)
+		.exec(function(error, recentDoc){
+			if(error){
+				return getErrorMessage(error);
+			}
+			//oh! retrieve the virtual field 'achievemen~'
+			var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
+			var sObjectId = lastDoc._id;
+			var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
+			//winston.info(lastObjectId);
+
+			//to remove all document except last one
+			model.remove({ _id : {$ne : lastObjectId}}, function(err, results){
+				winston.info(results.result);
+				if (err) {
+					getErrorMessage(err);
+				}
+			});
+		});
+}
 
 // Create a new error handling controller method
 var getErrorMessage = function(err) {
@@ -150,6 +172,7 @@ exports.getFitbitData = function(req, res) {
 				activity.activityCalories.today = parseInt(responseObj[nLen - 1].value);
 				activity.activityCalories.lastWeek = averageLastWeek(responseObj);
 
+				removeExceptLastDocument(Activity);
 				// Try saving the Activity
 				var newActivity = new Activity(activity);
 				newActivity.save(function(err) {
@@ -166,6 +189,7 @@ exports.getFitbitData = function(req, res) {
 				//winston.info(res[0]["activities-heart"][0].value.restingHeartRate);
 				heartrate.restingHeartRate = parseInt(res[0]["activities-heart"][0].value.restingHeartRate);
 
+				removeExceptLastDocument(Heartrate);
 				// Try saving the Heartrate
 				var newHeartrate = new Heartrate(heartrate);
 				newHeartrate.save(function(err) {
@@ -179,29 +203,6 @@ exports.getFitbitData = function(req, res) {
 
 		var getWaterSeries = function(callback) {
 			client.get('/foods/log/water/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
-				//extract the '_id' value of last document
-				Nutrition.find()
-					.sort({_id:-1})
-					.limit(1)
-					.exec(function(error, recentDoc){
-						if(error){
-							return getErrorMessage(error);
-						}
-						//oh! retrieve the virtual field 'achievementWater'
-						var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
-						var sObjectId = lastDoc._id;
-						var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
-						winston.info(lastObjectId);
-
-						//to remove all document except last one
-						Nutrition.remove({ _id : {$ne : lastObjectId}}, function(err, results){
-							winston.info(results.result);
-							if (err) {
-								getErrorMessage(err);
-							}
-						});
-					});
-
 				var responseObj = res[0]["foods-log-water"];
 				var nLen = responseObj.length;
 				//winston.info(res[0]);
@@ -219,6 +220,7 @@ exports.getFitbitData = function(req, res) {
 				//winston.info(res[0].goal.goal);
 				water.goal = res[0].goal.goal;
 
+				removeExceptLastDocument(Nutrition);
 				 //Try saving the Water
 				var newNutrition = new Nutrition(water);
 				newNutrition.save(function(err) {
@@ -290,6 +292,7 @@ exports.getFitbitData = function(req, res) {
 				//winston.info(res[0].goal.goal);
 				sleep.goal = res[0].goal.minDuration;
 
+				removeExceptLastDocument(Sleep);
 				// Try saving the Sleep
 				var newSleep = new Sleep(sleep);
 				newSleep.save(function(err) {
@@ -300,6 +303,7 @@ exports.getFitbitData = function(req, res) {
 				});
 			});
 		};
+
 
 		var getFriends = function(callback) {
 			client.get('/friends/leaderboard.json', result.access_token).then(function (res) {
@@ -321,6 +325,7 @@ exports.getFitbitData = function(req, res) {
 				responseObj.forEach(createHonorableFriend);
 				friend = medalRankingFriends;
 
+				removeExceptLastDocument(Social);
 				// Try saving the Social
 				var newSocial = new Social(friend);
 				newSocial.save(function(err) {
@@ -334,44 +339,42 @@ exports.getFitbitData = function(req, res) {
 
 		async.series([
 			//activity model
-			//getDailyActivity,
-			//getCaloriesSeries,
-			//getStepsSeries,
-			//getDistanceSeries,
-			//getFloorsSeries,
-			//getActivityCaloriesSeries,
-			//
+			getDailyActivity,
+			getCaloriesSeries,
+			getStepsSeries,
+			getDistanceSeries,
+			getFloorsSeries,
+			getActivityCaloriesSeries,
+
 			//heartrate model
-			//getHeartRate,
+			getHeartRate,
 
 			//nutrition namely, water model
 			getWaterSeries,
-			getGoalWater
+			getGoalWater,
 
 			//sleep model
-			//getStartTimeSeries,
-			//getTimeInBedSeries,
-			//getMinutesAsleepSeries,
-			//getEfficiencySeries,
-			//getGoalSleep,
+			getStartTimeSeries,
+			getTimeInBedSeries,
+			getMinutesAsleepSeries,
+			getEfficiencySeries,
+			getGoalSleep,
 
 			//friend model
-			//getFriends
+			getFriends
 		], function(err, results){
 			if(err) {
 				console.log('error'+ err);
 			}
-			//dataByfitbit.activity = activity;
-			//dataByfitbit.heartrate = heartrate;
+			dataByfitbit.activity = activity;
+			dataByfitbit.heartrate = heartrate;
 			dataByfitbit.water = water;
-			//dataByfitbit.sleep = sleep;
-			//dataByfitbit.friends = friend;
+			dataByfitbit.sleep = sleep;
+			dataByfitbit.friends = friend;
 
 			res.send(dataByfitbit);
-			//res.render('index',
-			// { title: activity
-			// });
-		})
+			//res.render('index',{ title: activity});
+		});
 
 	}).catch(function (error) {
 		res.send(error);
