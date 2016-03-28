@@ -44,32 +44,48 @@ var averageLastWeek = function (weeksArray, nDigit) {
 	return parseInt(averageWeek);
 };
 
-//extract the '_id' value of last document
+//extract the '_id' value of
+// last document
 var removeExceptLastDocument = function (model) {
-	model.find()
-		.sort({_id:-1})
-		.limit(1)
-		.exec(function(error, recentDoc){
-			if(error){
-				return getErrorMessage(error);
-			}
-			//oh! retrieve the virtual field 'achievemen~'
-			var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
-			var sObjectId = lastDoc._id;
-			var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
-			winston.info(lastObjectId);
+	//Check if a model collection does not exists, just  return
+	mongoose.connect.db.listCollections({name: model})
+		.next(function (err, existModel) {
+			if(existModel) {
+				winston.log(existModel);
+				model.find()
+					.sort({_id:-1})
+					.limit(1)
+					.exec(function(error, recentDoc){
+						if(error){
+							return getErrorMessage(error);
+						}
+						//oh! retrieve the
+						// virtual field
+						// 'achievemen~'
+						var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
+						var sObjectId = lastDoc._id;
+						var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
+						winston.info(lastObjectId);
 
-			//to remove all document except last one
-			model.remove({ _id : {$ne : lastObjectId}}, function(err, results){
-				winston.info(results.result);
-				if (err) {
-					getErrorMessage(err);
-				}
-			});
-		});
+						//to remove all
+						// document except
+						// last one
+						model.remove({ _id : {$ne : lastObjectId}}, function(err, results){
+							winston.info(results.result);
+							if (err) {
+								getErrorMessage(err);
+							}
+						});
+					});
+			} else
+				return;
+
+		})
+
 }
 
-// Create a new error handling controller method
+// Create a new error
+// handling controller method
 var getErrorMessage = function(err) {
 	if (err.errors) {
 		for (var errName in err.errors) {
@@ -173,7 +189,8 @@ exports.getFitbitData = function(req, res) {
 				activity.activityCalories.lastWeek = averageLastWeek(responseObj);
 
 				removeExceptLastDocument(Activity);
-				// Try saving the Activity
+				// Try saving the
+				// Activity
 				var newActivity = new Activity(activity);
 				newActivity.save(function(err) {
 					if(err) {
@@ -190,7 +207,8 @@ exports.getFitbitData = function(req, res) {
 				heartrate.restingHeartRate = parseInt(res[0]["activities-heart"][0].value.restingHeartRate);
 
 				removeExceptLastDocument(Heartrate);
-				// Try saving the Heartrate
+				// Try saving the
+				// Heartrate
 				var newHeartrate = new Heartrate(heartrate);
 				newHeartrate.save(function(err) {
 					if(err) {
@@ -221,7 +239,8 @@ exports.getFitbitData = function(req, res) {
 				water.goal = res[0].goal.goal;
 
 				removeExceptLastDocument(Nutrition);
-				 //Try saving the Water
+				 //Try saving the
+				 // Water
 				var newNutrition = new Nutrition(water);
 				newNutrition.save(function(err) {
 					if(err) {
@@ -232,7 +251,11 @@ exports.getFitbitData = function(req, res) {
 			});
 		};
 
-//timeInBed =minutesToFallAsleep + minutesAsleep + minutesAwake + minutesAfterWakeup
+//timeInBed
+// =minutesToFallAsleep +
+// minutesAsleep +
+// minutesAwake +
+// minutesAfterWakeup
 		var getStartTimeSeries = function(callback) {
 			client.get('/sleep/startTime/date/' +nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["sleep-startTime"];
@@ -241,7 +264,11 @@ exports.getFitbitData = function(req, res) {
 				sleep.startTime.weekAgoToday = responseObj[0].value;
 				sleep.startTime.yesterday = responseObj[nLen - 2].value;
 				sleep.startTime.today = responseObj[nLen - 1].value;
-				//Instead of a 'sleep.lastWeek', there will be a 'sleep.weekAgoToday'.
+				//Instead of a
+				// 'sleep.lastWeek',
+				// there will be
+				// a
+				// 'sleep.weekAgoToday'.
 				sleep.startTime.lastWeek = sleep.startTime.weekAgoToday;
 				callback();
 			});
@@ -293,7 +320,8 @@ exports.getFitbitData = function(req, res) {
 				sleep.goal = res[0].goal.minDuration;
 
 				removeExceptLastDocument(Sleep);
-				// Try saving the Sleep
+				// Try saving the
+				// Sleep
 				var newSleep = new Sleep(sleep);
 				newSleep.save(function(err) {
 					if(err) {
@@ -326,7 +354,8 @@ exports.getFitbitData = function(req, res) {
 				friend = medalRankingFriends;
 
 				removeExceptLastDocument(Social);
-				// Try saving the Social
+				// Try saving the
+				// Social
 				var newSocial = new Social(friend);
 				newSocial.save(function(err) {
 					if(err) {
@@ -349,7 +378,8 @@ exports.getFitbitData = function(req, res) {
 			//heartrate model
 			getHeartRate,
 
-			//nutrition namely, water model
+			//nutrition namely,
+			// water model
 			getWaterSeries,
 			getGoalWater,
 
@@ -373,7 +403,9 @@ exports.getFitbitData = function(req, res) {
 			dataByfitbit.friends = friend;
 
 			res.send(dataByfitbit);
-			//res.render('index',{ title: activity});
+			//res.render('index',{
+			// title:
+			// activity});
 		});
 
 	}).catch(function (error) {
