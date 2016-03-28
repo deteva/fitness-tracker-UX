@@ -57,7 +57,7 @@ var removeExceptLastDocument = function (model) {
 			var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
 			var sObjectId = lastDoc._id;
 			var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
-			//winston.info(lastObjectId);
+			winston.info(lastObjectId);
 
 			//to remove all document except last one
 			model.remove({ _id : {$ne : lastObjectId}}, function(err, results){
@@ -172,7 +172,7 @@ exports.getFitbitData = function(req, res) {
 				activity.activityCalories.today = parseInt(responseObj[nLen - 1].value);
 				activity.activityCalories.lastWeek = averageLastWeek(responseObj);
 
-				removeExceptLastDocument(Activity);
+				//removeExceptLastDocument(Activity);
 				// Try saving the Activity
 				var newActivity = new Activity(activity);
 				newActivity.save(function(err) {
@@ -189,7 +189,7 @@ exports.getFitbitData = function(req, res) {
 				//winston.info(res[0]["activities-heart"][0].value.restingHeartRate);
 				heartrate.restingHeartRate = parseInt(res[0]["activities-heart"][0].value.restingHeartRate);
 
-				removeExceptLastDocument(Heartrate);
+				//removeExceptLastDocument(Heartrate);
 				// Try saving the Heartrate
 				var newHeartrate = new Heartrate(heartrate);
 				newHeartrate.save(function(err) {
