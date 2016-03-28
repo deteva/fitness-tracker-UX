@@ -16,7 +16,7 @@ module.exports = {
 				safe: true
 			}
 		},
-		uri: process.env.NODE_ENV.MONGOLAB_URI
+		uri: process.env.MONGOLAB_URI
 	}
 
 };
