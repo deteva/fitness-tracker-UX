@@ -1,5 +1,4 @@
 *.iml
 **/.idea/
-/config/env/production.js
 node_modules
 /config/env/development.js
