@@ -5,9 +5,9 @@
 module.exports = {
 	//fitbit API specific configuration
 	fitbit: {
-		clientID: process.env.clientID,
-		clientSecret: process.env.clientSecret,
-		callbackURL: process.env.callbackURL
+		clientID: process.env.NODE_ENV.clientID,
+		clientSecret: process.env.NODE_ENV.clientSecret,
+		callbackURL: process.env.NODE_ENV.callbackURL
 	},
 	// MongoDB connection options
 	mongo: {
@@ -16,7 +16,7 @@ module.exports = {
 				safe: true
 			}
 		},
-		uri: process.env.MONGOLAB_URI
+		uri: process.env.NODE_ENV.MONGOLAB_URI
 	}
 
 };
