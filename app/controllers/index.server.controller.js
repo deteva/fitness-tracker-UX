@@ -48,41 +48,47 @@ var averageLastWeek = function (weeksArray, nDigit) {
 // last document
 var removeExceptLastDocument = function (model) {
 	//Check if a model collection does not exists, just  return
-	mongoose.connect.db.listCollections({name: model})
-		.next(function (err, existModel) {
-			if(existModel) {
-				winston.log(existModel);
-				model.find()
-					.sort({_id:-1})
-					.limit(1)
-					.exec(function(error, recentDoc){
-						if(error){
-							return getErrorMessage(error);
-						}
-						//oh! retrieve the
-						// virtual field
-						// 'achievemen~'
-						var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
-						var sObjectId = lastDoc._id;
-						var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
-						winston.info(lastObjectId);
+	mongoose.connection.db.listCollections({name: model})
+		.toArray(function (error, items) {
+			if (error) {
+				getErrorMessage(error);
+			} else {
+				winston.info(items);
+				winston.info(typeof items);
+				winston.info(items.length);
 
-						//to remove all
-						// document except
-						// last one
-						model.remove({ _id : {$ne : lastObjectId}}, function(err, results){
-							winston.info(results.result);
-							if (err) {
-								getErrorMessage(err);
+				if (items.length >= 1) {
+					winston.log(items);
+					model.find()
+						.sort({_id: -1})
+						.limit(1)
+						.exec(function (error, recentDoc) {
+							if (error) {
+								return getErrorMessage(error);
 							}
+							//oh! retrieve the
+							// virtual field
+							// 'achievemen~'
+							var lastDoc = JSON.parse(JSON.stringify(recentDoc[0]));
+							var sObjectId = lastDoc._id;
+							var lastObjectId = new mongoose.Types.ObjectId(sObjectId);
+							winston.info(lastObjectId);
+
+							//to remove all
+							// document except
+							// last one
+							model.remove({_id: {$ne: lastObjectId}}, function (err, results) {
+								winston.info(results.result);
+								if (err) {
+									getErrorMessage(err);
+								}
+							});
 						});
-					});
-			} else
-				return;
-
-		})
-
-}
+				} else
+					return;
+			}
+		});
+};
 
 // Create a new error
 // handling controller method
@@ -105,9 +111,9 @@ exports.getFitbitData = function(req, res) {
 
 		var activity = {goals:{}, calories:{}, steps:{}, distance:{}, floors:{}, activityCalories:{}};
 		var heartrate = {},
-			 water = {},
+			 nutrition = {},
 			 sleep = {startTime:{}, timeInBed:{},minutesAsleep: {},efficiency:{}},
-			 friend = {};
+			 social = {};
 
 		var nToday = moment().format('YYYY-MM-DD');
 		var baseDate = moment().subtract(7, 'days').format('YYYY-MM-DD');
@@ -224,10 +230,10 @@ exports.getFitbitData = function(req, res) {
 				var responseObj = res[0]["foods-log-water"];
 				var nLen = responseObj.length;
 				//winston.info(res[0]);
-				water.weekAgoToday = parseInt(responseObj[0].value);
-				water.yesterday = parseInt(responseObj[nLen - 2].value);
-				water.today = parseInt(responseObj[nLen - 1].value);
-				water.lastWeek = averageLastWeek(responseObj);
+				nutrition.weekAgoToday = parseInt(responseObj[0].value);
+				nutrition.yesterday = parseInt(responseObj[nLen - 2].value);
+				nutrition.today = parseInt(responseObj[nLen - 1].value);
+				nutrition.lastWeek = averageLastWeek(responseObj);
 
 				callback();
 			});
@@ -236,12 +242,12 @@ exports.getFitbitData = function(req, res) {
 		var getGoalWater = function(callback) {
 			client.get('/foods/log/water/goal.json', result.access_token).then(function (res) {
 				//winston.info(res[0].goal.goal);
-				water.goal = res[0].goal.goal;
+				nutrition.goal = res[0].goal.goal;
 
 				removeExceptLastDocument(Nutrition);
 				 //Try saving the
 				 // Water
-				var newNutrition = new Nutrition(water);
+				var newNutrition = new Nutrition(nutrition);
 				newNutrition.save(function(err) {
 					if(err) {
 						return callback(getErrorMessage(err));
@@ -351,12 +357,12 @@ exports.getFitbitData = function(req, res) {
 					medalRankingFriends['no' + noRank] = myHeathyFriend;
 				}
 				responseObj.forEach(createHonorableFriend);
-				friend = medalRankingFriends;
+				social = medalRankingFriends;
 
 				removeExceptLastDocument(Social);
 				// Try saving the
 				// Social
-				var newSocial = new Social(friend);
+				var newSocial = new Social(social);
 				newSocial.save(function(err) {
 					if(err) {
 						return callback(getErrorMessage(err));
@@ -398,9 +404,9 @@ exports.getFitbitData = function(req, res) {
 			}
 			dataByfitbit.activity = activity;
 			dataByfitbit.heartrate = heartrate;
-			dataByfitbit.water = water;
+			dataByfitbit.water = nutrition;
 			dataByfitbit.sleep = sleep;
-			dataByfitbit.friends = friend;
+			dataByfitbit.friends = social;
 
 			res.send(dataByfitbit);
 			//res.render('index',{
