@@ -1,4 +1,8 @@
 *.iml
 **/.idea/
-node_modules
+/bower_components
+/node_modules
 /config/env/development.js
+/public/stylesheets
+/public/app/components/404/404.css.map
+/public/app/components/404/404.css

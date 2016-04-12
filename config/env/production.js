@@ -9,6 +9,9 @@ module.exports = {
 		clientSecret: process.env.clientSecret,
 		callbackURL: process.env.callbackURL
 	},
+	session: {
+		secret: process.env.sessionSecret
+	},
 	// MongoDB connection options
 	mongo: {
 		options: {

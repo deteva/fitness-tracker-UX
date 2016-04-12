@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{title}}</title>
+    <!--<link rel='stylesheet'-->
+          <!--href='/stylesheets/style.css'/>-->
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet"
+          href="/app/components/404/404.sass" />
+
+</head>
+<body>
+    <!--<div ng-include="/app/components/navbar/navbar.html'"></div>-->
+
+    <p>main page</p>
+    <!-- Render AngularJS views  -->
+    <div ng-view></div>
+
+    <!-- Load local libraries -->
+    <script src="/assets/bower_components/angular/angular.js"></script>
+    <script src="/assets/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/assets/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="/assets/bower_components/angular-route/angular-route.js"></script>
+
+    <!-- Bootstrap AngularJS application -->
+    <script src="/app/app.js"></script>
+    <script src="/app/app.core.js"></script>
+    <script src="/app/app.routes.js"></script>
+    <script src="/app/app.services.js"></script>
+
+    <!-- SERVICES -->
+    <script src="/app/components/services/dataAPI.js"></script>
+
+    <!--Load the dashboard main module -->
+    <script src="/app/main/main.ctrl.js"></script>
+
+</body>
+</html>

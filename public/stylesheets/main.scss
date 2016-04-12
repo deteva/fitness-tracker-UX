@@ -1,0 +1,12 @@
+@import "./reset/basic_reset";
+
+$grey: #f7f7f7;
+
+.center {
+  background: $grey;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  height:100vh;
+}

@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
 var mongoose = require('./mongoose');
+var session = require('express-session');
+
+var config = require('./config');
 
 // Define the Express configuration method
 module.exports = function() {
@@ -25,14 +28,26 @@ module.exports = function() {
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(cookieParser());
 	app.use(require('node-compass')({mode: 'expanded'}));
-	app.use(express.static(path.join(__dirname, '../public')));
+	//app.use(express.static(path.join(__dirname, '../app/views')));
+
+	// Configure the 'session' middleware
+	app.use(session({
+		secret: config.session.secret,
+		saveUninitialized: true,
+		resave: true,
+		cookie: { maxAge: 100000 }
+	}));
 
 	// Set the application view engine and 'views' folder
-	app.set('views', path.join(__dirname, '../app/views'));
+	app.set('views', path.join(__dirname, '../app/app.server/views'));
 	app.set('view engine', 'hbs');
 
 	// Load the routing files
-	require('../app/routes/index.js')(app);
+	require('../app/routes/auth.js')(app);
+	require('../app/routes/dashboard.js')(app);
+
+
+	app.use(express.static(path.join(__dirname, '../public')));
 
 
 	// catch 404 and forward to error handler

@@ -2,8 +2,7 @@
  * Created by tmin_lim on 16.
  * 3. 23..
  */
-// Invoke 'strict' JavaScript
-// mode
+// Invoke 'strict' JavaScript mode
 'use strict';
 
 var mongoose = require('mongoose'),
@@ -17,6 +16,7 @@ var config = require('../../config/config');
 var winston = require('winston');
 var async = require('async');
 var moment = require('moment');
+var session = require('express-session');
 
 var fitbitApi = require('fitbit-node');
 var client = new fitbitApi(config.fitbit.clientID, config.fitbit.clientSecret );
@@ -53,9 +53,8 @@ var removeExceptLastDocument = function (model) {
 			if (error) {
 				getErrorMessage(error);
 			} else {
-				winston.info(items);
-				winston.info(typeof items);
-				winston.info(items.length);
+				//winston.info(items);
+				//winston.info(items.length);
 
 				if (items.length >= 1) {
 					winston.log(items);
@@ -102,7 +101,7 @@ var getErrorMessage = function(err) {
 	}
 };
 
-exports.connectFitbit = function(req, res, next) {
+exports.connectFitbit = function(req, res) {
 	res.redirect(client.getAuthorizeUrl('activity heartrate nutrition sleep social', config.fitbit.callbackURL));
 };
 
@@ -408,10 +407,12 @@ exports.getFitbitData = function(req, res) {
 			dataByfitbit.sleep = sleep;
 			dataByfitbit.friends = social;
 
-			res.send(dataByfitbit);
-			//res.render('index',{
-			// title:
-			// activity});
+			req.session.dataFitbit = dataByfitbit;
+			console.log('index in');
+			console.log(req.session.dataFitbit);
+			res.redirect('/');
+			//res.status(200).json(dataByfitbit);
+
 		});
 
 	}).catch(function (error) {

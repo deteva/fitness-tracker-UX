@@ -1,0 +1,26 @@
+{
+  "name": "bodybel",
+  "description": "",
+  "main": "",
+  "authors": [
+    "tingmin lim"
+  ],
+  "license": "MIT",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-resource": "^1.5.3",
+    "angular-ui-router": "^0.2.18",
+    "angular-local-storage": "^0.2.7",
+    "angular-route": "^1.5.3"
+  }
+}
