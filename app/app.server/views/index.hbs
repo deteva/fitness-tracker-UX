@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
-    <!--<link rel='stylesheet'-->
-          <!--href='/stylesheets/style.css'/>-->
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link rel="stylesheet"
-          href="/app/components/404/404.sass" />
-
+          href="assets/stylesheets/css/global.css" />
 </head>
 <body>
-    <!--<div ng-include="/app/components/navbar/navbar.html'"></div>-->
-
-    <p>main page</p>
-    <!-- Render AngularJS views  -->
-    <div ng-view></div>
+   <div class = "wrapper">
+       <div ng-include="'/app/components/layout/hearder.html'"></div>
+        <p id="inline-block3">main </p>
+       <p>page</p>
+       <!-- Render AngularJS views  -->
+       <div ng-view></div>
+   </div>
 
     <!-- Load local libraries -->
     <script src="/assets/bower_components/angular/angular.js"></script>

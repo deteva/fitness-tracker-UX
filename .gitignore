@@ -1,9 +1,8 @@
 *.iml
 **/.idea/
-/bower_components
 /node_modules
 /config/env/development.js
 /public/assets/bower_components
-/public/stylesheets
-/public/app/components/404/404.css.map
-/public/app/components/404/404.css
+/public/assets/stylesheets/fonts
+/public/.sass-cache/
+/public/assets/stylesheets/css

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var winston = require('winston');
 var mongoose = require('./mongoose');
 var session = require('express-session');
+var compass = require('node-compass');
 
 var config = require('./config');
 
@@ -27,8 +28,21 @@ module.exports = function() {
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
 	app.use(cookieParser());
-	app.use(require('node-compass')({mode: 'expanded'}));
-	//app.use(express.static(path.join(__dirname, '../app/views')));
+	//app.use(require('node-compass')({
+	//	mode: 'expanded',
+	//	logging: true,
+	//	project: path.join(__dirname, '../public/stylesheets/'),
+	//	css: 'css',
+	//	sass: 'sass'
+	//}));
+	//app.use(require('node-compass')({
+	//	mode: 'expanded',
+	//	project: path.join(__dirname, '/public/stylesheets/'),
+	//}));
+
+	//app.use(require('node-compass')({
+	//	mode: 'expanded'
+	//}));
 
 	// Configure the 'session' middleware
 	app.use(session({
