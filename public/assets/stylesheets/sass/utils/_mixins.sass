@@ -1,0 +1,86 @@
+// Calculate REMS FROM PX
+@function calculateRem($size)
+  $remSize: $size / $base-font-size
+  @return #{$remSize}rem
+
+@mixin fontsize-rem($size)
+  font-size: $size
+  font-size: calculateRem($size)
+
+@mixin center($xy:xy)
+  @if $xy == xy
+    left: 50%
+    top: 50%
+    bottom: auto
+    right: auto
+    transform: translateX(-50%) translateY(-50%)
+  @else if $xy == x
+    left: 50%
+    right: auto
+    transform: translateX(-50%)
+  @else if $xy == y
+    top: 50%
+    bottom: auto
+    transform: translateY(-50%)
+
+//clearfix
+@import "compass/utilities/general/clearfix"
+=clearfix-custom
+  *zoom: 1
+  &:before,
+  &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+
+//button
+//@mixin ouline-btn($bgcolor, $ouline-color, $y: yang)
+//  background-color: $bgcolor
+//  border: 2px solid $ouline-color
+//  color: $ouline-color
+//  $hover-color: $grey
+//  +transition(all 0.2s)
+//  &:hover
+//    @if $y == yin
+//      $hover-color: tint($ouline-color, 50%)
+//    @else if $y == yang
+//      $hover-color: shade($ouline-color, 30%)
+//    border-color: $hover-color
+//    color: $hover-color
+//  &:active
+//    @if $y == yin
+//      background: scale-lightness($hover-color, 88%)
+//      color: shade($bgcolor, 30%)
+//    @else
+//      background: $ouline-color
+//      color: $bgcolor
+
+@mixin ouline-btn($bgcolor, $ouline-color)
+  &::before,
+  &::after
+    z-index: -1
+    width: 100%
+    height: 100%
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    +transition(transform 0.3s, opacity 0.3s)
+    +transition-timing-function(cubic-bezier(0.75, 0, 0.125, 1))
+  &::before
+    /*hover 할때 나오는 컬러*/
+    border: 2px solid $bgcolor
+    opacity: 0
+    +transform3d(scale3d(1.1, 1.1, 1))
+  &::after
+    /*초기 컬러*/
+    background: $bgcolor
+    border: 2px solid $ouline-color
+  &:hover
+    &::before
+      opacity: 1
+      +transform3d(scale3d(1, 1, 1))
+    &::after
+      opacity: 0
+      +transform3d(scale3d(0.9, 0.8, 1))

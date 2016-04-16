@@ -18,6 +18,7 @@ var SASS_PATH = 'public/assets/stylesheets/sass/**/*.sass';
 var IMAGES_PATH = 'public/images/**/*.{png,jpeg,jpg,gif,svg}';
 var CSS_PATH = 'public/assets/stylesheets/css/global.css';
 var HTML_PATH = 'public/app/components/**/*.html';
+var INDEX_PATH = 'app/app.server/views/index.hbs';
 
 // check
 gulp.task('check', function() {
@@ -26,24 +27,24 @@ gulp.task('check', function() {
 });
 
 //sass styles
-//gulp.task('sass', function () {
-//	console.log('starting sass styles task');
-//	return gulp.src('public/stylesheets/sass/global.sass')
-//		.pipe(plumber(function (error) {
-//			console.log('task of styles error');
-//			console.log(error);
-//			this.emit('end');
-//		}))
-//		.pipe(sourcemaps.init())
-//		.pipe(autoprefixer())
-//		.pipe(sass({
-//				outputStyle: 'compressed'
-//			}
-//		))
-//		.pipe(sourcemaps.write())
-//		.pipe(gulp.dest(DIST_PATH))
-//		.pipe(livereload());
-//});
+gulp.task('sass', function () {
+	console.log('starting sass styles task');
+	return gulp.src('SASS_PATH')
+		.pipe(plumber(function (error) {
+			console.log('task of styles error');
+			console.log(error);
+			this.emit('end');
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(autoprefixer())
+		//.pipe(sass({
+		//		outputStyle: 'compressed'
+		//	}
+		//))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(DIST_PATH))
+		.pipe(livereload());
+});
 //
 ////scripts
 //gulp.task('scripts', function () {
@@ -77,6 +78,7 @@ gulp.task('check', function() {
 //});
 
 gulp.task('clean', function () {
+	console.log('starting clean task');
 	return del.sync([
 		DIST_PATH
 	]);
@@ -87,12 +89,13 @@ gulp.task('clean', function () {
 //		' default taks');
 //});
 
-gulp.task('watch' , function () {
+gulp.task('watch' , ['clean', 'sass'], function () {
 	console.log('starting watch task');
 	livereload.listen();
 	//gulp.watch(SCRIPT_PATH, ['scripts']);
 	//gulp.watch(CSS_PATH, ['check']);
 	gulp.watch(SASS_PATH, ['check']);
+	gulp.watch(INDEX_PATH, ['check']);
 	gulp.watch(HTML_PATH, ['check']);
 
 });
