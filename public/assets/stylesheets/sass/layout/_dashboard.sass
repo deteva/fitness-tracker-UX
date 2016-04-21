@@ -1,0 +1,70 @@
+/* -------------------------
+  dashboard specific styles
+  --------------------------- */
+
+//$susy: (container: 1240px, columns: 12, gutters: 1/3, box-sizing: border-box, debug: (image: show, output: overlay, toggle: top right))
+
+//$susy: (container: auto, container-position: center, columns: 12, gutters: 0, box-sizing: border-box, debug: (image: show, output: overlay, toggle: top right))
+//
+//$susy-wide: (columns: 5 8 4, gutters: 3/4, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
+$susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show-columns, toggle: top right, output: overlay))
+
+$susy: (columns: 1, box-sizing: border-box)
+
+
+
+.wrap
+  @include container(1240px)
+  //@include show-grid(overlay)
+
+.dashboard
+  @include full
+  .main-container
+    @include full
+    position: relative
+    overflow: hidden
+    background: $sterling-grey
+    .twotone-bg
+      display: block
+      position: absolute
+      bottom: 0px
+      height: 300px
+      width: 100%
+      background-color: $medium-grey
+      @include susy-breakpoint($bp-wide, $susy-wide)
+        display: block
+        position: absolute
+        right: 0px
+        top: 0px
+        height: 100%
+        width: 45%
+        background-color: $medium-grey
+
+    .wrap
+      position: relative
+      main[role="main"]
+        @include span(first 1)
+        //@include span(first 5)
+        //background-color: $white
+        border: 1px solid $dark-jet
+        height: 1100px
+
+        @include susy-breakpoint($bp-wide, $susy-wide)
+          @include span(first 5)
+          border-color: brown
+          height: 1100px
+
+
+      aside.feedback
+        @include span(first 1)
+        //@include span(last 2)
+        //background-color: $medium-grey
+        border: solid 1px black
+        height: 300px
+
+        @include susy-breakpoint($bp-wide, $susy-wide)
+          @include span(last 2)
+          //@include span(first 1)
+          border-color: greenyellow
+          height: 1100px
+

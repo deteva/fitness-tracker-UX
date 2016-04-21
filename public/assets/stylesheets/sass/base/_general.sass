@@ -5,9 +5,11 @@ html, body
   +fontsize-rem($base-font-size)
   font-family: $text-font-stack
   height: 100%
-  +breakpoint($tablet)
+  +breakpoint($bp-wide)
     +fontsize-rem($base-font-size - 1px)
 
+//for button component
+*,
 *:after,
 *:before
   +box-sizing(border-box)
@@ -18,3 +20,5 @@ a, button
 button,html input[type="button"],input[type="reset"],input[type="submit"]
   cursor: pointer
   outline: none
+
+

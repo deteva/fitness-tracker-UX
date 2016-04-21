@@ -21,6 +21,7 @@
     "angular-resource": "^1.5.3",
     "angular-ui-router": "^0.2.18",
     "angular-local-storage": "^0.2.7",
-    "angular-route": "^1.5.3"
+    "angular-route": "^1.5.3",
+    "susy": "^2.2.12"
   }
 }

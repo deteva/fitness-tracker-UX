@@ -23,7 +23,7 @@
     bottom: auto
     transform: translateY(-50%)
 
-//clearfix
+//clearfix 2 types
 @import "compass/utilities/general/clearfix"
 =clearfix-custom
   *zoom: 1
@@ -35,28 +35,8 @@
     clear: both
 
 //button
-//@mixin ouline-btn($bgcolor, $ouline-color, $y: yang)
-//  background-color: $bgcolor
-//  border: 2px solid $ouline-color
-//  color: $ouline-color
-//  $hover-color: $grey
-//  +transition(all 0.2s)
-//  &:hover
-//    @if $y == yin
-//      $hover-color: tint($ouline-color, 50%)
-//    @else if $y == yang
-//      $hover-color: shade($ouline-color, 30%)
-//    border-color: $hover-color
-//    color: $hover-color
-//  &:active
-//    @if $y == yin
-//      background: scale-lightness($hover-color, 88%)
-//      color: shade($bgcolor, 30%)
-//    @else
-//      background: $ouline-color
-//      color: $bgcolor
-
-@mixin ouline-btn($bgcolor, $ouline-color)
+@mixin ouline-btn($bgcolor, $ouline-color, $y:yang)
+  color: $ouline-color
   &::before,
   &::after
     z-index: -1
@@ -69,18 +49,33 @@
     +transition(transform 0.3s, opacity 0.3s)
     +transition-timing-function(cubic-bezier(0.75, 0, 0.125, 1))
   &::before
-    /*hover 할때 나오는 컬러*/
-    border: 2px solid $bgcolor
+    /*hover color*/
+    @if $y == yang
+      background-color: $ouline-color
+      border: 2px solid tint($ouline-color, 30%)
+    @else if $y == yin
+      background-color: $ouline-color
+      border: 2px solid shade($bgcolor, 20%)
     opacity: 0
-    +transform3d(scale3d(1.1, 1.1, 1))
+    +transform3d(scale3d(1.1, 1.2, 1))
   &::after
-    /*초기 컬러*/
+    /*init color*/
     background: $bgcolor
     border: 2px solid $ouline-color
   &:hover
+    @if $y == yang
+      color: $bgcolor
+    @else if $y == yin
+      color: shade($bgcolor, 20%)
     &::before
       opacity: 1
       +transform3d(scale3d(1, 1, 1))
     &::after
       opacity: 0
       +transform3d(scale3d(0.9, 0.8, 1))
+  &:active
+    @if $y == yang
+      background: shade($ouline-color, 30%)
+    @else if $y == yin
+      background: scale-lightness($ouline-color, 40%)
+

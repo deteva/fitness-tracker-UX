@@ -9,11 +9,11 @@
           href="assets/stylesheets/css/global.css" />
 </head>
 <body>
-   <div class = "wrapper">
+   <div class = "dashboard">
        <div ng-include="'/app/components/layout/hearder.html'"></div>
-       <p>page</p>
        <!-- Render AngularJS views  -->
        <div ng-view></div>
+       <div ng-include ="'/app/components/layout/footer.html'"></div>
    </div>
 
     <!-- Load local libraries -->

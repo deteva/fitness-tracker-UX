@@ -1,6 +1,8 @@
 @import compass/reset
-@import "compass"
+@import compass
 
+//import susy
+@import ../../bower_components/susy/sass/susy
 //Import breakpoints
 @import ../../../../node_modules/breakpoint-sass/stylesheets/breakpoint
 
@@ -18,3 +20,8 @@
 
 //Import components
 @import ./components/buttons
+
+//Import layout
+@import "layout/dashboard"
+@import "layout/header"
+@import "layout/footer"
