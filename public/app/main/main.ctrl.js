@@ -23,9 +23,5 @@
 		$scope.sleepData = sleepByfitbit;
 		$scope.friendData = socialByfitbit;
 
-
-
-
-
 	}
 })();

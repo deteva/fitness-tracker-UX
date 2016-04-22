@@ -5,7 +5,7 @@ $susy: (columns: 1, box-sizing: border-box)
 
 $susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 1/12, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
 
-@include layout($susy)
+//@include layout($susy)
 
 .wrap
   @include container(1240px)
@@ -30,7 +30,7 @@ $susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 1/12, output: isolate, box-siz
         right: 0px
         top: 0px
         height: 100%
-        width: 33%
+        width: 40%
         background-color: $medium-grey
     .wrap
       position: relative
@@ -44,7 +44,7 @@ $susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 1/12, output: isolate, box-siz
         height: 1100px
 
         @include susy-breakpoint($bp-wide, $susy-wide)
-          @include span(first 5)
+          @include span(first 6)
           border-color: brown
           height: 1100px
 
@@ -55,7 +55,7 @@ $susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 1/12, output: isolate, box-siz
         height: 300px
 
         @include susy-breakpoint($bp-wide, $susy-wide)
-          @include span(last 2)
+          @include span(last 1)
           border-color: greenyellow
           height: 1100px
 

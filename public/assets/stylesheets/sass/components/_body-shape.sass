@@ -1,0 +1,23 @@
+/* -------------------------
+  body-shape specific styles
+  --------------------------- */
+
+//$susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
+
+section.body-shape
+  @include span(3 at 1 $susy-wide first)
+  position: absolute
+  background-color: $stone-grey2
+  height: 100%
+  border: 1px solid royalblue
+  .comment-body
+    @include span(1 of (6 22 5) first)
+    border: 1px solid mediumvioletred
+
+  .body-container
+    @include span(1 of (6 22 5) at 2)
+    border: 1px solid $dark-jet
+
+  .gutter
+    @include span(1 of (6 22 5) last)
+    border: 1px solid $dark-jet
