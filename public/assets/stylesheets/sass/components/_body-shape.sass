@@ -1,23 +1,44 @@
 /* -------------------------
   body-shape specific styles
   --------------------------- */
-
-//$susy-wide: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
-
-section.body-shape
-  @include span(3 at 1 $susy-wide first)
+=body-shape-w($susy-layout, $nest-layout)
+  @include span(3 at 1 $susy-layout first)
   position: absolute
-  background-color: $stone-grey2
-  height: 100%
-  border: 1px solid royalblue
+  border: 1px solid $stone-grey2
+
   .comment-body
-    @include span(1 of (6 22 5) first)
-    border: 1px solid mediumvioletred
+    @include span(1 of ($nest-layout) first)
+    //width: 60px
+    +layout-outline($balanced-yellow)
 
   .body-container
-    @include span(1 of (6 22 5) at 2)
-    border: 1px solid $dark-jet
+    @include span(1 of ($nest-layout) at 2)
+    //width: 220px
+    +layout-outline($balanced-yellow)
+    p
+      +center(y)
 
   .gutter
-    @include span(1 of (6 22 5) last)
-    border: 1px solid $dark-jet
+    @include span(1 of ($nest-layout) last)
+    +layout-outline($balanced-yellow)
+    p
+      +center(y)
+
+section.body-shape
+  //height: 1100px why?
+  .comment-body
+    @include span(6 of 89 first)
+    +layout-outline($happy-violet)
+  .body-container
+    @include span(22 of 89 at 7)
+    +layout-outline($happy-violet)
+  .gutter
+    @include span(5 of 89 at 29)
+    +layout-outline($happy-violet)
+
+  @include susy-breakpoint($bp-wide, $susy-wide)
+    +body-shape-w($susy-wide, 6 22 3)
+
+  @include susy-breakpoint($bp-wider, $susy-wider)
+    +body-shape-w($susy-wider, 6 22 5)
+

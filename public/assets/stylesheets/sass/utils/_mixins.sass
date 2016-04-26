@@ -79,3 +79,28 @@
     @else if $y == yin
       background: scale-lightness($ouline-color, 40%)
 
+
+//vertical center
+@mixin center($xy:xy)
+  @if $xy == xy
+    position: relative
+    left: 50%
+    top: 50%
+    bottom: auto
+    right: auto
+    transform: translateX(-50%) translateY(-50%)
+  @else if $xy == x
+    position: relative
+    left: 50%
+    right: auto
+    transform: translateX(-50%)
+  @else if $xy == y
+    position: relative
+    top: 50%
+    bottom: auto
+    transform: translateY(-50%)
+
+//layout-outline
+@mixin layout-outline($color: $misty-grey2)
+  border: 1px solid $color
+  height: 100%
