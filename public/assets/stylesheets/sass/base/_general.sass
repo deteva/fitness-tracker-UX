@@ -7,7 +7,6 @@ html, body
   height: 100%
   +breakpoint($bp-wide)
     +fontsize-rem($base-font-size - 1px)
-
 //for button component
 *,
 *:after,
@@ -16,6 +15,8 @@ html, body
 
 a, button
   transition: all 0.35s
+a:hover, a:visited, a:link, a:active
+  text-decoration: none
 
 button,html input[type="button"],input[type="reset"],input[type="submit"]
   cursor: pointer

@@ -22,6 +22,7 @@
     "angular-ui-router": "^0.2.18",
     "angular-local-storage": "^0.2.7",
     "angular-route": "^1.5.3",
-    "susy": "^2.2.12"
+    "susy": "^2.2.12",
+    "normalize.sass": "^3.0.0"
   }
 }

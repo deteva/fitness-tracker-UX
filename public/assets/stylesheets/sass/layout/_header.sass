@@ -29,15 +29,12 @@ header.header-container
   height: 80px
   +background-image(linear-gradient($white, $sterling-white))
   border-bottom: 1px solid $pearl-grey
-
   .wrap
     @include container($bp-medium)
     +header-container-part
-
     @include susy-breakpoint($bp-wide)
       @include container
       +header-container-part
-
     @include susy-breakpoint($bp-wider)
       @include container($bp-wider)
       +header-container-part

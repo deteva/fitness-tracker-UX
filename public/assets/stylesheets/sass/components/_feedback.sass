@@ -10,28 +10,16 @@ section.feedback
   .challenge
     @include span(30 of 89 last)
     +layout-outline($happy-violet)
+
   @include susy-breakpoint($bp-wide, $susy-wide)
     position: absolute
     border: 1px solid $misty-grey2
     .improvement-point
       width: 100%
-      //@include prefix(5%)
       +layout-outline($happy-violet)
     .strong-point
       width: 100%
-      //@include span(1 last)
       +layout-outline($happy-violet)
     .challenge
       width: 100%
-      //@include span(1  last)
       +layout-outline($happy-violet)
-    //@include span(1 of (24) last)
-    //@include prefix(5%)
-    //+number-today-part($susy-wide, 9 35 3)
-
-  //@include susy-breakpoint($bp-wider, $susy-wider)
-  //  @include span(1 of (24) last)
-    //@include prefix(5%)
-    //+number-today-part($susy-wider, 10 40 6)
-
-
