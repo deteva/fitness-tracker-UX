@@ -8,13 +8,9 @@ $susy-wide: (columns: 6 22 3 9 35 3 24, gutters: 0, output: isolate, box-sizing:
 $susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
 
 //@include layout($susy)
-
 =main-bp
   border-color: brown
   height: 1100px
-
-.wrap
-  @include container($bp-wider)
 
 .dashboard
   .main-container
@@ -43,6 +39,7 @@ $susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizin
         @include show-grid(overlay)
         position: relative
       +wrap-part
+      //@include container($bp-medium)
       @include susy-breakpoint($bp-wide, $susy-wide)
         @include container($bp-wider)
         +wrap-part
@@ -51,28 +48,26 @@ $susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizin
         +wrap-part
       main[role="main"]
         @include span(first 89)
+        @include squish(3%)
         background-color: $sterling-grey
-        //border: 1px solid $dark-jet
+        border: 1px solid $dark-jet
         height: 1100px
-        width: 890px
-
+        width: 860px
         =main-part
           @include span(first 6)
           +main-bp
         @include susy-breakpoint($bp-wide, $susy-wide)
           +main-part
         @include susy-breakpoint($bp-wider, $susy-wider)
-          @include span(first 6)
           +main-part
-
       aside.feedback-container
         @include span(first 89)
+        @include squish(3%)
         border: solid 1px black
-        width: 890px
+        width: 860px
         height: 300px
         =feedback-part
           @include span(last 1)
-          //@include span(1 at 7 last)
           border-color: royalblue
           height: 1100px
         @include susy-breakpoint($bp-wide, $susy-wide)
