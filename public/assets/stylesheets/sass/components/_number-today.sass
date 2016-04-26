@@ -2,10 +2,11 @@ section.number-today
   height: 1100px
   .icon-data
     @include span(10 of 89 at 34)
-    +layout-outline($happy-violet)
+    //+layout-outline($happy-violet)
   .today-container
     @include span(40 of 89 at 44)
-    +layout-outline($happy-violet)
+    //+layout-outline($happy-violet)
+    padding-top: 25px
   .gutter
     @include span(6 of 89 last)
     +layout-outline($happy-violet)
@@ -13,19 +14,17 @@ section.number-today
   =number-today-part($susy-layout, $nest-layout)
     @include span(3 at 4 $susy-layout)
     position: absolute
-    border: 1px solid $misty-grey2
+    //border: 1px solid $misty-grey2
     .icon-data
       @include span(1 of ($nest-layout) first)
-      +layout-outline($happy-violet)
-
+      //+layout-outline($happy-violet)
     .today-container
       @include span(1 of ($nest-layout) at 2)
-      +layout-outline($happy-violet)
-
+      //+layout-outline($happy-violet)
+      padding-top: 25px
     .gutter
       @include span(1 of ($nest-layout) last)
-      +layout-outline($happy-violet)
-
+      //+layout-outline($happy-violet)
 
   @include susy-breakpoint($bp-wide, $susy-wide)
     +number-today-part($susy-wide, 9 35 3)

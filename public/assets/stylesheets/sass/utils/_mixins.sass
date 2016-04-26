@@ -104,3 +104,15 @@
 @mixin layout-outline($color: $misty-grey2)
   border: 1px solid $color
   height: 100%
+
+//caret
+=caret($point:top, $color: $dark-jet , $size: 10px)
+  $opposite: opposite-position($point)
+  border: $size solid transparent
+  border-#{$opposite}: $size solid $color
+  border-#{$point}: 0
+  height: 0
+  width: 0
+￼
+.caret
+  +caret(top, $dark-jet, 30px)
