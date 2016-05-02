@@ -23,6 +23,7 @@
     "angular-local-storage": "^0.2.7",
     "angular-route": "^1.5.3",
     "susy": "^2.2.12",
-    "normalize.sass": "^3.0.0"
+    "normalize.sass": "^3.0.0",
+    "angular-strap": "^2.3.8"
   }
 }

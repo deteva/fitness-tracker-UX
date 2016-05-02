@@ -1,0 +1,9 @@
+<!--<input type="text"-->
+       <!--placeholder="어떤 음식" ng-model="selected" data-animation="am-flip-x"-->
+       <!--bs-options="food for food in foods" data-min-length="0" data-auto-select="true" class="form-control" style = "width: 100px" bs-typeahead>-->
+
+<input type="text" placeholder="어떤 음식" ng-model="selected"
+       uib-typeahead="food for food in foods | limitTo: 5"
+       class="form-control" style= "width: 100px"
+       typeahead-show-hint="true" typeahead-min-length = "1" typeahead-editable = "false" >
+    {{selected}}

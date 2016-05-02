@@ -8,7 +8,7 @@
 		.module('app.core')
 		.directive('numberToday', NumberToday);
 
-	BodyShape.$inject = ['dataAPI'];
+	NumberToday.$inject = ['dataAPI'];
 
 	function NumberToday(dataAPI) {
 		console.log('directive numberToday in');

@@ -6,15 +6,75 @@
 
     <!--today data-->
     <article class = "today-container">
-        <div class  ="happy stat">
+        <ul class="happy stat">
+            <li class = "no-sub-title">
+                <div class = "border-underline">
+                    <h1>6</h1>시간<h1>30</h1>분
+                </div>
+                <span class= "comment">수면시간</span>
+            </li>
+            <li>
+                <div class = "border-underline">
+                    <h1>75</h1>%
+                </div>
+                <span class= "comment">꿀잠</span>
+            </li>
+            <li>
+                <div class = "border-underline">
+                    <h1>60</h1>bpm
+                </div>
+                <span class= "comment">안정시 심박수</span>
+            </li>
+            <li>
+                <div class = "border-underline">
+                    <h1>1200</h1>ml
+                </div>
+                <span class= "comment">물 섭취량</span>
+            </li>
+        </ul>
+        <ul class = "balanced stat">
+            <li>
+                <h2>음식 계획 기준으로</h2>
+            </li>
+            <li>
+                <div class = "border-underline">
+                    <h1>A</h1>
+                </div>
+                <span class= "comment">만큼 건강하게 섭취</span>
+            </li>
+            <li>
+                <div class = "border-underline">
+                    <h1>과식</h1>
+                </div>
+            </li>
+            <li>
+                <kr-input></kr-input>
+                <!--<input type="text" placeholder="어떤 음식" ng-model="selected"-->
+                       <!--bs-options="food for food in foods" kr-input>-->
+                <h3>
+                     을
+                </h3>
 
-        </div>
-        <div class = "balanced stat">
+                <!--<input type="text" placeholder="얼만큼" ng-model="TypeAheadVM.selected"-->
+                       <!--uib-typeahead="food for foods in TypeAheadVM.Estados | filter:$viewValue | limitTo:8" class="form-control" kr-input>-->
+                <!--<h3>-->
+                    <!--더 먹어도 되나요?-->
+                <!--</h3>-->
 
-        </div>
-        <div class ="energetic stat">
+                <h3>
+                    339cal  더 먹어도 되요
+                </h3>
+            </li>
+            <li>
+                <div class = "border-underline">
+                    <h1>4.6</h1>kg
+                </div>
+                <span class= "comment">목표까지 화이팅</span>
+            </li>
+        </ul>
+        <ul class ="energetic stat">
 
-        </div>
+        </ul>
     </article>
     <!--gutter-->
     <div class = "gutter">
