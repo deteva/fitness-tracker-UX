@@ -2,6 +2,7 @@ ul.stat
   background-color: $white
   +establish-baseline
   +margin-trailer(1, $base-font-size + 14px)
+
   li
     padding-left: 33px
     +adjust-leading-to(4, $base-font-size + 14px)
@@ -9,25 +10,80 @@ ul.stat
       +padding-leader(4, $base-font-size + 14px)
     &:first-child:not(.no-sub-title)
       +padding-leader(1, $base-font-size + 14px)
-
     &:last-child
       +padding-trailer(2, $base-font-size + 14px)
     .border-underline
       +inline-block
-    //  border-color: $sterling-white
-    //  height: 46px
-    //  +trailing-border(5px, 0, $base-font-size)
+      position: relative
+      .border-inside-element
+        &:after
+          position: absolute
+          content: ""
+          border-bottom: 5px solid $sterling-white
+          bottom: 2%
+          width: 100%
+          height: 100%
+
+    md-content, md-autocomplete
+      +inline-block
+      min-width: 50px
+      input:not(.md-input)
+        color : $dark-jet
+        padding: 0 3px 0px 10px
+      button
+        margin-left: 0px
+        margin-right: 0px
+    .inputFood
+      width: 115px
+    .inputAmount
+      width: 70px
+
+    md-select
+      +inline-block
+      min-width: 100px
+      color: $grey
+      width: 130px
+      letter-spacing: -0.01em
+      &.ng-dirty,.ng-touched
+        ._md-select-value > span:not(._md-select-icon)
+          color: $dark-jet
+
+    span.comment
+      //font-family: $thin-font
+      padding-left: 14px
+      color: $grey
     h1
       +inline-block
       padding-right: 4px
       &:not(:first-child)
         padding-left: 7px
-    span.comment
-      font-family: $thin-font
-      padding-left: 14px
+    h3
+      +inline-block
       color: $grey
-    
+    h4
+      +inline-block
+      color: $grey
+
+//balanced section: md-select
+._md-select-menu-container[aria-hidden="false"] md-option
+  padding: 0 5px 0 12px
+
+md-select-menu
+  md-option, md-option[selected]
+    &:focus,
+    &:not([disabled]),
+    &:not([selected])
+      color: $medium-grey
+    &:hover
+      color: $dark-grey
+    &:active
+      color: shade($balanced-yellow, 22%)
+
+
+//color border
 @each $i in $color-style
   .#{nth($i, 1)}
     border-left: 3px solid
     border-color: nth($i, 2)
+
+

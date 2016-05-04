@@ -9,12 +9,10 @@ $susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizin
 
 html
   +debug-vertical-alignment
-
 //@include layout($susy)
 =main-bp
   border-color: brown
   height: 1100px
-
 .dashboard
   .main-container
     @include full
@@ -63,6 +61,7 @@ html
           +main-part
         @include susy-breakpoint($bp-wider, $susy-wider)
           +main-part
+
       aside.feedback-container
         @include span(first 89)
         @include squish(3%)

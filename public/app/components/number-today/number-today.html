@@ -9,25 +9,33 @@
         <ul class="happy stat">
             <li class = "no-sub-title">
                 <div class = "border-underline">
-                    <h1>6</h1>시간<h1>30</h1>분
+                    <div class = "border-inside-element">
+                        <h1>6</h1>시간<h1>30</h1>분
+                    </div>
                 </div>
                 <span class= "comment">수면시간</span>
             </li>
             <li>
                 <div class = "border-underline">
-                    <h1>75</h1>%
+                    <div class = "border-inside-element">
+                        <h1>75</h1>%
+                    </div>
                 </div>
                 <span class= "comment">꿀잠</span>
             </li>
             <li>
                 <div class = "border-underline">
-                    <h1>60</h1>bpm
+                    <div class = "border-inside-element">
+                        <h1>60</h1>bpm
+                    </div>
                 </div>
                 <span class= "comment">안정시 심박수</span>
             </li>
             <li>
                 <div class = "border-underline">
-                    <h1>1200</h1>ml
+                    <div class = "border-inside-element">
+                        <h1>1200</h1>ml
+                    </div>
                 </div>
                 <span class= "comment">물 섭취량</span>
             </li>
@@ -38,38 +46,73 @@
             </li>
             <li>
                 <div class = "border-underline">
-                    <h1>A</h1>
+                    <div class = "border-inside-element">
+                        <h1>A</h1>
+                    </div>
                 </div>
                 <span class= "comment">만큼 건강하게 섭취</span>
             </li>
             <li>
                 <div class = "border-underline">
-                    <h1>과식</h1>
+                    <div class = "border-inside-element">
+                        <h1>과식</h1>
+                    </div>
                 </div>
             </li>
             <li>
-                <kr-input></kr-input>
-                <!--<input type="text" placeholder="어떤 음식" ng-model="selected"-->
-                       <!--bs-options="food for food in foods" kr-input>-->
-                <h3>
-                     을
-                </h3>
 
-                <!--<input type="text" placeholder="얼만큼" ng-model="TypeAheadVM.selected"-->
-                       <!--uib-typeahead="food for foods in TypeAheadVM.Estados | filter:$viewValue | limitTo:8" class="form-control" kr-input>-->
-                <!--<h3>-->
-                    <!--더 먹어도 되나요?-->
-                <!--</h3>-->
+                <md-content>
+                    <md-autocomplete flex
+                                     ng-disabled="isDisabled"
+                                     md-selected-item="selectedItem"
+                                     md-search-text="searchText"
+                                     md-items="item in querySearch(searchText)"
+                                     md-item-text="item.name"
+                                     md-min-length="0"
+                                     placeholder="어떤 음식"
+                                     class="inputFood"/>
+                    <md-item-template>
+                    <span md-highlight-text="searchText"
+                          md-highlight-flags="^i">{{item.name}}</span>
+                    </md-item-template>
+                </md-content>
+                <h4>
+
+                </h4>
+                <md-content>
+                    <md-autocomplete flex nonebutton="true"
+                                     ng-disabled="isDisabled"
+                                     md-selected-item="each"
+                                     md-items="each in amout"
+                                     md-item-text="each"
+                                     md-min-length="0"
+                                     placeholder="얼만큼"
+                                     class="inputAmount nonebutton"/>
+                    <md-item-template>
+                    <span md-highlight-text="each"
+                          md-highlight-flags="^i">{{each}}</span>
+                    </md-item-template>
+                </md-content>
+                <md-select ng-model="myModel" placeholder="먹을까" ng-change="onChange()" md-on-open="onOpen()">
+                    <md-option value="0">더 먹어도 되나요?</md-option>
+                    <md-option value="1">더 먹었어요</md-option>
+                </md-select>
+                <h4>
+                    더 먹어도 되나요?
+                </h4>
 
                 <h3>
-                    339cal  더 먹어도 되요
+                    339cal 더
+                    먹어도 되요
                 </h3>
             </li>
             <li>
-                <div class = "border-underline">
+                <div class="border-underline">
+                    <div class = "border-inside-element">
                     <h1>4.6</h1>kg
+                    </div>
                 </div>
-                <span class= "comment">목표까지 화이팅</span>
+                <span class="comment">목표까지 화이팅</span>
             </li>
         </ul>
         <ul class ="energetic stat">

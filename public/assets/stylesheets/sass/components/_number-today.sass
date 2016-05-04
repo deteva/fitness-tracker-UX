@@ -9,8 +9,7 @@ section.number-today
     padding-top: 25px
   .gutter
     @include span(6 of 89 last)
-    +layout-outline($happy-violet)
-
+    //+layout-outline($happy-violet)
   =number-today-part($susy-layout, $nest-layout)
     @include span(3 at 4 $susy-layout)
     position: absolute
@@ -25,9 +24,7 @@ section.number-today
     .gutter
       @include span(1 of ($nest-layout) last)
       //+layout-outline($happy-violet)
-
   @include susy-breakpoint($bp-wide, $susy-wide)
     +number-today-part($susy-wide, 9 35 3)
-
   @include susy-breakpoint($bp-wider, $susy-wider)
     +number-today-part($susy-wider, 10 40 6)
