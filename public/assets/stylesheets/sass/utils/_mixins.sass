@@ -34,6 +34,23 @@
   &:after
     clear: both
 
+//scrollbar styling Forked from [Hugo Giraudel](http://codepen.io/HugoGiraudel/)'s Pen [Sass mixin for scrollbar styling](http://codepen.io/HugoGiraudel/pen/KFDuB/)
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 40%))
+  ::-webkit-scrollbar
+    width:  $size
+    height: $size
+
+  ::-webkit-scrollbar-thumb
+    background: $foreground-color
+
+  ::-webkit-scrollbar-track
+    background: $background-color
+
+  // For Internet Explorer
+  body
+    scrollbar-face-color: $foreground-color
+    scrollbar-track-color: $background-color
+
 //button
 @mixin ouline-btn($bgcolor, $ouline-color, $y:yang)
   color: $ouline-color
@@ -116,3 +133,9 @@
 
 .caret
   +caret(top, $dark-jet, 30px)
+
+//autocomplete select
+=pseudo-container
+  content: ''
+  position: absolute
+  width: 100%

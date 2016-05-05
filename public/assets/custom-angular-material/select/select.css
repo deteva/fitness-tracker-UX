@@ -68,6 +68,8 @@ md-select {
     padding-bottom: 0; }
 
 ._md-select-value {
+  z-index: 3;
+  font-size: 14px;
   height: 50px;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,7 +130,9 @@ md-select {
     pointer-events: none;
     -webkit-font-smoothing: antialiased;
     padding-left: 2px;
-    z-index: 1; }
+    z-index: 2;
+    /*z-index: 1; */
+  }
 
 md-select-menu {
   display: -webkit-flex;

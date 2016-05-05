@@ -9,6 +9,8 @@ $susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizin
 
 html
   +debug-vertical-alignment
+  background: $white
+
 //@include layout($susy)
 =main-bp
   border-color: brown
@@ -17,7 +19,7 @@ html
   .main-container
     @include full
     position: relative
-    overflow: hidden
+    //overflow: hidden
     background: $sterling-grey
     .twotone-bg
       =twotone-bg-part
@@ -47,6 +49,7 @@ html
       @include susy-breakpoint($bp-wider, $susy-wider)
         @include container($bp-wider)
         +wrap-part
+
       main[role="main"]
         @include span(first 89)
         @include squish(3%)

@@ -3,42 +3,10 @@
     <div class = "icon-data">
         <p>icon data</p>
     </div>
-
     <!--today data-->
     <article class = "today-container">
         <ul class="happy stat">
-            <li class = "no-sub-title">
-                <div class = "border-underline">
-                    <div class = "border-inside-element">
-                        <h1>6</h1>시간<h1>30</h1>분
-                    </div>
-                </div>
-                <span class= "comment">수면시간</span>
-            </li>
-            <li>
-                <div class = "border-underline">
-                    <div class = "border-inside-element">
-                        <h1>75</h1>%
-                    </div>
-                </div>
-                <span class= "comment">꿀잠</span>
-            </li>
-            <li>
-                <div class = "border-underline">
-                    <div class = "border-inside-element">
-                        <h1>60</h1>bpm
-                    </div>
-                </div>
-                <span class= "comment">안정시 심박수</span>
-            </li>
-            <li>
-                <div class = "border-underline">
-                    <div class = "border-inside-element">
-                        <h1>1200</h1>ml
-                    </div>
-                </div>
-                <span class= "comment">물 섭취량</span>
-            </li>
+            <div ng-include="'/app/components/number-today/_happy-section.html'"></div>
         </ul>
         <ul class = "balanced stat">
             <li>
@@ -59,52 +27,58 @@
                     </div>
                 </div>
             </li>
+            <div class = "underline-li">
+                <h1 class = "overwrap-background">&nbsp;</h1>
+                <li class = "overwrap-element">
+                    <md-content>
+                        <md-autocomplete flex
+                                         ng-disabled="isDisabled"
+                                         md-selected-item="selectedItem"
+                                         md-search-text="searchText"
+                                         md-items="item in querySearch(searchText)"
+                                         md-item-text="item.name"
+                                         md-min-length="0"
+                                         placeholder="어떤 음식"
+                                         class="inputFood x90transform"/>
+                        <md-item-template>
+                        <span md-highlight-text="searchText"
+                              md-highlight-flags="^i">{{item.name}}</span>
+                        </md-item-template>
+                    </md-content>
+                    <md-content>
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-selected-item="each"
+                                         md-items="each in amout"
+                                         md-item-text="each"
+                                         md-min-length="0"
+                                         placeholder="얼만큼"
+                                         class="inputAmount nonebutton x90transform"/>
+                        <md-item-template>
+                                <span md-highlight-text="each"
+                                      md-highlight-flags="^i">{{each}}
+                                </span>
+                        </md-item-template>
+                    </md-content>
+                    <md-select ng-model="myModel" placeholder="먹을까" ng-change="onChange()" md-on-open="onOpen()">
+                        <md-option value="0">더 먹어도 되나요?</md-option>
+                        <md-option value="1">더 먹었어요</md-option>
+                    </md-select>
+                </li>
+            </div>
+
             <li>
-
-                <md-content>
-                    <md-autocomplete flex
-                                     ng-disabled="isDisabled"
-                                     md-selected-item="selectedItem"
-                                     md-search-text="searchText"
-                                     md-items="item in querySearch(searchText)"
-                                     md-item-text="item.name"
-                                     md-min-length="0"
-                                     placeholder="어떤 음식"
-                                     class="inputFood"/>
-                    <md-item-template>
-                    <span md-highlight-text="searchText"
-                          md-highlight-flags="^i">{{item.name}}</span>
-                    </md-item-template>
-                </md-content>
-                <h4>
-
-                </h4>
-                <md-content>
-                    <md-autocomplete flex nonebutton="true"
-                                     ng-disabled="isDisabled"
-                                     md-selected-item="each"
-                                     md-items="each in amout"
-                                     md-item-text="each"
-                                     md-min-length="0"
-                                     placeholder="얼만큼"
-                                     class="inputAmount nonebutton"/>
-                    <md-item-template>
-                    <span md-highlight-text="each"
-                          md-highlight-flags="^i">{{each}}</span>
-                    </md-item-template>
-                </md-content>
-                <md-select ng-model="myModel" placeholder="먹을까" ng-change="onChange()" md-on-open="onOpen()">
-                    <md-option value="0">더 먹어도 되나요?</md-option>
-                    <md-option value="1">더 먹었어요</md-option>
-                </md-select>
-                <h4>
-                    더 먹어도 되나요?
-                </h4>
-
-                <h3>
-                    339cal 더
-                    먹어도 되요
-                </h3>
+                <div class="border-underline">
+                    <div class = "border-inside-element">
+                        <h4>
+                            더 먹어도 되나요?
+                        </h4>
+                        <h3>
+                            339cal 더
+                            먹어도 되요
+                        </h3>
+                    </div>
+                </div>
             </li>
             <li>
                 <div class="border-underline">
@@ -116,11 +90,10 @@
             </li>
         </ul>
         <ul class ="energetic stat">
-
         </ul>
     </article>
     <!--gutter-->
     <div class = "gutter">
-        <p>gutter</p>
+        <!--<p>gutter</p>-->
     </div>
 </section>

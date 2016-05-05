@@ -5,10 +5,12 @@
  * v1.0.8
  */
 /*  Only used with Theme processes */
-html.md-THEME_NAME-theme, body.md-THEME_NAME-theme {
-  color: '{{foreground-1}}';
-  background-color: '{{background-color}}'; }
-
+/*html.md-THEME_NAME-theme, body.md-THEME_NAME-theme {*/
+  /*color: '{{foreground-1}}';*/
+  /*background-color: '{{background-color}}'; }*/
+/*html.md-THEME_NAME-theme, body.md-THEME_NAME-theme {*/
+  /*color: '{{foreground-1}}';*/
+  /*background-color: #ffffff; }*/
 @-webkit-keyframes md-autocomplete-list-out {
   0% {
     -webkit-animation-timing-function: linear;
@@ -155,8 +157,8 @@ md-autocomplete {
       bottom: -6px;
       left: -6px;
       border-radius: 50%;
-      /*-webkit-transform: scale(0);*/
-              /*transform: scale(0);*/
+      -webkit-transform: scale(0);
+              transform: scale(0);
       opacity: 0;
       transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
       background: transparent;
@@ -232,12 +234,12 @@ md-autocomplete {
   .md-autocomplete-suggestions {
     border: 1px solid #fff; } }
 
-.animateShow {
-  /*-webkit-transition: all linear 0.8s;*/
-  /*transition: all linear 0.8s;*/
-  opacity: 1;
-}
+/*.animateShow {*/
+  /*/!*-webkit-transition: all linear 0.8s;*!/*/
+  /*/!*transition: all linear 0.8s;*!/*/
+  /*opacity: 1;*/
+/*}*/
 
-.animateShow.ng-hide {
-  opacity: 0;
-}
+/*.animateShow.ng-hide {*/
+  /*opacity: 0;*/
+/*}*/

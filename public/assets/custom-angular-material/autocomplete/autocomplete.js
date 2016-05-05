@@ -988,6 +988,7 @@ function MdAutocomplete () {
       return '\
         <md-autocomplete-wrap\
             layout="row"\
+            class="container-autocomplete"\
             ng-class="{ \'md-whiteframe-z1\': !floatingLabel, \'md-menu-showing\': !$mdAutocompleteCtrl.hidden }"\
             role="listbox">\
           ' + getInputElement() + '\
@@ -1045,6 +1046,7 @@ function MdAutocomplete () {
               <input type="search"\
                   ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
                   id="{{ inputId || \'fl-input-\' + $mdAutocompleteCtrl.id }}"\
+                  class="x90transform"\
                   name="{{inputName}}"\
                   autocomplete="off"\
                   ng-required="$mdAutocompleteCtrl.isRequired"\
@@ -1064,6 +1066,8 @@ function MdAutocomplete () {
                   aria-haspopup="true"\
                   aria-activedescendant=""\
                   aria-expanded="{{!$mdAutocompleteCtrl.hidden}}"/>\
+              <label class="input-label">\
+              </label>\
               <div md-autocomplete-parent-scope md-autocomplete-replace>' + leftover + '</div>\
             </md-input-container>';
         } else if(attr.nonebutton) {
@@ -1071,7 +1075,7 @@ function MdAutocomplete () {
             <input flex type="search"\
                 ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
                 id="{{ inputId || \'input-\' + $mdAutocompleteCtrl.id }}"\
-                class="nonebutton"\
+                class="nonebutton x90transform"\
                 name="{{inputName}}"\
                 ng-if="!floatingLabel"\
                 autocomplete="off"\
@@ -1090,12 +1094,15 @@ function MdAutocomplete () {
                 aria-haspopup="true"\
                 aria-activedescendant=""\
                 aria-expanded="{{!$mdAutocompleteCtrl.hidden}}"/>\
+            <label class="input-label">\
+            </label>\
                 ';
         } else {
           return '\
             <input flex type="search"\
                 ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
                 id="{{ inputId || \'input-\' + $mdAutocompleteCtrl.id }}"\
+                class="x90transform"\
                 name="{{inputName}}"\
                 ng-if="!floatingLabel"\
                 autocomplete="off"\
@@ -1114,6 +1121,8 @@ function MdAutocomplete () {
                 aria-haspopup="true"\
                 aria-activedescendant=""\
                 aria-expanded="{{!$mdAutocompleteCtrl.hidden}}"/>\
+            <label class="input-label">\
+            </label>\
             <button\
                 type="button"\
                 tabindex="-1"\
