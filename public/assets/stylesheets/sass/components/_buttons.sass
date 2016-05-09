@@ -2,25 +2,28 @@
   Buttons
   --------------------------- */
 .btn-outline
-  position: relative
+  //position: relative
+  //min-width: 150px
+  //font-family: $bold-font
   content: ''
-  min-width: 150px
   max-width: 215px
   height: 40px
-  margin: 30px
   background: none
   border: none
-  font-family: $thin-font
   +fontsize-rem($base-font-size - 1px)
   text-transform: uppercase
   text-align: center
   letter-spacing: 2px
+  z-index: 0
+  line-height: 0em
 
+//today-data-balanced part
 .btn-yang
   @extend .btn-outline
-  +ouline-btn($white, $grey)
+  +outline-btn($white, $misty-grey1)
 
+//feedback
 .btn-yin
   @extend .btn-outline
-  +ouline-btn($medium-grey, $pearl-grey, yin)
+  +outline-btn($medium-grey, $pearl-grey, yin)
 

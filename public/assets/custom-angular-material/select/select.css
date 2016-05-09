@@ -5,9 +5,9 @@
  * v1.1.0-rc4-master-c81f9f1
  */
 /*  Only used with Theme processes */
-html.md-THEME_NAME-theme, body.md-THEME_NAME-theme {
-  color: '{{foreground-1}}';
-  background-color: '{{background-color}}'; }
+/*html.md-THEME_NAME-theme, body.md-THEME_NAME-theme {*/
+  /*color: '{{foreground-1}}';*/
+  /*background-color: '{{background-color}}'; }*/
 
 ._md-select-menu-container {
   position: fixed;
@@ -63,9 +63,10 @@ md-select {
     border-bottom: 2px solid;
     padding-bottom: 0; }
   md-select:not([disabled]):focus ._md-select-value {
-    border-bottom-width: 5px;
-    border-bottom-style: solid;
-    padding-bottom: 0; }
+    /*border-bottom-width: 5px;*/
+    /*border-bottom-style: solid;*/
+    /*padding-bottom: 0; */
+  }
 
 ._md-select-value {
   z-index: 3;
@@ -79,9 +80,9 @@ md-select {
           align-items: center;
   /*padding: 3px 0px 0px 10px;*/
   text-align: center;
-  border-bottom-width: 5px;
-  border-bottom-style: solid;
-  border-bottom-color: #f0f0f0;
+  /*border-bottom-width: 5px;*/
+  /*border-bottom-style: solid;*/
+  /*border-bottom-color: #f0f0f0;*/
   background-color: transparent;
   position: relative;
   box-sizing: border-box;

@@ -9,87 +9,10 @@
             <div ng-include="'/app/components/number-today/_happy-section.html'"></div>
         </ul>
         <ul class = "balanced stat">
-            <li>
-                <h2>음식 계획 기준으로</h2>
-            </li>
-            <li>
-                <div class = "border-underline">
-                    <div class = "border-inside-element">
-                        <h1>A</h1>
-                    </div>
-                </div>
-                <span class= "comment">만큼 건강하게 섭취</span>
-            </li>
-            <li>
-                <div class = "border-underline">
-                    <div class = "border-inside-element">
-                        <h1>과식</h1>
-                    </div>
-                </div>
-            </li>
-            <div class = "underline-li">
-                <h1 class = "overwrap-background">&nbsp;</h1>
-                <li class = "overwrap-element">
-                    <md-content>
-                        <md-autocomplete flex
-                                         ng-disabled="isDisabled"
-                                         md-selected-item="selectedItem"
-                                         md-search-text="searchText"
-                                         md-items="item in querySearch(searchText)"
-                                         md-item-text="item.name"
-                                         md-min-length="0"
-                                         placeholder="어떤 음식"
-                                         class="inputFood x90transform"/>
-                        <md-item-template>
-                        <span md-highlight-text="searchText"
-                              md-highlight-flags="^i">{{item.name}}</span>
-                        </md-item-template>
-                    </md-content>
-                    <md-content>
-                        <md-autocomplete flex nonebutton="true"
-                                         ng-disabled="isDisabled"
-                                         md-selected-item="each"
-                                         md-items="each in amout"
-                                         md-item-text="each"
-                                         md-min-length="0"
-                                         placeholder="얼만큼"
-                                         class="inputAmount nonebutton x90transform"/>
-                        <md-item-template>
-                                <span md-highlight-text="each"
-                                      md-highlight-flags="^i">{{each}}
-                                </span>
-                        </md-item-template>
-                    </md-content>
-                    <md-select ng-model="myModel" placeholder="먹을까" ng-change="onChange()" md-on-open="onOpen()">
-                        <md-option value="0">더 먹어도 되나요?</md-option>
-                        <md-option value="1">더 먹었어요</md-option>
-                    </md-select>
-                </li>
-            </div>
-
-            <li>
-                <div class="border-underline">
-                    <div class = "border-inside-element">
-                        <h4>
-                            더 먹어도 되나요?
-                        </h4>
-                        <h3>
-                            339cal 더
-                            먹어도 되요
-                        </h3>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="border-underline">
-                    <div class = "border-inside-element">
-                    <h1>4.6</h1>kg
-                    </div>
-                </div>
-                <span class="comment">목표까지 화이팅</span>
-            </li>
+            <div ng-include="'/app/components/number-today/_balanced-section.html'"></div>
         </ul>
         <ul class ="energetic stat">
+
         </ul>
     </article>
     <!--gutter-->

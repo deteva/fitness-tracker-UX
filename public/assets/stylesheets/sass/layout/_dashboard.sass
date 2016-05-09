@@ -6,11 +6,9 @@ $susy: (columns: 89, box-sizing: border-box, gutters: 0, debug: (image: show, to
 $susy-wide: (columns: 6 22 3 9 35 3 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
 
 $susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
-
 html
   +debug-vertical-alignment
   background: $white
-
 //@include layout($susy)
 =main-bp
   border-color: brown
@@ -19,7 +17,7 @@ html
   .main-container
     @include full
     position: relative
-    //overflow: hidden
+    //overflow: hidden > horizontal scrollbar
     background: $sterling-grey
     .twotone-bg
       =twotone-bg-part
@@ -52,11 +50,12 @@ html
 
       main[role="main"]
         @include span(first 89)
-        @include squish(3%)
+        @include squish(2%)
         background-color: $sterling-grey
         border: 1px solid $dark-jet
         height: 1100px
-        width: 860px
+        width: $bp-medium
+        min-width: 755px
         =main-part
           @include span(first 6)
           +main-bp
@@ -67,9 +66,9 @@ html
 
       aside.feedback-container
         @include span(first 89)
-        @include squish(3%)
+        @include squish(2%)
         border: solid 1px black
-        width: 860px
+        width: $bp-medium
         height: 300px
         =feedback-part
           @include span(last 1)

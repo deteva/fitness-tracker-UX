@@ -10,22 +10,28 @@ h1
   +breakpoint($bp-wide)
     +fontsize-rem($base-font-size + 13px)
   font-family: $bold-font
+
 h2
   font-family: $thin-font
   +fontsize-rem($base-font-size + 4px)
   +breakpoint($bp-wide)
     +fontsize-rem($base-font-size + 7px)
+
 h3
   //+inline-block
   +fontsize-rem($base-font-size - 1px)
   +breakpoint($bp-wide)
     +fontsize-rem($base-font-size + 1px)
+
 h4
   +fontsize-rem($base-font-size)
+
 h5
   +fontsize-rem($base-font-size - 2px)
-p span
-  +fontsize-rem($base-font-size)
+
+p,span
+  +fontsize-rem($base-font-size - 2px)
+
 strong
   font-family: $bold-font
 

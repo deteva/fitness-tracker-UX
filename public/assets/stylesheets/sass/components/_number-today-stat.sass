@@ -3,24 +3,32 @@ ul.stat
   +establish-baseline
   +margin-trailer(1, $base-font-size + 14px)
 
-  div.underline-li
-    +adjust-leading-to(4, $base-font-size + 14px)
-    position: relative
-    padding: 0 33px
-    width: 100%
-  li
+  =fn-li-padding
+  padding: 0px 33px
+  +adjust-leading-to(4, $base-font-size + 14px)
+  @include susy-breakpoint($bp-wide)
+    padding: 0px 20px
+  @include susy-breakpoint($bp-wider)
     padding: 0px 33px
-    +adjust-leading-to(4, $base-font-size + 14px)
-    &.no-sub-title
-      +padding-leader(4, $base-font-size + 14px)
-    &:first-child:not(.no-sub-title, .overwrap-background)
-      +padding-leader(1, $base-font-size + 14px)
-    &:last-child:not(.overwrap-element)
-      +padding-trailer(2, $base-font-size + 14px)
-    &.overwrap-element
+
+  div.underline-li
+    +fn-li-padding
+    position: relative
+    width: 100%
+    //@include susy-breakpoint($bp-wide)
+    //  padding-right: 15px
+    //@include susy-breakpoint($bp-wider)
+    //  padding: 0 33px
+    .overwrap-element
       position: absolute
       top: 0px
       padding: 0px
+      //width: 83%
+      width: 100%
+      @include susy-breakpoint($bp-wide)
+        //width: 86%
+      @include susy-breakpoint($bp-wider)
+        //width: 83%
     =border-inside-ele
       position: absolute
       content: ""
@@ -29,12 +37,11 @@ ul.stat
       width: 100%
       height: 100%
       z-index: 0
+
     .border-underline
       +inline-block
       position: relative
-      //.border-inside-element
-      //  &:after
-      //    +border-inside-ele
+
     .border-inside-element
       &:after
         +border-inside-ele
@@ -62,6 +69,7 @@ ul.stat
                 transform: perspective(1000px) rotate3d(1, 0, 0, 0deg)
               &:after
                 transform: perspective(1000px) rotate3d(1, 0, 0, -90deg)
+
         label.input-label
           &:before
             +pseudo-container
@@ -82,50 +90,128 @@ ul.stat
             background: $misty-grey1
             transform-origin: 50% 0%
             transition: transform 0.3s
-
         input:not(.md-input)
           color : $dark-jet
-          padding: 0 3px 0px 10px
+          text-align: center
+          padding: 0 3px
+          letter-spacing: -0.03em
         button
           margin-left: 0px
           margin-right: 0px
           z-index: 3
     .inputFood
       width: 115px
+      @include susy-breakpoint($bp-wide)
+        width: 105px
+      @include susy-breakpoint($bp-wider)
+        width: 115px
     .inputAmount
-      width: 70px
-      margin-left: 7px
+      =part-inputAmount($marginsize : 7px)
+        width: 70px
+        margin-left: $marginsize
+      +part-inputAmount
+      @include susy-breakpoint($bp-wide)
+        +part-inputAmount(5px)
+      @include susy-breakpoint($bp-wider)
+        +part-inputAmount
 
     md-select
       +inline-block
       min-width: 100px
       color: $grey
-      width: 130px
-      letter-spacing: -0.01em
+      //width: 130px
+      width: 40%
+      letter-spacing: -0.03em
+      float: right
+      padding-right: 5px
+
       &.ng-dirty,.ng-touched
         ._md-select-value > span:not(._md-select-icon)
           color: $dark-jet
+          letter-spacing: -0.05em
+
+  li
+    +fn-li-padding
+    //position: relative
+    //&:first-child:not(.no-sub-title)
+    //  +padding-leader(1, $base-font-size + 14px)
+    &:first-child
+      +padding-leader(1, $base-font-size + 14px)
+    &.no-sub-title
+      +padding-leader(4, $base-font-size + 14px)
+    &:last-child:not(.overwrap-element)
+      +padding-trailer(2, $base-font-size + 14px)
+    &.overwrap-element
+      position: absolute
+      top: 0px
+      padding: 0px
+    =border-inside-ele
+      position: absolute
+      content: ""
+      border-bottom: 5px solid $sterling-white
+      bottom: 3%
+      width: 100%
+      height: 100%
+      z-index: 0
+    .border-underline
+      +inline-block
+      position: relative
+    .border-inside-element
+      &:after
+        +border-inside-ele
+
     span.comment
       //font-family: $thin-font
       padding-left: 14px
       color: $grey
+
     h1
       +inline-block
       padding-right: 4px
       &:not(:first-child)
         padding-left: 7px
+    h2
+      color: $dark-jet
     h3
       +inline-block
       color: $grey
     h4
       +inline-block
       color: $grey
+    &.li-answer
+      position: relative
+      @include susy-breakpoint($bp-wide)
+        padding-right: 5px
+
+      .answer
+        display: inline-block
+        width: 58%
+        button
+          +center(y)
+          +inline-block
+          position: absolute
+          width: 196px
+          @include susy-breakpoint($bp-wide)
+            width: 183px
+          @include susy-breakpoint($bp-wider)
+            width: 196px
+
+      .span-answer
+        float: right
+        span.comment
+          +center(x)
+          @include susy-breakpoint($bp-wide)
+            padding-left: 5px
 
 h1.overwrap-background
-  border-bottom: 5px solid $sterling-white
-  height: 50px
-
+  =overwrap-underline($element-height : 49px, $element-color: $sterling-white)
+    border-bottom: 5px solid $element-color
+    height: $element-height
+  +overwrap-underline(54px)
+  @include susy-breakpoint($bp-wide)
+    +overwrap-underline
 //balanced section: md-select
+
 ._md-select-menu-container[aria-hidden="false"] md-option
   padding: 0 5px 0 12px
 
@@ -139,8 +225,6 @@ md-select-menu
       color: $dark-grey
     &:active
       color: shade($balanced-yellow, 22%)
-
-
 
 //color border
 @each $i in $color-style
