@@ -24,6 +24,7 @@
     "angular-route": "^1.5.3",
     "susy": "^2.2.12",
     "normalize.sass": "^3.0.0",
-    "angular-material": "^1.0.8"
+    "angular-material": "^1.0.8",
+    "angular-nvd3": "^1.0.7"
   }
 }

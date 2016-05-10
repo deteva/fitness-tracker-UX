@@ -71,7 +71,8 @@
   &::before
     /*hover color*/
     @if $y == yang
-      background-color: $ouline-color
+      //background-color: $ouline-color
+      background-color: $medium-grey
       border: 2px solid tint($ouline-color, 30%)
     @else if $y == yin
       background-color: $ouline-color
@@ -80,14 +81,14 @@
     +transform3d(scale3d(1.2, 1.2, 1))
   &::after
     /*init color*/
-    //background: $bgcolor
-    background: $medium-grey
+    background: $bgcolor
     border: 2px solid $ouline-color
   &:active
     @if $y == yang
       background: shade($ouline-color, 70%)
     @else if $y == yin
       background: scale-lightness($ouline-color, 40%)
+
   &:hover
     @if $y == yang
       color: $bgcolor

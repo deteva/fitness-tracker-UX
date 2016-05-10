@@ -41,6 +41,64 @@
 						return (foods.name.indexOf(query) === 0);
 					};
 				}
+
+//enegetic part chart
+				$scope.options = {
+					chart: {
+						type: 'bulletChart',
+						transitionDuration: 500,
+						height:7,
+						width:260,
+						margin : {
+							top: 0,
+							right: 0,
+							bottom: 0,
+							left: 0
+						},
+						showXAxis:"false",
+						showYAxis:"false",
+						interactive:"true",
+						tooltips:"true"
+					}
+				};
+				//calories
+				//"calories" : {
+				//	"weekAgoToday" : 1366,
+				//		"yesterday" : 2304,
+				//		"today" : 675,
+				//		"lastWeek" : 1552
+				//}
+				$scope.dataCals = {
+					"ranges": [2358, 1552,0],
+					"measures": [675],
+					"markers": [2304]
+				};
+
+				//Steps
+				$scope.dataSteps = {
+					"ranges": [10000,4155, 0],
+					"measures": [2000],
+					"markers": [9956]
+				};
+
+				//ActivityCalories
+				$scope.dataActivityCalories = {
+					"ranges": [30, 29, 0],
+					"measures": [20],
+					"markers": [30]
+				};
+				//Floors
+				$scope.dataFloors = {
+					"ranges": [10, 28, 0],
+					"measures": [7],
+					"markers": [5]
+				};
+				//Distance
+				$scope.dataDistance = {
+					"ranges": [8.05, 2.04, 0],
+					"measures": [1.04],
+					"markers": [6.5]
+				};
 			}
 		}
 	}

@@ -28,7 +28,6 @@ html
       bottom: 0px
       height: 300px
       width: 100%
-
       @include susy-breakpoint($bp-wide, $susy-wide)
         +twotone-bg-part
         right: 0px
@@ -53,7 +52,7 @@ html
         @include squish(2%)
         background-color: $sterling-grey
         border: 1px solid $dark-jet
-        height: 1100px
+        height: 1240px
         width: $bp-medium
         min-width: 755px
         =main-part
@@ -61,9 +60,10 @@ html
           +main-bp
         @include susy-breakpoint($bp-wide, $susy-wide)
           +main-part
+          height: 1100px
         @include susy-breakpoint($bp-wider, $susy-wider)
           +main-part
-
+          height: 1100px
       aside.feedback-container
         @include span(first 89)
         @include squish(2%)
