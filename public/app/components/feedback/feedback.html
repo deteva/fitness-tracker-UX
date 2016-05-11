@@ -1,16 +1,80 @@
 <section class = "feedback">
     <!-- improvement-point-->
-    <div class = "improvement-point">
-        <p>improvement point</p>
-    </div>
+    <ul class = "improvement-point">
+        <div class="select-date">
+            <div class="selected-date">
+                <a href="#">
+                    <span class="line-caret"></span>
+                </a>
+                <h3 ng-init="selectedDate.date=selectedDates[0].date">{{selectedDate.date}}</h3>
+                <!--05.04 ~ 10-->
+            </div>
+
+            <div class="select-filter">
+                <md-select class="yin" ng-model="selectedDate.date" placeholder="어제" ng-change=""
+                           md-on-open="">
+                    <md-option class="yin" ng-value="selectedDate.date" ng-repeat="selectedDate in selectedDates">{{selectedDate.label}}</md-option>
+
+                </md-select>
+            </div>
+
+        </div>
+        <li class="sub-title">
+            <h4>부족한 점</h4>
+        </li>
+        <li>
+            <div class="selected-icon">
+                <div class="percentage-icon"></div>
+                <span>꿀잠</span>
+            </div>
+            <div class="desc"><span>2시간 5분 꿀잠</span></div>
+        </li>
+        <li>
+            <div class="selected-icon">
+                <div class="percentage-icon"></div>
+                <span>음식계획</span>
+            </div>
+            <div class="desc"><span>3,641 섭취 > 1,124</span></div>
+        </li>
+        <li>
+            <div class="selected-icon">
+                <div class="percentage-icon"></div>
+                <span>걸음수</span>
+            </div>
+            <div class="desc"><span>4,365 / 10,000 steps</span></div>
+        </li>
+    </ul>
 
     <!--strong-point-->
-    <article class = "strong-point">
-        <p>strong-point</p>
-    </article>
+    <ul class = "strong-point">
+        <li class="sub-title">
+            <h4>잘 점</h4>
+        </li>
+        <li>
+            <div class="selected-icon">
+                <div class="percentage-icon"></div>
+                <span>물 섭취량</span>
+            </div>
+            <div class="desc"><span>3200ml</span></div>
+        </li>
+        <li>
+            <div class="selected-icon">
+                <div class="percentage-icon"></div>
+                <span>몸무게</span>
+            </div>
+            <div class="desc"><span>최근 - 0.8kg</span></div>
+        </li>
+        <li>
+            <div class="selected-icon">
+                <div class="percentage-icon"></div>
+                <span>걸음수</span>
+            </div>
+            <div class="desc"><span>23 / 10층</span></div>
+        </li>
+    </ul>
     
     <!--challenge-->
-    <div class = "challenge">
+    <ul class = "challenge">
         <p>challenge</p>
-    </div>
+    </ul>
 </section>

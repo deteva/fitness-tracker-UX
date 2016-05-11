@@ -12,6 +12,11 @@ mainModule.config(['$locationProvider',
 	}
 ]);
 
+//angularMoment:internationalization support
+mainModule.run(function (amMoment) {
+	amMoment.changeLocale('ko');
+});
+
 angular.element(document).ready(function() {
 	angular.bootstrap(document, [mainName]);
 });

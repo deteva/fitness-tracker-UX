@@ -116,22 +116,18 @@ ul.stat
         +part-inputAmount(5px)
       @include susy-breakpoint($bp-wider)
         +part-inputAmount
-
     md-select
       +inline-block
       min-width: 100px
       color: $grey
-      //width: 130px
       width: 40%
       letter-spacing: -0.03em
       float: right
       padding-right: 5px
-
       &.ng-dirty,.ng-touched
         ._md-select-value > span:not(._md-select-icon)
           color: $dark-jet
           letter-spacing: -0.05em
-
   li
     +fn-li-padding
     &:first-child
@@ -140,6 +136,9 @@ ul.stat
       +padding-leader(4, $base-font-size + 14px)
     &:last-child:not(.overwrap-element)
       +padding-trailer(2, $base-font-size + 14px)
+      padding-right: 6%
+      @include susy-breakpoint($bp-wide)
+        padding-right: 0%
     &.overwrap-element
       position: absolute
       top: 0px
@@ -148,7 +147,6 @@ ul.stat
       /* This aligns items to the end line on main-axis */
       display: flex
       justify-content: flex-end
-
     =border-inside-ele
       position: absolute
       content: ""

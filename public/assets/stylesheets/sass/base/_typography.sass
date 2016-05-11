@@ -1,10 +1,12 @@
 $base-font-size: 14px
 $base-line-height: 25px
 //+establish-baseline
+
 h1, h2, h3, h4, h5, h6
   font-family: $text-font-stack
   color: $dark-jet
   letter-spacing: 0px
+
 h1
   +fontsize-rem($base-font-size + 10px)
   +breakpoint($bp-wide)
@@ -16,13 +18,16 @@ h2
   +fontsize-rem($base-font-size + 5px)
   +breakpoint($bp-wide)
     +fontsize-rem($base-font-size + 6px)
+
+
 h3
-  //+inline-block
   +fontsize-rem($base-font-size - 1px)
   +breakpoint($bp-wide)
-    +fontsize-rem($base-font-size + 1px)
+    +fontsize-rem($base-font-size + 0px)
+
 h4
-  +fontsize-rem($base-font-size)
+  //+fontsize-rem($base-font-size)
+  font-size: $base-font-size
 
 h5
   +fontsize-rem($base-font-size - 2px)

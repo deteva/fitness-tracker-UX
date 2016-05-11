@@ -1,25 +1,87 @@
 section.feedback
+  +establish-baseline
+  color: $sterling-grey
   //position: absolute
   //height: 100%
+
   .improvement-point
     @include span(30 of 89 first)
-    +layout-outline($happy-violet)
+    //+layout-outline($happy-violet)
   .strong-point
     @include span(29 of 89 at 31)
     +layout-outline($happy-violet)
   .challenge
     @include span(30 of 89 last)
-    +layout-outline($happy-violet)
+    //+layout-outline($happy-violet)
 
   @include susy-breakpoint($bp-wide, $susy-wide)
     position: absolute
-    border: 1px solid $misty-grey2
+    width: 100%
+    padding-left: 25px
+
     .improvement-point
       width: 100%
-      //+layout-outline($happy-violet)
+      $susy-feedback: (columns: 10 11, output: isolate, gutter: 0)
+
+      div.select-date
+        +padding-leader(1, $base-font-size + 1px)
+        +adjust-leading-to(2, $base-font-size + 0px)
+        border-bottom: 2px solid $misty-grey2
+        @include with-layout($susy-feedback)
+          @include container()
+          .selected-date
+            @include span(1 first)
+            span.line-caret
+              position: relative
+              cursor: pointer
+              +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
+          .select-filter
+            @include span(1 last)
+
+        h3
+          +inline-block
+          color: $calm-grey
+          font-family: $bold-font
+          +adjust-leading-to(2, $base-font-size + 1px)
+          padding-left: 15%
+          letter-spacing: -0.05em
+
+      li
+        +adjust-leading-to(2, $base-font-size + 0px)
+        position: relative
+        border-bottom: 1px solid $misty-grey2
+        &.sub-title
+          border-bottom: 0px
+        @include with-layout($susy-feedback)
+          @include container()
+          .selected-icon
+            @include span(1 fist)
+            .percentage-icon
+              width: 37px
+
+          .desc
+            @include span(1 last)
+            position: absolute
+
+          h4
+            color: $white
+            font-family: $bold-font
     .strong-point
       width: 100%
       //+layout-outline($happy-violet)
     .challenge
       width: 100%
       //+layout-outline($happy-violet)
+
+//custom-select
+._md-select-value > span:not(._md-select-icon) ._md-text
+  font-size: 14px
+//second select
+#select_container_2._md-select-menu-container._md-active._md-clickable
+  background-color: $misty-grey1 !important
+  md-content
+    background-color: $misty-grey1 !important
+
+md-option.yin
+  //background-color: $medium-grey !important
+  color: $white !important

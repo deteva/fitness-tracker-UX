@@ -64,16 +64,20 @@ html
         @include susy-breakpoint($bp-wider, $susy-wider)
           +main-part
           height: 1100px
+
       aside.feedback-container
         @include span(first 89)
         @include squish(2%)
-        border: solid 1px black
+        position: relative
+        //border: solid 1px black
         width: $bp-medium
         height: 300px
+
         =feedback-part
           @include span(last 1)
-          border-color: royalblue
+          //border-color: royalblue
           height: 1100px
+
         @include susy-breakpoint($bp-wide, $susy-wide)
           +feedback-part
         @include susy-breakpoint($bp-wider, $susy-wider)

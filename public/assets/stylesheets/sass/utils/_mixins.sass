@@ -116,9 +116,42 @@
   border-#{$point}: 0
   height: 0
   width: 0
-
 .caret
   +caret(top, $dark-jet, 30px)
+
+//refer to http://lugolabs.com/caret
+=line-caret($vertical : true , $caret-width: 20px, $border-width: 2px, $direction: bottom, $caret-color : $energetic-red, $bg-color : $grey, $hover-color : $white)
+  //position: relative
+  $bg-width : $caret-width - $border-width
+  $opposite : opposite-position($direction)
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    border-#{$opposite}: $caret-width solid $caret-color
+    @if $vertical == true
+      border-left: $caret-width solid transparent
+      border-right: $caret-width solid transparent
+    @else
+      border-top: $caret-width solid transparent
+      border-bottom: $caret-width solid transparent
+  &:after
+    content: ''
+    position: absolute
+    left: $border-width
+    top: $border-width
+    border-#{$opposite}: $bg-width solid $bg-color
+
+    @if $vertical == true
+      border-left: $bg-width solid transparent
+      border-right: $bg-width solid transparent
+    @else
+      border-top: $bg-width solid transparent
+      border-bottom: $bg-width solid transparent
+
+  &:hover:before
+    border-#{$opposite}-color: $hover-color
 
 //autocomplete select
 =pseudo-container
