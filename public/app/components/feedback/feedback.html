@@ -1,30 +1,33 @@
 <section class = "feedback">
     <!-- improvement-point-->
     <ul class = "improvement-point">
-        <div class="select-date">
+        <div class="select-date top-section">
             <div class="selected-date">
                 <a href="#">
                     <span class="line-caret"></span>
                 </a>
                 <h3 ng-init="selectedDate.date=selectedDates[0].date">{{selectedDate.date}}</h3>
-                <!--05.04 ~ 10-->
             </div>
 
             <div class="select-filter">
-                <md-select class="yin" ng-model="selectedDate.date" placeholder="어제" ng-change=""
+                <md-select ng-model="selectedDate.date" placeholder="어제" ng-change=""
                            md-on-open="">
-                    <md-option class="yin" ng-value="selectedDate.date" ng-repeat="selectedDate in selectedDates">{{selectedDate.label}}</md-option>
+                    <md-option ng-value="selectedDate.date" ng-repeat="selectedDate in selectedDates">{{selectedDate.label}}</md-option>
 
                 </md-select>
             </div>
-
         </div>
-        <li class="sub-title">
+
+        <li class="none-border">
             <h4>부족한 점</h4>
         </li>
+
         <li>
             <div class="selected-icon">
-                <div class="percentage-icon"></div>
+                <div class="percentage-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                    </svg>
+                </div>
                 <span>꿀잠</span>
             </div>
             <div class="desc"><span>2시간 5분 꿀잠</span></div>
@@ -41,14 +44,15 @@
                 <div class="percentage-icon"></div>
                 <span>걸음수</span>
             </div>
-            <div class="desc"><span>4,365 / 10,000 steps</span></div>
+            <div class="desc"><span>4,365 / 10,000</span></div>
         </li>
+        <!--<li class="none-border">&nbsp;</li>-->
     </ul>
 
     <!--strong-point-->
     <ul class = "strong-point">
-        <li class="sub-title">
-            <h4>잘 점</h4>
+        <li class="none-border">
+            <h4>잘한 점</h4>
         </li>
         <li>
             <div class="selected-icon">
@@ -71,10 +75,156 @@
             </div>
             <div class="desc"><span>23 / 10층</span></div>
         </li>
+        <!--<li class="none-border">&nbsp;</li>-->
     </ul>
-    
+
     <!--challenge-->
     <ul class = "challenge">
-        <p>challenge</p>
+        <div class="select-date">
+            <div class="selected-date">
+                <a href="#">
+                    <span class="line-caret"></span>
+                </a>
+                <h3>{{today}}</h3>
+            </div>
+            <div class="select-filter">&nbsp;</div>
+        </div>
+
+        <li class="none-border">
+            <h4>오늘 미션</h4>
+        </li>
+        <form name ="today-mission">
+            <div class ="select-mission">
+                <div class = "overwrap-element">
+                    <md-content class="select-target">
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-items="target in targets"
+                                         md-selected-item="target"
+                                         md-item-text="target.display"
+                                         ng-model="target.name"
+                                         md-min-length="0"
+                                         placeholder="목표물 선택"
+                                         id="inputMission01"
+                                         class="inputMission nonebutton x90transform bg-input-{{target.name}}"
+                                         md-input-name="autocompleteField-target"
+                                         required/>
+
+
+                        <md-item-template>
+                            <span class="percentage-icon">
+                                <md-icon md-svg-src="{{target.src}}"></md-icon>
+                                <span> {{target.display}} </span>
+                            </span>
+                        </md-item-template>
+
+                    </md-content>
+                    <md-content class="select-acheivement">
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-selected-item="percentage.percent"
+                                         md-items="percentage in achievement"
+                                         md-item-text="percentage.percent"
+                                         md-min-length="0"
+                                         placeholder="달성율 선택"
+                                         class="inputAchievement nonebutton x90transform"
+                                         required/>
+                        <md-item-template>
+                        <span md-highlight-text="percentage.percent"
+                              md-highlight-flags="^i">{{percentage.number}}% 달성
+                        </span>
+                        </md-item-template>
+                    </md-content>
+                </div>
+            </div>
+
+            <div class ="select-mission">
+                <div class = "overwrap-element">
+                    <md-content class="select-target">
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-items="target2 in targets"
+                                         md-selected-item="target2"
+                                         md-item-text="target2.display"
+                                         ng-model="target2.name"
+                                         md-min-length="0"
+                                         placeholder="목표물 선택"
+                                         id="inputMission02"
+                                         class="inputMission nonebutton x90transform bg-input-{{target2.name}}"
+                                         md-input-name="autocompleteField-target"
+                                         required/>
+                        <md-item-template>
+                            <span class="percentage-icon">
+                                <md-icon md-svg-icon="img/icons/.svg"></md-icon>
+                                <span> {{target2.display}} </span>
+                            </span>
+                        </md-item-template>
+
+                    </md-content>
+                    <md-content class="select-acheivement">
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-selected-item="percentage2.percent"
+                                         md-items="percentage2 in achievement"
+                                         md-item-text="percentage2.percent"
+                                         md-min-length="0"
+                                         placeholder="달성율 선택"
+                                         class="inputAchievement nonebutton x90transform"
+                                         required/>
+                        <md-item-template>
+                        <span md-highlight-text="percentage2.percent"
+                              md-highlight-flags="^i">{{percentage2.number}}% 달성
+                        </span>
+                        </md-item-template>
+                    </md-content>
+                </div>
+            </div>
+
+
+            <div class ="select-mission">
+                <div class = "overwrap-element">
+                    <md-content class="select-target">
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-items="target3 in targets"
+                                         md-selected-item="target3"
+                                         md-item-text="target3.display"
+                                         ng-model="target3.name"
+                                         md-min-length="0"
+                                         placeholder="목표물 선택"
+                                         id="inputMission03"
+                                         class="inputMission nonebutton x90transform bg-input-{{target.name}}"
+                                         md-input-name="autocompleteField-target"
+                                         required/>
+                        <md-item-template>
+                            <span class="percentage-icon">
+                                <md-icon md-svg-icon="img/icons/.svg"></md-icon>
+                                <span> {{target3.display}} </span>
+                            </span>
+                        </md-item-template>
+
+                    </md-content>
+                    <md-content class="select-acheivement">
+                        <md-autocomplete flex nonebutton="true"
+                                         ng-disabled="isDisabled"
+                                         md-selected-item="percentage3.percent"
+                                         md-items="percentage3 in achievement"
+                                         md-item-text="percentage3.percent"
+                                         md-min-length="0"
+                                         placeholder="달성율 선택"
+                                         class="inputAchievement nonebutton x90transform"
+                                         required/>
+                        <md-item-template>
+                        <span md-highlight-text="percentage3.percent"
+                              md-highlight-flags="^i">{{percentage3.number}}% 달성
+                        </span>
+                        </md-item-template>
+                    </md-content>
+                </div>
+            </div>
+        </form>
+        <li>
+            &nbsp;
+        </li>
     </ul>
 </section>

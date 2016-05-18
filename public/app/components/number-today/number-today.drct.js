@@ -27,8 +27,8 @@
 				$log.info($scope.foods);
 
 				$scope.amout = ["15ml", "1인분", "1.5인분", "1컵"];
-				$scope.selectedAmount = null;
-				$scope.amountText = null;
+				//$scope.selectedAmount = null;
+				//$scope.amountText = null;
 				//$scope.queryAmount = queryAmount;
 
 				function querySearch (query) {

@@ -9,6 +9,10 @@ var mainModule = angular.module(mainName, ['app.core', 'app.routes', 'app.servic
 mainModule.config(['$locationProvider',
 	function($locationProvider) {
 		$locationProvider.hashPrefix('!');
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false
+		});
 	}
 ]);
 

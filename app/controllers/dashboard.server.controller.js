@@ -100,7 +100,6 @@ exports.getSocialDBJson = function(req,res) {
 			}
 			winston.info('dashboard.server.controller: getSocialDBJson');
 			var data = JSON.parse(JSON.stringify(social[0]._doc));
-
 			//winston.log(data);
 			res.status(200).json(data);
 		});

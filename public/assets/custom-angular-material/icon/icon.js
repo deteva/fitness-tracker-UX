@@ -694,12 +694,14 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
      // Otherwise either load by URL, or lookup in the registry and then load by URL, and cache.
 
      if ( iconCache[id] ) return $q.when( transformClone(iconCache[id]) );
-     if ( urlRegex.test(id) || dataUrlRegex.test(id) ) return loadByURL(id).then( cacheIcon(id) );
+     //if ( urlRegex.test(id) || dataUrlRegex.test(id) ) return loadByURL(id).then( cacheIcon(id) );
+     if ( urlRegex.test(id) || dataUrlRegex.test(id) ) return loadByURL(id);
      if ( id.indexOf(':') == -1 ) id = '$default:' + id;
 
      var load = config[id] ? loadByID : loadFromIconSet;
-     return load(id)
-         .then( cacheIcon(id) );
+     //return load(id)
+     //    .then( cacheIcon(id) );
+     return load(id);
    }
 
    /**
@@ -736,14 +738,14 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
    /**
     * Prepare and cache the loaded icon for the specified `id`
     */
-   function cacheIcon( id ) {
-
-     return function updateCache( icon ) {
-       iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
-
-       return iconCache[id].clone();
-     };
-   }
+   //function cacheIcon( id ) {
+	//
+   //  return function updateCache( icon ) {
+   //    iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
+	//
+   //    return iconCache[id].clone();
+   //  };
+   //}
 
    /**
     * Lookup the configuration in the registry, if !registered throw an error

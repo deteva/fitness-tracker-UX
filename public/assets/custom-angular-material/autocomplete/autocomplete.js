@@ -1071,10 +1071,11 @@ function MdAutocomplete () {
               <div md-autocomplete-parent-scope md-autocomplete-replace>' + leftover + '</div>\
             </md-input-container>';
         } else if(attr.nonebutton) {
+
           return '\
             <input flex type="search"\
                 ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
-                id="{{ inputId || \'input-\' + $mdAutocompleteCtrl.id }}"\
+                id="{{ inputId || \'input-\' + $mdAutocompleteCtrl.id}}"\
                 class="nonebutton x90transform"\
                 name="{{inputName}}"\
                 ng-if="!floatingLabel"\
