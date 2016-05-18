@@ -157,6 +157,8 @@ section.feedback
         color: $white !important
         font-family: $bold-font !important
 
+
+
 //autocompelete
 .challenge
   md-content, md-autocomplete
@@ -185,7 +187,6 @@ section.feedback
             transform: perspective(1000px) rotate3d(1, 0, 0, 0deg)
           &:after
             transform: perspective(1000px) rotate3d(1, 0, 0, -90deg)
-
     input
       @include placeholder($sterling-grey)
 
@@ -199,6 +200,7 @@ section.feedback
         transform: perspective(1000px) rotate3d(1, 0, 0, 90deg)
         transform-origin: 50% 100%
         transition: transform 0.3s
+
       &:after
         +pseudo-container
         //bottom: 0
@@ -217,7 +219,7 @@ section.feedback
       letter-spacing: -0.03em
 
     .inputMission input:not(.md-input)
-      padding-left: 16px
+      padding-left: 24px
 
     button
       margin-left: 0px
@@ -229,75 +231,92 @@ section.feedback
   letter-spacing: -0.1em
   span
     padding-left: 5px
-//$scope.targets.display = ["수면시간", "꿀잠", "심박수 측정", "물마시기", "건강한 식단", "음식계획", "몸무게 확인","칼로리 소비", "걸음수", "활동적 시간", "층수", "이동 거리"];
-//$scope.targets.name = [totalTimeInBed, totalMinutesAsleep, restingHeartRate,water, estimatedCaloriesOut, foodPlan, logWeight, calories, steps, activityCalories, floors,  distance]
-//backgroud of md-autocomplete
 
-=part-icon-bg
-  background-repeat: no-repeat
-  background-position: 3px 11px
+//svg icon background
+$number-id-list: "01" "02" "03"
+$keyword-list: totalTimeInBed totalMinutesAsleep restingHeartRate water foodPlan estimatedCaloriesOut foodPlan logWeight calories steps activityCalories floors distance
 
-#inputMission01 input[name="autocompleteField-target"]
-  background: url(../../images/target.png)
-  +part-icon-bg
-#inputMission01.bg-input-totalTimeInBed input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-totalTimeInBed.svg)
-  +part-icon-bg
+@each $each-id in $number-id-list
+  #inputMission#{$each-id} input[name="autocompleteField-target"]
+    background: url(../../images/target.png)
+    background-repeat: no-repeat
+    background-position: 3px 11px
+  @each $keyword in $keyword-list
+    #inputMission#{$each-id}.bg-input-#{$keyword} input[name="autocompleteField-target"]
+      background-image: url(../../images/icon-svg/icon-#{$keyword}.svg)
+      background-repeat: no-repeat
+      background-position: 3px 4px
 
-#inputMission01.bg-input-totalMinutesAsleep input[name="autocompleteField-target"]
-  background-image: url(../../images/icon-svg/icon-totalMinutesAsleep.svg)
-  +part-icon-bg
-  background-position: 3px 4px
 
-#inputMission01.bg-input-restingHeartRate input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-restingHeartRate.svg)
-  +part-icon-bg
-  background-position: 3px 4px
 
-#inputMission01.bg-input-water input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-water.svg)
-  +part-icon-bg
-  background-position: 3px 4px
+//=part-icon-bg
+//  background-repeat: no-repeat
+//  background-position: 3px 11px
+//#inputMission01 input[name="autocompleteField-target"]
+//  background: url(../../images/target.png)
+//  +part-icon-bg
+//
+//#inputMission01.bg-input-totalTimeInBed input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-totalTimeInBed.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-totalMinutesAsleep input[name="autocompleteField-target"]
+//  background-image: url(../../images/icon-svg/icon-totalMinutesAsleep.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-restingHeartRate input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-restingHeartRate.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-water input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-water.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-foodPlan input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-foodPlan.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-estimatedCaloriesOut input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-estimatedCaloriesOut.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-logWeight input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-logWeight.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-calories input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-calories.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-steps input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-steps.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//
+//#inputMission01.bg-input-activityCalories input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-activityCalories.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
 
-#inputMission01.bg-input-foodPlan input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-foodPlan.svg)
-  +part-icon-bg
-  background-position: 3px 4px
+//#inputMission01.bg-input-floors input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-floors.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
+//#inputMission01.bg-input-distance input[name="autocompleteField-target"]
+//  background: url(../../images/icon-svg/icon-distance.svg)
+//  +part-icon-bg
+//  background-position: 3px 4px
 
-#inputMission01.bg-input-estimatedCaloriesOut input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-estimatedCaloriesOut.svg)
-  +part-icon-bg
-  background-position: 3px 4px
 
-#inputMission01.bg-input-logWeight input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-logWeight.svg)
-  +part-icon-bg
-  background-position: 3px 4px
 
-#inputMission01.bg-input-calories input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-calories.svg)
-  +part-icon-bg
-  background-position: 3px 4px
-
-#inputMission01.bg-input-steps input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-steps.svg)
-  +part-icon-bg
-  background-position: 3px 4px
-
-#inputMission01.bg-input-activityCalories input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-activityCalories.svg)
-  +part-icon-bg
-  background-position: 3px 4px
-
-#inputMission01.bg-input-floors input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-floors.svg)
-  +part-icon-bg
-  background-position: 3px 4px
-
-#inputMission01.bg-input-distance input[name="autocompleteField-target"]
-  background: url(../../images/icon-svg/icon-distance.svg)
-  +part-icon-bg
-  background-position: 3px 4px
 
 
 

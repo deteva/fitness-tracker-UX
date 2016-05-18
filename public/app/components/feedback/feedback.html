@@ -106,10 +106,9 @@
                                          md-min-length="0"
                                          placeholder="목표물 선택"
                                          id="inputMission01"
-                                         class="inputMission nonebutton x90transform bg-input-{{target.name}}"
+                                         class="inputMission nonebtton x90transform bg-input-{{target.name}}"
                                          md-input-name="autocompleteField-target"
                                          required/>
-
 
                         <md-item-template>
                             <span class="percentage-icon">
@@ -155,7 +154,7 @@
                                          required/>
                         <md-item-template>
                             <span class="percentage-icon">
-                                <md-icon md-svg-icon="img/icons/.svg"></md-icon>
+                                <md-icon md-svg-src="{{target2.src}}"></md-icon>
                                 <span> {{target2.display}} </span>
                             </span>
                         </md-item-template>
@@ -193,12 +192,12 @@
                                          md-min-length="0"
                                          placeholder="목표물 선택"
                                          id="inputMission03"
-                                         class="inputMission nonebutton x90transform bg-input-{{target.name}}"
+                                         class="inputMission nonebutton x90transform bg-input-{{target3.name}}"
                                          md-input-name="autocompleteField-target"
                                          required/>
                         <md-item-template>
                             <span class="percentage-icon">
-                                <md-icon md-svg-icon="img/icons/.svg"></md-icon>
+                                <md-icon md-svg-src="{{target3.src}}"></md-icon>
                                 <span> {{target3.display}} </span>
                             </span>
                         </md-item-template>
