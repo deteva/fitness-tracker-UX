@@ -86,12 +86,12 @@ section.feedback
         &.select-mission
           border-bottom: 1px solid $misty-grey2
 
+
         @include with-layout($susy-feedback-mission)
           @include container()
           .selected-date, .select-target
             @include span(1 first)
             padding-right: 2%
-
             span.line-caret
               position: relative
               cursor: pointer
@@ -99,6 +99,18 @@ section.feedback
           .select-filter, .select-acheivement
             @include span(1 last)
             padding-left: 5%
+
+            //input placeholder css when disabled
+          .select-acheivement
+            input
+              &:disabled
+                @include placeholder($deep-gray)
+
+              //&[ng-disabled="$mdAutocompleteCtrl.isDisabled"]
+              //  @include placeholder($deep-gray)
+              //&[ng-disabled="true"]
+              //  @include placeholder($deep-gray)
+
         h3
           @extend %h3-part
 
@@ -148,15 +160,25 @@ section.feedback
       &:focus,
       &:not([disabled]),
       &:not([selected])
-        color: $neat-gray !important
+        color: $sterling-grey !important
         background: $misty-grey1 !important
       &:hover
-        color: $sterling-white !important
-        background-color: $medium-grey !important
+        background-color: $sterling-white !important
+        color: $medium-grey !important
       &:active
-        color: $white !important
+        color: $stone-grey !important
         font-family: $bold-font !important
 
+
+#ul-3, #ul-4, #ul-5, #ul-6, #ul-7, #ul-8
+  li
+    background-color: $misty-grey1 !important
+    &:hover
+      background-color: $sterling-white !important
+      color: $medium-grey
+    &:active
+      color: $stone-grey !important
+      font-family: $bold-font !important
 
 
 //autocompelete
@@ -187,8 +209,11 @@ section.feedback
             transform: perspective(1000px) rotate3d(1, 0, 0, 0deg)
           &:after
             transform: perspective(1000px) rotate3d(1, 0, 0, -90deg)
+
     input
       @include placeholder($sterling-grey)
+      //&:disabled
+      //  @include placeholder($deep-gray)
 
     label.input-label
       &:before
@@ -200,7 +225,6 @@ section.feedback
         transform: perspective(1000px) rotate3d(1, 0, 0, 90deg)
         transform-origin: 50% 100%
         transition: transform 0.3s
-
       &:after
         +pseudo-container
         //bottom: 0
@@ -217,6 +241,10 @@ section.feedback
       text-align: center
       padding: 0 3px
       letter-spacing: -0.03em
+
+      //input placeholder css when disabled
+      &[disabled="disabled"]
+        color: $deep-gray
 
     .inputMission input:not(.md-input)
       padding-left: 24px
@@ -247,87 +275,3 @@ $keyword-list: totalTimeInBed totalMinutesAsleep restingHeartRate water foodPlan
       background-repeat: no-repeat
       background-position: 3px 4px
 
-
-
-//=part-icon-bg
-//  background-repeat: no-repeat
-//  background-position: 3px 11px
-//#inputMission01 input[name="autocompleteField-target"]
-//  background: url(../../images/target.png)
-//  +part-icon-bg
-//
-//#inputMission01.bg-input-totalTimeInBed input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-totalTimeInBed.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-totalMinutesAsleep input[name="autocompleteField-target"]
-//  background-image: url(../../images/icon-svg/icon-totalMinutesAsleep.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-restingHeartRate input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-restingHeartRate.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-water input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-water.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-foodPlan input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-foodPlan.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-estimatedCaloriesOut input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-estimatedCaloriesOut.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-logWeight input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-logWeight.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-calories input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-calories.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-steps input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-steps.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//
-//#inputMission01.bg-input-activityCalories input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-activityCalories.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-
-//#inputMission01.bg-input-floors input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-floors.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-//#inputMission01.bg-input-distance input[name="autocompleteField-target"]
-//  background: url(../../images/icon-svg/icon-distance.svg)
-//  +part-icon-bg
-//  background-position: 3px 4px
-
-
-
-
-
-
-
-//.md-autocomplete-suggestions-container
-//  background-color: $misty-grey1 !important
-
-//#select_container_2 md-select-menu md-option:hover, #select_container_2 md-select-menu md-option[selected]:hover {
-    color: #f0f0f0 !important;
-    background-color: #a2a1a0 !important;
-
-//#select_container_2 md-select-menu md-option:active, #select_container_2 md-select-menu md-option[selected]:active {
-    color: #ffffff !important;
-    font-family: "SpoqaHanSans-Bold" !important;

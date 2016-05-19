@@ -43,8 +43,44 @@
 				$scope.printDate = function() {
 					return this.selectedDate.date;
 				};
+
 				//autocompelte
-				$scope.isDisabled = false;
+				$scope.isAchievementDisabled1 = true;
+				$scope.isAchievementDisabled2 = true;
+				$scope.isAchievementDisabled3 = true;
+
+				$scope.ableSelectAcheivement1 = function() {
+					//case1 not working
+					// var tmpisAchievementDisabled = "isAchievementDisabled" + num;
+					//console.log("tmpisAchievementDisabled: " +  tmpisAchievementDisabled);
+					//if($scope.isAchievementDisabled1)
+					//	$scope.tmpisAchievementDisabled = false;
+					//if($scope.selectedTarget == null)
+					//	$scope.tmpisAchievementDisabled = true;
+					//not working : typeof tmpisAchievementDisabled string
+					if($scope.isAchievementDisabled1)
+						$scope.isAchievementDisabled1 = false;
+					if($scope.selectedTarget == null)
+						$scope.isAchievementDisabled1 = true;
+					//case1 not working setAttrbute temporary
+					//var tmp = document.querySelector("input[name='autocompleteField-acheivement']")
+					// tmp.setAttribute('disabled', 'disabled');
+				};
+
+				$scope.ableSelectAcheivement2 = function() {
+					if($scope.isAchievementDisabled2)
+						$scope.isAchievementDisabled2 = false;
+					if($scope.selectedTarget2 == null)
+						$scope.isAchievementDisabled2 = true;
+				};
+
+				$scope.ableSelectAcheivement3 = function() {
+					if($scope.isAchievementDisabled3)
+						$scope.isAchievementDisabled3 = false;
+					if($scope.selectedTarget3 == null)
+						$scope.isAchievementDisabled3 = true;
+				};
+
 				$scope.targets = [
 					{
 						"display" : "수면시간",

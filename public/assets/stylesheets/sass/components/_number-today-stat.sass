@@ -227,7 +227,6 @@ h1.overwrap-background
   @include susy-breakpoint($bp-wide)
     +overwrap-underline
 //balanced section: md-select
-
 ._md-select-menu-container[aria-hidden="false"] md-option
   padding: 0 5px 0 12px
 
@@ -243,6 +242,11 @@ h1.overwrap-background
         color: $dark-grey
       &:active
         color: shade($balanced-yellow, 22%)
+
+//balanced section
+md-select-menu md-option[selected],
+md-select-menu md-option[selected]:focus
+  color: $balanced-yellow !important
 
 //enegetic part
 //$susy-asymmetiric: (columns: 4 21, output: isolate, gutter: 0)
