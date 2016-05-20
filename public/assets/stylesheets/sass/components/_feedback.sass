@@ -1,3 +1,5 @@
+@import compass/layout/stretching
+
 section.feedback
   +establish-baseline
   color: $sterling-grey
@@ -75,7 +77,6 @@ section.feedback
           h4
             color: $white
             font-family: $bold-font
-
     .challenge
       width: 100%
       $susy-feedback-mission: (columns: 60 40, output: isolate, gutter-position: after, gutter: 3%)
@@ -85,7 +86,16 @@ section.feedback
           border-bottom: 2px solid $misty-grey2
         &.select-mission
           border-bottom: 1px solid $misty-grey2
-
+          
+        //submit button of div today mission
+        &.answer
+          +margin-leader(1, $base-font-size + 1px)
+          //+adjust-leading-to(2, $base-font-size + 0px)
+          height: 30px
+          +margin-trailer(1, $base-font-size + 1px)
+          button
+            +stretch-x
+            width: 100%
 
         @include with-layout($susy-feedback-mission)
           @include container()
@@ -96,6 +106,7 @@ section.feedback
               position: relative
               cursor: pointer
               +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
+
           .select-filter, .select-acheivement
             @include span(1 last)
             padding-left: 5%
@@ -141,6 +152,11 @@ section.feedback
             color: $white
             font-family: $bold-font
 
+
+
+
+
+
 //custom-select
 ._md-select-value > span:not(._md-select-icon) ._md-text
   font-size: 14px
@@ -183,6 +199,11 @@ section.feedback
 
 //autocompelete
 .challenge
+  //for submit button position:absolute
+  form
+    &[name="today-mission"]
+      position: relative
+
   md-content, md-autocomplete
     +inline-block
     background: transparent
@@ -215,9 +236,10 @@ section.feedback
       //&:disabled
       //  @include placeholder($deep-gray)
 
-    label.input-label
+    label.input-labe
       &:before
         +pseudo-container
+        width: 97%
         bottom: 0%
         left: 0
         height: 40px
@@ -227,6 +249,7 @@ section.feedback
         transition: transform 0.3s
       &:after
         +pseudo-container
+        width: 97%
         //bottom: 0
         bottom: -5px
         z-index: 3
@@ -245,7 +268,6 @@ section.feedback
       //input placeholder css when disabled
       &[disabled="disabled"]
         color: $deep-gray
-
     .inputMission input:not(.md-input)
       padding-left: 24px
 
@@ -262,6 +284,7 @@ section.feedback
 
 //svg icon background
 $number-id-list: "01" "02" "03"
+
 $keyword-list: totalTimeInBed totalMinutesAsleep restingHeartRate water foodPlan estimatedCaloriesOut foodPlan logWeight calories steps activityCalories floors distance
 
 @each $each-id in $number-id-list

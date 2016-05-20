@@ -25,7 +25,8 @@
     "susy": "^2.2.12",
     "normalize.sass": "^3.0.0",
     "angular-nvd3": "^1.0.7",
-    "angular-moment": "^0.10.3"
+    "angular-moment": "^0.10.3",
+    "angular-messages": "^1.5.5"
   },
   "resolutions": {
     "angular": "^1.4.8",
