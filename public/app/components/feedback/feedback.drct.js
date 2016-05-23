@@ -81,6 +81,51 @@
 						$scope.isAchievementDisabled3 = true;
 				};
 
+				//toggle text of button
+				$scope.toggleBtnObj = [
+					{
+						"set" : {
+							"txt": "오늘의 미션 등록",
+							"src": "/assets/images/select-dark.png"
+						}
+					},
+					{
+						"start" : {
+							"txt" : "오늘 미션 시작!",
+							"src" : "/assets/images/reward-medium.png"
+						}
+					},
+					{
+						"finished" : {
+							"txt" : "성공했어요! 당신은 챔피언",
+							"src" : "/assets/images/takeReward.png"
+						}
+					}
+				];
+
+				$scope.ableToggleTxt = true;
+				$scope.initToggleBtnText = $scope.toggleBtnObj[0].set.txt;
+				$scope.initToggleImgSrc = $scope.toggleBtnObj[0].set.src
+
+				$scope.toggleClick = function() {
+					$scope.ableToggleTxt=!$scope.ableToggleTxt;
+					$scope.toggleBtnText = $scope.toggleTxt ? $scope.toggleBtnObj[1].start.txt : $scope.toggleBtnObj[2].finished.txt;
+					$scope.toggleImgSrc = $scope.toggleTxt ? $scope.toggleBtnObj[1].start.src : $scope.toggleBtnObj[2].finished.src;
+				};
+
+
+					//get count of all error categories from form
+				//$scope.numberOfErrors = function(form){
+				//	var count = 0,
+				//		 errors = form.$error;
+				//	angular.forEach(errors, function(val){
+				//		if(angular.isArray(val)) {
+				//			count += val.length;
+				//		}
+				//	});
+				//	//Object.keys(errors).forEach(function(key){ count += errors[key].length  });
+				//	return count;
+				//};
 				$scope.targets = [
 					{
 						"display" : "수면시간",

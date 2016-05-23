@@ -86,16 +86,24 @@ section.feedback
           border-bottom: 2px solid $misty-grey2
         &.select-mission
           border-bottom: 1px solid $misty-grey2
-          
         //submit button of div today mission
         &.answer
           +margin-leader(1, $base-font-size + 1px)
           //+adjust-leading-to(2, $base-font-size + 0px)
           height: 30px
           +margin-trailer(1, $base-font-size + 1px)
+          //alert message
+          div
+            text-align: center
+            line-height: 2.2em
           button
             +stretch-x
             width: 100%
+            +adjust-leading-to(1, $base-font-size + 1px)
+            //select, reward.png
+            img
+              vertical-align: middle
+              //+center(y)
 
         @include with-layout($susy-feedback-mission)
           @include container()
@@ -116,24 +124,31 @@ section.feedback
             input
               &:disabled
                 @include placeholder($deep-gray)
-
               //&[ng-disabled="$mdAutocompleteCtrl.isDisabled"]
               //  @include placeholder($deep-gray)
               //&[ng-disabled="true"]
               //  @include placeholder($deep-gray)
-
         h3
           @extend %h3-part
+        //button ng-hide text
+
+        div
+          >span
+            color : $alert-yellow
+
+
 
       li
         +adjust-leading-to(2, $base-font-size + 0px)
         position: relative
         border-bottom: 1px solid $misty-grey2
+
         &.none-border
           //border-bottom: 0px >> transparent effect
           border-bottom: 1px solid $medium-grey
         &:last-child
           +margin-trailer(2, $base-font-size - 0px)
+
         @include with-layout($susy-feedback-mission)
           @include container()
           .selected-icon
@@ -199,6 +214,8 @@ section.feedback
 
 //autocompelete
 .challenge
+  //ng-form
+  //  &[name="today-mission"]
   //for submit button position:absolute
   form
     &[name="today-mission"]
@@ -276,6 +293,8 @@ section.feedback
       margin-right: 0px
       z-index: 3
 
+
+
 //autocomplete virtual repeat for select target
 #ul-3 .percentage-icon
   letter-spacing: -0.1em
@@ -292,6 +311,7 @@ $keyword-list: totalTimeInBed totalMinutesAsleep restingHeartRate water foodPlan
     background: url(../../images/target.png)
     background-repeat: no-repeat
     background-position: 3px 11px
+
   @each $keyword in $keyword-list
     #inputMission#{$each-id}.bg-input-#{$keyword} input[name="autocompleteField-target"]
       background-image: url(../../images/icon-svg/icon-#{$keyword}.svg)

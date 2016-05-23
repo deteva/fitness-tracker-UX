@@ -51,12 +51,17 @@
     scrollbar-face-color: $foreground-color
     scrollbar-track-color: $background-color
 
+
 //button
 @mixin outline-btn($bgcolor, $ouline-color, $y:yang)
   @if $y == yang
-    color: shade($ouline-color, 30%)
+    color: shade($ouline-color, 20%)
   @else
     color: $ouline-color
+    //applied feedback part disabled button text
+    &[disabled]
+      color: rgba($deep-gray, 0.7)
+
   &::before,
   &::after
     z-index: -1
@@ -68,10 +73,12 @@
     left: 0
     +transition(transform 0.2s, opacity 0.2s)
     +transition-timing-function(cubic-bezier(0.75, 0, 0.125, 1))
+
   &::before
     /*hover color*/
     @if $y == yang
       background-color: $white
+      color: shade($ouline-color, 50%)
       border: 2px solid shade($ouline-color, 10%)
     @else if $y == yin
       //background-color: $ouline-color
@@ -80,29 +87,34 @@
     opacity: 0
     +transform3d(scale3d(1.2, 1.2, 1))
   &::after
+    /*init color for disabled button*/
+    //border: 2px solid shade($ouline-color, 30%)
+    border: 2px solid rgba($deep-gray, 0.4)
+  &:not([disabled]):after
     /*init color*/
     background: $bgcolor
     border: 2px solid $ouline-color
-    //&:active
-    //  @if $y == yang
-    //    background: shade($ouline-color, 70%)
-    //  @else if $y == yin
-    //    //background: scale-lightness($ouline-color, 40%)
-    //    background-color: shade($bgcolor, 40%)
-  &:hover
+
+  &:not([disabled]):hover
     @if $y == yang
       //color: $bgcolor
       color: shade($ouline-color, 30%)
+
       &:active
         //not working changing background-color
         color: $balanced-yellow
+
     @else if $y == yin
       color: shade($bgcolor, 30%)
+      -webkit-filter: brightness(97%)
+
       &:active
         color: shade($bgcolor, 70%)
+
     &::before
       opacity: 1
       +transform3d(scale3d(1, 1, 1))
+
     &::after
       opacity: 0
       +transform3d(scale3d(0.9, 0.8, 1))
@@ -157,13 +169,11 @@
   &:hover:before
     border-#{$opposite}-color: $hover-color
 
-
 //autocomplete select : applied to label
 =pseudo-container
   content: ''
   position: absolute
   width: 100%
-
 // create placeholder mixin
 @mixin placeholder($color, $size:"")
   &::-webkit-input-placeholder
