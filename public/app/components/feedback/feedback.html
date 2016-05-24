@@ -97,50 +97,50 @@
             <!--Dynamic Form using ngForm-->
             <ng-form name="missonForm">
                 <!--todo 1-->
-                <!--<div class ="select-mission">-->
-                    <!--<div class = "overwrap-element">-->
-                        <!--<md-content class="select-target">-->
-                            <!--<md-autocomplete flex nonebutton="true"-->
-                                             <!--md-items="target in targets"-->
-                                             <!--md-selected-item="selectedTarget"-->
-                                             <!--md-selected-item-change="ableSelectAcheivement1()"-->
-                                             <!--md-item-text="target.display"-->
-                                             <!--ng-model="selectedTarget.name"-->
-                                             <!--md-min-length="0"-->
-                                             <!--placeholder="목표물 선택"-->
-                                             <!--id="inputMission01"-->
-                                             <!--class="inputMission nonebtton x90transform bg-input-{{selectedTarget.name}}"-->
-                                             <!--md-input-name="autocompleteField-target"-->
-                                <!--<md-item-template>-->
-                                <!--<span class="percentage-icon">-->
-                                    <!--<md-icon md-svg-src="{{target.src}}"></md-icon>-->
-                                    <!--<span> {{target.display}} </span>-->
-                                <!--</span>-->
-                                <!--</md-item-template>-->
-                            <!--</md-autocomplete>-->
+                <div class ="select-mission">
+                    <div class = "overwrap-element">
+                        <md-content class="select-target">
+                            <md-autocomplete flex nonebutton="true"
+                                             md-items="target in targets"
+                                             md-selected-item="selectedTarget"
+                                             md-selected-item-change="ableSelectAcheivement1()"
+                                             md-item-text="target.display"
+                                             ng-model="selectedTarget.name"
+                                             md-min-length="0"
+                                             placeholder="목표물 선택"
+                                             id="inputMission01"
+                                             class="inputMission nonebtton x90transform bg-input-{{selectedTarget.name}}"
+                                             md-input-name="autocompleteField-target"
+                                <md-item-template>
+                                <span class="percentage-icon">
+                                    <md-icon md-svg-src="{{target.src}}"></md-icon>
+                                    <span> {{target.display}} </span>
+                                </span>
+                                </md-item-template>
+                            </md-autocomplete>
 
-                        <!--</md-content>-->
-                        <!--<md-content class="select-acheivement">-->
-                            <!--<md-autocomplete flex nonebutton="true"-->
-                                             <!--ng-disabled="isAchievementDisabled1"-->
-                                             <!--md-input-name="autocompleteField-acheivement"-->
-                                             <!--md-selected-item="percentage.percent"-->
-                                             <!--md-items="percentage in achievement"-->
-                                             <!--md-item-text="percentage.percent"-->
-                                             <!--md-min-length="0"-->
-                                             <!--placeholder="달성율 선택"-->
-                                             <!--class="inputAchievement nonebutton x90transform"-->
-                                             <!--ng-disabled="selectedTarget == null"-->
-                                             <!--required/>-->
-                            <!--<md-item-template>-->
-                                <!--<span md-highlight-text="percentage.percent"-->
-                                      <!--md-highlight-flags="^i">{{percentage.number}}% 달성-->
-                                <!--</span>-->
-                            <!--</md-item-template>-->
-                            <!--</md-autocomplete>-->
-                        <!--</md-content>-->
-                    <!--</div>-->
-                <!--</div>-->
+                        </md-content>
+                        <md-content class="select-acheivement">
+                            <md-autocomplete flex nonebutton="true"
+                                             ng-disabled="isAchievementDisabled1"
+                                             md-input-name="autocompleteField-acheivement"
+                                             md-selected-item="percentage.percent"
+                                             md-items="percentage in achievement"
+                                             md-item-text="percentage.percent"
+                                             md-min-length="0"
+                                             placeholder="달성율 선택"
+                                             class="inputAchievement nonebutton x90transform"
+                                             ng-disabled="selectedTarget == null"
+                                             required/>
+                            <md-item-template>
+                                <span md-highlight-text="percentage.percent"
+                                      md-highlight-flags="^i">{{percentage.number}}% 달성
+                                </span>
+                            </md-item-template>
+                            </md-autocomplete>
+                        </md-content>
+                    </div>
+                </div>
 
                 <!--todo 2-->
                 <div class ="select-mission">
@@ -188,51 +188,51 @@
                 </div>
 
                 <!--todo 3-->
-                <!--<div class ="select-mission">-->
-                    <!--<div class = "overwrap-element">-->
-                        <!--<md-content class="select-target">-->
-                            <!--<md-autocomplete flex nonebutton="true"-->
-                                             <!--ng-disabled="isDisabled"-->
-                                             <!--md-items="target3 in targets"-->
-                                             <!--md-selected-item="selectedTarget3"-->
-                                             <!--md-selected-item-change="ableSelectAcheivement3()"-->
-                                             <!--md-item-text="target3.display"-->
-                                             <!--ng-model="selectedTarget3.name"-->
-                                             <!--md-min-length="0"-->
-                                             <!--placeholder="목표물 선택"-->
-                                             <!--id="inputMission03"-->
-                                             <!--class="inputMission nonebutton x90transform bg-input-{{selectedTarget3.name}}"-->
-                                             <!--md-input-name="autocompleteField-target"-->
-                                             <!--required/>-->
-                            <!--<md-item-template>-->
-                            <!--<span class="percentage-icon">-->
-                                <!--<md-icon md-svg-src="{{target3.src}}"></md-icon>-->
-                                <!--<span> {{target3.display}} </span>-->
-                            <!--</span>-->
-                            <!--</md-item-template>-->
+                <div class ="select-mission">
+                    <div class = "overwrap-element">
+                        <md-content class="select-target">
+                            <md-autocomplete flex nonebutton="true"
+                                             ng-disabled="isDisabled"
+                                             md-items="target3 in targets"
+                                             md-selected-item="selectedTarget3"
+                                             md-selected-item-change="ableSelectAcheivement3()"
+                                             md-item-text="target3.display"
+                                             ng-model="selectedTarget3.name"
+                                             md-min-length="0"
+                                             placeholder="목표물 선택"
+                                             id="inputMission03"
+                                             class="inputMission nonebutton x90transform bg-input-{{selectedTarget3.name}}"
+                                             md-input-name="autocompleteField-target"
+                                             required/>
+                            <md-item-template>
+                            <span class="percentage-icon">
+                                <md-icon md-svg-src="{{target3.src}}"></md-icon>
+                                <span> {{target3.display}} </span>
+                            </span>
+                            </md-item-template>
 
-                        <!--</md-content>-->
-                        <!--<md-content class="select-acheivement">-->
-                            <!--<md-autocomplete flex nonebutton="true"-->
-                                             <!--ng-disabled="isAchievementDisabled3"-->
-                                             <!--md-input-name="autocompleteField-acheivement"-->
-                                             <!--md-selected-item="percentage3.percent"-->
-                                             <!--md-items="percentage3 in achievement"-->
-                                             <!--md-item-text="percentage3.percent"-->
-                                             <!--md-min-length="0"-->
-                                             <!--placeholder="달성율 선택"-->
-                                             <!--class="inputAchievement nonebutton x90transform"-->
-                                             <!--ng-disabled="selectedTarget3 == null"-->
-                                             <!--required/>-->
-                            <!--<md-item-template>-->
-                        <!--<span md-highlight-text="percentage3.percent"-->
-                              <!--md-highlight-flags="^i">{{percentage3.number}}% 달성-->
-                        <!--</span>-->
-                            <!--</md-item-template>-->
+                        </md-content>
+                        <md-content class="select-acheivement">
+                            <md-autocomplete flex nonebutton="true"
+                                             ng-disabled="isAchievementDisabled3"
+                                             md-input-name="autocompleteField-acheivement"
+                                             md-selected-item="percentage3.percent"
+                                             md-items="percentage3 in achievement"
+                                             md-item-text="percentage3.percent"
+                                             md-min-length="0"
+                                             placeholder="달성율 선택"
+                                             class="inputAchievement nonebutton x90transform"
+                                             ng-disabled="selectedTarget3 == null"
+                                             required/>
+                            <md-item-template>
+                        <span md-highlight-text="percentage3.percent"
+                              md-highlight-flags="^i">{{percentage3.number}}% 달성
+                        </span>
+                            </md-item-template>
 
-                        <!--</md-content>-->
-                    <!--</div>-->
-                <!--</div>-->
+                        </md-content>
+                    </div>
+                </div>
                 <!--button-->
                 <div class = "answer">
                     <!--alert text-->
