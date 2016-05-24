@@ -246,9 +246,9 @@
 
                     <button type = "submit"
                             class="btn-outline btn-yin"
-                            ng-init="{toggleBtnText:toggleBtnText = initToggleBtnText, toggleBtnSrc:toggleBtnSrc = initToggleImgSrc }"
+                            ng-init="{toggleBtnText:toggleBtnText = initToggleBtnText, toggleBtnSrc:toggleBtnSrc = initToggleImgSrc}"
                             ng-disabled="!(missonForm.$error.required[1].$valid == null)"
-                            ng-click="toggleClick()">
+                            ng-click="ableToggleTxt = !ableToggleTxt">
 
                         <span ng-if="missonForm.$error.required[1].$valid == null">{{toggleBtnText}}
                             <img ng-src={{toggleImgSrc}} title="{{}}"/>
@@ -259,6 +259,7 @@
                         </span>
                     </button>
                 </div>
+
                 <!--for test ng-messages
                 <div>
                     <p>{{missonForm.$valid | json }}</p>

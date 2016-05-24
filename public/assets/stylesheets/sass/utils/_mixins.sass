@@ -61,7 +61,6 @@
     //applied feedback part disabled button text
     &[disabled]
       color: rgba($deep-gray, 0.7)
-
   &::before,
   &::after
     z-index: -1
@@ -86,6 +85,7 @@
       border: 2px solid shade($bgcolor, 20%)
     opacity: 0
     +transform3d(scale3d(1.2, 1.2, 1))
+
   &::after
     /*init color for disabled button*/
     //border: 2px solid shade($ouline-color, 30%)
@@ -135,6 +135,7 @@
 .caret
   +caret(top, $dark-jet, 30px)
 
+
 //refer to http://lugolabs.com/caret
 =line-caret($vertical : true , $caret-width: 20px, $border-width: 2px, $direction: bottom, $caret-color : $energetic-red, $bg-color : $grey, $hover-color : $white)
   //position: relative
@@ -174,6 +175,8 @@
   content: ''
   position: absolute
   width: 100%
+
+
 // create placeholder mixin
 @mixin placeholder($color, $size:"")
   &::-webkit-input-placeholder

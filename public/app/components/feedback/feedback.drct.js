@@ -91,7 +91,7 @@
 					},
 					{
 						"start" : {
-							"txt" : "오늘 미션 시작!",
+							"txt" : "시작! 오늘은 챔피언 ",
 							"src" : "/assets/images/reward-medium.png"
 						}
 					},
@@ -107,11 +107,10 @@
 				$scope.initToggleBtnText = $scope.toggleBtnObj[0].set.txt;
 				$scope.initToggleImgSrc = $scope.toggleBtnObj[0].set.src
 
-				$scope.toggleClick = function() {
-					$scope.ableToggleTxt=!$scope.ableToggleTxt;
-					$scope.toggleBtnText = $scope.toggleTxt ? $scope.toggleBtnObj[1].start.txt : $scope.toggleBtnObj[2].finished.txt;
-					$scope.toggleImgSrc = $scope.toggleTxt ? $scope.toggleBtnObj[1].start.src : $scope.toggleBtnObj[2].finished.src;
-				};
+				$scope.$watch('ableToggleTxt', function () {
+					$scope.toggleBtnText = $scope.ableToggleTxt ? $scope.toggleBtnObj[1].start.txt : $scope.toggleBtnObj[2].finished.txt;
+					$scope.toggleImgSrc = $scope.ableToggleTxt ? $scope.toggleBtnObj[1].start.src : $scope.toggleBtnObj[2].finished.src;
+				});
 
 
 					//get count of all error categories from form
