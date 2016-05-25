@@ -1,8 +1,84 @@
+//today-data part color border
+@each $i in $color-style
+  .#{nth($i, 1)}-border-left
+    border-left: 3px solid
+    border-color: nth($i, 2)
+
+
+//icon-data part hover text
+@each $i in $color-style
+  .icon-data
+    .#{nth($i, 1)}-title
+      .title
+        .point
+          color: nth($i, 2)
+          display: inline
+        span:hover
+          color: nth($i, 2)
+
+
 section.number-today
   height: 1100px
+
+  //iconPercentage
   .icon-data
     @include span(10 of 89 at 34)
     //+layout-outline($happy-violet)
+    padding-top: 25px
+    min-width: 65px
+    ul
+      +establish-baseline
+      //+margin-trailer(1, $base-font-size + 14px)
+      +margin-trailer(1, $base-font-size + 13.5px)
+      //for design layout
+      //+layout-outline($happy-violet)
+      //height: initial
+      //http://stackoverflow.com/questions/19235832/outerheighttrue-does-not-include-margins
+      overflow: auto
+      li
+        +adjust-leading-to(4, $base-font-size + 12.8px)
+        padding-right: 28%
+        @include susy-breakpoint($bp-wide, $susy-wide)
+          +adjust-leading-to(4, $base-font-size + 13.5px)
+        //&:first-child
+        &:last-child
+          +padding-trailer(2, $base-font-size + 17px)
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            +padding-trailer(2, $base-font-size + 15px)
+        h1
+          text-align: right
+          img
+            //vertical-align: bottom
+            //padding-bottom: 8%
+            //padding-bottom: 15%
+            vertical-align: middle
+
+      //first li element
+      div.title
+        +adjust-leading-to(4, $base-font-size + 14px)
+        position: relative
+        height: 60px
+        &:first-child:not(.no-padding)
+          margin-top: 0px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            +margin-leader(1, $base-font-size + 14px)
+        h1
+          position: absolute
+          top : -20%
+          +center(x)
+          letter-spacing: 0.05em
+          color: $grey
+          //.point
+          //  display: inline
+        span
+          position: absolute
+          //bottom: -7%
+          +center(x)
+          color: $grey
+          bottom: -25%
+
+
+
   .today-container
     @include span(40 of 89 at 44)
     //+layout-outline($happy-violet)
@@ -12,6 +88,7 @@ section.number-today
   .gutter
     @include span(6 of 89 last)
     //+layout-outline($happy-violet)
+
   =number-today-part($susy-layout, $nest-layout)
     @include span(3 at 4 $susy-layout)
     position: absolute
@@ -19,14 +96,21 @@ section.number-today
     .icon-data
       @include span(1 of ($nest-layout) first)
       //+layout-outline($happy-violet)
+      ul
+        div.title
+          height: 50px
+
     .today-container
       @include span(1 of ($nest-layout) at 2)
       //+layout-outline($happy-violet)
       padding-top: 25px
+
     .gutter
       @include span(1 of ($nest-layout) last)
       //+layout-outline($happy-violet)
+
   @include susy-breakpoint($bp-wide, $susy-wide)
     +number-today-part($susy-wide, 9 35 3)
+
   @include susy-breakpoint($bp-wider, $susy-wider)
     +number-today-part($susy-wider, 10 40 6)

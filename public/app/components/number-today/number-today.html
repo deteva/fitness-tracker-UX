@@ -1,16 +1,26 @@
 <section class = "number-today">
     <!-- icon data-->
     <div class = "icon-data">
+        <ul  class="happy-title">
+            <div ng-include="'/app/components/number-today/_icon-happy.html'"></div>
+        </ul>
+        <ul class="balanced-title">
+            <div ng-include="'/app/components/number-today/_icon-balanced.html'"></div>
+        </ul>
+        <ul class="energetic-title">
+            <div ng-include="'/app/components/number-today/_icon-energetic.html'"></div>
+        </ul>
     </div>
+
     <!--today data-->
     <article class = "today-container">
-        <ul class="happy stat">
+        <ul class="happy-border-left stat">
             <div ng-include="'/app/components/number-today/_happy-section.html'"></div>
         </ul>
-        <ul class = "balanced stat">
+        <ul class = "balanced-border-left stat">
             <div ng-include="'/app/components/number-today/_balanced-section.html'"></div>
         </ul>
-        <ul class ="energetic stat">
+        <ul class  ="energetic-border-left stat">
             <div ng-include="'/app/components/number-today/_energetic-section.html'"></div>
         </ul>
     </article>
