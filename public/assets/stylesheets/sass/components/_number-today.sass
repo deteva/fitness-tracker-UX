@@ -4,7 +4,6 @@
     border-left: 3px solid
     border-color: nth($i, 2)
 
-
 //icon-data part hover text
 @each $i in $color-style
   .icon-data
@@ -16,7 +15,6 @@
         span:hover
           color: nth($i, 2)
 
-
 section.number-today
   height: 1100px
 
@@ -26,6 +24,7 @@ section.number-today
     //+layout-outline($happy-violet)
     padding-top: 25px
     min-width: 65px
+
     ul
       +establish-baseline
       //+margin-trailer(1, $base-font-size + 14px)
@@ -45,6 +44,7 @@ section.number-today
           +padding-trailer(2, $base-font-size + 17px)
           @include susy-breakpoint($bp-wide, $susy-wide)
             +padding-trailer(2, $base-font-size + 15px)
+
         h1
           text-align: right
           img
@@ -52,6 +52,19 @@ section.number-today
             //padding-bottom: 8%
             //padding-bottom: 15%
             vertical-align: middle
+          //icon-data svg
+          div.ng-scope
+            height: 59px
+            @include susy-breakpoint($bp-wide, $susy-wide)
+              height: 50px
+            svg
+              transform: translateY(7%)
+              @include susy-breakpoint($bp-wide, $susy-wide)
+                transform: none
+
+
+
+
 
       //first li element
       div.title
@@ -76,15 +89,11 @@ section.number-today
           +center(x)
           color: $grey
           bottom: -25%
-
-
-
   .today-container
     @include span(40 of 89 at 44)
     //+layout-outline($happy-violet)
     padding-top: 25px
     min-width: 365px
-
   .gutter
     @include span(6 of 89 last)
     //+layout-outline($happy-violet)

@@ -42,7 +42,7 @@
 					};
 				}
 
-//enegetic part chart
+				//enegetic part chart
 				$scope.options = {
 					chart: {
 						type: 'bulletChart',
@@ -99,6 +99,89 @@
 					"measures": [1.04],
 					"markers": [6.5]
 				};
+				//Math.floor((this.distance.today / this.goals.distance ) * 100);
+				//icon-data part
+				$scope.iconBasePoint = 3;
+				$scope.iconEndPoint = 26;
+				function countWidthByIcon(efficency) {
+					var width = (efficency * $scope.iconEndPoint) /100;
+					console.log("count icon width: " + width);
+					return width;
+				}
+
+				$scope.dataIcons = [
+					{
+						"totalTimeInBed" :{
+							"efficiency" : $scope.sleepData.efficiency.lastWeek,
+							"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						}
+					}
+				]
+
+
+					$scope.targets = [
+					{
+						"display" : "수면시간",
+						"name" : "totalTimeInBed",
+						"src" : "/assets/images/icon-svg/icon-totalTimeInBed.svg"
+					},
+					{
+						"display" : "꿀잠",
+						"name" : "totalMinutesAsleep",
+						"src" : "/assets/images/icon-svg/icon-totalMinutesAsleep.svg"
+					},
+					{
+						"display" : "심박수 측정",
+						"name" : "restingHeartRate",
+						"src" : "/assets/images/icon-svg/icon-restingHeartRate.svg"
+					},
+					{
+						"display" : "물마시기",
+						"name" : "water",
+						"src" : "/assets/images/icon-svg/icon-water.svg"
+					},
+					{
+						"display" : "건강한 식단",
+						"name" : "foodPlan",
+						"src" : "/assets/images/icon-svg/icon-foodPlan.svg"
+					},
+					{
+						"display" : "음식계획",
+						"name" : "estimatedCaloriesOut",
+						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg"
+					},
+					{
+						"display" : "몸무게 확인",
+						"name" : "logWeight",
+						"src" : "/assets/images/icon-svg/icon-logWeight.svg"
+					},
+					{
+						"display" : "칼로리 소비",
+						"name" : "calories",
+						"src" : "/assets/images/icon-svg/icon-calories.svg"
+					},
+					{
+						"display" : "걸음수",
+						"name" : "steps",
+						"src" : "/assets/images/icon-svg/icon-steps.svg"
+					},
+					{
+						"display" : "활동적 시간",
+						"name" : "activityCalories",
+						"src" : "/assets/images/icon-svg/icon-activityCalories.svg"
+					},
+					{
+						"display" : "층수",
+						"name" : "floors",
+						"src" : "/assets/images/icon-svg/icon-floors.svg"
+					},
+					{
+						"display" : "이동 거리",
+						"name" : "distance",
+						"src" : "/assets/images/icon-svg/icon-distance.svg"
+					}
+				];
+
 			}
 		}
 	}

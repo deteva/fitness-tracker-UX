@@ -26,7 +26,8 @@
     "normalize.sass": "^3.0.0",
     "angular-nvd3": "^1.0.7",
     "angular-moment": "^0.10.3",
-    "angular-messages": "^1.5.5"
+    "angular-messages": "^1.5.5",
+    "angular-meter-polyfill": "^0.2.1"
   },
   "resolutions": {
     "angular": "^1.4.8",
