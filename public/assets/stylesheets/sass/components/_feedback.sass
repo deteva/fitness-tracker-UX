@@ -68,6 +68,17 @@ section.feedback
               +adjust-leading-to(2, $base-font-size + 0px)
               width: 40px
               position: absolute
+              //use xlink Embedded svg symbol
+              svg.resize
+                transform: scale(0.8)
+
+                //svg icon color by description
+                rect
+                  @each $i in $color-style
+                    .#{nth($i, 1)}-color
+                      fill: nth($i, 2)
+                path.feedback-bg
+                  fill : $medium-grey
             span
               padding-left: 40px
               top: 0

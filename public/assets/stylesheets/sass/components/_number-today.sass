@@ -34,35 +34,47 @@ section.number-today
       //height: initial
       //http://stackoverflow.com/questions/19235832/outerheighttrue-does-not-include-margins
       overflow: auto
+
       li
         +adjust-leading-to(4, $base-font-size + 12.8px)
-        padding-right: 28%
+        padding-right: 24%
         @include susy-breakpoint($bp-wide, $susy-wide)
           +adjust-leading-to(4, $base-font-size + 13.5px)
-        //&:first-child
         &:last-child
           +padding-trailer(2, $base-font-size + 17px)
           @include susy-breakpoint($bp-wide, $susy-wide)
             +padding-trailer(2, $base-font-size + 15px)
-
         h1
           text-align: right
-          img
-            //vertical-align: bottom
-            //padding-bottom: 8%
-            //padding-bottom: 15%
-            vertical-align: middle
-          //icon-data svg
-          div.ng-scope
-            height: 59px
-            @include susy-breakpoint($bp-wide, $susy-wide)
-              height: 50px
+          height: 59px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            height: 50px
+
             svg
               transform: translateY(7%)
               @include susy-breakpoint($bp-wide, $susy-wide)
                 transform: none
+          .none
+            display: none
+          //div.ng-scope
+            //height: 59px
+            //@include susy-breakpoint($bp-wide, $susy-wide)
+            //  height: 50px
+            //svg
+            //  transform: translateY(7%)
+            //  @include susy-breakpoint($bp-wide, $susy-wide)
+            //    transform: none
 
-
+      //icon-data fix location slightly
+      &.energetic-title li
+        &:nth-child(3)
+          margin-top: -5px
+        &:nth-child(4)
+          margin-top: -2px
+        &:nth-child(5)
+          margin-top: 3px
+        &:nth-child(6)
+          margin-top: 8px
 
 
 
