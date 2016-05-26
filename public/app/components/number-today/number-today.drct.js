@@ -6,7 +6,14 @@
 
 	angular
 		.module('app.core')
-		.directive('numberToday', NumberToday);
+		.directive('numberToday', NumberToday)
+		.directive('ngWidth', function () {
+			return function(scope, element, attrs) {
+				scope.$watch(attrs.ngWidth, function(value) {
+					element.attr('width', value);
+				});
+			};
+		});
 
 	NumberToday.$inject = ['dataAPI', 'foodAPI'];
 
