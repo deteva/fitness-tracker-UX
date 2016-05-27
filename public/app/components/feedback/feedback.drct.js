@@ -8,9 +8,9 @@
 		.module('app.core')
 		.directive('feedback', FeedBack);
 
-	FeedBack.$inject = ['dataAPI'];
+	FeedBack.$inject = ['dataAPI', '$filter'];
 
-	function FeedBack(dataAPI) {
+	function FeedBack(dataAPI, $filter) {
 		console.log('directive feedback in');
 		return {
 			templateUrl: '/app/components/feedback/feedback.html',
@@ -112,8 +112,7 @@
 					$scope.toggleImgSrc = $scope.ableToggleTxt ? $scope.toggleBtnObj[1].start.src : $scope.toggleBtnObj[2].finished.src;
 				});
 
-
-					//get count of all error categories from form
+				//get count of all error categories from form
 				//$scope.numberOfErrors = function(form){
 				//	var count = 0,
 				//		 errors = form.$error;
@@ -125,68 +124,6 @@
 				//	//Object.keys(errors).forEach(function(key){ count += errors[key].length  });
 				//	return count;
 				//};
-				$scope.targets = [
-					{
-						"display" : "수면시간",
-						"name" : "totalTimeInBed",
-						"src" : "/assets/images/icon-svg/icon-totalTimeInBed.svg"
-					},
-					{
-						"display" : "꿀잠",
-						"name" : "totalMinutesAsleep",
-						"src" : "/assets/images/icon-svg/icon-totalMinutesAsleep.svg"
-					},
-					{
-						"display" : "심박수 측정",
-						"name" : "restingHeartRate",
-						"src" : "/assets/images/icon-svg/icon-restingHeartRate.svg"
-					},
-					{
-						"display" : "물마시기",
-						"name" : "water",
-						"src" : "/assets/images/icon-svg/icon-water.svg"
-					},
-					{
-						"display" : "건강한 식단",
-						"name" : "foodPlan",
-						"src" : "/assets/images/icon-svg/icon-foodPlan.svg"
-					},
-					{
-						"display" : "음식계획",
-						"name" : "estimatedCaloriesOut",
-						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg"
-					},
-					{
-						"display" : "몸무게 확인",
-						"name" : "logWeight",
-						"src" : "/assets/images/icon-svg/icon-logWeight.svg"
-					},
-					{
-						"display" : "칼로리 소비",
-						"name" : "calories",
-						"src" : "/assets/images/icon-svg/icon-calories.svg"
-					},
-					{
-						"display" : "걸음수",
-						"name" : "steps",
-						"src" : "/assets/images/icon-svg/icon-steps.svg"
-					},
-					{
-						"display" : "활동적 시간",
-						"name" : "activityCalories",
-						"src" : "/assets/images/icon-svg/icon-activityCalories.svg"
-					},
-					{
-						"display" : "층수",
-						"name" : "floors",
-						"src" : "/assets/images/icon-svg/icon-floors.svg"
-					},
-					{
-						"display" : "이동 거리",
-						"name" : "distance",
-						"src" : "/assets/images/icon-svg/icon-distance.svg"
-					}
-				];
 
 
 				$scope.achievement = [
@@ -230,6 +167,65 @@
 						"percent" : "10% 달성",
 						"number" : 10
 					}];
+
+				//feedback data not using algorithms but just insert data
+				//sample improvement-points
+				var firstImprovementObj= $scope.targets[$scope.indexOfTarget.totalMinutesAsleep];
+				var sndImprovementObj= $scope.targets[$scope.indexOfTarget.estimatedCaloriesOut];
+				var trdImprovementObj= $scope.targets[$scope.indexOfTarget.steps];
+
+				//sample strong-points
+				var firstStrongObj= $scope.targets[$scope.indexOfTarget.water];
+				var sndStrongObj= $scope.targets[$scope.indexOfTarget.logWeight];
+				var trdStrongObj= $scope.targets[$scope.indexOfTarget.floors];
+
+				$scope.feedbackList = {
+					"improvement" : [
+						{
+							"name" : firstImprovementObj.name,
+							"party" : firstImprovementObj.party,
+							"target" : firstImprovementObj.display,
+							"desc" : "2시간 5분 꿀잠"
+						},
+						{
+							"name" : sndImprovementObj.name,
+							"party" : sndImprovementObj.party,
+							"target" : sndImprovementObj.display,
+							"desc" : "3,641 섭취 > 1,124"
+						}
+						,
+						{
+							"name" : trdImprovementObj.name,
+							"party" : trdImprovementObj.party,
+							"target" : trdImprovementObj.display,
+							"desc" : "4,365 / 10,000"
+						}
+					],
+					"strong" : [
+						{
+							"name" : firstStrongObj.name,
+							"party" : firstStrongObj.party,
+							"target" : firstStrongObj.display,
+							"desc" : "3200ml"
+						},
+						{
+							"name" : sndStrongObj.name,
+							"party" : sndStrongObj.party,
+							"target" : sndStrongObj.display,
+							"desc" : "최근 - 0.8kg"
+						}
+						,
+						{
+							"name" : trdStrongObj.name,
+							"party" : trdStrongObj.party,
+							"target" : trdStrongObj.display,
+							"desc" : "23 / 10층"
+						}
+					]
+				};
+
+
+
 
 
 				//background: url(../../images/target.png) >> ng-style

@@ -67,16 +67,26 @@ section.number-today
 
       //icon-data fix location slightly
       &.energetic-title li
+        &:nth-child(2)
+          margin-top: 11px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            margin-top: 0px
         &:nth-child(3)
-          margin-top: -5px
+          margin-top: -1px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            margin-top: -3px
         &:nth-child(4)
-          margin-top: -2px
+          margin-top: -4px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            margin-top: -2px
         &:nth-child(5)
-          margin-top: 3px
+          margin-top: 1px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            margin-top: 3px
         &:nth-child(6)
-          margin-top: 8px
-
-
+          margin-top: 3px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            margin-top: 4px
 
       //first li element
       div.title

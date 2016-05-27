@@ -15,9 +15,9 @@
 			};
 		});
 
-	NumberToday.$inject = ['dataAPI', 'foodAPI'];
+	NumberToday.$inject = ['dataAPI', 'foodAPI', '$filter'];
 
-	function NumberToday(dataAPI, foodAPI) {
+	function NumberToday(dataAPI, foodAPI, $filter) {
 		console.log('directive numberToday in');
 		return {
 			templateUrl: '/app/components/number-today/number-today.html',
@@ -48,6 +48,132 @@
 						return (foods.name.indexOf(query) === 0);
 					};
 				}
+
+				//Math.floor((this.distance.today / this.goals.distance ) * 100);
+				//icon-data part
+				$scope.iconBasePoint = 3;
+				$scope.iconEndPoint = 26;
+				function countWidthByIcon(efficency) {
+					var width = (efficency * $scope.iconEndPoint) /100;
+					console.log("count icon width: " + width);
+					return width;
+				}
+
+
+				//all data
+				$scope.targets = [
+					{
+						"display" : "수면시간",
+						"name" : "totalTimeInBed",
+						"party" : "happy",
+						"src" : "/assets/images/icon-svg/icon-totalTimeInBed.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "꿀잠",
+						"name" : "totalMinutesAsleep",
+						"party" : "happy",
+						"src" : "/assets/images/icon-svg/icon-totalMinutesAsleep.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "심박수 측정",
+						"name" : "restingHeartRate",
+						"party" : "happy",
+						"src" : "/assets/images/icon-svg/icon-restingHeartRate.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "물마시기",
+						"name" : "water",
+						"party" : "happy",
+						"src" : "/assets/images/icon-svg/icon-water.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "건강한 식단",
+						"name" : "foodPlan",
+						"party" : "balanced",
+						"src" : "/assets/images/icon-svg/icon-foodPlan.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "음식계획",
+						"name" : "estimatedCaloriesOut",
+						"party" : "balanced",
+						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "몸무게 확인",
+						"name" : "logWeight",
+						"party" : "balanced",
+						"src" : "/assets/images/icon-svg/icon-logWeight.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "칼로리 소비",
+						"name" : "calories",
+						"party" : "energetic",
+						"src" : "/assets/images/icon-svg/icon-calories.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "걸음수",
+						"name" : "steps",
+						"party" : "energetic",
+						"src" : "/assets/images/icon-svg/icon-steps.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "활동적 시간",
+						"name" : "activityCalories",
+						"party" : "energetic",
+						"src" : "/assets/images/icon-svg/icon-activityCalories.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "층수",
+						"name" : "floors",
+						"party" : "energetic",
+						"src" : "/assets/images/icon-svg/icon-floors.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					},
+					{
+						"display" : "이동 거리",
+						"name" : "distance",
+						"party" : "energetic",
+						"src" : "/assets/images/icon-svg/icon-distance.svg",
+						"efficiency" : $scope.sleepData.efficiency.lastWeek,
+						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+					}
+				];
+
+				//get index of $scope.targets
+				$scope.filterSearch = function (filterTarget) {
+					$filter("filter")($scope.targets, function(ele, idx) {
+						if(ele.name === filterTarget ) return idx;
+						else return false;
+					});
+				};
+
+				//set data object index
+				$scope.indexOfTarget = {};
+				//$scope.targets[$scope.indexOfTarget.water]
+				angular.forEach($scope.targets, function(element, idx){
+					$scope.indexOfTarget[element.name] = idx;
+				});
 
 				//enegetic part chart
 				$scope.options = {
@@ -106,88 +232,17 @@
 					"measures": [1.04],
 					"markers": [6.5]
 				};
-				//Math.floor((this.distance.today / this.goals.distance ) * 100);
-				//icon-data part
-				$scope.iconBasePoint = 3;
-				$scope.iconEndPoint = 26;
-				function countWidthByIcon(efficency) {
-					var width = (efficency * $scope.iconEndPoint) /100;
-					console.log("count icon width: " + width);
-					return width;
-				}
 
-				$scope.dataIcons = [
-					{
-						"totalTimeInBed" :{
-							"efficiency" : $scope.sleepData.efficiency.lastWeek,
-							"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
-						}
-					}
-				]
+				//$scope.dataIcons = [
+				//	{
+				//		"totalTimeInBed" :{
+				//			"efficiency" : $scope.sleepData.efficiency.lastWeek,
+				//			"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+				//		}
+				//	}
+				//]
 
 
-					$scope.targets = [
-					{
-						"display" : "수면시간",
-						"name" : "totalTimeInBed",
-						"src" : "/assets/images/icon-svg/icon-totalTimeInBed.svg"
-					},
-					{
-						"display" : "꿀잠",
-						"name" : "totalMinutesAsleep",
-						"src" : "/assets/images/icon-svg/icon-totalMinutesAsleep.svg"
-					},
-					{
-						"display" : "심박수 측정",
-						"name" : "restingHeartRate",
-						"src" : "/assets/images/icon-svg/icon-restingHeartRate.svg"
-					},
-					{
-						"display" : "물마시기",
-						"name" : "water",
-						"src" : "/assets/images/icon-svg/icon-water.svg"
-					},
-					{
-						"display" : "건강한 식단",
-						"name" : "foodPlan",
-						"src" : "/assets/images/icon-svg/icon-foodPlan.svg"
-					},
-					{
-						"display" : "음식계획",
-						"name" : "estimatedCaloriesOut",
-						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg"
-					},
-					{
-						"display" : "몸무게 확인",
-						"name" : "logWeight",
-						"src" : "/assets/images/icon-svg/icon-logWeight.svg"
-					},
-					{
-						"display" : "칼로리 소비",
-						"name" : "calories",
-						"src" : "/assets/images/icon-svg/icon-calories.svg"
-					},
-					{
-						"display" : "걸음수",
-						"name" : "steps",
-						"src" : "/assets/images/icon-svg/icon-steps.svg"
-					},
-					{
-						"display" : "활동적 시간",
-						"name" : "activityCalories",
-						"src" : "/assets/images/icon-svg/icon-activityCalories.svg"
-					},
-					{
-						"display" : "층수",
-						"name" : "floors",
-						"src" : "/assets/images/icon-svg/icon-floors.svg"
-					},
-					{
-						"display" : "이동 거리",
-						"name" : "distance",
-						"src" : "/assets/images/icon-svg/icon-distance.svg"
-					}
-				];
 
 			}
 		}
