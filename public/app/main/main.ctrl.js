@@ -8,7 +8,14 @@
 
 	angular
 		.module('app.core')
-		.controller('MainCtrl', MainCtrl);
+		.controller('MainCtrl', MainCtrl)
+		.directive('ngWidth', function () {
+			return function(scope, element, attrs) {
+				scope.$watch(attrs.ngWidth, function(value) {
+					element.attr('width', value);
+				});
+			};
+		});
 
 	MainCtrl.$inject = ['activityByfitbit','heartrateByfitbit','nutritionByfitbit','sleepByfitbit','socialByfitbit','$scope', 'dataAPI','$log'];
 

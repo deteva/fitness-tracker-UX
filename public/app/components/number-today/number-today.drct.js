@@ -6,14 +6,7 @@
 
 	angular
 		.module('app.core')
-		.directive('numberToday', NumberToday)
-		.directive('ngWidth', function () {
-			return function(scope, element, attrs) {
-				scope.$watch(attrs.ngWidth, function(value) {
-					element.attr('width', value);
-				});
-			};
-		});
+		.directive('numberToday', NumberToday);
 
 	NumberToday.$inject = ['dataAPI', 'foodAPI', '$filter'];
 
@@ -65,7 +58,7 @@
 					{
 						"display" : "수면시간",
 						"name" : "totalTimeInBed",
-						"party" : "happy",
+						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-totalTimeInBed.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -73,7 +66,7 @@
 					{
 						"display" : "꿀잠",
 						"name" : "totalMinutesAsleep",
-						"party" : "happy",
+						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-totalMinutesAsleep.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -81,7 +74,7 @@
 					{
 						"display" : "심박수 측정",
 						"name" : "restingHeartRate",
-						"party" : "happy",
+						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-restingHeartRate.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -89,7 +82,7 @@
 					{
 						"display" : "물마시기",
 						"name" : "water",
-						"party" : "happy",
+						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-water.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -97,7 +90,7 @@
 					{
 						"display" : "건강한 식단",
 						"name" : "foodPlan",
-						"party" : "balanced",
+						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-foodPlan.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -105,7 +98,7 @@
 					{
 						"display" : "음식계획",
 						"name" : "estimatedCaloriesOut",
-						"party" : "balanced",
+						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -113,7 +106,7 @@
 					{
 						"display" : "몸무게 확인",
 						"name" : "logWeight",
-						"party" : "balanced",
+						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-logWeight.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -121,7 +114,7 @@
 					{
 						"display" : "칼로리 소비",
 						"name" : "calories",
-						"party" : "energetic",
+						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-calories.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -129,7 +122,7 @@
 					{
 						"display" : "걸음수",
 						"name" : "steps",
-						"party" : "energetic",
+						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-steps.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -137,7 +130,7 @@
 					{
 						"display" : "활동적 시간",
 						"name" : "activityCalories",
-						"party" : "energetic",
+						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-activityCalories.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -145,7 +138,7 @@
 					{
 						"display" : "층수",
 						"name" : "floors",
-						"party" : "energetic",
+						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-floors.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
@@ -153,7 +146,7 @@
 					{
 						"display" : "이동 거리",
 						"name" : "distance",
-						"party" : "energetic",
+						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-distance.svg",
 						"efficiency" : $scope.sleepData.efficiency.lastWeek,
 						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)

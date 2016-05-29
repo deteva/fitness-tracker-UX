@@ -6,7 +6,14 @@
 
 	angular
 		.module('app.core')
-		.directive('feedback', FeedBack);
+		.directive('feedback', FeedBack)
+		.directive('ngFill', function () {
+			return function(scope, element, attrs) {
+				scope.$watch(attrs.ngFill, function(value) {
+					element.attr('fill', value);
+				});
+			};
+		});
 
 	FeedBack.$inject = ['dataAPI', '$filter'];
 
@@ -183,20 +190,20 @@
 					"improvement" : [
 						{
 							"name" : firstImprovementObj.name,
-							"party" : firstImprovementObj.party,
+							"party" : firstImprovementObj.color,
 							"target" : firstImprovementObj.display,
 							"desc" : "2시간 5분 꿀잠"
 						},
 						{
 							"name" : sndImprovementObj.name,
-							"party" : sndImprovementObj.party,
+							"party" : sndImprovementObj.color,
 							"target" : sndImprovementObj.display,
 							"desc" : "3,641 섭취 > 1,124"
 						}
 						,
 						{
 							"name" : trdImprovementObj.name,
-							"party" : trdImprovementObj.party,
+							"party" : trdImprovementObj.color,
 							"target" : trdImprovementObj.display,
 							"desc" : "4,365 / 10,000"
 						}
@@ -204,20 +211,20 @@
 					"strong" : [
 						{
 							"name" : firstStrongObj.name,
-							"party" : firstStrongObj.party,
+							"party" : firstStrongObj.color,
 							"target" : firstStrongObj.display,
 							"desc" : "3200ml"
 						},
 						{
 							"name" : sndStrongObj.name,
-							"party" : sndStrongObj.party,
+							"party" : sndStrongObj.color,
 							"target" : sndStrongObj.display,
 							"desc" : "최근 - 0.8kg"
 						}
 						,
 						{
 							"name" : trdStrongObj.name,
-							"party" : trdStrongObj.party,
+							"party" : trdStrongObj.color,
 							"target" : trdStrongObj.display,
 							"desc" : "23 / 10층"
 						}

@@ -21,31 +21,7 @@
         <li class="none-border">
             <h4>부족한 점</h4>
         </li>
-        <li>
-            <div class="selected-icon">
-                <div class="percentage-icon">
-                    <svg class="resize"
-                         x="0px" y="0px"
-                         width="40px" height="50px"
-                         viewBox="0 0 40 50">
-                        <!--@each $i in $color-style-->
-                        <!--.#{nth($i, 1)}-color-->
-                        <!--fill: nth($i, 2)-->
-                        <!--$attribute-color:happy balanced energetic-->
-                        <rect ng-class="happy-color"
-                              y="2"
-                              class="st0"
-                              ng-width="17"
-                              height="46"/>
-                        <path class="feedback-bg" d="M0,0v50h40V0H0z M26.9,33.5c-2.2,4.8-7.1,8-12.4,8c-9.6,0-16.3-10.3-12.3-19.1
-		c1.8-4.1,5.8-7,10.3-7.8c4.5-0.6,9.1,1,12.1,4.5C28.2,23.1,29,28.8,26.9,33.5z"/>
-                        <use xlink:href="#data-totalMinutesAsleep" />
-                    </svg>
-                </div>
-                <span>꿀잠</span>
-            </div>
-            <div class="desc"><span>2시간 5분 꿀잠</span></div>
-        </li>
+
         <li ng-repeat="feedback in feedbackList.improvement">
             <div class="selected-icon">
                 <div class="percentage-icon">
@@ -53,22 +29,14 @@
                          x="0px" y="0px"
                          width="40px" height="50px"
                          viewBox="0 0 40 50">
-                        <!--@each $i in $color-style-->
-                        <!--.#{nth($i, 1)}-color-->
-                        <!--fill: nth($i, 2)-->
-                        <!--$attribute-color:happy balanced energetic-->
-                        <!--<rect ng:class="{'happy-color': feedback.party === 'happy',-->
-                                            <!--'balanced-color': feedback.party === 'balanced',-->
-                                            <!--'energetic-color': feedback.party === 'energetic'-->
-                                            <!--}"-->
-
-                        <rect ng:class="feedback.party"
-                              y="2"
+                        <rect y="2"
                               class="st2"
-                              ng-width="12"
+                              ng-attr-fill={{feedback.party}}
+                              ng-width={{targets[indexOfTarget.water].iconRatio}}
                               height="46"/>
-                        <use xlink:href="#data-mask-feedback.name"/>
-                        <use xlink:href="#data-feedback.name" />
+                        <!--use tag not working ng-attr-width-->
+                        <use xlink:href="" ng-href="#data-mask-{{feedback.name}}"/>
+                        <use xlink:href="" ng-href="#data-{{feedback.name}}"/>
                     </svg>
                 </div>
                 <span>{{feedback.target}}</span>
@@ -82,28 +50,28 @@
         <li class="none-border">
             <h4>잘한 점</h4>
         </li>
-        <li>
+        <li ng-repeat="feedback in feedbackList.strong">
             <div class="selected-icon">
-                <div class="percentage-icon"></div>
-                <span>물 섭취량</span>
+                <div class="percentage-icon">
+                    <svg class="resize"
+                         x="0px" y="0px"
+                         width="40px" height="50px"
+                         viewBox="0 0 40 50">
+                        <rect y="2"
+                              class="st2"
+                              ng-attr-fill={{feedback.party}}
+                              ng-width={{targets[indexOfTarget.water].iconRatio}}
+                              height="46"/>
+                        <!--use tag not working ng-attr-width-->
+                        <use xlink:href="" ng-href="#data-mask-{{feedback.name}}"/>
+                        <use xlink:href="" ng-href="#data-{{feedback.name}}"/>
+                    </svg>
+                </div>
+                <span>{{feedback.target}}</span>
             </div>
-            <div class="desc"><span>3200ml</span></div>
+            <div class="desc"><span>{{feedback.desc}}</span></div>
         </li>
-        <li>
-            <div class="selected-icon">
-                <div class="percentage-icon"></div>
-                <span>몸무게</span>
-            </div>
-            <div class="desc"><span>최근 - 0.8kg</span></div>
-        </li>
-        <li>
-            <div class="selected-icon">
-                <div class="percentage-icon"></div>
-                <span>걸음수</span>
-            </div>
-            <div class="desc"><span>23 / 10층</span></div>
-        </li>
-        <!--<li class="none-border">&nbsp;</li>-->
+
     </ul>
 
     <!--challenge-->
