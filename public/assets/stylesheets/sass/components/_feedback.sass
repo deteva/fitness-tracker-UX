@@ -1,187 +1,198 @@
 @import compass/layout/stretching
-
 section.feedback
   +establish-baseline
   color: $sterling-grey
+  //%h3-part  >> whats the matter?
+  //  +inline-block
+  //  color: $calm-grey
+  //  font-family: $bold-font
+  //  +adjust-leading-to(2, $base-font-size + 1px)
+  //  padding-left: 15%
+  //  letter-spacing: -0.05em
   //position: absolute
   //height: 100%
   .improvement-point
     @include span(30 of 89 first)
+    padding-right: 3%
     //+layout-outline($happy-violet)
+
   .strong-point
     @include span(29 of 89 at 31)
+    margin-top: 60px
+    padding-right: 1%
+    padding-left: 1%
     //+layout-outline($happy-violet)
+
+  .improvement-point, .strong-point
+    $susy-feedback: (columns: 10 11, output: isolate, gutter: 0)
+    div
+      +adjust-leading-to(2, $base-font-size + 0px)
+      &.top-section
+        padding-top: 0px
+        @include susy-breakpoint($bp-wide, $susy-wide)
+          +padding-leader(1, $base-font-size + 1px)
+      &.select-date
+        border-bottom: 2px solid $misty-grey2
+      @include with-layout($susy-feedback)
+        @include container()
+        .selected-date
+          @include span(1 first)
+          span.line-caret
+            position: relative
+            cursor: pointer
+            +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
+        .select-filter
+          @include span(1 last)
+
+      h3
+        //@extend %h3-part !optional
+        +inline-block
+        color: $calm-grey
+        font-family: $bold-font
+        +adjust-leading-to(2, $base-font-size + 1px)
+        padding-left: 15%
+        letter-spacing: -0.05em
+    li
+      +adjust-leading-to(2, $base-font-size + 0px)
+      position: relative
+      border-bottom: 1px solid $misty-grey2
+      &.none-border
+        //border-bottom: 0px >> transparent effect
+        border-bottom: 1px solid $medium-grey
+      &:last-child
+        +margin-trailer(2, $base-font-size - 0px)
+      @include with-layout($susy-feedback)
+        @include container()
+        .selected-icon
+          @include span(1 fist)
+          .percentage-icon
+            +adjust-leading-to(2, $base-font-size + 0px)
+            width: 40px
+            position: absolute
+            //use xlink Embedded svg symbol
+            svg.resize
+              transform: scale(0.8)
+              //svg icon color by description
+              rect
+                @each $i in $color-style
+                  .#{nth($i, 1)}-color
+                    fill: nth($i, 2)
+          //path.feedback-bg
+          //  fill : $medium-grey
+          span
+            padding-left: 40px
+            top: 0
+        .desc
+          @include span(1 last)
+          position: absolute
+          padding-left: 10px
+        h4
+          color: $white
+          font-family: $bold-font
   .challenge
     @include span(30 of 89 last)
-    //+layout-outline($happy-violet)
+    padding-left: 7%
+
+    $susy-feedback-mission: (columns: 60 40, output: isolate, gutter-position: after, gutter: 3%)
+    div
+      +adjust-leading-to(2, $base-font-size + 0px)
+      &.select-date
+        border-bottom: 2px solid $misty-grey2
+      &.select-mission
+        border-bottom: 1px solid $misty-grey2
+      //submit button of div today mission
+      &.answer
+        height: 30px
+        margin: 8px auto
+        @include susy-breakpoint($bp-wide, $susy-wide)
+          +margin-leader(1, $base-font-size + 1px)
+          //+adjust-leading-to(2, $base-font-size + 0px)
+          +margin-trailer(1, $base-font-size + 1px)
+        //alert message
+        div
+          text-align: center
+          line-height: 2.2em
+        button
+          +stretch-x
+          width: 100%
+          +adjust-leading-to(1, $base-font-size + 1px)
+          +center(x)
+          //select, reward.png
+          img
+            vertical-align: middle
+      @include with-layout($susy-feedback-mission)
+        @include container()
+        .selected-date, .select-target
+          @include span(1 first)
+          padding-right: 2%
+          span.line-caret
+            position: relative
+            cursor: pointer
+            +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
+        .select-filter, .select-acheivement
+          @include span(1 last)
+          padding-left: 5%
+        //input placeholder css when disabled
+        .select-acheivement
+          input
+            &:disabled
+              @include placeholder($deep-gray)
+      h3
+        +inline-block
+        color: $calm-grey
+        font-family: $bold-font
+        +adjust-leading-to(2, $base-font-size + 1px)
+        padding-left: 15%
+        letter-spacing: 0.03em
+      //button ng-hide text
+      div
+        >span
+          color : $alert-yellow
+
+    li
+      +adjust-leading-to(2, $base-font-size + 0px)
+      position: relative
+      border-bottom: 1px solid $misty-grey2
+
+      &.none-border
+        //border-bottom: 0px >> transparent effect
+        border-bottom: 1px solid $medium-grey
+      &:last-child
+        +margin-trailer(2, $base-font-size - 0px)
+
+      @include with-layout($susy-feedback-mission)
+        @include container()
+        .selected-icon
+          @include span(1 fist)
+          .percentage-icon
+            +adjust-leading-to(2, $base-font-size + 0px)
+            width: 40px
+            position: absolute
+          span
+            padding-left: 40px
+            top: 0
+        .desc
+          @include span(1 last)
+          position: absolute
+        h4
+          color: $white
+          font-family: $bold-font
 
   @include susy-breakpoint($bp-wide, $susy-wide)
     position: absolute
     width: 100%
     padding-left: 25px
-
-    %h3-part
-      +inline-block
-      color: $calm-grey
-      font-family: $bold-font
-      +adjust-leading-to(2, $base-font-size + 1px)
-      padding-left: 15%
-      letter-spacing: -0.05em
-
     .improvement-point, .strong-point
       width: 100%
-      $susy-feedback: (columns: 10 11, output: isolate, gutter: 0)
-      div
-        +adjust-leading-to(2, $base-font-size + 0px)
-        &.top-section
-          +padding-leader(1, $base-font-size + 1px)
-        &.select-date
-          border-bottom: 2px solid $misty-grey2
-        @include with-layout($susy-feedback)
-          @include container()
-          .selected-date
-            @include span(1 first)
-            span.line-caret
-              position: relative
-              cursor: pointer
-              +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
-          .select-filter
-            @include span(1 last)
-        h3
-          @extend %h3-part
-
-
-      li
-        +adjust-leading-to(2, $base-font-size + 0px)
-        position: relative
-        border-bottom: 1px solid $misty-grey2
-        &.none-border
-          //border-bottom: 0px >> transparent effect
-          border-bottom: 1px solid $medium-grey
-        &:last-child
-          +margin-trailer(2, $base-font-size - 0px)
-        @include with-layout($susy-feedback)
-          @include container()
-          .selected-icon
-            @include span(1 fist)
-            .percentage-icon
-              +adjust-leading-to(2, $base-font-size + 0px)
-              width: 40px
-              position: absolute
-              //use xlink Embedded svg symbol
-              svg.resize
-                transform: scale(0.8)
-
-                //svg icon color by description
-                rect
-                  @each $i in $color-style
-                    .#{nth($i, 1)}-color
-                      fill: nth($i, 2)
-                //path.feedback-bg
-                //  fill : $medium-grey
-            span
-              padding-left: 40px
-              top: 0
-          .desc
-            @include span(1 last)
-            position: absolute
-            padding-left: 10px
-          h4
-            color: $white
-            font-family: $bold-font
+    .improvement-point
+      padding-right: 0%
+    .strong-point
+      margin-top: 0
+      padding-right: 0%
+      padding-left: 0%
     .challenge
       width: 100%
-      $susy-feedback-mission: (columns: 60 40, output: isolate, gutter-position: after, gutter: 3%)
-      div
-        +adjust-leading-to(2, $base-font-size + 0px)
-        &.select-date
-          border-bottom: 2px solid $misty-grey2
-        &.select-mission
-          border-bottom: 1px solid $misty-grey2
-        //submit button of div today mission
-        &.answer
-          +margin-leader(1, $base-font-size + 1px)
-          //+adjust-leading-to(2, $base-font-size + 0px)
-          height: 30px
-          +margin-trailer(1, $base-font-size + 1px)
-          //alert message
-          div
-            text-align: center
-            line-height: 2.2em
-          button
-            +stretch-x
-            width: 100%
-            +adjust-leading-to(1, $base-font-size + 1px)
-            //select, reward.png
-            img
-              vertical-align: middle
-              //+center(y)
-
-        @include with-layout($susy-feedback-mission)
-          @include container()
-          .selected-date, .select-target
-            @include span(1 first)
-            padding-right: 2%
-            span.line-caret
-              position: relative
-              cursor: pointer
-              +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
-
-          .select-filter, .select-acheivement
-            @include span(1 last)
-            padding-left: 5%
-
-            //input placeholder css when disabled
-          .select-acheivement
-            input
-              &:disabled
-                @include placeholder($deep-gray)
-              //&[ng-disabled="$mdAutocompleteCtrl.isDisabled"]
-              //  @include placeholder($deep-gray)
-              //&[ng-disabled="true"]
-              //  @include placeholder($deep-gray)
-        h3
-          @extend %h3-part
-        //button ng-hide text
-
-        div
-          >span
-            color : $alert-yellow
-
-
-
-      li
-        +adjust-leading-to(2, $base-font-size + 0px)
-        position: relative
-        border-bottom: 1px solid $misty-grey2
-
-        &.none-border
-          //border-bottom: 0px >> transparent effect
-          border-bottom: 1px solid $medium-grey
-        &:last-child
-          +margin-trailer(2, $base-font-size - 0px)
-
-        @include with-layout($susy-feedback-mission)
-          @include container()
-          .selected-icon
-            @include span(1 fist)
-            .percentage-icon
-              +adjust-leading-to(2, $base-font-size + 0px)
-              width: 40px
-              position: absolute
-            span
-              padding-left: 40px
-              top: 0
-          .desc
-            @include span(1 last)
-            position: absolute
-          h4
-            color: $white
-            font-family: $bold-font
-
-
-
-
+      padding-left: 0
 
 
 //custom-select
@@ -193,8 +204,6 @@ section.feedback
   //background-color: $misty-grey1 !important
   md-content
     background-color: $misty-grey1 !important
-    //color: $sterling-grey !important
-
 
 //only applied select date for feedback
 #select_container_2
@@ -304,7 +313,6 @@ section.feedback
       margin-left: 0px
       margin-right: 0px
       z-index: 3
-
 
 
 //autocomplete virtual repeat for select target
