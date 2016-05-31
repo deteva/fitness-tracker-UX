@@ -1979,15 +1979,17 @@ nv.models.bullet = function() {
         , rangeLabels = function(d) { return d.rangeLabels ? d.rangeLabels : [] }
         , markerLabels = function(d) { return d.markerLabels ? d.markerLabels : []  }
         , measureLabels = function(d) { return d.measureLabels ? d.measureLabels : []  }
-        , forceX = [0] // List of numbers to Force into the X scale (ie. 0, or a max / min, etc.)
+        , forceX = [0]// List of numbers to Force into the X scale (ie. 0, or a max / min, etc.)
+        , forceY = [0]
         , width = 260
-        , height = 7
+        , height = 8
         , container = null
         , tickFormat = null
         , color = nv.utils.getColor(['#193346'])
         , dispatch = d3.dispatch('elementMouseover', 'elementMouseout', 'elementMousemove')
         , defaultRangeLabels = ["목표", "지난주 평균"]
         , legacyRangeClassNames = ["Goals", "LastWeek"]
+        , vertical = "false"
         ;
     function sortLabels(labels, values){
         var lz = labels.slice();
@@ -2000,6 +2002,7 @@ nv.models.bullet = function() {
 
     function chart(selection) {
         selection.each(function(d, i) {
+
             var availableWidth = width - margin.left - margin.right,
                 availableHeight = height - margin.top - margin.bottom;
 
@@ -2033,14 +2036,24 @@ nv.models.bullet = function() {
             var x1 = d3.scale.linear()
                 .domain( d3.extent(d3.merge([forceX, rangez])) )
                 .range(reverse ? [availableWidth, 0] : [0, availableWidth]);
+            var y1 = d3.scale.linear()
+               .domain( d3.extent(d3.merge([forceY, rangez])) )
+               .range(reverse ? [availableHeight, 0] : [0, availableHeight]);
 
             // Retrieve the old x-scale, if this is an update.
             var x0 = this.__chart__ || d3.scale.linear()
                 .domain([0, Infinity])
                 .range(x1.range());
+            var y0 = this.__chart__ || d3.scale.linear()
+                  .domain([0, Infinity])
+                  .range(y1.range());
 
             // Stash the new scale.
-            this.__chart__ = x1;
+            if(vertical === "true") {
+                this.__chart__ = y1;
+            } else {
+                this.__chart__ = x1;
+            }
 
             //var rangeMin = d3.min(rangez), //rangez[2]
             //    rangeMax = d3.max(rangez), //rangez[0]
@@ -2057,6 +2070,7 @@ nv.models.bullet = function() {
             var gEnter = wrapEnter.append('g');
             var g = wrap.select('g');
 
+            //generate all parts of graph[goal, lastweek]
             for(var i=0,il=rangez.length; i<il; i++){
                 var rangeClassNames = 'nv-range nv-range'+i;
                 if(i <= 2){
@@ -2064,96 +2078,198 @@ nv.models.bullet = function() {
                 }
                 gEnter.append('rect').attr('class', rangeClassNames);
             }
-
+            //today status
             gEnter.append('rect').attr('class', 'nv-measure');
 
             wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-            var w0 = function(d) { return Math.abs(x0(d) - x0(0)) }, // TODO: could optimize by precalculating x0(0) and x1(0)
-                w1 = function(d) { return Math.abs(x1(d) - x1(0)) };
+            var w0 = function(d) { return Math.abs(x0(d) - x0(0)) },
+            // TODO: could optimize by precalculating x0(0) and x1(0)
+                w1 = function(d) { return Math.abs(x1(d) - x1(0)) },
+                h0 = function(d) { return Math.abs(y0(d) - y0(0)) },
+                h1 = function(d) { return Math.abs(y1(d) - y1(0)) };
             var xp0 = function(d) { return d < 0 ? x0(d) : x0(0) },
-                xp1 = function(d) { return d < 0 ? x1(d) : x1(0) };
+                xp1 = function(d) { return d < 0 ? x1(d) : x1(0) },
+                yp0 = function(d) { return d < 0 ? y0(d) : y0(0) },
+                yp1 = function(d) { return d < 0 ? y1(d) : y1(0) }
 
-            for(var i=0,il=rangez.length; i<il; i++){
-                var range = rangez[i];
-                g.select('rect.nv-range'+i)
-                    .attr('height', availableHeight)
-                    .attr('width', w1(range))
-                    .attr('x', xp1(range))
-                    .datum(range)
+            if(vertical === "true") {
+                for(var i=0,il=rangez.length; i<il; i++){
+                    var range = rangez[i];
+                    g.select('rect.nv-range'+i)
+                       .attr('width', availableWidth)
+                       .attr('height', h1(range))
+                       .attr('y', yp1(range))
+                       .datum(range)
+                }
+            } else {
+                for(var i=0,il=rangez.length; i<il; i++){
+                    var range = rangez[i];
+                    g.select('rect.nv-range'+i)
+                       .attr('height', availableHeight)
+                       .attr('width', w1(range))
+                       .attr('x', xp1(range))
+                       .datum(range)
+                }
             }
 
-            g.select('rect.nv-measure')
-                .style('fill', color)
-                .attr('height', availableHeight)
-                .attr('y', 0)
-                .attr('width', measurez < 0 ?
-                    x1(0) - x1(measurez[0])
-                    : x1(measurez[0]) - x1(0))
-                .attr('x', xp1(measurez))
-                .on('mouseover', function() {
-                    dispatch.elementMouseover({
-                        value: measurez[0],
-                        label: measureLabelz[0] || '오늘 ',
-                        color: d3.select(this).style("fill")
-                    })
-                })
-                .on('mousemove', function() {
-                    dispatch.elementMousemove({
-                        value: measurez[0],
-                        label: measureLabelz[0] || '오늘',
-                        color: d3.select(this).style("fill")
-                    })
-                })
-                .on('mouseout', function() {
-                    dispatch.elementMouseout({
-                        value: measurez[0],
-                        label: measureLabelz[0] || '오늘',
-                        color: d3.select(this).style("fill")
-                    })
-                });
+            if(vertical === "true") {
+                g.select('rect.nv-measure')
+                   .style('fill', color)
+                   .attr('height', measurez < 0 ? y1(0) - y1(measurez[0]) : y1(measurez[0]) - y1(0))
+                   .attr('y', yp1(measurez))
+                   .attr('width', availableWidth)
+                   .attr('x', 0)
+                   .on('mouseover', function() {
+                       dispatch.elementMouseover({
+                           value: measurez[0],
+                           label: measureLabelz[0] || '오늘 ',
+                           color: d3.select(this).style("fill")
+                       })
+                   })
+                   .on('mousemove', function() {
+                       dispatch.elementMousemove({
+                           value: measurez[0],
+                           label: measureLabelz[0] || '오늘',
+                           color: d3.select(this).style("fill")
+                       })
+                   })
+                   .on('mouseout', function() {
+                       dispatch.elementMouseout({
+                           value: measurez[0],
+                           label: measureLabelz[0] || '오늘',
+                           color: d3.select(this).style("fill")
+                       })
+                   });
+            } else {
+                g.select('rect.nv-measure')
+                   .style('fill', color)
+                   .attr('height', availableHeight)
+                   .attr('y', 0)
+                   .attr('width', measurez < 0 ?
+                   x1(0) - x1(measurez[0]) : x1(measurez[0]) - x1(0))
+                   .attr('x', xp1(measurez))
+                   .on('mouseover', function() {
+                       dispatch.elementMouseover({
+                           value: measurez[0],
+                           label: measureLabelz[0] || '오늘 ',
+                           color: d3.select(this).style("fill")
+                       })
+                   })
+                   .on('mousemove', function() {
+                       dispatch.elementMousemove({
+                           value: measurez[0],
+                           label: measureLabelz[0] || '오늘',
+                           color: d3.select(this).style("fill")
+                       })
+                   })
+                   .on('mouseout', function() {
+                       dispatch.elementMouseout({
+                           value: measurez[0],
+                           label: measureLabelz[0] || '오늘',
+                           color: d3.select(this).style("fill")
+                       })
+                   });
+            }
+
 
             //var h3 =  availableHeight / 6;
-            var h3 =  availableHeight / 3;
+            var h3 =  availableHeight / 3,
+                w3 = availableWidth / 3;
 
 
             var markerData = markerz.map( function(marker, index) {
                 return {value: marker, label: markerLabelz[index]}
             });
-            gEnter
-              .selectAll("path.nv-markerTriangle")
-              .data(markerData)
-              .enter()
-              .append('path')
-              .attr('class', 'nv-markerTriangle')
-              .attr('d', 'M0,' + h3 + 'L' + h3 + ',' + (-h3) + ' ' + (-h3) + ',' + (-h3) + 'Z')
-              .on('mouseover', function(d) {
-                dispatch.elementMouseover({
-                  value: d.value,
-                  label: d.label || '어제',
-                  color: d3.select(this).style("fill"),
-                  pos: [x1(d.value), availableHeight/2]
-                })
 
-              })
-              .on('mousemove', function(d) {
-                  dispatch.elementMousemove({
-                      value: d.value,
-                      label: d.label || '어제',
-                      color: d3.select(this).style("fill")
-                  })
-              })
-              .on('mouseout', function(d, i) {
-                  dispatch.elementMouseout({
-                      value: d.value,
-                      label: d.label || '어제',
-                      color: d3.select(this).style("fill")
-                  })
-              });
 
-            g.selectAll("path.nv-markerTriangle")
-              .data(markerData)
-              .attr('transform', function(d) { return 'translate(' + x1(d.value) + ',' + (availableHeight / 2) + ')' });
+            if(vertical === "true") {
+                gEnter
+                   .selectAll("path.nv-markerTriangle")
+                   .data(markerData)
+                   .enter()
+                   .append('path')
+                   .attr('class', 'nv-markerTriangle')
+                   .attr('d', 'M0,' + w3 + 'L' + w3 + ',' + (-w3) + ' ' + (-w3) + ',' + (-w3) + 'Z')
+                   .on('mouseover', function(d) {
+                       dispatch.elementMouseover({
+                           value: d.value,
+                           label: d.label || '어제',
+                           color: d3.select(this).style("fill"),
+                           pos: [x1(d.value), availableHeight/2]
+                       })
+
+                   })
+                   .on('mousemove', function(d) {
+                       dispatch.elementMousemove({
+                           value: d.value,
+                           label: d.label || '어제',
+                           color: d3.select(this).style("fill")
+                       })
+                   })
+                   .on('mouseout', function(d, i) {
+                       dispatch.elementMouseout({
+                           value: d.value,
+                           label: d.label || '어제',
+                           color: d3.select(this).style("fill")
+                       })
+                   });
+            } else {
+                gEnter
+                   .selectAll("path.nv-markerTriangle")
+                   .data(markerData)
+                   .enter()
+                   .append('path')
+                   .attr('class', 'nv-markerTriangle')
+                   .attr('d', 'M0,' + h3 + 'L' + h3 + ',' + (-h3) + ' ' + (-h3) + ',' + (-h3) + 'Z')
+                   .on('mouseover', function(d) {
+                       dispatch.elementMouseover({
+                           value: d.value,
+                           label: d.label || '어제',
+                           color: d3.select(this).style("fill"),
+                           pos: [x1(d.value), availableHeight/2]
+                       })
+
+                   })
+                   .on('mousemove', function(d) {
+                       dispatch.elementMousemove({
+                           value: d.value,
+                           label: d.label || '어제',
+                           color: d3.select(this).style("fill")
+                       })
+                   })
+                   .on('mouseout', function(d, i) {
+                       dispatch.elementMouseout({
+                           value: d.value,
+                           label: d.label || '어제',
+                           color: d3.select(this).style("fill")
+                       })
+                   });
+            }
+
+
+
+            if(vertical === "true") {
+                g.selectAll("path.nv-markerTriangle")
+                   .data(markerData)
+                   .attr( 'transform', function(d) {
+                       return 'translate('
+                          + (availableWidth / 2)
+                          + ','
+                          + y1(d.value)  + ')'
+                   });
+
+            } else {
+                g.selectAll("path.nv-markerTriangle")
+                   .data(markerData)
+                   .attr('transform', function(d) {
+                       return 'translate('
+                          + x1(d.value)
+                          + ','
+                          + (availableHeight / 2) + ')'
+                   });
+            }
+
 
             wrap.selectAll('.nv-range')
                 .on('mouseover', function(d,i) {
@@ -2214,7 +2330,8 @@ nv.models.bullet = function() {
         }},
         color:  {get: function(){return color;}, set: function(_){
             color = nv.utils.getColor(_);
-        }}
+        }},
+        vertical: {get: function(){return vertical;}, set: function(_){vertical=_;}}
     });
 
     nv.utils.initOptions(chart);
@@ -2243,10 +2360,12 @@ nv.models.bulletChart = function() {
         , width = null
         , height = 55
         , tickFormat = null
-	, ticks = null
+	     , ticks = null
         , noData = null
         , dispatch = d3.dispatch()
         ;
+
+
 
     tooltip
         .duration(0)
@@ -2300,7 +2419,8 @@ nv.models.bulletChart = function() {
             // Stash the new scale.
             this.__chart__ = x1;
 
-            var w0 = function(d) { return Math.abs(x0(d) - x0(0)) }, // TODO: could optimize by precalculating x0(0) and x1(0)
+            var w0 = function(d) { return Math.abs(x0(d) - x0(0)) },
+            // TODO: could optimize by precalculating x0(0) and x1(0)
                 w1 = function(d) { return Math.abs(x1(d) - x1(0)) };
 
             var title = gEnter.select('.nv-titles').append('g')

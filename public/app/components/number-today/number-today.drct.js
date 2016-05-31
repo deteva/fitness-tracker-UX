@@ -184,7 +184,8 @@
 						showXAxis:"false",
 						showYAxis:"false",
 						interactive:"true",
-						tooltips:"true"
+						tooltips:"true",
+						vertical:"false"
 					}
 				};
 				//calories
@@ -197,7 +198,7 @@
 				$scope.dataCals = {
 					"ranges": [2358, 1552,0],
 					"measures": [675],
-					"markers": [2304]
+					"markers": [1300]
 				};
 
 				//Steps
@@ -211,7 +212,7 @@
 				$scope.dataActivityCalories = {
 					"ranges": [30, 29, 0],
 					"measures": [20],
-					"markers": [30]
+					"markers": [20]
 				};
 				//Floors
 				$scope.dataFloors = {

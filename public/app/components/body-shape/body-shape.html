@@ -1,21 +1,29 @@
 <section class = "body-shape">
     <!--comment of body shape-->
-    <div class =  "comment-body">
-        <div class = "today-status">
-            <hgroup>
-                <h1>5/12</h1>
-                <h4>today</h4>
-            </hgroup>
+    <div class ="comment-body icon-data">
+        <div class = "today-title">
+            <div class="title no-padding">
+                <h1>
+                    <div class="point">5</div>/12
+                </h1>
+                <span>today</span>
+            </div>
             <figure>
-                <p>reward clothe</p>
-                <svg>
+                <!--<div class="bg-reward"></div>-->
+                <div ng-include="'/app/components/body-shape/reward.html'"></div>
+                <svg class=""
+                     x="0px" y="0px"
+                     width="60px" height="100px"
+                     viewBox="0 0 60 100">
+                    <use xlink:href="#reward" />
                 </svg>
             </figure>
         </div>
 
         <article class = "drink-water">
-            <p>drink of water</p>
+            <nvd3 class="graph" options="verticalOptions" data="dataWater"></nvd3>
         </article>
+
     </div>
     <!--image of body shape-->
     <article class = "body-container">
