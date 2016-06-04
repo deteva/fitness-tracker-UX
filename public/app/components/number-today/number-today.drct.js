@@ -173,7 +173,7 @@
 					chart: {
 						type: 'bulletChart',
 						transitionDuration: 500,
-						height:7,
+						height:9,
 						width:260,
 						margin : {
 							top: 0,

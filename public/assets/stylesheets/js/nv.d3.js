@@ -1985,7 +1985,9 @@ nv.models.bullet = function() {
         , height = 8
         , container = null
         , tickFormat = null
-        , color = nv.utils.getColor(['#193346'])
+        //, color = nv.utils.getColor(['#193346'])
+        , colorRed = nv.utils.getColor(['#f74d52'])
+        , colorViolet = nv.utils.getColor(['#512b8d'])
         , dispatch = d3.dispatch('elementMouseover', 'elementMouseout', 'elementMousemove')
         , defaultRangeLabels = ["목표", "지난주 평균"]
         , legacyRangeClassNames = ["Goals", "LastWeek"]
@@ -2081,7 +2083,16 @@ nv.models.bullet = function() {
             //today status
             gEnter.append('rect').attr('class', 'nv-measure');
 
-            wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+            //set class base water point
+            gEnter.append('circle').attr('class', 'base-point-water-outer');
+            gEnter.append('circle').attr('class', 'base-point-water-inner');
+
+
+            if(vertical === "true") {
+                wrap.attr('transform', 'translate(' + margin.left + ',' + availableHeight + ')' + ' scale(1, -1)' );
+            } else {
+                wrap.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+            }
 
             var w0 = function(d) { return Math.abs(x0(d) - x0(0)) },
             // TODO: could optimize by precalculating x0(0) and x1(0)
@@ -2097,16 +2108,17 @@ nv.models.bullet = function() {
                 for(var i=0,il=rangez.length; i<il; i++){
                     var range = rangez[i];
                     g.select('rect.nv-range'+i)
-                       .attr('width', availableWidth)
+                       .attr('width', availableWidth / 4)
                        .attr('height', h1(range))
                        .attr('y', yp1(range))
+                       .attr('x', 7.5)
                        .datum(range)
                 }
             } else {
                 for(var i=0,il=rangez.length; i<il; i++){
                     var range = rangez[i];
                     g.select('rect.nv-range'+i)
-                       .attr('height', availableHeight)
+                       .attr('height', availableHeight - 2)
                        .attr('width', w1(range))
                        .attr('x', xp1(range))
                        .datum(range)
@@ -2115,11 +2127,11 @@ nv.models.bullet = function() {
 
             if(vertical === "true") {
                 g.select('rect.nv-measure')
-                   .style('fill', color)
+                   .style('fill', colorViolet)
                    .attr('height', measurez < 0 ? y1(0) - y1(measurez[0]) : y1(measurez[0]) - y1(0))
                    .attr('y', yp1(measurez))
-                   .attr('width', availableWidth)
-                   .attr('x', 0)
+                   .attr('width', availableWidth / 4)
+                   .attr('x', 7.5)
                    .on('mouseover', function() {
                        dispatch.elementMouseover({
                            value: measurez[0],
@@ -2143,8 +2155,8 @@ nv.models.bullet = function() {
                    });
             } else {
                 g.select('rect.nv-measure')
-                   .style('fill', color)
-                   .attr('height', availableHeight)
+                   .style('fill', colorRed)
+                   .attr('height', availableHeight - 2)
                    .attr('y', 0)
                    .attr('width', measurez < 0 ?
                    x1(0) - x1(measurez[0]) : x1(measurez[0]) - x1(0))
@@ -2171,10 +2183,35 @@ nv.models.bullet = function() {
                        })
                    });
             }
+            //set attributes of base water point
+            if(vertical === "true") {
+                g.select('circle.base-point-water-outer')
+                   .style('fill', '#512B8D')
+                   .attr('cx', 7.5)
+                   .attr('cy', 7.5)
+                   .attr('r', 7.5)
+                   .attr( 'transform', function(d) {
+                       return 'translate('
+                          + (2.5)
+                          + ','
+                          + (availableHeight - 15)  + ')'
+                   });
 
+                g.select('circle.base-point-water-inner')
+                   .style('fill', '#A0A6A9')
+                   .attr('cx', 7.5)
+                   .attr('cy', 7.5)
+                   .attr('r', 4.5)
+                   .attr( 'transform', function(d) {
+                       return 'translate('
+                          + (2.5)
+                          + ','
+                          + (availableHeight - 15)  + ')'
+                   });
+            }
 
             //var h3 =  availableHeight / 6;
-            var h3 =  availableHeight / 3,
+            var h3 =  availableHeight / 3 - 0.5,
                 w3 = availableWidth / 3;
 
 
@@ -2182,35 +2219,67 @@ nv.models.bullet = function() {
                 return {value: marker, label: markerLabelz[index]}
             });
 
+            //<svg>
+            //<circle cx="10" cy="10" r="10" fill= "#512B8D"/>
+            //<polygon points="15,9 11,9 11,5 9,5 9,9 5,9 5,11 9,11 9,15 11,15 11,11 15,11 "
+            //fill= "#FFFFFF"/>
+            //</svg>
 
             if(vertical === "true") {
-                gEnter
-                   .selectAll("path.nv-markerTriangle")
+                var gEnterObj = gEnter.selectAll("circle.nv-markerTriangle")
                    .data(markerData)
-                   .enter()
-                   .append('path')
+                   .enter();
+
+                gEnterObj
+                   .append('circle')
                    .attr('class', 'nv-markerTriangle')
-                   .attr('d', 'M0,' + w3 + 'L' + w3 + ',' + (-w3) + ' ' + (-w3) + ',' + (-w3) + 'Z')
+                   .attr('cx', 10)
+                   .attr('cy', 10)
+                   .attr('y', measurez < 0 ? y1(0) - y1(measurez[0]) : y1(measurez[0]) - y1(0))
+                   .attr('x', 0)
+                   .attr('r', 10)
+                   .attr('fill', "#512B8D")
+                   .attr( 'transform', function(d) {
+                    return 'translate('
+                       + (0)
+                       + ','
+                       + y1(d.value - 40)  + ')'
+                    });
+                //y1(d.value - 40) >> for 10px up
+                gEnterObj
+                   .append('polygon')
+                   .attr('points', "15,9 11,9 11,5 9,5 9,9 5,9 5,11 9,11 9,15 11,15 11,11 15,11 ")
+                   .attr('y', measurez < 0 ? y1(0) - y1(measurez[0]) : y1(measurez[0]) - y1(0))
+                   .attr('x', 0)
+                   .attr('fill', "#ffffff")
+                   .attr( 'transform', function(d) {
+                       return 'translate('
+                          + (0)
+                          + ','
+                          + y1(d.value - 40)  + ')'
+                   });
+
+                gEnter
+                   .selectAll(".nv-markerTriangle")
                    .on('mouseover', function(d) {
                        dispatch.elementMouseover({
                            value: d.value,
-                           label: d.label || '어제',
+                           label: d.label || '건강을 마셔요!',
                            color: d3.select(this).style("fill"),
                            pos: [x1(d.value), availableHeight/2]
                        })
-
                    })
                    .on('mousemove', function(d) {
                        dispatch.elementMousemove({
                            value: d.value,
-                           label: d.label || '어제',
+                           label: d.label || '건강을 마셔요',
                            color: d3.select(this).style("fill")
                        })
                    })
                    .on('mouseout', function(d, i) {
                        dispatch.elementMouseout({
                            value: d.value,
-                           label: d.label || '어제',
+                           label: d.label || '건강을 마셔요',
                            color: d3.select(this).style("fill")
                        })
                    });
@@ -2249,24 +2318,14 @@ nv.models.bullet = function() {
 
 
 
-            if(vertical === "true") {
-                g.selectAll("path.nv-markerTriangle")
-                   .data(markerData)
-                   .attr( 'transform', function(d) {
-                       return 'translate('
-                          + (availableWidth / 2)
-                          + ','
-                          + y1(d.value)  + ')'
-                   });
-
-            } else {
+            if(!(vertical === "true")) {
                 g.selectAll("path.nv-markerTriangle")
                    .data(markerData)
                    .attr('transform', function(d) {
                        return 'translate('
                           + x1(d.value)
                           + ','
-                          + (availableHeight / 2) + ')'
+                          + (availableHeight / 2 - 1.5) + ')'
                    });
             }
 

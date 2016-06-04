@@ -3,10 +3,10 @@
   $remSize: $size / $base-font-size
   @return #{$remSize}rem
 
+
 @mixin fontsize-rem($size)
   font-size: $size
   font-size: calculateRem($size)
-
 
 @mixin center($xy:xy)
   @if $xy == xy
@@ -24,7 +24,6 @@
     bottom: auto
     transform: translateY(-50%)
 
-
 //clearfix 2 types
 @import "compass/utilities/general/clearfix"
 =clearfix-custom
@@ -36,25 +35,21 @@
   &:after
     clear: both
 
-
 //scrollbar styling Forked from [Hugo Giraudel](http://codepen.io/HugoGiraudel/)'s Pen [Sass mixin for scrollbar styling](http://codepen.io/HugoGiraudel/pen/KFDuB/)
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 40%))
   ::-webkit-scrollbar
     width:  $size
     height: $size
-
   ::-webkit-scrollbar-thumb
     background: $foreground-color
-
   ::-webkit-scrollbar-track
     background: $background-color
 
   // For Internet Explorer
+
   body
     scrollbar-face-color: $foreground-color
     scrollbar-track-color: $background-color
-
-
 //button
 @mixin outline-btn($bgcolor, $ouline-color, $y:yang)
   @if $y == yang

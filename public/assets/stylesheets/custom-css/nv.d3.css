@@ -118,7 +118,15 @@
 .nvd3.nv-bullet .nv-measure:hover { fill-opacity: 1; }
 .nvd3.nv-bullet .nv-marker { stroke: #000; stroke-width: 2px; }
 /*yesteday marker*/
-.nvd3.nv-bullet .nv-markerTriangle { stroke: #f74d52; fill: #f74d52; stroke-width: 1.5px; }
+/*.nvd3.nv-bullet .nv-markerTriangle { stroke: #f74d52; fill: #f74d52; stroke-width: 1.5px; }*/
+.nvd3.nv-bullet .nv-markerTriangle { stroke: #757575; fill: #757575; stroke-width: 1.8px; }
+polygon.nv-markerTriangle {
+    cursor: pointer;
+    fill: #ffffff !important;
+    stroke: none !important;
+}
+/*add water marker*/
+circle.nv-markerTriangle { stroke: none !important; fill: #512b8d !important; stroke-width: 0px !important; cursor: pointer }
 .nvd3.nv-bullet .nv-tick line { stroke: #666; stroke-width: .5px; }
 .nvd3.nv-bullet .nv-range.nv-s0 { fill: #eee; }
 .nvd3.nv-bullet .nv-range.nv-s1 { fill: #ddd; }
@@ -128,11 +136,14 @@
 
 
 .nvd3.nv-bullet .nv-range {
-    fill: #bababa;
-    fill-opacity: .4;
+    fill: #cdcaca;
+    fill-opacity: 0.4;
+}
+rect.nv-range.nv-range1.nv-rangeLastWeek {
+    fill-opacity: 0.6;
 }
 .nvd3.nv-bullet .nv-range:hover {
-    fill-opacity: .7;
+    fill-opacity: 0.99;
 }
 
 .nvd3.nv-candlestickBar .nv-ticks .nv-tick {
@@ -157,7 +168,6 @@
     transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
     -moz-transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
     -webkit-transition: stroke-width 250ms linear, stroke-opacity 250ms linear;
-
 }
 
 .nvd3.nv-candlestickBar .nv-ticks line {

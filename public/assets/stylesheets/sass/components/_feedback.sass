@@ -148,11 +148,10 @@ section.feedback
       div
         >span
           color : $alert-yellow
-    l
+    li
       +adjust-leading-to(2, $base-font-size + 0px)
       position: relative
       border-bottom: 1px solid $misty-grey2
-
       &.none-border
         //border-bottom: 0px >> transparent effect
         border-bottom: 1px solid $medium-grey
@@ -160,7 +159,6 @@ section.feedback
         +margin-trailer(2, $base-font-size - 0px)
       @include with-layout($susy-feedback-mission)
         @include container()
-
         .selected-icon
           @include span(1 fist)
           .percentage-icon
@@ -170,7 +168,6 @@ section.feedback
           span
             padding-left: 40px
             top: 0
-
         .desc
           @include span(1 last)
           position: absolute

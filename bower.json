@@ -27,7 +27,8 @@
     "angular-nvd3": "^1.0.7",
     "angular-moment": "^0.10.3",
     "angular-messages": "^1.5.5",
-    "angular-meter-polyfill": "^0.2.1"
+    "angular-meter-polyfill": "^0.2.1",
+    "Snap.svg": "snap.svg#^0.4.1"
   },
   "resolutions": {
     "angular": "^1.4.8",

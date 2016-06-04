@@ -3,25 +3,21 @@
   --------------------------- */
 =body-shape-w($susy-layout, $nest-layout)
   @include span(3 at 1 $susy-layout first)
-  position: absolute
-  border: 1px solid $stone-grey2
+  //position: absolute
   .comment-body
     @include span(1 of ($nest-layout) first)
     div.title
       height: 50px
-    +layout-outline($balanced-yellow)
+    //+layout-outline($balanced-yellow)
+
   .body-container
     @include span(1 of ($nest-layout) at 2)
-    //width: 220px
-    +layout-outline($balanced-yellow)
-    p
-      +center(y)
+    //+layout-outline($balanced-yellow)
 
   .gutter
     @include span(1 of ($nest-layout) last)
-    +layout-outline($balanced-yellow)
-    p
-      +center(y)
+    //+layout-outline($balanced-yellow)
+
 
 section.body-shape
   padding-top: 25px
@@ -30,32 +26,34 @@ section.body-shape
     @include span(6 of 89 first)
     min-width: 50px
     +part-title
-    +layout-outline($happy-violet)
+    //+layout-outline($happy-violet)
     div.title h1
       letter-spacing: -0.03em
-
     figure
       height: 100px
-      margin: 0.3em 0 0 0
+      //margin: 0.3em 0 0 0
+      margin: 5px 0 0 0
       //reward clothe
       .bg-reward
         background-color: $pearl-grey
         width: 100%
         height: 49px
         margin-bottom: 2px
-
     article.drink-water
+      position: relative
       margin-top: 110px
-      +layout-outline($happy-violet)
-
+      height: 610px
+      //+layout-outline($happy-violet)
+      .graph
+        position: absolute
+        +center(x)
   .body-container
     @include span(22 of 89 at 7)
-    +layout-outline($happy-violet)
-
+    //+layout-outline($happy-violet)
+    margin-top: 155px
   .gutter
     @include span(5 of 89 at 29)
-    +layout-outline($happy-violet)
-
+    //+layout-outline($happy-violet)
 
   @include susy-breakpoint($bp-wide, $susy-wide)
     +body-shape-w($susy-wide, 6 22 3)
