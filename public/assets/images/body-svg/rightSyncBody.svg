@@ -1,18 +1,21 @@
-
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1"
+id="body-shape"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="218px" height="720px" viewBox="0 0 218 720" style="enable-background:new 0 0 218 720;" xml:space="preserve">
 <style type="text/css">
 <![CDATA[
-	.st0{display:none;clip-path:url(#mask_1_);fill:#FFFFFF;}
-	.st1{fill:#512B8D;}
-	.st2{fill:#F0F0F0;}
-	.st3{fill:#F74D52;}
-	.st4{fill:#C0C3C5;}
-	.st5{fill:none;stroke:#C0C3C5;stroke-width:7;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st6{fill:#FAB657;}
-	.st7{fill:#FFFFFF;}
-	.st8{fill:#FFFFFF;stroke:#C0C3C5;stroke-width:7;stroke-linejoin:round;stroke-miterlimit:10;}
-	.st9{fill:#A0A6A9;}
+#body-shape	.st0{clip-path:url
+(#mask_1_);fill:#FFFFFF;}
+#body-shape
+.st1{fill:#512B8D;}
+#body-shape	.st2{fill:#F0F0F0;}
+#body-shape	.st3{fill:#F74D52;}
+#body-shape	.st4{fill:#C0C3C5;}
+#body-shape	.st5{fill:none;stroke:#C0C3C5;stroke-width:7;stroke-linejoin:round;stroke-miterlimit:10;}
+#body-shape	.st6{fill:#FAB657;}
+#body-shape	.st7{fill:#FFFFFF;}
+#body-shape	.st8{fill:#FFFFFF;stroke:#C0C3C5;stroke-width:7;stroke-linejoin:round;stroke-miterlimit:10;}
+#body-shape	.st9{fill:#A0A6A9;}
 ]]>
 </style>
 <g id="b-sync-head">

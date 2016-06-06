@@ -4,53 +4,81 @@
 =body-shape-w($susy-layout, $nest-layout)
   @include span(3 at 1 $susy-layout first)
   //position: absolute
+
   .comment-body
     @include span(1 of ($nest-layout) first)
     div.title
       height: 50px
     //+layout-outline($balanced-yellow)
-
   .body-container
     @include span(1 of ($nest-layout) at 2)
     //+layout-outline($balanced-yellow)
-
   .gutter
     @include span(1 of ($nest-layout) last)
     //+layout-outline($balanced-yellow)
 
-
 section.body-shape
   padding-top: 25px
-  //height: 1100px why?
+  @include susy-breakpoint($bp-wide, $susy-wide)
+    width : 37% !important
   .comment-body
     @include span(6 of 89 first)
     min-width: 50px
     +part-title
     //+layout-outline($happy-violet)
+
     div.title h1
       letter-spacing: -0.03em
     figure
       height: 100px
       //margin: 0.3em 0 0 0
-      margin: 5px 0 0 0
+      margin: 15px 0 0 0
       //reward clothe
       .bg-reward
         background-color: $pearl-grey
         width: 100%
         height: 49px
         margin-bottom: 2px
+
     article.drink-water
       position: relative
-      margin-top: 110px
-      height: 610px
+      margin-top: 15px
+      height: 600px
       //+layout-outline($happy-violet)
       .graph
         position: absolute
         +center(x)
+
   .body-container
     @include span(22 of 89 at 7)
+    padding-left: 5%
     //+layout-outline($happy-violet)
-    margin-top: 155px
+    margin-top: 4%
+    text-align: right
+
+    @include susy-breakpoint($bp-wide, $susy-wide)
+      margin-top: 9%
+      text-align: center
+
+    button
+      margin-bottom: 6%
+      background: none
+      border: none
+      width: 170px
+      @include susy-breakpoint($bp-wide, $susy-wide)
+        width: 163px
+
+      span
+        color : $grey
+        //padding-left: 14%
+        @include susy-breakpoint($bp-wide, $susy-wide)
+          padding-left: 13%
+        @include susy-breakpoint($bp-wider, $bp-wider)
+          padding-left: 5%
+
+        &:hover
+          color : $dark-jet
+
   .gutter
     @include span(5 of 89 at 29)
     //+layout-outline($happy-violet)

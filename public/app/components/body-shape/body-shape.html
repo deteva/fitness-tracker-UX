@@ -6,7 +6,8 @@
                 <h1>
                     <div class="point">5</div>/12
                 </h1>
-                <span>today</span>
+                <span>Today
+                </span>
             </div>
             <figure>
                 <!--<div class="bg-reward"></div>-->
@@ -26,6 +27,11 @@
     </div>
     <!--image of body shape-->
     <article class = "body-container">
+        <button type="submit"
+                ng-init="syncBtn =syncBtnText[0]"
+                ng-click="doSync()">
+            <span>{{syncBtn}}</span>
+        </button>
     </article>
     <!-- gutter-->
     <div class = "gutter">

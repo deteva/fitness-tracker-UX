@@ -105,10 +105,8 @@
     @else if $y == yin
       color: shade($bgcolor, 30%)
       -webkit-filter: brightness(97%)
-
       &:active
         color: shade($bgcolor, 70%)
-
     &::before
       opacity: 1
       +transform3d(scale3d(1, 1, 1))
@@ -119,6 +117,7 @@
 
 //layout-outline
 @mixin layout-outline($color: $misty-grey2)
+
   border: 1px solid $color
   height: 100%
 

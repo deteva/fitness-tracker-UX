@@ -3,7 +3,6 @@
  */
 (function() {
 	'use strict';
-
 	angular
 		.module('app.core')
 		.directive('numberToday', NumberToday);
@@ -51,7 +50,6 @@
 					console.log("count icon width: " + width);
 					return width;
 				}
-
 
 				//all data
 				$scope.targets = [

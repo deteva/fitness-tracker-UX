@@ -24,7 +24,7 @@
 					chart: {
 						type: 'bulletChart',
 						transitionDuration: 500,
-						height:610,
+						height:600,
 						width:20,
 						margin : {
 							top: 0,
@@ -57,57 +57,96 @@
 					"measures": [800],
 					"markers": [800]
 				};
+
 			//attach body svg
 				var bodyShape = Snap.selectAll('.body-container');
 				console.log(bodyShape);
 				//load svg file
 				Snap.load('/assets/images/body-svg/beforeSyncBody.svg', function (body) {
-					var head = body.select('#b-sync-head'),
+					$scope.head = body.select('#b-sync-head');
 
-						 leftArms = body.select('#b-sync-left-arm'),
-						 rightArms = body.select('#b-sync-right-arm'),
+					$scope.leftArms = body.select('#b-sync-left-arm');
+					$scope.rightArms = body.select('#b-sync-right-arm');
 
-						 bottom = body.select('#b-sync-bottom'),
-						 bottomOutline = body.select('#b-sync-layer-line'),
+					$scope.bottom = body.select('#b-sync-bottom');
+					$scope.bottomOutline = body.select('#b-sync-layer-line');
 
-						 top = body.select('#b-sync-top'),
-						 neck = body.select('#b-sync-neck'),
+					$scope.top = body.select('#b-sync-top');
+					$scope.neck = body.select('#b-sync-neck');
 
-					 	 head = body.select('#bg-head'),
-						 headOutline = body.select('#bg-head #outline'),
-						 refreshHead = body.select('#refresh-head rect.st10'),
+					$scope.head = body.select('#bg-head');
+					$scope.headOutline = body.select('#bg-head #outline');
+					$scope.refreshHead = body.select('#refresh-head rect');
 
-						 points = body.select('#points'),
-						 restingHeartRatePoints = body.select('#basePoint-restingHeartRate'),
-						 foodPlanPoints = body.select('#basePoint-foodPlan'),
-						 estimatedCaloriesOutpPoints = body.select('#basePoint-estimatedCaloriesOut'),
-						 caloriesPoints = body.select('#basePoint-calories'),
-						 stepsPoints = body.select('#basePoint-steps'),
-						 activityCaloriesPoints = body.select('#basePoint-activityCalories'),
-						 floorsPoints = body.select('#basePoint-floors'),
-						 distancePoints = body.select('#basePoint-distance'),
+					$scope.points = body.select('#points');
+					$scope.restingHeartRatePoints = body.select('#basePoint-restingHeartRate');
+					$scope.foodPlanPoints = body.select('#basePoint-foodPlan');
+					$scope.estimatedCaloriesOutpPoints = body.select('#basePoint-estimatedCaloriesOut');
+					$scope.caloriesPoints = body.select('#basePoint-calories');
+					$scope.stepsPoints = body.select('#basePoint-steps');
+					$scope.activityCaloriesPoints = body.select('#basePoint-activityCalories');
+					$scope.floorsPoints = body.select('#basePoint-floors');
+					$scope.distancePoints = body.select('#basePoint-distance');
 
-						 logWeightBtn = body.select('#add-btn-logWeight'),
+					$scope.logWeightBtn = body.select('#add-btn-logWeight');
 
-						 animating = false;
-
-					function reset () {
-						refreshHead.transform("s0,0");
-					}
+					//$scope.animating = false;
 
 					// on load, first reset the paths
-					reset();
-					bodyShape.forEach(function (el) {
-						console.log("body of svg is sycn");
-						el.append(body);
-					});
+					$scope.reset = function() {
+						$scope.refreshHead.transform("s0,0");
+						bodyShape.forEach(function (el) {
+							console.log("body of svg is sycn");
+							el.append(body);
+						});
+					};
 
+					$scope.reset();
 
+				});
 
+				//var syncBtn = angular.element(document.querySelector("#body-container button span"));
+				//console.log(syncBtn);
+				$scope.isSync = false;
+				$scope.syncBtnText = [
+					'클릭! 가상으로 데이터 씽크',
+					'데이터 씽크 이전으로 클릭!'
+				];
 
+				function headSync(delay, length){
+					//$scope.animating = true;
+					$scope.head.animate({
+						fill : "#F0F0F0"
+					}, length , mina.easeinout);
+				};
 
+				function animateSync() {
+					headSync(0, 500);
+				}
 
-				})
+				$scope.doSync = function () {
+					$scope.isSync = !$scope.isSync;
+					$scope.syncBtn = $scope.isSync ? $scope.syncBtnText[1] : $scope.syncBtnText[0];
+
+					if($scope.isSync) {
+						animateSync();
+
+					} else {
+						$scope.reset();
+					}
+
+				};
+
+				//$scope.$watch('isSync', function (){
+				//})
+
+				//syncBtn.click(function () {
+				//	if($scope.isSync === true) {
+				//
+				//	} else {
+				//
+				//	}
+				//});
 
 			}
 		}
