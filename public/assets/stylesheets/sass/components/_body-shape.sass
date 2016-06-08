@@ -34,6 +34,7 @@ section.body-shape
       //margin: 0.3em 0 0 0
       margin: 15px 0 0 0
       //reward clothe
+
       .bg-reward
         background-color: $pearl-grey
         width: 100%
@@ -64,8 +65,8 @@ section.body-shape
       margin-bottom: 6%
       background: none
       border: none
-      width: 170px
-      @include susy-breakpoint($bp-wide, $susy-wide)
+      width: 177px
+      @include susy-breakpoint($bp-wider, $susy-wider)
         width: 163px
 
       span
@@ -75,9 +76,12 @@ section.body-shape
           padding-left: 13%
         @include susy-breakpoint($bp-wider, $bp-wider)
           padding-left: 5%
-
         &:hover
           color : $dark-jet
+
+    svg#body
+      transform: scale(0.9)
+      margin-top: -17%
 
   .gutter
     @include span(5 of 89 at 29)
