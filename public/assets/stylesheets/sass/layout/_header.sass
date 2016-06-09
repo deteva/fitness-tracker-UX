@@ -5,39 +5,98 @@
   .header-nav-container
     @include span(first 89)
     @include pad(2%)
-    border: 1px solid mediumvioletred
+    //border: 1px solid mediumvioletred
     height: 70px
+    min-width: 877px
 
     .logo-side
-      @include span(20 of 89 first)
+      @include span(16 of 89 first)
       //text-indent: -9999px
       padding-top: 17px
+      @include susy-breakpoint($bp-wide)
+        @include span(14 of 89 first)
 
     aside.account
       @include span(18 of 89 last)
-      height: 70px
-      border: solid 1px $happy-violet
-      //float: right
+      //height: 70px
+      //border: solid 1px $happy-violet
+      min-width: 165px
       @include susy-breakpoint($bp-wide)
-        @include span(16 of 89 last)
-
+        @include span(20 of 89 last)
+      @include susy-breakpoint($bp-wider)
+        @include span(18 of 89 last)
       div,a
         float: left
-        margin: 0 9%
-      .nav-item
-        position: relative
-        top: 50%
-        transform: translateY(-50%)
-        bottom: auto
+        &.nav-box
+          height: 68px
+          padding: 0 8%
+          @include susy-breakpoint($bp-wide)
+            padding: 0 10%
+          &:hover
+            background-color: #e1f7f7
+          &:active
+            background-color: #4abdbd
+          &:first-child
+            .nav-item
+              &:after
+                border: 1px solid rgba(0,0,0,0.10)
+                border-radius: 50%
+                content: ''
+                width: 33px
+                height: 33px
+                left: -1%
+                position: absolute
+                +center(y)
+          .nav-item
+            position: relative
+            top: 50%
+            transform: translateY(-50%)
+            bottom: auto
+            cursor: pointer
+            .profile-photo
+              border-radius: 50%
 
     nav.header-nav
-      @include span(51 of 89 at 21)
+      @include span(51 of 89 at 17)
       @include susy-breakpoint($bp-wide)
-        @include span(51 of 89 at 21)
+        @include span(50 of 89 at 15)
+      @include susy-breakpoint($bp-wider)
+        @include span(51 of 89 at 15)
+
       ul
         li
           float: left
-          margin-left: 1.5em
+          height: 69px
+          min-width: 65px
+          vertical-align: middle
+          line-height: 70px
+          padding: 0 3%
+          a
+            color: $deep-gray
+          &:hover:not(.store)
+            background-color: #e1f7f7
+          &:first-child
+            & >a
+              color: #0095b2
+              font-family: $bold-font
+          &.store
+            & >a
+              background: #fff
+              border: 2px solid #e5e5e5
+              border-radius: 20px
+              color: #f54786
+              display: inline
+              padding: 0.5em 1.4em
+              text-transform: uppercase
+              font-size: 0.8em
+              font-family: $bold-font
+            &:hover > a
+              background: #f54786
+              border-color: #f54786
+              color: $white
+
+
+
 
 header.header-container
   @include full
@@ -46,9 +105,11 @@ header.header-container
   height: 70px
   +background-image(linear-gradient($white, $sterling-white))
   border-bottom: 1px solid $pearl-grey
+
   .wrap
     @include container($bp-medium)
     +header-container-part
+
     @include susy-breakpoint($bp-wide)
       @include container
       //+header-container-part
