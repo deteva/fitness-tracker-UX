@@ -93,6 +93,9 @@
 
 					$scope.logWeightBtn = body.select('#add-btn-logWeight');
 
+					$scope.svgBody = body.select('#all');
+
+
 					//$scope.animating = false;
 
 					// on load, first reset the paths
@@ -105,6 +108,25 @@
 					};
 
 					$scope.reset();
+
+					var hoverIn = function bodyHover(){
+						if(!$scope.isSync) {
+							return;
+						} else {
+							console.log('hover in event');
+						};
+					};
+
+					var hoverOut = function bodyHoverOut() {
+						if(!$scope.isSync) {
+							return;
+						} else {
+							console.log('hover out event');
+						};
+					};
+
+					$scope.svgBody.hover(hoverIn, hoverOut);
+
 
 				});
 
@@ -306,7 +328,6 @@
 				}
 
 				function animateSync() {
-
 					headSync(0, 500);
 					bottomSync(200, 200);
 				}
@@ -315,15 +336,20 @@
 					$scope.isSync = !$scope.isSync;
 					$scope.syncBtn = $scope.isSync ? $scope.syncBtnText[1] : $scope.syncBtnText[0];
 					animateSync();
-
 					//if($scope.isSync) {
 					//	animateSync();
 					//
 					//} else {
 					//	$scope.reset();
 					//}
-
 				};
+
+				//var svgBody = document.querySelector("#body");
+				//
+				//svgBody.hover(hoverIn, hoverOut);
+
+
+
 
 				//$scope.$watch('isSync', function (){
 				//})
