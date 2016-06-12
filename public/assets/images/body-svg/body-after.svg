@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="218px" height="720px" viewBox="0 0 218 720" style="enable-background:new 0 0 218 720;" xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+	.st0{fill:#512B8D;}
+	.st1{fill:#F0F0F0;}
+	.st2{fill:#F74D52;}
+	.st3{fill:none;stroke:#C0C3C5;stroke-width:4;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:#C0C3C5;}
+	.st5{fill:none;stroke:#C0C3C5;stroke-width:7;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st6{fill:#FAB657;}
+	.st7{fill:#F0F0F0;stroke:#C0C3C5;stroke-width:7;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st8{clip-path:url(#SVGID_2_);fill:#FFFFFF;}
+	.st9{fill:#A0A6A9;}
+]]>
+</style>
+<g id="before-sync-body">
+	<g id="b-sync-arms">
+		<path id="b-sync-left-arm" class="st7" d="M33.4,192.5v72.4c0,0-7.2,37.1-9.1,50.1c-1.8,12.9-3.2,15,0,31.5
+			c3.2,16.7,7.7,37.1,7.7,37.1h4.8c0,0,11.9-44.1,43.2-87.2l-30.9-96.5L33.4,192.5z"/>
+		<path id="b-sync-right-arm" class="st7" d="M186.3,192.5v72.4c0,0,7.2,37.1,9.1,50.1c1.8,12.9,3.2,15,0,31.5
+			c-3.2,16.7-7.7,37.1-7.7,37.1h-4.8c0,0-10.5-44.1-41.9-87.2l29.6-96.5L186.3,192.5z"/>
+	</g>
+	<path id="b-sync-bottom" class="st7" d="M108.8,295.8H52c0,0-19.5,49.2-21.5,116.2c-3.5,108,9,208.1,13,270.5l7,0.4L7.3,715.7
+		l68.3-12.1v-19c0,0,3.2-0.1,7.2-0.5c0,0,22.5-275.2,23.4-305.4h5.2c0.9,30.2,23.7,304.9,23.7,304.9c9,0.6,0,0,6.9,0v20l68.3,12.1
+		l-43.9-33.6l7.9-0.6c3-69.1,15.9-169.3,12.9-273c0-65-21-112.7-21-112.7H108.8"/>
+	<g id="b-sync-b_1_">
+		<g id="b-sync-layer-line">
+			<line id="b-sync-bottom-line_1_" class="st5" x1="92.9" y1="377.2" x2="126.3" y2="377.2"/>
+			<line id="b-sync-angkle-right" class="st3" x1="172.8" y1="679.8" x2="139.5" y2="682.1"/>
+			<line id="b-sync-ankle-left" class="st3" x1="45.2" y1="681" x2="80.2" y2="682.7"/>
+		</g>
+	</g>
+	<g id="b-sync-t_1_">
+		<path id="b-sync-top_1_" class="st7" d="M109,296.6h57.7l0.5-90l31.1-14.8l-11.1-48.2c-26.4-28.8-78.2-25.5-78.2-25.5
+			s-51.8-3.2-78.2,25.5l-11.1,48.2l31,14.8l1.1,90H109z"/>
+		<path id="b-sync-neck_1_" class="st5" d="M157,124.8c0,0-4.1,13.7-12,25.3s-23.8,15.8-36,15.8s-28.1-4.2-36-15.8s-12-25.3-12-25.3
+			S102.8,109.2,157,124.8z"/>
+	</g>
+</g>
+<g id="b-sync-head">
+	<path id="bg-head" class="st1" d="M59.6,103.5V3.5h100v100H59.6z M79.3,83.8h60.5V24.6H79.3V83.8z"/>
+	<path id="outline" class="st4" d="M157.6,5.5v96h-96v-96H157.6 M77.3,85.8h4h56.5h4v-4V26.6v-4h-4H81.3h-4v4v55.2V85.8 M161.6,1.5
+		h-104v104h104V1.5L161.6,1.5z M81.3,81.8V26.6h56.5v55.2H81.3L81.3,81.8z"/>
+	<g id="refresh-head">
+		<g>
+			<g>
+				<g>
+					<defs>
+						<path id="SVGID_1_" d="M61.5,101.7V5.5h96.2v96.2H61.5z M77.5,85.5H142V22.7H77.5V85.5z"/>
+					</defs>
+					<clipPath id="SVGID_2_">
+						<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+					</clipPath>
+					<rect x="61.3" y="1.5" class="st8" width="96.5" height="32.6"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+<g id="points">
+	<g id="basePoint-restingHeartRate">
+		<circle class="st9" cx="109.2" cy="141.8" r="5"/>
+		<circle class="st0" cx="109.2" cy="141.8" r="3"/>
+	</g>
+	<g id="basePoint-foodPlan">
+		<circle class="st9" cx="168.2" cy="207.8" r="5"/>
+		<circle class="st6" cx="168.2" cy="207.8" r="3"/>
+	</g>
+	<g id="basePoint-estimatedCaloriesOut">
+		<circle class="st9" cx="166.5" cy="296.5" r="5"/>
+		<circle class="st6" cx="166.5" cy="296.5" r="3"/>
+	</g>
+	<g id="basePoint-calories">
+		<circle class="st9" cx="184.2" cy="366.5" r="5"/>
+		<circle class="st2" cx="184.2" cy="366.5" r="3"/>
+	</g>
+	<g id="basePoint-steps">
+		<circle class="st9" cx="186.2" cy="506.1" r="5"/>
+		<circle class="st2" cx="186.2" cy="506.1" r="3"/>
+	</g>
+	<g id="basePoint-activityCalories">
+		<circle class="st9" cx="122.9" cy="525" r="5"/>
+		<circle class="st2" cx="122.9" cy="525" r="3"/>
+	</g>
+	<g id="basePoint-floors">
+		<circle class="st9" cx="174.2" cy="679.6" r="5"/>
+		<circle class="st2" cx="174.2" cy="679.6" r="3"/>
+	</g>
+	<g id="basePoint-distance">
+		<circle class="st9" cx="136.7" cy="682.6" r="5"/>
+		<circle class="st2" cx="136.7" cy="682.6" r="3"/>
+	</g>
+	<g id="add-btn-logWeight">
+		<circle class="st6" cx="51.2" cy="705.7" r="10"/>
+		<polygon points="56.2,704.7 52.2,704.7 52.2,700.7 50.2,700.7 50.2,704.7 46.2,704.7 46.2,706.7 50.2,706.7 50.2,710.7 
+			52.2,710.7 52.2,706.7 56.2,706.7 		"/>
+	</g>
+</g>
+</svg>

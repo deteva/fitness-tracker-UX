@@ -37,14 +37,12 @@ ul.stat
       width: 100%
       height: 100%
       z-index: 0
-
     .border-underline
       +inline-block
       position: relative
     .border-inside-element
       &:after
         +border-inside-ele
-
     md-content, md-autocomplete
       +inline-block
       background: transparent
@@ -69,7 +67,6 @@ ul.stat
                 transform: perspective(1000px) rotate3d(1, 0, 0, 0deg)
               &:after
                 transform: perspective(1000px) rotate3d(1, 0, 0, -90deg)
-
         label.input-label
           &:before
             +pseudo-container

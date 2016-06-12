@@ -3,6 +3,8 @@ footer
   background-color: $white
   overflow: hidden
   position: relative
+  height: 150px
+
   .twotone-bg
     display: block
     position: absolute
@@ -11,6 +13,7 @@ footer
     width: 100%
     height: 60px
     background-color: $neat-gray
+
   .wrap
     @include container($bp-wider)
     position: relative
@@ -27,14 +30,15 @@ footer
         font-size: 14px
         display: table-cell
         vertical-align: middle
-
       form
         display: inline-block
         margin-left: 27px
         position: relative
 
         div
-          width: 230px
+          width: 250px
+          @include susy-breakpoint($bp-wide, $susy-wide)
+            width: 230px
           height: 30px
           background: $white url(../../images/mail-icon.png) no-repeat 10px 11px
           border: none
@@ -42,7 +46,6 @@ footer
           margin-top: 15px
           padding: 0 35px
           position: relative
-
           input
             font-family: $normal-font
             border: 0
@@ -55,7 +58,6 @@ footer
 
           input[type="email"]
             font-size: 0.93em
-
         span
           display: inline-block
           position: absolute
@@ -66,7 +68,6 @@ footer
           background: url(../../images/more_arrow.png)
           background-size: 11px 11px
           cursor: pointer
-
     .footer-inner
       height: 90px
       //padding-top: 20px
@@ -77,7 +78,7 @@ footer
         border: none
         padding-top: 0
         padding: 22px 0
-        clear: both
+        //clear: both
         ul
           li
             line-height: 25px
@@ -90,6 +91,4 @@ footer
               text-decoration: none
           .copyright
           color: $stone-grey2
-
-
 

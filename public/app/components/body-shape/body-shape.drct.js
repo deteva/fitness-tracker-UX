@@ -61,9 +61,21 @@
 			//attach body svg
 				var bodyShape = Snap.selectAll('.body-container');
 				console.log(bodyShape);
+
+				//total sleep percentage
+				//var sleepPercentage = Snap(10, 10);
+				//var honeySleep = sleepPercentage.path("M10-5-10,15M15,0,0,15M0-5-20,15")
+				//	.attr({
+				//		id: "sleepPattern",
+				//		fill: "none",
+				//		stroke: "#512b8d",
+				//		strokeWidth: 5
+				//}).pattern(0, 0, 10, 10);
+
 				//load svg file
 				Snap.load('/assets/images/body-svg/beforeSyncBody.svg', function (body) {
 					$scope.head = body.select('#b-sync-head');
+					$scope.sleepPattern = body.select('#sleep-pattern');
 
 					$scope.arms = body.select('#b-sync-arms');
 					$scope.leftArm = body.select('#b-sync-left-arm');
@@ -74,6 +86,7 @@
 					$scope.leftAnkle = body.select('#b-sync-ankle-left');
 					$scope.rightAnkle = body.select('#b-sync-angkle-right');
 
+					$scope.groupTop = body.select('#b-sync-t');
 					$scope.top = body.select('#b-sync-top');
 					$scope.neck = body.select('#b-sync-neck');
 
@@ -93,10 +106,7 @@
 
 					$scope.logWeightBtn = body.select('#add-btn-logWeight');
 
-					$scope.svgBody = body.select('#all');
-
-
-					//$scope.animating = false;
+					//$scope.svgBody = body.select('#all');
 
 					// on load, first reset the paths
 					$scope.reset = function() {
@@ -109,10 +119,97 @@
 
 					$scope.reset();
 
+					function headHoverIn(delay, length){
+						//head part
+						$scope.refreshHead.animate({
+							height : "97"
+						}, length , mina.bounce, function (){
+							$scope.sleepPattern.animate({
+								fill : Snap('#sleepPattern'),
+								height : "75"
+							}, length, mina.bounce);
+						});
+
+						part100Top(length, false);
+						part100TopPoints(length);
+
+						part100Bottom(length, false);
+						part100BottomPoints(length);
+					}
+
+					function headHoverOut(delay, length){
+						$scope.refreshHead.animate({
+							height : "55"
+						}, length , mina.easeout, function (){
+							$scope.sleepPattern.animate({
+								height : "35"
+							}, length, mina.bounce);
+						});
+
+						$scope.top.animate({
+							d:"M109,296.6h57.7l0.5-90l31.1-14.8l-11.1-48.2c-26.4-28.8-78.2-25.5-78.2-25.5s-51.8-3.2-78.2,25.5l-11.1,48.2l31,14.8l1.1,90H109z"
+						}, length + 500 , mina.easeinout, function() {
+							$scope.leftArm.animate({
+								transform : 'r-0.5,' + $scope.leftArm.getBBox().x + ', ' + $scope.leftArm.getBBox().y + ''
+							}, length - 200, mina.easeinout);
+
+							$scope.rightArm.animate({
+								transform : 'r0.5,' + $scope.rightArm.getBBox().x + ', ' + $scope.rightArm.getBBox().y + ''
+							}, length - 200, mina.easeinout);
+						});
+
+						//top part point
+						$scope.estimatedCaloriesOutpPoint.animate({
+							transform : 't13.5 0'
+						}, length + 500, mina.easeinout);
+
+						$scope.bottom.animate({
+							d:"M108.8,295.8H52c0,0-19.5,49.2-21.5,116.2c-3.5,108,9,208.1,13,270.5l7,0.4L7.3,715.7l68.3-12.1v-19c0,0,3.2-0.1,7.2-0.5c0,0,22.5-275.2,23.4-305.4h5.2c0.9,30.2,23.7,304.9,23.7,304.9c9,0.6,0,0,6.9,0v20l68.3,12.1l-43.9-33.6l7.9-0.6c3-69.1,15.9-169.3,12.9-273c0-65-21-112.7-21-112.7H108.8"
+						}, length , mina.easeinout);
+
+						$scope.leftAnkle.animate({
+							x1:"45.2",
+							y1:"681",
+							x2:"80.2",
+							y2:"682.7"
+						}, length , mina.easeinout);
+
+						$scope.rightAnkle.animate({
+							x1:"172.8",
+							y1:"679.8",
+							x2:"139.5",
+							y2:"682.1"
+						}, length , mina.easeinout);
+
+
+						//bottom part point
+						$scope.caloriesPoint.animate({
+							transform : 't5.5 0.5'
+						}, length, mina.easeinout);
+
+						$scope.stepsPoint.animate({
+							transform : 't17.5 0.5'
+						}, length, mina.easeinout);
+
+						$scope.activityCaloriesPoint.animate({
+							transform : 't-3.5 0.5'
+						}, length, mina.easeinout);
+
+						$scope.floorsPoint.animate({
+							transform : 't8.4 4.5'
+						}, length, mina.easeinout);
+
+						$scope.distancePoint.animate({
+							transform : 't-5.5 -1.5'
+						}, length, mina.easeinout);
+
+					}
+
 					var hoverIn = function bodyHover(){
 						if(!$scope.isSync) {
 							return;
 						} else {
+							headHoverIn(0, 300);
 							console.log('hover in event');
 						};
 					};
@@ -121,24 +218,112 @@
 						if(!$scope.isSync) {
 							return;
 						} else {
+							headHoverOut(0, 300);
 							console.log('hover out event');
 						};
 					};
 
-					$scope.svgBody.hover(hoverIn, hoverOut);
-
-
+					$scope.top.hover(hoverIn, hoverOut);
+					$scope.bottom.hover(hoverIn, hoverOut);
 				});
-
 
 				//var syncBtn = angular.element(document.querySelector("#body-container button span"));
 				//console.log(syncBtn);
 
 				$scope.isSync = false;
+				//'데이터 씽크 이전으로 클릭!'
 				$scope.syncBtnText = [
 					'클릭! 가상으로 데이터 씽크',
-					'데이터 씽크 이전으로 클릭!'
+					'티셔츠 위에서 마우스 hover'
 				];
+
+				function part100Top(length, dotted){
+					//top part
+					$scope.top.animate({
+						d:"M109,296h44.7l13.6-90l31.1-14.8L187.2,143c-26.4-28.8-78.2-25.5-78.2-25.5s-51.8-3.2-78.2,25.5l-11.1,48.2l31,14.8l13.6,90H109z"
+					}, length + 500 , mina.easeinout, function() {
+						if(!dotted === true) {
+							return;
+						} else {
+							$scope.top.removeClass('noneStroke-dash7');
+							$scope.top.toggleClass('stroke-dash7');
+							$scope.neck.removeClass('noneStroke-dash7');
+							$scope.neck.toggleClass('stroke-dash7');
+							$scope.arms.removeClass('noneStroke-dash7');
+							$scope.arms.toggleClass('stroke-dash7');
+						}
+					});
+					$scope.leftArm.animate({
+						transform : 'r0.5,' + $scope.leftArm.getBBox().x + ', ' + $scope.leftArm.getBBox().y + ''
+					}, length + 200, mina.easein);
+
+					$scope.rightArm.animate({
+						transform : 'r-0.5,' + $scope.rightArm.getBBox().x + ', ' + $scope.rightArm.getBBox().y + ''
+					}, length + 200, mina.easein);
+				}
+
+				function part100TopPoints(length){
+					//top part point
+					$scope.estimatedCaloriesOutpPoint.animate({
+						transform :$scope.estimatedCaloriesOutpPoint.getBBox().cx + ", " + $scope.estimatedCaloriesOutpPoint.getBBox().cy   + "t-17.5 0"
+					}, length, mina.easeinout);
+
+				}
+
+				function part100Bottom(length, dotted){
+					$scope.bottom.animate({
+						d:"M109,296H64.3c0,0-14.1,20.4-23.3,60.7c-9.3,40.3-3.7,103.4,8.3,148.9l5.1,172L7.6,715.2 l68.2-12.1v-19c0,0,17.2-165.5,17.2-175.1c0,0,12.5-102.2,13.4-132.4h5.2C112.5,406.7,125,509,125,509 c0,9.5,17.2,175.1,17.2,175.1v19l68.2,12.1l-46.8-37.6l5.1-172c12.1-45.4,17.6-108.5,8.3-148.9c-9.3-40.3-23.3-60.7-23.3-60.7H109"
+					}, length , mina.easeinout, function () {
+						if(!dotted === true) {
+							return;
+						} else {
+							$scope.bottom.removeClass('noneStroke-dash7');
+							$scope.bottom.toggleClass('stroke-dash7');
+							$scope.bottomOutline.removeClass('noneStroke-dash7');
+							$scope.bottomOutline.toggleClass('stroke-dash7');
+						}
+
+					})
+
+					$scope.leftAnkle.animate({
+						x1:"54.5",
+						y1:"677.6",
+						x2:"75.8",
+						y2:"684.1"
+					}, length , mina.easeinout);
+
+					$scope.rightAnkle.animate({
+						x1:"163.5",
+						y1:"677.6",
+						x2:"142.2",
+						y2:"684.1"
+					}, length , mina.easeinout);
+
+				}
+
+				function part100BottomPoints(length){
+					//bottom part point
+					$scope.caloriesPoint.animate({
+						transform :$scope.caloriesPoint.getBBox().cx + ", " + $scope.caloriesPoint.getBBox().cy   + "t3.5 -0.5"
+					}, length - 100, mina.easeinout);
+
+					$scope.stepsPoint.animate({
+						transform :$scope.stepsPoint.getBBox().cx + ", " + $scope.stepsPoint.getBBox().cy   + "t-15.5 -0.5"
+					}, length - 100, mina.easeinout);
+
+					$scope.activityCaloriesPoint.animate({
+						transform :$scope.activityCaloriesPoint.getBBox().cx + ", " + $scope.activityCaloriesPoint.getBBox().cy   + "t14.5 0"
+					}, length - 100, mina.easeinout);
+
+					$scope.floorsPoint.animate({
+						transform :$scope.floorsPoint.getBBox().cx + ", " + $scope.floorsPoint.getBBox().cy   + "t-30.5 -4.5"
+					}, length - 100, mina.easeinout);
+
+					$scope.distancePoint.animate({
+						transform :$scope.floorsPoint.getBBox().cx + ", " + $scope.floorsPoint.getBBox().cy   + "t31.5 1.5"
+					}, length - 100, mina.easeinout);
+
+				}
 
 				function headSync(delay, length){
 					//$scope.head.toggleClass('color-bg-grey color-medium-grey');
@@ -199,34 +384,15 @@
 							fill : "#f0f0f0"
 						}, length - 200 , mina.easeinout);
 
-						//top part
-						$scope.top.animate({
-							d:"M109,296h44.7l13.6-90l31.1-14.8L187.2,143c-26.4-28.8-78.2-25.5-78.2-25.5s-51.8-3.2-78.2,25.5l-11.1,48.2l31,14.8l13.6,90H109z"
-						}, length - 200 , mina.easeinout, function() {
-							$scope.top.removeClass('noneStroke-dash7');
-							$scope.top.toggleClass('stroke-dash7');
-							$scope.neck.removeClass('noneStroke-dash7');
-							$scope.neck.toggleClass('stroke-dash7');
-							$scope.arms.removeClass('noneStroke-dash7');
-							$scope.arms.toggleClass('stroke-dash7');
+						$scope.sleepPattern.animate({
+							height : "3"
+						}, length, mina.easeinout);
 
-							$scope.leftArm.animate({
-								transform : 'r0.5,' + $scope.leftArm.getBBox().x + ', ' + $scope.leftArm.getBBox().y + ''
-							}, length, mina.easein);
-
-							$scope.rightArm.animate({
-								transform : 'r-0.5,' + $scope.rightArm.getBBox().x + ', ' + $scope.rightArm.getBBox().y + ''
-							}, length, mina.easein);
-						});
-
-						//top part point
-						$scope.estimatedCaloriesOutpPoint.animate({
-							transform :$scope.estimatedCaloriesOutpPoint.getBBox().cx + ", " + $scope.estimatedCaloriesOutpPoint.getBBox().cy   + "t-17.5 0"
-						}, length - 200, mina.easeinout);
+						part100Top(length, true);
+						part100TopPoints(length);
 					}
 
 				};
-
 
 				function bottomSync(delay, length){
 					setTimeout(function(){
@@ -235,10 +401,10 @@
 								d:"M108.8,295.8H48c0,0-3.9,46.7-6.5,84.2c-2.8,41.4-14,255.5-20,302.6l29,0.2L7.3,715.7 l68.3-12.1l0-19c0,0,25.1-1.6,29.1-2c0,0,0.6-273.7,1.5-303.9h5.2c0.9,30.2,0.7,304.2,0.7,304.2c9,0.6,23,0.7,29.9,0.7l0,20" +
 								" l68.3,12.1l-43.9-33.6l29.8-1.5c-3.7-66.6-16.8-246.3-20.7-303.4c-2.2-32.9-5.3-81.4-5.3-81.4H108.8"
 								}, length , mina.easeinout, function () {
-								$scope.bottom.toggleClass('stroke-dash7');
-								$scope.bottom.addClass('noneStroke-dash7');
-								$scope.bottomOutline.toggleClass('stroke-dash7');
-								$scope.bottomOutline.addClass('noneStroke-dash7');
+									$scope.bottom.toggleClass('stroke-dash7');
+									$scope.bottom.addClass('noneStroke-dash7');
+									$scope.bottomOutline.toggleClass('stroke-dash7');
+									$scope.bottomOutline.addClass('noneStroke-dash7');
 							});
 
 							$scope.leftAnkle.animate({
@@ -277,53 +443,9 @@
 							}, length, mina.easeinout);
 
 						} else {
-							$scope.bottom.animate({
-								d:"M109,296H64.3c0,0-14.1,20.4-23.3,60.7c-9.3,40.3-3.7,103.4,8.3,148.9l5.1,172L7.6,715.2 l68.2-12.1v-19c0,0,17.2-165.5,17.2-175.1c0,0,12.5-102.2,13.4-132.4h5.2C112.5,406.7,125,509,125,509 c0,9.5,17.2,175.1,17.2,175.1v19l68.2,12.1l-46.8-37.6l5.1-172c12.1-45.4,17.6-108.5,8.3-148.9c-9.3-40.3-23.3-60.7-23.3-60.7H109"
-							}, length , mina.easeinout, function () {
-								$scope.bottom.removeClass('noneStroke-dash7');
-								$scope.bottom.toggleClass('stroke-dash7');
-								$scope.bottomOutline.removeClass('noneStroke-dash7');
-								$scope.bottomOutline.toggleClass('stroke-dash7');
-
-							})
-
-							$scope.leftAnkle.animate({
-								x1:"54.5",
-								y1:"677.6",
-								x2:"75.8",
-								y2:"684.1"
-							}, length , mina.easeinout);
-
-							$scope.rightAnkle.animate({
-								x1:"163.5",
-								y1:"677.6",
-								x2:"142.2",
-								y2:"684.1"
-							}, length , mina.easeinout);
+							part100Bottom(length, true);
+							part100BottomPoints(length);
 						}
-
-						//bottom part point
-						$scope.caloriesPoint.animate({
-							transform :$scope.caloriesPoint.getBBox().cx + ", " + $scope.caloriesPoint.getBBox().cy   + "t3.5 -0.5"
-						}, length - 100, mina.easeinout);
-
-						$scope.stepsPoint.animate({
-							transform :$scope.stepsPoint.getBBox().cx + ", " + $scope.stepsPoint.getBBox().cy   + "t-15.5 -0.5"
-						}, length - 100, mina.easeinout);
-
-						$scope.activityCaloriesPoint.animate({
-							transform :$scope.activityCaloriesPoint.getBBox().cx + ", " + $scope.activityCaloriesPoint.getBBox().cy   + "t14.5 0"
-						}, length - 100, mina.easeinout);
-
-						$scope.floorsPoint.animate({
-							transform :$scope.floorsPoint.getBBox().cx + ", " + $scope.floorsPoint.getBBox().cy   + "t-30.5 -4.5"
-						}, length - 100, mina.easeinout);
-
-						$scope.distancePoint.animate({
-							transform :$scope.floorsPoint.getBBox().cx + ", " + $scope.floorsPoint.getBBox().cy   + "t31.5 1.5"
-						}, length - 100, mina.easeinout);
-
-
 					}, delay);
 				}
 
@@ -336,31 +458,8 @@
 					$scope.isSync = !$scope.isSync;
 					$scope.syncBtn = $scope.isSync ? $scope.syncBtnText[1] : $scope.syncBtnText[0];
 					animateSync();
-					//if($scope.isSync) {
-					//	animateSync();
-					//
-					//} else {
-					//	$scope.reset();
-					//}
 				};
 
-				//var svgBody = document.querySelector("#body");
-				//
-				//svgBody.hover(hoverIn, hoverOut);
-
-
-
-
-				//$scope.$watch('isSync', function (){
-				//})
-
-				//syncBtn.click(function () {
-				//	if($scope.isSync === true) {
-				//
-				//	} else {
-				//
-				//	}
-				//});
 
 			}
 		}

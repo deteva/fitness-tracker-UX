@@ -1,15 +1,16 @@
 /* -------------------------
   dashboard specific styles
   --------------------------- */
-$susy: (columns: 89, box-sizing: border-box, gutters: 0, debug: (image: show, toggle: top right, output: overlay))
+$susy: (columns: 89, box-sizing: border-box, gutters: 0, debug: (image: hide))
+//$susy-wide: (columns: 6 22 3 9 35 3 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
+$susy-wide: (columns: 6 22 3 9 35 3 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: hide))
 
-$susy-wide: (columns: 6 22 3 9 35 3 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
+$susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: hide))
 
-$susy-wider: (columns: 6 22 5 10 40 6 24, gutters: 0, output: isolate, box-sizing: border-box, debug: (image: show, toggle: top right, output: overlay))
 html
-  +debug-vertical-alignment
+  //+debug-vertical-alignment
   background: $white
-//@include layout($susy)
+
 =main-bp
   border-color: brown
   height: 1100px

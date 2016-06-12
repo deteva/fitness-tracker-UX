@@ -3,6 +3,7 @@
 <style type="text/css">
 <![CDATA[
 #body	.status{clip-path:url(#SVGID_2_);}
+#body	.percent{fill:url(#sleepPattern);}
 
 #body	.color-white {fill:#FFFFFF;}
 #body	.color-bg-grey {fill:#F0F0F0;}
@@ -64,6 +65,7 @@
 	</g>
 </g>
 <g id="b-sync-head">
+	<rect id="head-layer" x="57.6" y="1.5" class="none" width="104" height="104"/>
 	<path id="bg-head"
 	fill="#C0C3C5"
 	d="M59.1,103V3h100v100H59.1z M78.8,83.3h60.5V24.1H78.8V83.3z"/>
@@ -81,10 +83,24 @@
 			<clipPath id="SVGID_2_">
 				<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 			</clipPath>
+			<defs>
+				<pattern x="0"
+				y="0" width="10" height="10" patternUnits="userSpaceOnUse"
+				id="sleepPattern"
+				viewBox="0 0 10 10">
+					<path d="M10-5-10,15M15,0,0,15M0-5-20,15" fill="none" stroke="#512b8d" style="stroke-width: 5;">
+					</path>
+				</pattern>
+			</defs>
 			<rect x="60.8" y="1"
 			class="status
 			color-white"
 			width="96.5" height="4.6"/>
+			<rect x="60.8" y="1"
+			id="sleep-pattern"
+			class="percent status"
+			width="96.5"
+			height="3"/>
 		</g>
 	</g>
 </g>
