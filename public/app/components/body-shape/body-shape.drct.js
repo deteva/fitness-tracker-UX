@@ -59,6 +59,7 @@
 				};
 
 			//attach body svg
+
 				var bodyShape = Snap.selectAll('.body-container');
 				console.log(bodyShape);
 
@@ -106,6 +107,13 @@
 
 					$scope.logWeightBtn = body.select('#add-btn-logWeight');
 
+					$scope.maskBody = body.select('#mask-all-body');
+					$scope.drinkWater = body.select('#drink-water');
+
+					//$scope.targets[$scope.indexOfTarget.water].bodyRatio
+					$scope.waterHeight = 340;
+
+
 					//$scope.svgBody = body.select('#all');
 
 					// on load, first reset the paths
@@ -134,7 +142,16 @@
 						part100TopPoints(length);
 
 						part100Bottom(length, false);
+
+						partMaskWater(length);
+
+						$scope.drinkWater.animate({
+							d : "M7.3,140c0,0,8,7.6,20.6,8.6c10.3,0.8,6.6-7.4,24.9-8.2c10.9-0.4,17.9,9.8,27.7,10.4c16,1,16.3-8.7,31-8.7c21.7,0,16.7,9.7,30,9.7c14,0,12-9.7,30-9.7c12,0,22.2,6.2,38.8,0.6V717H7.3V140z"
+						}, length , mina.easeinout);
+
 						part100BottomPoints(length);
+
+
 					}
 
 					function headHoverOut(delay, length){
@@ -181,6 +198,15 @@
 							y2:"682.1"
 						}, length , mina.easeinout);
 
+						//add water
+						$scope.maskBody.animate({
+							d : "M210.3,715.7l-43.9-33.6l7.9-0.6c3-69.1,15.9-169.3,12.9-273c0-60.1-18-105.4-20.7-111.9h0.2l0.5-90l31.1-14.8l-11.1-48.2c-26.4-28.8-78.2-25.5-78.2-25.5s-51.8-3.2-78.2,25.5l-11.1,48.2l31,14.8l1.1,89.7C49.7,301.8,32.4,349,30.5,412c-3.5,108,9,208.1,13,270.5l7,0.4L7.3,715.7l68.3-12.1v-19c0,0,3.2-0.1,7.2-0.5c0,0,22.5-275.2,23.4-305.4h5.2c0.9,30.2,23.7,304.9,23.7,304.9c9,0.6,0,0,6.9,0v20L210.3,715.7z"
+						}, length , mina.easeinout);
+
+						$scope.drinkWater.animate({
+							d : "M7.3,340c0,0,8,7.6,20.6,8.6c10.3,0.8,6.6-7.4,24.9-8.2c10.9-0.4,17.9,9.8,27.7,10.4c16,1,16.3-8.7,31-8.7c21.7,0,16.7,9.7,30,9.7c14,0,12-9.7,30-9.7c12,0,22.2,6.2,38.8,0.6V717H7.3V340z"
+						}, length , mina.easeinout);
+
 
 						//bottom part point
 						$scope.caloriesPoint.animate({
@@ -224,7 +250,6 @@
 					};
 
 					$scope.top.hover(hoverIn, hoverOut);
-					$scope.bottom.hover(hoverIn, hoverOut);
 				});
 
 				//var syncBtn = angular.element(document.querySelector("#body-container button span"));
@@ -254,11 +279,13 @@
 						}
 					});
 					$scope.leftArm.animate({
-						transform : 'r0.5,' + $scope.leftArm.getBBox().x + ', ' + $scope.leftArm.getBBox().y + ''
+						transform : 'r0.5,' + $scope.leftArm.getBBox().x + ', ' + $scope.leftArm.getBBox().y + '',
+						fill : "#FFFFFF"
 					}, length + 200, mina.easein);
 
 					$scope.rightArm.animate({
-						transform : 'r-0.5,' + $scope.rightArm.getBBox().x + ', ' + $scope.rightArm.getBBox().y + ''
+						transform : 'r-0.5,' + $scope.rightArm.getBBox().x + ', ' + $scope.rightArm.getBBox().y + '',
+						fill : "#FFFFFF"
 					}, length + 200, mina.easein);
 				}
 
@@ -290,6 +317,7 @@
 						y1:"677.6",
 						x2:"75.8",
 						y2:"684.1"
+
 					}, length , mina.easeinout);
 
 					$scope.rightAnkle.animate({
@@ -323,6 +351,13 @@
 						transform :$scope.floorsPoint.getBBox().cx + ", " + $scope.floorsPoint.getBBox().cy   + "t31.5 1.5"
 					}, length - 100, mina.easeinout);
 
+				}
+
+				function partMaskWater(length){
+					//add water
+					$scope.maskBody.animate({
+						d : "M210.1,716.1l-46.8-37.6l5.1-172c12.1-45.4,17.6-108.5,8.3-148.9c-9.3-40.3-23.3-60.7-23.3-60.7l13.6-90l31.1-14.8l-11.2-48.2c-26.4-28.8-78.2-25.5-78.2-25.5s-51.8-3.2-78.2,25.5l-11.1,48.2l31,14.8l13.6,90c0,0-14.1,20.4-23.3,60.7C31.4,397.9,37,461,49,506.5l5.1,172L7.3,716.1L75.5,704v-19c0,0,17.2-165.5,17.2-175.1c0,0,12.5-102.2,13.4-132.4h5.2c0.9,30.1,13.4,132.4,13.4,132.4c0,9.5,17.2,175.1,17.2,175.1v19L210.1,716.1z"
+					}, length , mina.easeinout);
 				}
 
 				function headSync(delay, length){
@@ -421,6 +456,9 @@
 								y2:"681.9"
 							}, length , mina.easeinout);
 
+
+
+
 							//bottom part point
 							$scope.caloriesPoint.animate({
 								transform : 't-3.5 0.5'
@@ -444,7 +482,15 @@
 
 						} else {
 							part100Bottom(length, true);
+
+							partMaskWater(length);
+
+							$scope.drinkWater.animate({
+								d : "M7.3,700c0,0,8,7.6,20.6,8.6c10.3,0.8,6.6-7.4,24.9-8.2c10.9-0.4,17.9,9.8,27.7,10.4c16,1,16.3-8.7,31-8.7c21.7,0,16.7,9.7,30,9.7c14,0,12-9.7,30-9.7c12,0,22.2,6.2,38.8,0.6V717H7.3V700z"
+							}, length , mina.easeinout);
+
 							part100BottomPoints(length);
+
 						}
 					}, delay);
 				}

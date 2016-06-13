@@ -43,14 +43,24 @@
 
 				//Math.floor((this.distance.today / this.goals.distance ) * 100);
 				//icon-data part
-				$scope.iconBasePoint = 3;
-				$scope.iconEndPoint = 26;
+				var iconBasePoint = 5;
+				var iconEndPoint = 32;
 				function countWidthByIcon(efficency) {
-					var width = (efficency * $scope.iconEndPoint) /100;
+					var iconWidth = iconEndPoint - iconBasePoint;
+					var width = (efficency * iconWidth ) /100;
 					console.log("count icon width: " + width);
 					return width;
 				}
+				//water of body part
 
+				var bodyDownPoint = 700;
+				var bodyUpPoint = 110;
+				function countWidthByBody(efficency) {
+					var bodyWidth = bodyDownPoint - bodyUpPoint;
+					var height = (efficency * bodyWidth) /100;
+					console.log("count water of body height: " + height);
+					return height;
+				}
 				//all data
 				$scope.targets = [
 					{
@@ -82,8 +92,9 @@
 						"name" : "water",
 						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-water.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : ($scope.waterData.today * 100 ) / $scope.waterData.goal,
+						//"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.water].efficiency),
+						//"bodyRatio" : countWidthByBody($scope.targets[$scope.indexOfTarget.water].efficiency)
 					},
 					{
 						"display" : "건강한 식단",
