@@ -8,10 +8,18 @@
 
 </style>
 <symbol id="ratio-distance">
-	<rect id="attr" x="0"
-          y="2" class="st2"
-          ng-width="17"
-          height="46"/>
+	<rect ng-if="targets[indexOfTarget.distance].efficiency === 0"
+		  id="attr" x="0"
+		  y="2" class="st2"
+		  ng-width="countWidthByIcon(targets[indexOfTarget.distance].efficiency)"
+		  height="46"/>
+
+	<rect ng-if="targets[indexOfTarget.distance].efficiency != 0"
+		  id="attr" x="0"
+		  y="2" class="st2"
+		  ng-width={{targetsRange[indexOfTarget.distance].iconRatio}}
+		  height="46"/>
+
 
 	<path id="data-mask-distance" class="st1"
 		  d="M0,0v50h40V0H0z M29.2,41.1c-2.2,4.8-7.1,8-12.4,8C7.2,49.1,0.5,38.8,4.5,30c1.8-4.1,5.8-7,10.3-7.8

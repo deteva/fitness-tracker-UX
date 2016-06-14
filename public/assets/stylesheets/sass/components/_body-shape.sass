@@ -4,7 +4,6 @@
 =body-shape-w($susy-layout, $nest-layout)
   @include span(3 at 1 $susy-layout first)
   //position: absolute
-
   .comment-body
     @include span(1 of ($nest-layout) first)
     div.title
@@ -16,7 +15,6 @@
   .gutter
     @include span(1 of ($nest-layout) last)
     //+layout-outline($balanced-yellow)
-
 section.body-shape
   padding-top: 25px
   @include susy-breakpoint($bp-wide, $susy-wide)
@@ -38,6 +36,7 @@ section.body-shape
         width: 100%
         height: 49px
         margin-bottom: 2px
+
     article.drink-water
       position: relative
       margin-top: 15px
@@ -46,6 +45,7 @@ section.body-shape
       .graph
         position: absolute
         +center(x)
+
   .body-container
     @include span(22 of 89 at 7)
     padding-left: 2%
@@ -73,6 +73,7 @@ section.body-shape
         width: 170px
         padding-left: 7%
         padding-right: 0%
+
       span
         color : $grey
         @include susy-breakpoint($bp-wide, $susy-wide)
@@ -81,6 +82,7 @@ section.body-shape
         //  padding-left: 5%
         &:hover
           color : $dark-jet
+
     svg#body
       transform: scale(0.9)
       margin-top: -17%

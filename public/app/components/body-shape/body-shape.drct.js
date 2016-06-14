@@ -53,9 +53,9 @@
 				//}
 
 				$scope.dataWater = {
-					"ranges": [1893, 1000, 0],
-					"measures": [800],
-					"markers": [800]
+					"ranges": [1893, 1500, 0],
+					"measures": [1200],
+					"markers": [1200]
 				};
 
 			//attach body svg

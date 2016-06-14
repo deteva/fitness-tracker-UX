@@ -47,7 +47,7 @@
 				var iconEndPoint = 32;
 				function countWidthByIcon(efficency) {
 					var iconWidth = iconEndPoint - iconBasePoint;
-					var width = (efficency * iconWidth ) /100;
+					var width = (efficency * iconWidth ) / 100;
 					console.log("count icon width: " + width);
 					return width;
 				}
@@ -61,6 +61,17 @@
 					console.log("count water of body height: " + height);
 					return height;
 				}
+
+
+				//set data object index
+				$scope.indexOfTarget = {};
+				var targetsName = ['totalTimeInBed', 'totalMinutesAsleep' , 'restingHeartRate','water', 'foodPlan' , 'estimatedCaloriesOut' , 'logWeight', 'calories', 'steps' , 'activityCalories' , 'floors' , 'distance' ];
+				//$scope.targets[$scope.indexOfTarget.water]
+				angular.forEach(targetsName, function(element, idx){
+					$scope.indexOfTarget[element] = idx;
+				});
+
+
 				//all data
 				$scope.targets = [
 					{
@@ -68,99 +79,151 @@
 						"name" : "totalTimeInBed",
 						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-totalTimeInBed.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : parseInt(($scope.sleepData.timeInBed.today * 100 ) / $scope.sleepData.goal)
 					},
 					{
 						"display" : "꿀잠",
 						"name" : "totalMinutesAsleep",
 						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-totalMinutesAsleep.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : $scope.sleepData.efficiency.today
+
 					},
 					{
 						"display" : "심박수 측정",
 						"name" : "restingHeartRate",
 						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-restingHeartRate.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+
 					},
 					{
 						"display" : "물마시기",
 						"name" : "water",
 						"color" : "#512b8d",
 						"src" : "/assets/images/icon-svg/icon-water.svg",
-						"efficiency" : ($scope.waterData.today * 100 ) / $scope.waterData.goal,
-						//"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.water].efficiency),
-						//"bodyRatio" : countWidthByBody($scope.targets[$scope.indexOfTarget.water].efficiency)
+						"efficiency" : parseInt(($scope.waterData.today * 100 ) / $scope.waterData.goal)
+
 					},
 					{
 						"display" : "건강한 식단",
 						"name" : "foodPlan",
 						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-foodPlan.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : 90
 					},
 					{
 						"display" : "음식계획",
 						"name" : "estimatedCaloriesOut",
 						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : 120
 					},
 					{
 						"display" : "몸무게 확인",
 						"name" : "logWeight",
 						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-logWeight.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : 100
+
 					},
 					{
 						"display" : "칼로리 소비",
 						"name" : "calories",
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-calories.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : parseInt(($scope.activityData.calories.today  * 100 ) / $scope.activityData.goals.caloriesOut)
+
 					},
 					{
 						"display" : "걸음수",
 						"name" : "steps",
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-steps.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : parseInt(($scope.activityData.steps.today  * 100 ) / $scope.activityData.goals.steps)
 					},
 					{
 						"display" : "활동적 시간",
 						"name" : "activityCalories",
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-activityCalories.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : parseInt(($scope.activityData.activityCalories.today  * 100 ) / $scope.activityData.goals.activeMinutes)
 					},
 					{
 						"display" : "층수",
 						"name" : "floors",
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-floors.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : parseInt(($scope.activityData.floors.today  * 100 ) / $scope.activityData.goals.floors)
 					},
 					{
 						"display" : "이동 거리",
 						"name" : "distance",
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-distance.svg",
-						"efficiency" : $scope.sleepData.efficiency.lastWeek,
-						"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
+						"efficiency" : parseInt(($scope.activityData.distance.today  * 100 ) / $scope.activityData.goals.distance)
 					}
 				];
+
+
+				if(($scope.heart.restingHeartRate[0] ===  null) || ($scope.heart.restingHeartRate[0] === "0") || ($scope.heart.restingHeartRate[0] === "")) {
+					$scope.targets[$scope.indexOfTarget.restingHeartRate]["efficiency"] = 0
+				} else {
+					$scope.targets[$scope.indexOfTarget.restingHeartRate]["efficiency"] =  100;
+				}
+
+
+				$scope.targetsRange = [
+					{
+						//"name" : "totalTimeInBed",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.totalTimeInBed].efficiency)
+					},
+					{
+						//"name" : "totalMinutesAsleep",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.totalMinutesAsleep].efficiency)
+					},
+					{
+						//"name" : "restingHeartRate",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.restingHeartRate].efficiency)
+					},
+					{
+						//"name" : "water",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.water].efficiency),
+						"bodyRatio" : countWidthByBody($scope.targets[$scope.indexOfTarget.water].efficiency)
+					},
+					{
+						//"name" : "foodPlan",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.foodPlan].efficiency)
+					},
+					{
+						//"name" : "estimatedCaloriesOut",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.estimatedCaloriesOut].efficiency)
+					},
+					{
+						//"name" : "logWeight",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.logWeight].efficiency)
+					},
+					{
+						//"name" : "calories",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.calories].efficiency)
+					},
+					{
+						//"name" : "steps",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.steps].efficiency)
+					},
+					{
+						//"name" : "activityCalories",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.activityCalories].efficiency)
+					},
+					{
+						//"name" : "floors",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.floors].efficiency)
+					},
+					{
+						//"name" : "distance",
+						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.distance].efficiency)
+					}
+				];
+
 
 				//get index of $scope.targets
 				$scope.filterSearch = function (filterTarget) {
@@ -170,12 +233,14 @@
 					});
 				};
 
-				//set data object index
-				$scope.indexOfTarget = {};
-				//$scope.targets[$scope.indexOfTarget.water]
-				angular.forEach($scope.targets, function(element, idx){
-					$scope.indexOfTarget[element.name] = idx;
-				});
+				//enegetic part data
+				$scope.enegeticStatus = {
+					"calories" : 26,
+					"steps" : 41,
+					"activityCalories" : 103,
+					"floors" : 35,
+					"distance" : 65
+				};
 
 				//enegetic part chart
 				$scope.options = {

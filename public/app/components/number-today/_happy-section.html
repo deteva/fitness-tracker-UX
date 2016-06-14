@@ -1,7 +1,15 @@
 <li class = "no-sub-title">
     <div class = "border-underline">
         <div class = "border-inside-element">
-            <h1>6</h1>시간<h1>30</h1>분
+            <h1 ng-if="sleepData.startTime.today === ''">6
+            </h1>
+            <!--<h1 ng-if="sleepData.startTime.today != ''">{{sleepData.startTime.today}}-->
+            <!--</h1>-->
+            시간
+            <h1 ng-if="sleepData.startTime.today === ''">30</h1>
+            <!--<h1 ng-if="sleepData.startTime.today != ''">{{sleepData.startTime.today}}-->
+            <!--</h1>-->
+            분
         </div>
     </div>
     <span class= "comment">수면시간</span>
@@ -9,7 +17,10 @@
 <li>
     <div class = "border-underline">
         <div class = "border-inside-element">
-            <h1>75</h1>%
+            <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency === 0">75</h1>
+            <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency != 0">targets[indexOfTarget.totalMinutesAsleep].efficiency
+            </h1>
+            %
         </div>
     </div>
     <span class= "comment">꿀잠</span>
@@ -17,7 +28,9 @@
 <li>
     <div class = "border-underline">
         <div class = "border-inside-element">
-            <h1>60</h1>bpm
+            <h1 ng-if="targets[indexOfTarget.restingHeartRate].efficiency === 100">62</h1>
+            <h1 ng-if="targets[indexOfTarget.restingHeartRate].efficiency === 0">--</h1>
+            bpm
         </div>
     </div>
     <span class= "comment">안정시 심박수</span>
@@ -25,7 +38,9 @@
 <li>
     <div class = "border-underline">
         <div class = "border-inside-element">
-            <h1>1200</h1>ml
+            <h1 ng-if="waterData.today === 0">1200</h1>
+            <h1 ng-if="waterData.today != 0">{{waterData.today}}</h1>
+            ml
         </div>
     </div>
     <span class= "comment">물 섭취량</span>
