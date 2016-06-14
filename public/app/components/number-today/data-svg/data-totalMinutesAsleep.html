@@ -13,12 +13,19 @@
 	#ratio-totalMinutesAsleep #data-mask-totalMinutesAsleep {fill: #a2a1a0;}
 
 </style>
-<symbol
-		id="ratio-totalMinutesAsleep">
-	<rect id="attr"
+<symbol id="ratio-totalMinutesAsleep">
+	<rect ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency === 0"
+		  id="attr"
 		  y="2"
 		  class="st0"
-		  ng-width="17"
+		  ng-width="countWidthByIcon($parent.todayStatus.totalMinutesAsleep) - 5"
+		  height="46"/>
+
+	<rect ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency != 0"
+		  id="attr"
+		  y="2"
+		  class="st0"
+		  ng-width="{{sleepData.sleepData.today}}"
 		  height="46"/>
 
 	<path id="data-mask-totalMinutesAsleep"

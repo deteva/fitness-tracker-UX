@@ -43,16 +43,17 @@
 
 				//Math.floor((this.distance.today / this.goals.distance ) * 100);
 				//icon-data part
-				var iconBasePoint = 5;
-				var iconEndPoint = 32;
-				function countWidthByIcon(efficency) {
+				var iconBasePoint = 3;
+				var iconEndPoint = 38
+
+				$scope.countWidthByIcon = function (efficency) {
 					var iconWidth = iconEndPoint - iconBasePoint;
 					var width = (efficency * iconWidth ) / 100;
 					console.log("count icon width: " + width);
 					return width;
 				}
-				//water of body part
 
+				//water of body part
 				var bodyDownPoint = 700;
 				var bodyUpPoint = 110;
 				function countWidthByBody(efficency) {
@@ -116,15 +117,14 @@
 						"name" : "estimatedCaloriesOut",
 						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-estimatedCaloriesOut.svg",
-						"efficiency" : 120
+						"efficiency" : 100
 					},
 					{
 						"display" : "몸무게 확인",
 						"name" : "logWeight",
 						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-logWeight.svg",
-						"efficiency" : 100
-
+						"efficiency" : 70
 					},
 					{
 						"display" : "칼로리 소비",
@@ -132,7 +132,6 @@
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-calories.svg",
 						"efficiency" : parseInt(($scope.activityData.calories.today  * 100 ) / $scope.activityData.goals.caloriesOut)
-
 					},
 					{
 						"display" : "걸음수",
@@ -175,55 +174,54 @@
 				$scope.targetsRange = [
 					{
 						//"name" : "totalTimeInBed",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.totalTimeInBed].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.totalTimeInBed].efficiency)
 					},
 					{
 						//"name" : "totalMinutesAsleep",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.totalMinutesAsleep].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.totalMinutesAsleep].efficiency)
 					},
 					{
 						//"name" : "restingHeartRate",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.restingHeartRate].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.restingHeartRate].efficiency)
 					},
 					{
 						//"name" : "water",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.water].efficiency),
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.water].efficiency),
 						"bodyRatio" : countWidthByBody($scope.targets[$scope.indexOfTarget.water].efficiency)
 					},
 					{
 						//"name" : "foodPlan",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.foodPlan].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.foodPlan].efficiency)
 					},
 					{
 						//"name" : "estimatedCaloriesOut",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.estimatedCaloriesOut].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.estimatedCaloriesOut].efficiency)
 					},
 					{
 						//"name" : "logWeight",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.logWeight].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.logWeight].efficiency)
 					},
 					{
 						//"name" : "calories",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.calories].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.calories].efficiency)
 					},
 					{
 						//"name" : "steps",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.steps].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.steps].efficiency)
 					},
 					{
 						//"name" : "activityCalories",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.activityCalories].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.activityCalories].efficiency)
 					},
 					{
 						//"name" : "floors",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.floors].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.floors].efficiency)
 					},
 					{
 						//"name" : "distance",
-						"iconRatio" : countWidthByIcon($scope.targets[$scope.indexOfTarget.distance].efficiency)
+						"iconRatio" : $scope.countWidthByIcon($scope.targets[$scope.indexOfTarget.distance].efficiency)
 					}
 				];
-
 
 				//get index of $scope.targets
 				$scope.filterSearch = function (filterTarget) {
@@ -234,13 +232,27 @@
 				};
 
 				//enegetic part data
-				$scope.enegeticStatus = {
+				$scope.todayStatus = {
+					"totalTimeInBed" : 50,
+					"totalMinutesAsleep" :73,
+					"restingHeartRate" : 100,
+					"water" : 63,
 					"calories" : 26,
 					"steps" : 41,
 					"activityCalories" : 103,
 					"floors" : 35,
 					"distance" : 65
 				};
+
+
+
+				function countStatusByPercent(all, percentage, flag) {
+					if(flag === false) {
+						return parseFloat((all * percentage) / 100).toFixed(2) ;
+					} else {
+						return parseInt((all * percentage) / 100 );
+					}
+				}
 
 				//enegetic part chart
 				$scope.options = {
@@ -262,55 +274,40 @@
 						vertical:"false"
 					}
 				};
-				//calories
-				//"calories" : {
-				//	"weekAgoToday" : 1366,
-				//		"yesterday" : 2304,
-				//		"today" : 675,
-				//		"lastWeek" : 1552
-				//}
+
 				$scope.dataCals = {
-					"ranges": [2358, 1552,0],
-					"measures": [675],
-					"markers": [1300]
+					"ranges": [$scope.activityData.goals.caloriesOut, $scope.activityData.calories.lastWeek === 0 ? 1552 : $scope.activityData.calories.lastWeek ],
+					"measures": [$scope.activityData.calories.today === 0 ? countStatusByPercent($scope.activityData.goals.caloriesOut, $scope.todayStatus.calories) : $scope.activityData.calories.today ],
+					"markers": [$scope.activityData.calories.yesterday === 0 ? 1300 : $scope.activityData.calories.yesterday]
 				};
 
 				//Steps
 				$scope.dataSteps = {
-					"ranges": [10000,4155, 0],
-					"measures": [2000],
-					"markers": [9956]
+					"ranges": [$scope.activityData.goals.steps, $scope.activityData.steps.lastWeek === 0 ? 4155 : $scope.activityData.steps.lastWeek],
+					"measures": [$scope.activityData.steps.today === 0 ? countStatusByPercent($scope.activityData.goals.steps, $scope.todayStatus.steps) : $scope.activityData.steps.today],
+					"markers": [$scope.activityData.steps.yesterday === 0 ? 8888 : $scope.activityData.steps.yesterday]
 				};
 
 				//ActivityCalories
 				$scope.dataActivityCalories = {
-					"ranges": [30, 29, 0],
-					"measures": [20],
-					"markers": [20]
+					"ranges": [$scope.activityData.goals.activeMinutes, $scope.activityData.activityCalories.lastWeek === 0 ? 17 : $scope.activityData.activityCalories.lastWeek],
+					"measures": [$scope.activityData.activityCalories.today === 0 ? countStatusByPercent($scope.activityData.goals.activeMinutes, $scope.todayStatus.activityCalories) : $scope.activityData.activityCalories.today],
+					"markers": [$scope.activityData.activityCalories.yesterday === 0 ? 12 : $scope.activityData.activityCalories.yesterday]
 				};
+
 				//Floors
 				$scope.dataFloors = {
-					"ranges": [10, 28, 0],
-					"measures": [7],
-					"markers": [5]
+					"ranges": [$scope.activityData.goals.floors, $scope.activityData.floors.lastWeek === 0 ? 8 : $scope.activityData.floors.lastWeek],
+					"measures": [$scope.activityData.floors.today === 0 ? countStatusByPercent($scope.activityData.goals.floors, $scope.todayStatus.floors) : $scope.activityData.floors.today],
+					"markers": [$scope.activityData.floors.yesterday === 0 ? 5 : $scope.activityData.floors.yesterday]
 				};
+
 				//Distance
 				$scope.dataDistance = {
-					"ranges": [8.05, 2.04, 0],
-					"measures": [1.04],
-					"markers": [6.5]
+					"ranges": [$scope.activityData.goals.distance, $scope.activityData.distance.lastWeek === 0 ? 5.04 : $scope.activityData.distance.lastWeek],
+					"measures": [$scope.activityData.distance.today === 0 ? countStatusByPercent($scope.activityData.goals.distance, $scope.todayStatus.distance, false) : $scope.activityData.distance.today],
+					"markers": [$scope.activityData.distance.yesterday === 0 ? 6.5 : $scope.activityData.distance.yesterday]
 				};
-
-				//$scope.dataIcons = [
-				//	{
-				//		"totalTimeInBed" :{
-				//			"efficiency" : $scope.sleepData.efficiency.lastWeek,
-				//			"iconRatio" : countWidthByIcon($scope.sleepData.efficiency.lastWeek)
-				//		}
-				//	}
-				//]
-
-
 
 			}
 		}

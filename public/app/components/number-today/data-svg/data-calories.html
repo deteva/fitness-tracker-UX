@@ -12,7 +12,7 @@
 	<rect ng-if="targets[indexOfTarget.calories].efficiency === 0"
 		  id="attr" x="0"
           y="2" class="st2"
-          ng-width="countWidthByIcon(targets[indexOfTarget.calories].efficiency)"
+		  ng-width="countWidthByIcon($parent.todayStatus.calories)"
           height="46"/>
 
 	<rect ng-if="targets[indexOfTarget.calories].efficiency != 0"

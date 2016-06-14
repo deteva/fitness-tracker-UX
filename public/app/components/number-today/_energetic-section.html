@@ -5,7 +5,7 @@
     <div class = "border-underline ">
         <div class = "border-inside-element graph">
             <h1 ng-if="targets[indexOfTarget.calories].efficiency === 0">
-                {{parent.enegeticStatus.calories}}
+                {{$parent.todayStatus.calories}}
             </h1>
             <h1 ng-if="targets[indexOfTarget.calories].efficiency != 0">{{targets[indexOfTarget.calories].efficiency}}</h1>
             <span class="percentage">%</span>
@@ -26,7 +26,7 @@
     <div class = "border-underline">
         <div class = "border-inside-element graph">
             <h1 ng-if="targets[indexOfTarget.steps].efficiency === 0">
-                {{$parent.enegeticStatus.steps}}
+                {{$parent.todayStatus.steps}}
             </h1>
             <h1 ng-if="targets[indexOfTarget.steps].efficiency != 0">{{targets[indexOfTarget.steps].efficiency}}</h1>
             <span class="percentage">%</span>
@@ -48,7 +48,7 @@
     <div class = "border-underline">
         <div class = "border-inside-element graph">
             <h1 ng-if="targets[indexOfTarget.activityCalories].efficiency === 0">
-                {{$parent.enegeticStatus.activityCalories}}
+                {{$parent.todayStatus.activityCalories}}
             </h1>
             <h1 ng-if="targets[indexOfTarget.activityCalories].efficiency != 0">{{targets[indexOfTarget.activityCalories].efficiency}}</h1>
             <span class="percentage">%</span>
@@ -70,7 +70,7 @@
     <div class = "border-underline">
         <div class = "border-inside-element graph">
             <h1 ng-if="targets[indexOfTarget.floors].efficiency === 0">
-                {{$parent.enegeticStatus.floors}}
+                {{$parent.todayStatus.floors}}
             </h1>
             <h1 ng-if="targets[indexOfTarget.floors].efficiency != 0">{{targets[indexOfTarget.floors].efficiency}}</h1>
             <span class="percentage">%</span>
@@ -92,7 +92,7 @@
     <div class = "border-underline">
         <div class = "border-inside-element graph">
             <h1 ng-if="targets[indexOfTarget.distance].efficiency === 0">
-                {{$parent.enegeticStatus.distance}}
+                {{$parent.todayStatus.distance}}
             </h1>
             <h1 ng-if="targets[indexOfTarget.distance].efficiency != 0">{{targets[indexOfTarget.distance].efficiency}}
             </h1>

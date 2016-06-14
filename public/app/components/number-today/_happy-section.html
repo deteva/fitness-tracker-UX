@@ -17,8 +17,10 @@
 <li>
     <div class = "border-underline">
         <div class = "border-inside-element">
-            <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency === 0">75</h1>
-            <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency != 0">targets[indexOfTarget.totalMinutesAsleep].efficiency
+            <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency === 0">
+                {{$parent.todayStatus.totalMinutesAsleep}}</h1>
+            <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency != 0">
+                {{sleepData.sleepData.today}}
             </h1>
             %
         </div>
@@ -28,8 +30,8 @@
 <li>
     <div class = "border-underline">
         <div class = "border-inside-element">
-            <h1 ng-if="targets[indexOfTarget.restingHeartRate].efficiency === 100">62</h1>
-            <h1 ng-if="targets[indexOfTarget.restingHeartRate].efficiency === 0">--</h1>
+            <h1 ng-if="targets[indexOfTarget.restingHeartRate].efficiency === 100">{{heartrateData.restingHeartRate[0]}}</h1>
+            <h1 ng-if="targets[indexOfTarget.restingHeartRate].efficiency === 0">62</h1>
             bpm
         </div>
     </div>
