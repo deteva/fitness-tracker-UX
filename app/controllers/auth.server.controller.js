@@ -184,7 +184,14 @@ exports.getFitbitData = function(req, res) {
 			});
 		};
 
-		var getActivityCaloriesSeries = function(callback) {
+		//https://dev.fitbit.com/docs/activity/
+		//activities/activityCalories
+		// - The number of calories burned during the day for periods of time when the user was active above sedentary level. This value is calculated minute by minute for minutes that fall under this criteria. This includes BMR for those minutes as well as activity burned calories.
+
+		//GET https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
+		//res[summary].veryActiveMinutes
+
+			var getActivityCaloriesSeries = function(callback) {
 			client.get('/activities/activityCalories/date/'+ nToday + '/' + baseDate + '.json', result.access_token).then(function (res) {
 				var responseObj = res[0]["activities-activityCalories"];
 				var nLen = responseObj.length;
@@ -206,6 +213,9 @@ exports.getFitbitData = function(req, res) {
 				});
 			});
 		};
+
+
+
 
 		var getHeartRate = function(callback) {
 			client.get('/activities/heart/date/today/1d.json', result.access_token).then(function (res) {

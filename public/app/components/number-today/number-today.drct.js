@@ -41,10 +41,32 @@
 					};
 				}
 
+				//fn split a string: using on happy section
+				//startTime:
+				//	lastWeek: ""
+				//	today: "05:18"
+				//	yesterday: "05:10"
+				//	weekAgoToday:""
+				$scope.strSplit = function(string, idx) {
+					var array = string.split(':');
+					return array[idx];
+				}
+
+				$scope.caculateTotalSleepTime = function(totalTime, idx) {
+					var time = [];
+					var hours = Math.floor(totalTime / 60);
+					var mins = totalTime % 60;
+					console.log("total sleep time : " + hours +" : " + mins);
+					time.push(hours);
+					time.push(mins);
+
+					return time[idx];
+				}
+
 				//Math.floor((this.distance.today / this.goals.distance ) * 100);
 				//icon-data part
 				var iconBasePoint = 3;
-				var iconEndPoint = 38
+				var iconEndPoint = 36;
 
 				$scope.countWidthByIcon = function (efficency) {
 					var iconWidth = iconEndPoint - iconBasePoint;
@@ -72,6 +94,16 @@
 					$scope.indexOfTarget[element] = idx;
 				});
 
+				//1.Using BMR
+				//Formula 9.99 * weightKg + 6.25*heightCm - 4.92*ageYears + s, where s is +5 for males and -161 for female
+				//2.
+				// GET  https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
+				//res[summary].veryActiveMinutes
+				//3.
+				// value of
+				// activityCalories convert value of veryActiveMinutes roughly
+				//ex) activityCalories(102) /dividedByBMR(11) = veryActiveMinutes(93)
+				var dividedByBMR = 11;
 
 				//all data
 				$scope.targets = [
@@ -140,12 +172,14 @@
 						"src" : "/assets/images/icon-svg/icon-steps.svg",
 						"efficiency" : parseInt(($scope.activityData.steps.today  * 100 ) / $scope.activityData.goals.steps)
 					},
-					{
+
+
+				{
 						"display" : "활동적 시간",
 						"name" : "activityCalories",
 						"color" : "#f74d52",
 						"src" : "/assets/images/icon-svg/icon-activityCalories.svg",
-						"efficiency" : parseInt(($scope.activityData.activityCalories.today  * 100 ) / $scope.activityData.goals.activeMinutes)
+						"efficiency" : parseInt((($scope.activityData.activityCalories.today / dividedByBMR)  * 100 ) / $scope.activityData.goals.activeMinutes)
 					},
 					{
 						"display" : "층수",
@@ -163,13 +197,11 @@
 					}
 				];
 
-
 				if(($scope.heart.restingHeartRate[0] ===  null) || ($scope.heart.restingHeartRate[0] === "0") || ($scope.heart.restingHeartRate[0] === "")) {
-					$scope.targets[$scope.indexOfTarget.restingHeartRate]["efficiency"] = 0
+					$scope.targets[$scope.indexOfTarget.restingHeartRate]["efficiency"] = 0;
 				} else {
 					$scope.targets[$scope.indexOfTarget.restingHeartRate]["efficiency"] =  100;
 				}
-
 
 				$scope.targetsRange = [
 					{
@@ -290,9 +322,9 @@
 
 				//ActivityCalories
 				$scope.dataActivityCalories = {
-					"ranges": [$scope.activityData.goals.activeMinutes, $scope.activityData.activityCalories.lastWeek === 0 ? 17 : $scope.activityData.activityCalories.lastWeek],
-					"measures": [$scope.activityData.activityCalories.today === 0 ? countStatusByPercent($scope.activityData.goals.activeMinutes, $scope.todayStatus.activityCalories) : $scope.activityData.activityCalories.today],
-					"markers": [$scope.activityData.activityCalories.yesterday === 0 ? 12 : $scope.activityData.activityCalories.yesterday]
+					"ranges": [$scope.activityData.goals.activeMinutes, $scope.activityData.activityCalories.lastWeek === 0 ? 17 : parseFloat(($scope.activityData.activityCalories.lastWeek)/ dividedByBMR).toFixed(1)],
+					"measures": [$scope.activityData.activityCalories.today === 0 ? countStatusByPercent($scope.activityData.goals.activeMinutes, $scope.todayStatus.activityCalories ) : parseFloat($scope.activityData.activityCalories.today / dividedByBMR).toFixed(1)],
+					"markers": [$scope.activityData.activityCalories.yesterday === 0 ? 12 : parseFloat(($scope.activityData.activityCalories.yesterday)/dividedByBMR).toFixed(1)]
 				};
 
 				//Floors

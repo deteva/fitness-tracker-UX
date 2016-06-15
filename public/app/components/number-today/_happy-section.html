@@ -3,14 +3,19 @@
         <div class = "border-inside-element">
             <h1 ng-if="sleepData.startTime.today === ''">6
             </h1>
-            <!--<h1 ng-if="sleepData.startTime.today != ''">{{sleepData.startTime.today}}-->
-            <!--</h1>-->
+            <h1 ng-if="sleepData.startTime.today != ''">
+                {{caculateTotalSleepTime(sleepData.timeInBed.today, 0)}}
+            </h1>
             시간
             <h1 ng-if="sleepData.startTime.today === ''">30</h1>
-            <!--<h1 ng-if="sleepData.startTime.today != ''">{{sleepData.startTime.today}}-->
-            <!--</h1>-->
+
+            <h1 ng-if="sleepData.startTime.today != ''">
+                {{caculateTotalSleepTime(sleepData.timeInBed.today, 1)}}
+            </h1>
             분
         </div>
+        <!--wake-up time "05:18"-->
+        <!--{{strSplit(sleepData.startTime.today, 0)}}:{{strSplit(sleepData.startTime.today, 1)}}-->
     </div>
     <span class= "comment">수면시간</span>
 </li>
@@ -20,7 +25,7 @@
             <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency === 0">
                 {{$parent.todayStatus.totalMinutesAsleep}}</h1>
             <h1 ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency != 0">
-                {{sleepData.sleepData.today}}
+                {{sleepData.efficiency.today}}
             </h1>
             %
         </div>

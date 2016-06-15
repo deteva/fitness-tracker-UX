@@ -2284,6 +2284,7 @@ nv.models.bullet = function() {
                        })
                    });
             } else {
+
                 gEnter
                    .selectAll("path.nv-markerTriangle")
                    .data(markerData)
@@ -2322,10 +2323,19 @@ nv.models.bullet = function() {
                 g.selectAll("path.nv-markerTriangle")
                    .data(markerData)
                    .attr('transform', function(d) {
-                       return 'translate('
-                          + x1(d.value)
-                          + ','
-                          + (availableHeight / 2 - 1.5) + ')'
+
+                       if(x1(d.value) < width) {
+                           return 'translate('
+                              + x1(d.value)
+                              + ','
+                              + (availableHeight / 2 - 1.5) + ')'
+                       } else {
+                           return 'translate('
+                              + (width - 2)
+                              + ','
+                              + (availableHeight / 2 - 1.5) + ')'
+                       }
+
                    });
             }
 
