@@ -65,15 +65,25 @@
 
 				//Math.floor((this.distance.today / this.goals.distance ) * 100);
 				//icon-data part
-				var iconBasePoint = 3;
-				var iconEndPoint = 36;
-
+				//var iconBasePoint = 3.5; >> x + r = select('#distance-circle').getBBox.cx
+				//var iconEndPoint = 29.5;
 				$scope.countWidthByIcon = function (efficency) {
-					var iconWidth = iconEndPoint - iconBasePoint;
+					//var iconWidth = iconEndPoint - iconBasePoint;
+					var iconWidth = 25;
 					var width = (efficency * iconWidth ) / 100;
 					console.log("count icon width: " + width);
 					return width;
 				}
+
+				//var canvas =Snap("#svgDistance");
+				//debugger;
+				//var distanceCircle = canvas.select('#distance-circle');
+				//var thisCircle = distanceCircle.getBBox();
+				//console.log(thisCircle);
+
+				//var tmp = d3.select("#svgDistance");
+				//console.log(tmp);
+
 
 				//water of body part
 				var bodyDownPoint = 700;

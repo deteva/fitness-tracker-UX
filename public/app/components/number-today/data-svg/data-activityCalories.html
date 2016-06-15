@@ -9,15 +9,15 @@
 </style>
 <symbol id="ratio-activityCalories">
 	<rect ng-if="targets[indexOfTarget.activityCalories].efficiency === 0"
-		  id="attr" x="0"
+		  id="attr" x="2"
           y="2" class="st2"
           ng-width="countWidthByIcon($parent.todayStatus.activityCalories)"
           height="46"/>
 
 	<rect ng-if="targets[indexOfTarget.activityCalories].efficiency != 0"
-		  id="attr" x="0"
+		  id="attr" x="2"
 		  y="2" class="st2"
-		  ng-width="{{targetsRange[indexOfTarget.activityCalories].iconRatio}} + 5"
+		  ng-width="{{targetsRange[indexOfTarget.activityCalories].iconRatio}}"
 		  height="46"/>
 
 	<path id="data-mask-activityCalories"
