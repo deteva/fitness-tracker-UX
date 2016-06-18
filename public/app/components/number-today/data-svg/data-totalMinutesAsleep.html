@@ -14,8 +14,15 @@
 
 </style>
 <symbol id="ratio-totalMinutesAsleep">
+	<rect id="totalMinutesAsleep-attr"
+		  x="2"
+		  y="2"
+		  class="st0"
+		  width="5"
+		  height="46"/>
+
 	<rect ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency === 0"
-		  id="attr"
+		  id="attr-totalMinutesAsleep"
 		  x="2"
 		  y="2"
 		  class="st0"
@@ -23,12 +30,14 @@
 		  height="46"/>
 
 	<rect ng-if="targets[indexOfTarget.totalMinutesAsleep].efficiency != 0"
-		  id="attr"
+		  id="attr-totalMinutesAsleep"
 		  x="2"
 		  y="2"
 		  class="st0"
 		  ng-width="{{targetsRange[indexOfTarget.totalMinutesAsleep].iconRatio}}"
 		  height="46"/>
+
+
 
 	<path id="data-mask-totalMinutesAsleep"
 		  class="st1" d="M0,0v50h40V0H0z M26.9,33.5c-2.2,4.8-7.1,8-12.4,8c-9.6,0-16.3-10.3-12.3-19.1

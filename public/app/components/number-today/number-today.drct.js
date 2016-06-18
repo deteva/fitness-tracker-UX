@@ -67,6 +67,7 @@
 				//icon-data part
 				//var iconBasePoint = 3.5; >> x + r = select('#distance-circle').getBBox.cx
 				//var iconEndPoint = 29.5;
+
 				$scope.countWidthByIcon = function (efficency) {
 					//var iconWidth = iconEndPoint - iconBasePoint;
 					var iconWidth = 25;

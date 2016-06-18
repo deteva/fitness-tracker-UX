@@ -2187,6 +2187,7 @@ nv.models.bullet = function() {
             if(vertical === "true") {
                 g.select('circle.base-point-water-outer')
                    .style('fill', '#512B8D')
+                   .attr('id', 'waterPoints')
                    .attr('cx', 7.5)
                    .attr('cy', 7.5)
                    .attr('r', 7.5)

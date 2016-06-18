@@ -74,9 +74,14 @@
 				//}).pattern(0, 0, 10, 10);
 
 				//load svg file
+				$scope.waterPoint = Snap.select('#waterPoints');
+
 				Snap.load('/assets/images/body-svg/beforeSyncBody.svg', function (body) {
 					$scope.head = body.select('#b-sync-head');
 					$scope.sleepPattern = body.select('#sleep-pattern');
+					$scope.boxTotalMinutesAsleep = body.select('#boxTotalMinutesAsleep');
+
+
 
 					$scope.arms = body.select('#b-sync-arms');
 					$scope.leftArm = body.select('#b-sync-left-arm');
@@ -98,6 +103,7 @@
 					$scope.points = body.select('#points');
 					$scope.restingHeartRatePoint = body.select('#basePoint-restingHeartRate');
 					$scope.foodPlanPoint = body.select('#basePoint-foodPlan');
+					//$scope.foodPlanPoint = Snap.select('#basePoint-foodPlan');
 					$scope.estimatedCaloriesOutpPoint = body.select('#basePoint-estimatedCaloriesOut');
 					$scope.caloriesPoint = body.select('#basePoint-calories');
 					$scope.stepsPoint = body.select('#basePoint-steps');
@@ -109,6 +115,9 @@
 
 					$scope.maskBody = body.select('#mask-all-body');
 					$scope.drinkWater = body.select('#drink-water');
+
+
+
 
 					//$scope.targets[$scope.indexOfTarget.water].bodyRatio
 					$scope.waterHeight = 340;
@@ -150,8 +159,6 @@
 						}, length , mina.easeinout);
 
 						part100BottomPoints(length);
-
-
 					}
 
 					function headHoverOut(delay, length){
@@ -249,17 +256,121 @@
 						};
 					};
 
-					$scope.top.hover(hoverIn, hoverOut);
+					$scope.arms.hover(hoverIn, hoverOut);
+
+					//click event
+					var waveAction = function (clickedEle) {
+						clickedEle.removeClass('clicked-wave');
+						setTimeout(function(){
+							clickedEle.addClass('clicked-wave');
+						}, 500);
+					}
+
+					//happy part
+					var actionTotalMinutesAsleepPoint = function() {
+						var actionTotalMinutesAsleep = Snap('.today-container :nth-child(1) li:nth-child(1) svg');
+						waveAction(actionTotalMinutesAsleep);
+					}
+
+					var actiontotalTimeInBedPoint = function() {
+						var actiontotalTimeInBedBox = Snap('.today-container :nth-child(1) li:nth-child(2) svg');
+						waveAction(actiontotalTimeInBedBox);
+					}
+
+
+					var actionRestingHeartRatePoint = function(){
+						var actionRestingHeartRate = Snap('.today-container :nth-child(1) li:nth-child(3) svg');
+						waveAction(actionRestingHeartRate);
+					}
+
+					var actionWaterPoint = function(){
+						var actionWater = Snap('.today-container :nth-child(1) li:nth-child(4) svg');
+						waveAction(actionWater);
+					}
+
+					$scope.boxTotalMinutesAsleep.click(actionTotalMinutesAsleepPoint);
+					$scope.sleepPattern.click(actiontotalTimeInBedPoint);
+					$scope.restingHeartRatePoint.click(actionRestingHeartRatePoint);
+					//$scope.waterPoint.click(actionWaterPoint);
+
+					//balanced part
+					var actionFoodPlanPoint = function() {
+						var actionFoodPlan = Snap('.today-container :nth-child(2)' +
+							' li:nth-child(2) svg');
+						waveAction(actionFoodPlan);
+					}
+
+					var actionEstimatedCaloriesOutpPoint = function() {
+						var actionEstimatedCaloriesOut = Snap('.today-container' +
+							' :nth-child(2) li:nth-child(3) svg');
+						waveAction(actionEstimatedCaloriesOut);
+					}
+
+
+					var actionLogWeightBtnPoint = function(){
+						var actionLogWeightBtn = Snap('.today-container :nth-child(2) li:last-child svg');
+						waveAction(actionLogWeightBtn);
+					}
+
+
+					$scope.foodPlanPoint.click(actionFoodPlanPoint);
+					$scope.estimatedCaloriesOutpPoint.click(actionEstimatedCaloriesOutpPoint);
+					$scope.logWeightBtn.click(actionLogWeightBtnPoint);
+
+					//energetic part
+					var actionCaloriesPoint = function() {
+						var actionCalories = Snap('.today-container :nth-child(3)' +
+							' li:nth-child(2) svg');
+						waveAction(actionCalories);
+					}
+
+					var actionStepsPointPoint = function() {
+						var actionStepsPoint = Snap('.today-container :nth-child(3)' +
+							' li:nth-child(3) svg');
+						waveAction(actionStepsPoint);
+					}
+
+
+					var actionActivityCaloriesPoint = function(){
+						var actionActivityCalories = Snap('.today-container' +
+							' :nth-child(3) li:nth-child(4) svg');
+						waveAction(actionActivityCalories);
+					}
+
+					var actionFloorsPoint = function(){
+						var actionFloors = Snap('.today-container :nth-child(3)' +
+							' li:nth-child(5) svg');
+						waveAction(actionFloors);
+					}
+
+					var actionDistancePoint = function(){
+						var actionDistance = Snap('.today-container :nth-child(3)' +
+							' li:nth-child(6) svg');
+						waveAction(actionDistance);
+					}
+
+					$scope.caloriesPoint.click(actionCaloriesPoint);
+					$scope.stepsPoint.click(actionStepsPointPoint);
+					$scope.activityCaloriesPoint.click(actionActivityCaloriesPoint);
+					$scope.floorsPoint.click(actionFloorsPoint);
+					$scope.distancePoint.click(actionDistancePoint);
+
 				});
 
+
+
+
+
+				//tranform body
 				//var syncBtn = angular.element(document.querySelector("#body-container button span"));
 				//console.log(syncBtn);
 
 				$scope.isSync = false;
 				//'데이터 씽크 이전으로 클릭!'
+				//'티셔츠 위에서 마우스  hover'
 				$scope.syncBtnText = [
 					'클릭! 가상으로 데이터 씽크',
-					'티셔츠 위에서 마우스 hover'
+					'팔 위로 마우스 올리기! 운동'
 				];
 
 				function part100Top(length, dotted){
@@ -456,9 +567,6 @@
 								y2:"681.9"
 							}, length , mina.easeinout);
 
-
-
-
 							//bottom part point
 							$scope.caloriesPoint.animate({
 								transform : 't-3.5 0.5'
@@ -505,6 +613,9 @@
 					$scope.syncBtn = $scope.isSync ? $scope.syncBtnText[1] : $scope.syncBtnText[0];
 					animateSync();
 				};
+
+
+
 
 
 			}

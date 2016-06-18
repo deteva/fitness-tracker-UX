@@ -138,33 +138,90 @@ ul.stat
       padding-right: 6%
       @include susy-breakpoint($bp-wide)
         padding-right: 0%
+
     &.overwrap-element
       position: absolute
       top: 0px
       padding: 0px
+
     &.right-text
       /* This aligns items to the end line on main-axis */
       display: flex
       justify-content: flex-end
+
     =border-inside-ele
       position: absolute
       content: ""
-      border-bottom: 5px solid $sterling-white
+      //border-bottom: 5px solid $sterling-white
       bottom: 3%
       width: 100%
       height: 100%
       z-index: 0
       display: list-item
+
     .border-underline
       +inline-block
       position: relative
+      overflow: hidden
+      //when click event happens at points of bodyshape, wave effect on underline at number-today part
+      .wave
+        position: absolute
+        top: 0
+        left: 0
+        fill: none
+      .wave-energetic
+        position: absolute
+        top: -2px
+        left: 0
+        fill: none
+
+
+      .wave-effect
+        stroke: $happy-violet
+        stroke-width: 5px
+        pointer-events: none
+        -webkit-transition: -webkit-transform 0.7s, stroke 0.7s
+        transition: transform 714.647ms 0ms, stroke
+        -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+        transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+
+      .wave-effect-enegetic
+        stroke: $energetic-red
+        stroke-width: 9px
+        pointer-events: none
+        -webkit-transition: -webkit-transform 0.7s, stroke 0.7s
+        transition: transform 714.647ms 0ms, stroke
+        -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+        transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+
+      .wave-effect-balanced
+        stroke: $balanced-yellow
+        stroke-width: 5px
+        pointer-events: none
+        -webkit-transition: -webkit-transform 0.7s, stroke 0.7s
+        transition: transform 714.647ms 0ms, stroke
+        -webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+        transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+
+      .clicked-wave
+        //stroke: #333
+        -webkit-transform: translate3d(-66.6%, 0, 0)
+        transform: translate3d(-66.6%, 0, 0)
+        stroke: $sterling-white
+
+      .change-wave-color
+        stroke: $sterling-white !important
+
+
+
     .border-inside-element
       &:after
         +border-inside-ele
+
     //chart
     .border-inside-element.graph
       &:after
-        border-bottom: 7px solid $sterling-white
+        //border-bottom: 7px solid $sterling-white
     span.comment
       //font-family: $thin-font
       padding-left: 14px
