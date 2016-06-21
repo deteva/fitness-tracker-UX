@@ -23,7 +23,6 @@
 		$log.info('app.core MainCtrl in!');
 		//$log.log(activityByfitbit);
 		//debugger;
-
 		$scope.activityData = activityByfitbit;
 		$scope.heartrateData = heartrateByfitbit;
 		$scope.waterData = nutritionByfitbit;

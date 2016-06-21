@@ -1,4 +1,9 @@
-<section class = "body-shape">
+<!--<section class = "body-shape" set-class-when-at-top="fix-to-top" ng-if="scrollOverPos===true">-->
+<!--<section class = "body-shape"-->
+         <!--set-class-when-at-top="fix-to-top">-->
+<section class = "body-shape"
+         set-class-when-at-top>
+    <!--ng-style="scrollOverPos=== true && {'position': 'absolute', 'top': '260px'}"-->
     <!--comment of body shape-->
     <div class ="comment-body icon-data">
         <div class = "today-title">
@@ -6,7 +11,7 @@
                 <h1>
                     <div class="point">5</div>/12
                 </h1>
-                <span>Today
+                <span>Todayå
                 </span>
             </div>
             <figure>
@@ -37,3 +42,43 @@
     <div class = "gutter">
     </div>
 </section>
+
+<!--<section class = "body-shape" set-class-when-at-top="fix-to-top" ng-if="scrollOverPos===false">-->
+    <!--&lt;!&ndash;comment of body shape&ndash;&gt;-->
+    <!--<div class ="comment-body icon-data">-->
+        <!--<div class = "today-title">-->
+            <!--<div class="title no-padding">-->
+                <!--<h1>-->
+                    <!--<div class="point">5</div>/12-->
+                <!--</h1>-->
+                <!--<span>Today-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<figure>-->
+                <!--&lt;!&ndash;<div class="bg-reward"></div>&ndash;&gt;-->
+                <!--<div ng-include="'/app/components/body-shape/reward.html'"></div>-->
+                <!--<svg class=""-->
+                     <!--x="0px" y="0px"-->
+                     <!--width="60px" height="100px"-->
+                     <!--viewBox="0 0 60 100">-->
+                    <!--<use xlink:href="#reward" />-->
+                <!--</svg>-->
+            <!--</figure>-->
+        <!--</div>-->
+        <!--<article class = "drink-water">-->
+            <!--<nvd3 class="graph" options="verticalOptions" data="dataWater"></nvd3>-->
+        <!--</article>-->
+
+    <!--</div>-->
+    <!--&lt;!&ndash;image of body shape&ndash;&gt;-->
+    <!--<article class = "body-container">-->
+        <!--<button type="submit"-->
+                <!--ng-init="syncBtn =syncBtnText[0]"-->
+                <!--ng-click="doSync()">-->
+            <!--<span>{{syncBtn}}</span>-->
+        <!--</button>-->
+    <!--</article>-->
+    <!--&lt;!&ndash; gutter&ndash;&gt;-->
+    <!--<div class = "gutter">-->
+    <!--</div>-->
+<!--</section>-->

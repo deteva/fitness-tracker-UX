@@ -15,10 +15,25 @@
   .gutter
     @include span(1 of ($nest-layout) last)
     //+layout-outline($balanced-yellow)
+
+//bodyShape section for moving fixed position scrolling at a certain point(303px)
+.followTop
+  top: 70px !important
+.fixToTop
+  position: fixed
+  top: 0px
+  width: 260px !important
+.absTopPos
+  position: absolute
+  top : 303px
+  width: 260px !important
+
 section.body-shape
   padding-top: 25px
   @include susy-breakpoint($bp-wide, $susy-wide)
-    width : 37% !important
+    //width : 37% !important
+    width : 37%
+
   .comment-body
     @include span(6 of 89 first)
     min-width: 50px
@@ -56,7 +71,6 @@ section.body-shape
       padding-left: 7%
       margin-top: 9%
       text-align: center
-
     button
       margin-bottom: 6%
       background: none
@@ -73,7 +87,6 @@ section.body-shape
         width: 170px
         padding-left: 7%
         padding-right: 0%
-
       span
         color : $grey
         @include susy-breakpoint($bp-wide, $susy-wide)
@@ -82,22 +95,18 @@ section.body-shape
         //  padding-left: 5%
         &:hover
           color : $dark-jet
-
     svg#body
       transform: scale(0.9)
       margin-top: -17%
-
   .gutter
     @include span(5 of 89 at 29)
     //+layout-outline($happy-violet)
-
   @include susy-breakpoint($bp-wide, $susy-wide)
     +body-shape-w($susy-wide, 6 22 3)
-
   @include susy-breakpoint($bp-wider, $susy-wider)
     +body-shape-w($susy-wider, 6 22 5)
 
 //body svg
-g#points, rect#sleep-pattern, rect#boxTotalMinutesAsleep
+g#points, rect#sleep-pattern, rect#boxTotalMinutesAsleep, circle#waterPoints, circle.base-point-water-inner
   cursor: pointer
 

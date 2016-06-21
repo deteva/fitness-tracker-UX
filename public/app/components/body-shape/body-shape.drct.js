@@ -6,7 +6,53 @@
 
 	angular
 		.module('app.core')
-		.directive('bodyShape', BodyShape);
+		.directive('bodyShape', BodyShape)
+		.directive('setClassWhenAtTop', function ($window) {
+			var $win = angular.element($window);
+
+			return {
+				restrict: 'A',
+				link: function (scope, element, attrs) {
+					scope.scrollOverPos = false;
+
+					function offset(elm) {
+						try {return elm.offset();} catch(e) {}
+						var rawDom = elm[0];
+						var _x = 0;
+						var _y = 0;
+						var body = document.documentElement || document.body;
+						var scrollX = window.pageXOffset || body.scrollLeft;
+						var scrollY = window.pageYOffset || body.scrollTop;
+						_x = rawDom.getBoundingClientRect().left + scrollX;
+						_y = rawDom.getBoundingClientRect().top + scrollY;
+						return { left: _x, top: _y };
+					}
+
+					var offsetTop = offset(element).top;
+					$win.on('scroll', function (e) {
+						if(document.body.scrollTop >= 250) {
+							console.log("make a section when user reach over a certain point(offSetTop)");
+							scope.scrollOverPos = true;
+							element.removeClass('fixToTop');
+							element.removeClass('followTop');
+							element.addClass('absTopPos');
+						} else if (document.body.scrollTop <= 10 && document.body.scrollTop >= 0 ) {
+							scope.scrollOverPos = false;
+							element.addClass('followTop');
+						} else {
+							console.log("body section follow as user scroll");
+							scope.scrollOverPos = false;
+							element.removeClass('absTopPos');
+							element.removeClass('followTop');
+							element.addClass('fixToTop');
+						}
+						console.log("document.body.scrollTop: " + document.body.scrollTop );
+						console.log("offsetTop: " +offsetTop);
+
+					});
+				}
+			};
+		});
 
 	BodyShape.$inject = ['dataAPI'];
 
@@ -74,7 +120,6 @@
 				//}).pattern(0, 0, 10, 10);
 
 				//load svg file
-				$scope.waterPoint = Snap.select('#waterPoints');
 
 				Snap.load('/assets/images/body-svg/beforeSyncBody.svg', function (body) {
 					$scope.head = body.select('#b-sync-head');
@@ -116,7 +161,8 @@
 					$scope.maskBody = body.select('#mask-all-body');
 					$scope.drinkWater = body.select('#drink-water');
 
-
+					$scope.waterPoint = Snap.select('#waterPoints');
+					console.log($scope.waterPoint);
 
 
 					//$scope.targets[$scope.indexOfTarget.water].bodyRatio
@@ -291,7 +337,8 @@
 					$scope.boxTotalMinutesAsleep.click(actionTotalMinutesAsleepPoint);
 					$scope.sleepPattern.click(actiontotalTimeInBedPoint);
 					$scope.restingHeartRatePoint.click(actionRestingHeartRatePoint);
-					//$scope.waterPoint.click(actionWaterPoint);
+					$scope.waterPoint.click(actionWaterPoint);
+
 
 					//balanced part
 					var actionFoodPlanPoint = function() {
@@ -319,8 +366,7 @@
 
 					//energetic part
 					var actionCaloriesPoint = function() {
-						var actionCalories = Snap('.today-container :nth-child(3)' +
-							' li:nth-child(2) svg');
+						var actionCalories = Snap('.today-container :nth-child(3)' + ' li:nth-child(2) svg');
 						waveAction(actionCalories);
 					}
 
@@ -356,10 +402,6 @@
 					$scope.distancePoint.click(actionDistancePoint);
 
 				});
-
-
-
-
 
 				//tranform body
 				//var syncBtn = angular.element(document.querySelector("#body-container button span"));
