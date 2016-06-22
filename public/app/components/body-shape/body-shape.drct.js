@@ -13,7 +13,6 @@
 			return {
 				restrict: 'A',
 				link: function (scope, element, attrs) {
-					scope.scrollOverPos = false;
 
 					function offset(elm) {
 						try {return elm.offset();} catch(e) {}
@@ -28,27 +27,40 @@
 						return { left: _x, top: _y };
 					}
 
-					var offsetTop = offset(element).top;
-					$win.on('scroll', function (e) {
-						if(document.body.scrollTop >= 250) {
-							console.log("make a section when user reach over a certain point(offSetTop)");
-							scope.scrollOverPos = true;
-							element.removeClass('fixToTop');
-							element.removeClass('followTop');
-							element.addClass('absTopPos');
-						} else if (document.body.scrollTop <= 10 && document.body.scrollTop >= 0 ) {
-							scope.scrollOverPos = false;
-							element.addClass('followTop');
-						} else {
-							console.log("body section follow as user scroll");
-							scope.scrollOverPos = false;
-							element.removeClass('absTopPos');
-							element.removeClass('followTop');
-							element.addClass('fixToTop');
-						}
-						console.log("document.body.scrollTop: " + document.body.scrollTop );
-						console.log("offsetTop: " +offsetTop);
+					scope.getWindowDimensions = function () {
+						return {
+							'h': $win[0].innerHeight,
+							'w': $win[0].innerWidth
+						};
+					};
 
+					scope.windowTopPoint = 80;
+
+					$win.on('scroll', function (e) {
+						//for debugging
+						var offsetTop = offset(element).top;
+						console.log("document.body.scrollTop: " + document.body.scrollTop );
+						console.log("offsetTop: " + offsetTop);
+
+						if(scope.getWindowDimensions().w < 960) {
+							followByScroll(440);
+							console.log('getWindowDimensions width is smaller than 960px');
+						}
+						else
+							followByScroll(350);
+
+						function followByScroll(windowReachPoint) {
+							if(document.body.scrollTop < scope.windowTopPoint && document.body.scrollTop >= 0) {
+								element.removeClass('fixToTop');
+							} else if (document.body.scrollTop <= windowReachPoint && document.body.scrollTop >= scope.windowTopPoint ) {
+								element.removeClass('absTopPos');
+								element.addClass('followTop');
+								element.addClass('fixToTop');
+							} else {
+								element.removeClass('fixToTop');
+								element.addClass('absTopPos');
+							}
+						}
 					});
 				}
 			};

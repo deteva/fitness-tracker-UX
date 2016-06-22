@@ -15,7 +15,13 @@
         span:hover
           color: nth($i, 2)
 
+
 section.number-today
+  margin-left: 40%
+  width: 62%
+  @include susy-breakpoint($bp-wide, $susy-wide)
+    //margin-left: 40%
+    //width: 62%
   height: 1100px
   //iconPercentage
   .icon-data
@@ -84,6 +90,9 @@ section.number-today
 
   .today-container
     @include span(40 of 89 at 44)
+    width: 73%
+    @include susy-breakpoint($bp-wide, $susy-wide)
+      @include span(40 of 89 at 44)
     //+layout-outline($happy-violet)
     padding-top: 0px
     min-width: 365px

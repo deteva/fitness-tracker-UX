@@ -17,34 +17,45 @@
     //+layout-outline($balanced-yellow)
 
 //bodyShape section for moving fixed position scrolling at a certain point(303px)
-.followTop
-  top: 70px !important
 .fixToTop
+  top: 0px !important
   position: fixed
-  top: 0px
-  width: 260px !important
+
+.followTop
+  width: 400px !important
+  @include susy-breakpoint($bp-wide, $susy-wide)
+    width: 260px !important
+
 .absTopPos
   position: absolute
-  top : 303px
-  width: 260px !important
+  top : 388px
+  @include susy-breakpoint($bp-wide, $susy-wide)
+    top: 260px
 
 section.body-shape
   padding-top: 25px
+  width: 400px
   @include susy-breakpoint($bp-wide, $susy-wide)
     //width : 37% !important
     width : 37%
 
   .comment-body
     @include span(6 of 89 first)
+    width: 15% !important
+    @include susy-breakpoint($bp-wide, $susy-wide)
+      @include span(6 of 89 first)
     min-width: 50px
     +part-title
     //+layout-outline($happy-violet)
+
     div.title h1
       letter-spacing: -0.03em
+
     figure
       height: 100px
       //margin: 0.3em 0 0 0
       margin: 15px 0 0 0
+
       //reward clothe
       .bg-reward
         background-color: $pearl-grey
@@ -57,36 +68,40 @@ section.body-shape
       margin-top: 15px
       height: 600px
       //+layout-outline($happy-violet)
+
       .graph
         position: absolute
         +center(x)
 
   .body-container
     @include span(22 of 89 at 7)
+    width: 70%
     padding-left: 2%
     //+layout-outline($happy-violet)
     margin-top: 4%
     text-align: right
     @include susy-breakpoint($bp-wide, $susy-wide)
+      @include span(22 of 89 at 7)
       padding-left: 7%
       margin-top: 9%
       text-align: center
+
     button
+      width: 100%
       margin-bottom: 6%
       background: none
       border: none
-      width: 185px
-      //padding-right: 0%
-      //padding-left: 12%
       float: left
       margin-left: 7%
       @include susy-breakpoint($bp-wide, $susy-wide)
+        width: 185px
         padding-right: 2%
         padding-left: 4%
       @include susy-breakpoint($bp-wider, $susy-wider)
         width: 170px
         padding-left: 7%
         padding-right: 0%
+
       span
         color : $grey
         @include susy-breakpoint($bp-wide, $susy-wide)
@@ -105,7 +120,6 @@ section.body-shape
     +body-shape-w($susy-wide, 6 22 3)
   @include susy-breakpoint($bp-wider, $susy-wider)
     +body-shape-w($susy-wider, 6 22 5)
-
 //body svg
 g#points, rect#sleep-pattern, rect#boxTotalMinutesAsleep, circle#waterPoints, circle.base-point-water-inner
   cursor: pointer
