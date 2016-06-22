@@ -13,6 +13,9 @@ mainModule.config(['$locationProvider',
 			enabled: true,
 			requireBase: false
 		});
+		if (window.location.hash && window.location.hash == '#_=_') {
+			window.location.hash = '';
+		}
 	}
 ]);
 
@@ -24,3 +27,5 @@ mainModule.run(function (amMoment) {
 angular.element(document).ready(function() {
 	angular.bootstrap(document, [mainName]);
 });
+
+
