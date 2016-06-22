@@ -16,7 +16,12 @@
     <link rel ="stylesheet" href="/assets/stylesheets/custom-css/nv.d3.css"/>
     <link rel="stylesheet" href="/assets/bower_components/angular-meter-polyfill/dist/angular-meter-polyfill.min.css">
 
-    <link rel="stylesheet" href="/assets/stylesheets/css/global.css" />
+    <link rel="stylesheet" href="/assets/stylesheets/css/global.css"/>
+    <script type="text/javascript">
+        if (window.location.hash && window.location.hash == '#_=_') {
+            window.location.hash = '';
+        }
+    </script>
 </head>
 <body>
    <div class = "dashboard">
