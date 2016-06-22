@@ -17,11 +17,6 @@
     <link rel="stylesheet" href="/assets/bower_components/angular-meter-polyfill/dist/angular-meter-polyfill.min.css">
 
     <link rel="stylesheet" href="/assets/stylesheets/css/global.css"/>
-    <script type="text/javascript">
-        if (window.location.hash && window.location.hash == '#_=_') {
-            window.location.hash = '';
-        }
-    </script>
 </head>
 <body>
    <div class = "dashboard">
@@ -30,7 +25,12 @@
        <div ng-view></div>
        <div ng-include ="'/app/components/layout/footer.html'"></div>
    </div>
-
+   
+   <script type="text/javascript">
+       if (window.location.hash && window.location.hash == '#_=_') {
+           window.location.hash = '';
+       }
+   </script>
     <!-- Load local libraries -->
     <script src="/assets/bower_components/angular/angular.js"></script>
     <script src="/assets/bower_components/angular-resource/angular-resource.js"></script>
