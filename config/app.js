@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var winston = require('winston');
 var mongoose = require('./mongoose');
 var session = require('express-session');
-var compass = require('node-compass');
+//var compass = require('node-compass');
 
 var config = require('./config');
 
