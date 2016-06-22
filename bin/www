@@ -31,9 +31,8 @@ var server = http.createServer(app);
  */
 
 var listener = server.listen(port, function () {
-//  winston.info('Server' +
-//     ' running at ' + listener.address().address + ' on port ' + listener.address().port
-//  );
+  winston.info('Server running at ' + listener.address().address + ' on port ' + listener.address().port
+  );
     winston.info(listener.address());
 });
 

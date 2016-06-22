@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "postinstall": "bower install"
   },
   "author": "tingmin lim",
   "dependencies": {
     "body-parser": "~1.13.2",
+    "bower": "^1.7.9",
     "breakpoint-sass": "^2.7.0",
     "compass": "^0.1.1",
     "compression": "^1.6.1",
