@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var winston = require('winston');
 var mongoose = require('./mongoose');
-var session = require('express-session');
+//var session = require('express-session');
 //var compass = require('node-compass');
 
 var config = require('./config');
@@ -45,12 +45,12 @@ module.exports = function() {
 	//}));
 
 	// Configure the 'session' middleware
-	app.use(session({
-		secret: config.session.secret,
-		saveUninitialized: true,
-		resave: true,
-		cookie: { maxAge: 100000 }
-	}));
+	//app.use(session({
+	//	secret: config.session.secret,
+	//	saveUninitialized: true,
+	//	resave: true,
+	//	cookie: { maxAge: 100000 }
+	//}));
 
 	// Set the application view engine and 'views' folder
 	app.set('views', path.join(__dirname, '../app/app.server/views'));
