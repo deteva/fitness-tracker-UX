@@ -108,16 +108,16 @@
                                              placeholder="목표물 선택"
                                              id="inputMission01"
                                              class="inputMission nonebtton x90transform bg-input-{{selectedTarget.name}}"
-                                             md-input-name="autocompleteField-target"
+                                             md-input-name="autocompleteField-target">
                                 <md-item-template>
-                                <span class="percentage-icon">
-                                    <md-icon md-svg-src="{{target.src}}"></md-icon>
-                                    <span> {{target.display}} </span>
-                                </span>
+                                    <span class="percentage-icon">
+                                        <md-icon md-svg-src="{{target.src}}"></md-icon>
+                                        <span> {{target.display}} </span>
+                                    </span>
                                 </md-item-template>
                             </md-autocomplete>
-
                         </md-content>
+
                         <md-content class="select-acheivement">
                             <md-autocomplete flex nonebutton="true"
                                              ng-disabled="isAchievementDisabled1"
@@ -155,15 +155,16 @@
                                              id="inputMission02"
                                              class="inputMission nonebutton x90transform bg-input-{{selectedTarget2.name}}"
                                              md-input-name="autocompleteField-target"
-                                             required/>
-                            <md-item-template>
-                            <span class="percentage-icon">
-                                <md-icon md-svg-src="{{target2.src}}"></md-icon>
-                                <span> {{target2.display}} </span>
-                            </span>
-                            </md-item-template>
-
+                                             required>
+                                <md-item-template>
+                                    <span class="percentage-icon">
+                                        <md-icon md-svg-src="{{target2.src}}"></md-icon>
+                                        <span> {{target2.display}} </span>
+                                    </span>
+                                </md-item-template>
+                            </md-autocomplete>
                         </md-content>
+
                         <md-content class="select-acheivement">
                             <md-autocomplete flex nonebutton="true"
                                              ng-disabled="isAchievementDisabled2"
@@ -177,9 +178,9 @@
                                              ng-disabled="selectedTarget2.name == null"
                                              required/>
                             <md-item-template>
-                        <span md-highlight-text="percentage2.percent"
-                              md-highlight-flags="^i">{{percentage2.number}}% 달성
-                        </span>
+                                <span md-highlight-text="percentage2.percent"
+                                      md-highlight-flags="^i">{{percentage2.number}}% 달성
+                                </span>
                             </md-item-template>
                         </md-content>
                     </div>
@@ -201,14 +202,14 @@
                                              id="inputMission03"
                                              class="inputMission nonebutton x90transform bg-input-{{selectedTarget3.name}}"
                                              md-input-name="autocompleteField-target"
-                                             required/>
-                            <md-item-template>
-                            <span class="percentage-icon">
-                                <md-icon md-svg-src="{{target3.src}}"></md-icon>
-                                <span> {{target3.display}} </span>
-                            </span>
-                            </md-item-template>
-
+                                             required>
+                                <md-item-template>
+                                    <span class="percentage-icon">
+                                        <md-icon md-svg-src="{{target3.src}}"></md-icon>
+                                        <span> {{target3.display}} </span>
+                                    </span>
+                                </md-item-template>
+                            </md-autocomplete>
                         </md-content>
                         <md-content class="select-acheivement">
                             <md-autocomplete flex nonebutton="true"
@@ -223,11 +224,10 @@
                                              ng-disabled="selectedTarget3 == null"
                                              required/>
                             <md-item-template>
-                        <span md-highlight-text="percentage3.percent"
-                              md-highlight-flags="^i">{{percentage3.number}}% 달성
-                        </span>
+                                <span md-highlight-text="percentage3.percent"
+                                      md-highlight-flags="^i">{{percentage3.number}}% 달성
+                                </span>
                             </md-item-template>
-
                         </md-content>
                     </div>
                 </div>
