@@ -347,6 +347,7 @@ h1 {
   font-size: 24px;
   font-size: 1.71429rem;
   font-family: "SpoqaHanSans-Bold";
+  font-weight: 700;
 }
 @media (min-width: 1000px) {
   /* line 9, ../sass/base/_typography.sass */
@@ -370,37 +371,37 @@ h2 {
   }
 }
 
-/* line 21, ../sass/base/_typography.sass */
+/* line 20, ../sass/base/_typography.sass */
 h3 {
   font-size: 13px;
   font-size: 0.92857rem;
 }
 @media (min-width: 1000px) {
-  /* line 21, ../sass/base/_typography.sass */
+  /* line 20, ../sass/base/_typography.sass */
   h3 {
     font-size: 14px;
     font-size: 1rem;
   }
 }
 
-/* line 25, ../sass/base/_typography.sass */
+/* line 24, ../sass/base/_typography.sass */
 h4 {
   font-size: 14px;
 }
 
-/* line 28, ../sass/base/_typography.sass */
+/* line 27, ../sass/base/_typography.sass */
 h5 {
   font-size: 12px;
   font-size: 0.85714rem;
 }
 
-/* line 31, ../sass/base/_typography.sass */
+/* line 30, ../sass/base/_typography.sass */
 p, span {
   font-size: 12px;
   font-size: 0.85714rem;
 }
 
-/* line 34, ../sass/base/_typography.sass */
+/* line 33, ../sass/base/_typography.sass */
 strong {
   font-family: "SpoqaHanSans-Bold";
 }
@@ -2237,12 +2238,6 @@ ul.stat li.li-answer .answer button {
 ul.stat li.li-answer .span-answer {
   float: right;
 }
-/* line 264, ../sass/components/_number-today-stat.sass */
-ul.stat li.li-answer .span-answer span.comment {
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
-}
 @media (min-width: 1000px) {
   /* line 264, ../sass/components/_number-today-stat.sass */
   ul.stat li.li-answer .span-answer span.comment {
@@ -2281,13 +2276,13 @@ h1.overwrap-background {
   color: #c38e44;
 }
 
-/* line 294, ../sass/components/_number-today-stat.sass */
+/* line 293, ../sass/components/_number-today-stat.sass */
 md-select-menu md-option[selected],
 md-select-menu md-option[selected]:focus {
   color: #fab657 !important;
 }
 
-/* line 302, ../sass/components/_number-today-stat.sass */
+/* line 301, ../sass/components/_number-today-stat.sass */
 li.data-bar {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2302,7 +2297,7 @@ li.data-bar:after {
   display: block;
   clear: both;
 }
-/* line 305, ../sass/components/_number-today-stat.sass */
+/* line 304, ../sass/components/_number-today-stat.sass */
 li.data-bar .border-underline {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2312,7 +2307,7 @@ li.data-bar .border-underline {
   margin-left: 0;
   margin-right: -100%;
 }
-/* line 307, ../sass/components/_number-today-stat.sass */
+/* line 306, ../sass/components/_number-today-stat.sass */
 li.data-bar .chart-bar {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2323,32 +2318,32 @@ li.data-bar .chart-bar {
   margin-right: -100%;
   position: relative;
 }
-/* line 310, ../sass/components/_number-today-stat.sass */
+/* line 309, ../sass/components/_number-today-stat.sass */
 li.data-bar .chart-bar .txt {
   margin-left: 3%;
   height: 43px;
 }
-/* line 313, ../sass/components/_number-today-stat.sass */
+/* line 312, ../sass/components/_number-today-stat.sass */
 li.data-bar .chart-bar .txt span {
   color: #a0a6a9;
 }
-/* line 315, ../sass/components/_number-today-stat.sass */
+/* line 314, ../sass/components/_number-today-stat.sass */
 li.data-bar .chart-bar .txt .detail-comment {
   float: left;
 }
-/* line 317, ../sass/components/_number-today-stat.sass */
+/* line 316, ../sass/components/_number-today-stat.sass */
 li.data-bar .chart-bar .txt .unit-symbol {
   float: right;
   font-family: "SpoqaHanSans-Thin";
   padding-right: 8%;
 }
 @media (min-width: 1000px) {
-  /* line 317, ../sass/components/_number-today-stat.sass */
+  /* line 316, ../sass/components/_number-today-stat.sass */
   li.data-bar .chart-bar .txt .unit-symbol {
     padding-right: 0%;
   }
 }
-/* line 324, ../sass/components/_number-today-stat.sass */
+/* line 323, ../sass/components/_number-today-stat.sass */
 li.data-bar .chart-bar nvd3 {
   height: 7px;
   position: absolute;
@@ -2356,7 +2351,7 @@ li.data-bar .chart-bar nvd3 {
   bottom: 0px;
 }
 @media (min-width: 1000px) {
-  /* line 324, ../sass/components/_number-today-stat.sass */
+  /* line 323, ../sass/components/_number-today-stat.sass */
   li.data-bar .chart-bar nvd3 {
     bottom: 1px;
   }
