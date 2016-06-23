@@ -18,12 +18,15 @@
 	<rect ng-if="targets[indexOfTarget.water].efficiency === 0"
 		  id="attr-water"
 		  y="2"
+		  x="2"
           class="st1"
           ng-width="countWidthByIcon($parent.todayStatus.water)"
           height="46"/>
 
 	<rect ng-if="targets[indexOfTarget.water].efficiency != 0"
-		  id="attr-water" y="2"
+		  id="attr-water"
+		  y="2"
+		  x="2"
 		  class="st1"
 		  ng-width={{targetsRange[indexOfTarget.water].iconRatio}}
 		  height="46"/>
