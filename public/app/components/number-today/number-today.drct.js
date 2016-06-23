@@ -116,11 +116,12 @@
 				//ex) activityCalories(102) /dividedByBMR(11) = veryActiveMinutes(93)
 				var dividedByBMR = 11;
 
+				//data-binding not working in ie
 				//$scope.svgIconCanvasSize = "M" + 0 +',' + 0 + 'v' + 50 + 'h' + 40 + 'V'+ 0 + 'H' + 0 + 'z';
 
-				$scope.svgIconCanvasSize = 'M0,0v50h40V0H0z';
-				$scope.svgIconMaskSize = 'M1,1v48h38V1H1z';
-				//data-binding not working in ie
+				//$scope.svgIconCanvasSize = 'M0,0v50h40V0H0z';
+				//$scope.svgIconMaskSize = 'M1,1v48h38V1H1z';
+
 				//$scope.svgIconCanvasSize = {
 				//	'M' : [0, 0],
 				//	'v' : 50,
