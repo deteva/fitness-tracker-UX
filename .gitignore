@@ -1,6 +1,7 @@
 *.iml
 **/.idea/
 /node_modules
+/public/assets/stylesheets/css/cp-global.css
 /config/env/development.js
 /public/assets/bower_components
 #/public/assets/stylesheets/fonts

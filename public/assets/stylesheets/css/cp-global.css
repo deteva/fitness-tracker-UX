@@ -301,20 +301,19 @@ th {
 
 @font-face {
   font-family: "SpoqaHanSans-Bold";
-  src: "SpoqaHanSans-Bold/SpoqaHanSans-Bold.woff", "SpoqaHanSans-Bold/SpoqaHanSans-Bold.ttf", "SpoqaHanSans-Bold/SpoqaHanSans-Bold.svg", "SpoqaHanSans-Bold/SpoqaHanSans-Bold.eot#iefix') format('embedded-opentype')",
-  "SpoqaHanSans-Bold/SpoqaHanSans-Bold.eot";
+  src: "SpoqaHanSans-Bold/SpoqaHanSans-Bold.woff", "SpoqaHanSans-Bold/SpoqaHanSans-Bold.ttf", "SpoqaHanSans-Bold/SpoqaHanSans-Bold.svg", "SpoqaHanSans-Bold/SpoqaHanSans-Bold.eot";
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "SpoqaHanSans-Regular";
-  src: "SpoqaHanSans-Regular/SpoqaHanSans-Regular.woff", "SpoqaHanSans-Regular/SpoqaHanSans-Regular.ttf", "SpoqaHanSans-Regular/SpoqaHanSans-Regular.svg", "SpoqaHanSans-Regular/SpoqaHanSans-Regular.eot","SpoqaHanSans-Regular/SpoqaHanSans-Regular.eot#iefix') format('embedded-opentype')";
+  src: "SpoqaHanSans-Regular/SpoqaHanSans-Regular.woff", "SpoqaHanSans-Regular/SpoqaHanSans-Regular.ttf", "SpoqaHanSans-Regular/SpoqaHanSans-Regular.svg", "SpoqaHanSans-Regular/SpoqaHanSans-Regular.eot";
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: "SpoqaHanSans-Thin";
-  src: "SpoqaHanSans-Thin/SpoqaHanSans-Thin.woff", "SpoqaHanSans-Thin/SpoqaHanSans-Thin.ttf", "SpoqaHanSans-Thin/SpoqaHanSans-Thin.svg", "SpoqaHanSans-Thin/SpoqaHanSans-Thin.eot","SpoqaHanSans-Thin/SpoqaHanSans-Thin.eot#iefix') format('embedded-opentype')";
+  src: "SpoqaHanSans-Thin/SpoqaHanSans-Thin.woff", "SpoqaHanSans-Thin/SpoqaHanSans-Thin.ttf", "SpoqaHanSans-Thin/SpoqaHanSans-Thin.svg", "SpoqaHanSans-Thin/SpoqaHanSans-Thin.eot";
   font-weight: normal;
   font-style: normal;
 }
