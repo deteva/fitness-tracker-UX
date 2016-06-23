@@ -1348,7 +1348,7 @@ section.body-shape .body-container {
     text-align: center;
   }
 }
-/* line 89, ../sass/components/_body-shape.sass */
+/* line 88, ../sass/components/_body-shape.sass */
 section.body-shape .body-container button {
   width: 100%;
   margin-bottom: 6%;
@@ -1358,7 +1358,7 @@ section.body-shape .body-container button {
   margin-left: 7%;
 }
 @media (min-width: 1000px) {
-  /* line 89, ../sass/components/_body-shape.sass */
+  /* line 88, ../sass/components/_body-shape.sass */
   section.body-shape .body-container button {
     width: 185px;
     padding-right: 2%;
@@ -1366,33 +1366,34 @@ section.body-shape .body-container button {
   }
 }
 @media (min-width: 1130px) {
-  /* line 89, ../sass/components/_body-shape.sass */
+  /* line 88, ../sass/components/_body-shape.sass */
   section.body-shape .body-container button {
-    width: 170px;
+    width: 180px;
     padding-left: 7%;
     padding-right: 0%;
+    min-width: 178px;
   }
 }
-/* line 105, ../sass/components/_body-shape.sass */
+/* line 104, ../sass/components/_body-shape.sass */
 section.body-shape .body-container button span {
   color: #a0a6a9;
 }
 @media (min-width: 1000px) {
-  /* line 105, ../sass/components/_body-shape.sass */
+  /* line 104, ../sass/components/_body-shape.sass */
   section.body-shape .body-container button span {
     padding-left: 5%;
   }
 }
-/* line 111, ../sass/components/_body-shape.sass */
+/* line 110, ../sass/components/_body-shape.sass */
 section.body-shape .body-container button span:hover {
   color: #193346;
 }
-/* line 113, ../sass/components/_body-shape.sass */
+/* line 112, ../sass/components/_body-shape.sass */
 section.body-shape .body-container svg#body {
   transform: scale(0.9);
   margin-top: -17%;
 }
-/* line 116, ../sass/components/_body-shape.sass */
+/* line 115, ../sass/components/_body-shape.sass */
 section.body-shape .gutter {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1493,7 +1494,7 @@ section.body-shape .gutter {
   }
 }
 
-/* line 124, ../sass/components/_body-shape.sass */
+/* line 123, ../sass/components/_body-shape.sass */
 g#points, rect#sleep-pattern, rect#boxTotalMinutesAsleep, circle#waterPoints, circle.base-point-water-inner {
   cursor: pointer;
 }
@@ -2480,9 +2481,10 @@ section.feedback .improvement-point div h3, section.feedback .strong-point div h
   font-family: "SpoqaHanSans-Bold";
   line-height: 3.33333em;
   padding-left: 15%;
-  letter-spacing: -0.05em;
+  letter-spacing: 0.02em;
+  word-spacing: 0.3em;
 }
-/* line 55, ../sass/components/_feedback.sass */
+/* line 58, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li, section.feedback .strong-point li {
   line-height: 3.57143em;
   position: relative;
@@ -2494,11 +2496,11 @@ section.feedback .improvement-point li, section.feedback .strong-point li {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 59, ../sass/components/_feedback.sass */
+/* line 62, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li.none-border, section.feedback .strong-point li.none-border {
   border-bottom: 1px solid #a2a1a0;
 }
-/* line 62, ../sass/components/_feedback.sass */
+/* line 65, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li:last-child, section.feedback .strong-point li:last-child {
   margin-bottom: 3.57143em;
 }
@@ -2508,7 +2510,7 @@ section.feedback .improvement-point li:after, section.feedback .strong-point li:
   display: block;
   clear: both;
 }
-/* line 66, ../sass/components/_feedback.sass */
+/* line 69, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon, section.feedback .strong-point li .selected-icon {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2516,38 +2518,38 @@ section.feedback .improvement-point li .selected-icon, section.feedback .strong-
   width: 47.61905%;
   float: left;
 }
-/* line 68, ../sass/components/_feedback.sass */
+/* line 71, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon .percentage-icon, section.feedback .strong-point li .selected-icon .percentage-icon {
   line-height: 3.57143em;
   width: 40px;
   position: absolute;
 }
-/* line 73, ../sass/components/_feedback.sass */
+/* line 76, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon .percentage-icon svg.resize, section.feedback .strong-point li .selected-icon .percentage-icon svg.resize {
   transform: scale(0.8);
 }
-/* line 78, ../sass/components/_feedback.sass */
+/* line 81, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon .percentage-icon svg.resize rect .happy-color, section.feedback .strong-point li .selected-icon .percentage-icon svg.resize rect .happy-color {
   fill: #512b8d;
 }
-/* line 78, ../sass/components/_feedback.sass */
+/* line 81, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon .percentage-icon svg.resize rect .balanced-color, section.feedback .strong-point li .selected-icon .percentage-icon svg.resize rect .balanced-color {
   fill: #fab657;
 }
-/* line 78, ../sass/components/_feedback.sass */
+/* line 81, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon .percentage-icon svg.resize rect .energetic-color, section.feedback .strong-point li .selected-icon .percentage-icon svg.resize rect .energetic-color {
   fill: #f74d52;
 }
-/* line 78, ../sass/components/_feedback.sass */
+/* line 81, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon .percentage-icon svg.resize rect .today-color, section.feedback .strong-point li .selected-icon .percentage-icon svg.resize rect .today-color {
   fill: #193346;
 }
-/* line 82, ../sass/components/_feedback.sass */
+/* line 85, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .selected-icon span, section.feedback .strong-point li .selected-icon span {
   padding-left: 40px;
   top: 0;
 }
-/* line 85, ../sass/components/_feedback.sass */
+/* line 88, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li .desc, section.feedback .strong-point li .desc {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2559,12 +2561,12 @@ section.feedback .improvement-point li .desc, section.feedback .strong-point li 
   position: absolute;
   padding-left: 10px;
 }
-/* line 89, ../sass/components/_feedback.sass */
+/* line 92, ../sass/components/_feedback.sass */
 section.feedback .improvement-point li h4, section.feedback .strong-point li h4 {
   color: #ffffff;
   font-family: "SpoqaHanSans-Bold";
 }
-/* line 92, ../sass/components/_feedback.sass */
+/* line 95, ../sass/components/_feedback.sass */
 section.feedback .challenge {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2574,7 +2576,7 @@ section.feedback .challenge {
   margin-right: 0;
   padding-left: 7%;
 }
-/* line 97, ../sass/components/_feedback.sass */
+/* line 100, ../sass/components/_feedback.sass */
 section.feedback .challenge div {
   line-height: 3.57143em;
   -moz-box-sizing: border-box;
@@ -2584,32 +2586,32 @@ section.feedback .challenge div {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 99, ../sass/components/_feedback.sass */
+/* line 102, ../sass/components/_feedback.sass */
 section.feedback .challenge div.select-date {
   border-bottom: 2px solid #b5b4b3;
 }
-/* line 101, ../sass/components/_feedback.sass */
+/* line 104, ../sass/components/_feedback.sass */
 section.feedback .challenge div.select-mission {
   border-bottom: 1px solid #b5b4b3;
 }
-/* line 104, ../sass/components/_feedback.sass */
+/* line 107, ../sass/components/_feedback.sass */
 section.feedback .challenge div.answer {
   height: 30px;
   margin: 8px auto;
 }
 @media (min-width: 1000px) {
-  /* line 104, ../sass/components/_feedback.sass */
+  /* line 107, ../sass/components/_feedback.sass */
   section.feedback .challenge div.answer {
     margin-top: 1.66667em;
     margin-bottom: 1.66667em;
   }
 }
-/* line 112, ../sass/components/_feedback.sass */
+/* line 115, ../sass/components/_feedback.sass */
 section.feedback .challenge div.answer div {
   text-align: center;
   line-height: 2.2em;
 }
-/* line 115, ../sass/components/_feedback.sass */
+/* line 118, ../sass/components/_feedback.sass */
 section.feedback .challenge div.answer button {
   position: absolute;
   left: 0;
@@ -2620,7 +2622,7 @@ section.feedback .challenge div.answer button {
   right: auto;
   transform: translateX(-50%);
 }
-/* line 121, ../sass/components/_feedback.sass */
+/* line 124, ../sass/components/_feedback.sass */
 section.feedback .challenge div.answer button img {
   vertical-align: middle;
 }
@@ -2630,7 +2632,7 @@ section.feedback .challenge div:after {
   display: block;
   clear: both;
 }
-/* line 125, ../sass/components/_feedback.sass */
+/* line 128, ../sass/components/_feedback.sass */
 section.feedback .challenge div .selected-date, section.feedback .challenge div .select-target {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2641,7 +2643,7 @@ section.feedback .challenge div .selected-date, section.feedback .challenge div 
   margin-right: -100%;
   padding-right: 2%;
 }
-/* line 128, ../sass/components/_feedback.sass */
+/* line 131, ../sass/components/_feedback.sass */
 section.feedback .challenge div .selected-date span.line-caret, section.feedback .challenge div .select-target span.line-caret {
   position: relative;
   cursor: pointer;
@@ -2670,7 +2672,7 @@ section.feedback .challenge div .selected-date span.line-caret:after, section.fe
 section.feedback .challenge div .selected-date span.line-caret:hover:before, section.feedback .challenge div .select-target span.line-caret:hover:before {
   border-right-color: #ffffff;
 }
-/* line 132, ../sass/components/_feedback.sass */
+/* line 135, ../sass/components/_feedback.sass */
 section.feedback .challenge div .select-filter, section.feedback .challenge div .select-acheivement {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2697,7 +2699,7 @@ section.feedback .challenge div .select-acheivement input:disabled::-moz-placeho
 section.feedback .challenge div .select-acheivement input:disabled:-ms-input-placeholder {
   color: #757575;
 }
-/* line 140, ../sass/components/_feedback.sass */
+/* line 143, ../sass/components/_feedback.sass */
 section.feedback .challenge div h3 {
   display: inline-block;
   vertical-align: middle;
@@ -2710,11 +2712,11 @@ section.feedback .challenge div h3 {
   padding-left: 15%;
   letter-spacing: 0.03em;
 }
-/* line 149, ../sass/components/_feedback.sass */
+/* line 152, ../sass/components/_feedback.sass */
 section.feedback .challenge div div > span {
   color: #fbfbbf;
 }
-/* line 151, ../sass/components/_feedback.sass */
+/* line 154, ../sass/components/_feedback.sass */
 section.feedback .challenge li {
   line-height: 3.57143em;
   position: relative;
@@ -2726,11 +2728,11 @@ section.feedback .challenge li {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 155, ../sass/components/_feedback.sass */
+/* line 158, ../sass/components/_feedback.sass */
 section.feedback .challenge li.none-border {
   border-bottom: 1px solid #a2a1a0;
 }
-/* line 158, ../sass/components/_feedback.sass */
+/* line 161, ../sass/components/_feedback.sass */
 section.feedback .challenge li:last-child {
   margin-bottom: 3.57143em;
 }
@@ -2740,7 +2742,7 @@ section.feedback .challenge li:after {
   display: block;
   clear: both;
 }
-/* line 162, ../sass/components/_feedback.sass */
+/* line 165, ../sass/components/_feedback.sass */
 section.feedback .challenge li .selected-icon {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2748,18 +2750,18 @@ section.feedback .challenge li .selected-icon {
   width: 60%;
   float: left;
 }
-/* line 164, ../sass/components/_feedback.sass */
+/* line 167, ../sass/components/_feedback.sass */
 section.feedback .challenge li .selected-icon .percentage-icon {
   line-height: 3.57143em;
   width: 40px;
   position: absolute;
 }
-/* line 168, ../sass/components/_feedback.sass */
+/* line 171, ../sass/components/_feedback.sass */
 section.feedback .challenge li .selected-icon span {
   padding-left: 40px;
   top: 0;
 }
-/* line 171, ../sass/components/_feedback.sass */
+/* line 174, ../sass/components/_feedback.sass */
 section.feedback .challenge li .desc {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2770,7 +2772,7 @@ section.feedback .challenge li .desc {
   margin-right: -100%;
   position: absolute;
 }
-/* line 174, ../sass/components/_feedback.sass */
+/* line 177, ../sass/components/_feedback.sass */
 section.feedback .challenge li h4 {
   color: #ffffff;
   font-family: "SpoqaHanSans-Bold";
@@ -2782,73 +2784,73 @@ section.feedback .challenge li h4 {
     width: 100%;
     padding-left: 25px;
   }
-  /* line 183, ../sass/components/_feedback.sass */
+  /* line 186, ../sass/components/_feedback.sass */
   section.feedback .improvement-point, section.feedback .strong-point {
     width: 100%;
   }
-  /* line 185, ../sass/components/_feedback.sass */
+  /* line 188, ../sass/components/_feedback.sass */
   section.feedback .improvement-point {
     padding-right: 0%;
   }
-  /* line 187, ../sass/components/_feedback.sass */
+  /* line 190, ../sass/components/_feedback.sass */
   section.feedback .strong-point {
     margin-top: 0;
     padding-right: 0%;
     padding-left: 0%;
   }
-  /* line 191, ../sass/components/_feedback.sass */
+  /* line 194, ../sass/components/_feedback.sass */
   section.feedback .challenge {
     width: 100%;
     padding-left: 0;
   }
 }
 
-/* line 195, ../sass/components/_feedback.sass */
+/* line 198, ../sass/components/_feedback.sass */
 ._md-select-value > span:not(._md-select-icon) ._md-text {
   font-size: 14px;
 }
 
-/* line 201, ../sass/components/_feedback.sass */
+/* line 204, ../sass/components/_feedback.sass */
 #select_container_2._md-select-menu-container._md-active._md-clickable md-content {
   background-color: #bcbbbb !important;
 }
 
-/* line 208, ../sass/components/_feedback.sass */
+/* line 211, ../sass/components/_feedback.sass */
 #select_container_2 md-select-menu md-option:focus, #select_container_2 md-select-menu md-option:not([disabled]), #select_container_2 md-select-menu md-option:not([selected]), #select_container_2 md-select-menu md-option[selected]:focus, #select_container_2 md-select-menu md-option[selected]:not([disabled]), #select_container_2 md-select-menu md-option[selected]:not([selected]) {
   color: #ebebeb !important;
   background: #bcbbbb !important;
 }
-/* line 213, ../sass/components/_feedback.sass */
+/* line 216, ../sass/components/_feedback.sass */
 #select_container_2 md-select-menu md-option:hover, #select_container_2 md-select-menu md-option[selected]:hover {
   background-color: #f0f0f0 !important;
   color: #a2a1a0 !important;
 }
-/* line 216, ../sass/components/_feedback.sass */
+/* line 219, ../sass/components/_feedback.sass */
 #select_container_2 md-select-menu md-option:active, #select_container_2 md-select-menu md-option[selected]:active {
   color: #93999c !important;
   font-family: "SpoqaHanSans-Bold" !important;
 }
 
-/* line 221, ../sass/components/_feedback.sass */
+/* line 224, ../sass/components/_feedback.sass */
 #ul-3 li, #ul-4 li, #ul-5 li, #ul-6 li, #ul-7 li, #ul-8 li {
   background-color: #bcbbbb !important;
 }
-/* line 223, ../sass/components/_feedback.sass */
+/* line 226, ../sass/components/_feedback.sass */
 #ul-3 li:hover, #ul-4 li:hover, #ul-5 li:hover, #ul-6 li:hover, #ul-7 li:hover, #ul-8 li:hover {
   background-color: #f0f0f0 !important;
   color: #a2a1a0;
 }
-/* line 226, ../sass/components/_feedback.sass */
+/* line 229, ../sass/components/_feedback.sass */
 #ul-3 li:active, #ul-4 li:active, #ul-5 li:active, #ul-6 li:active, #ul-7 li:active, #ul-8 li:active {
   color: #93999c !important;
   font-family: "SpoqaHanSans-Bold" !important;
 }
 
-/* line 235, ../sass/components/_feedback.sass */
+/* line 238, ../sass/components/_feedback.sass */
 .challenge form[name="today-mission"] {
   position: relative;
 }
-/* line 238, ../sass/components/_feedback.sass */
+/* line 241, ../sass/components/_feedback.sass */
 .challenge md-content, .challenge md-autocomplete {
   display: inline-block;
   vertical-align: middle;
@@ -2858,37 +2860,37 @@ section.feedback .challenge li h4 {
   background: transparent;
   z-index: 3;
 }
-/* line 242, ../sass/components/_feedback.sass */
+/* line 245, ../sass/components/_feedback.sass */
 .challenge md-content .select-target .container-autocomplete, .challenge md-autocomplete .select-target .container-autocomplete {
   position: relative;
   margin-right: 2%;
 }
-/* line 245, ../sass/components/_feedback.sass */
+/* line 248, ../sass/components/_feedback.sass */
 .challenge md-content .select-acheivement .container-autocomplete, .challenge md-autocomplete .select-acheivement .container-autocomplete {
   position: relative;
   margin-left: 11%;
 }
-/* line 249, ../sass/components/_feedback.sass */
+/* line 252, ../sass/components/_feedback.sass */
 .challenge md-content input.x90transform, .challenge md-autocomplete input.x90transform {
   width: 100%;
   background: transparent;
   transition: opacity 0.3s;
   z-index: 3;
 }
-/* line 255, ../sass/components/_feedback.sass */
+/* line 258, ../sass/components/_feedback.sass */
 .challenge md-content input.x90transform:focus, .challenge md-autocomplete input.x90transform:focus {
   opacity: 1;
   transition-delay: 0.3s;
 }
-/* line 258, ../sass/components/_feedback.sass */
+/* line 261, ../sass/components/_feedback.sass */
 .challenge md-content input.x90transform:focus + label.input-label, .challenge md-autocomplete input.x90transform:focus + label.input-label {
   pointer-events: none;
 }
-/* line 260, ../sass/components/_feedback.sass */
+/* line 263, ../sass/components/_feedback.sass */
 .challenge md-content input.x90transform:focus + label.input-label:before, .challenge md-autocomplete input.x90transform:focus + label.input-label:before {
   transform: perspective(1000px) rotate3d(1, 0, 0, 0deg);
 }
-/* line 262, ../sass/components/_feedback.sass */
+/* line 265, ../sass/components/_feedback.sass */
 .challenge md-content input.x90transform:focus + label.input-label:after, .challenge md-autocomplete input.x90transform:focus + label.input-label:after {
   transform: perspective(1000px) rotate3d(1, 0, 0, -90deg);
 }
@@ -2908,7 +2910,7 @@ section.feedback .challenge li h4 {
 .challenge md-content input:-ms-input-placeholder, .challenge md-autocomplete input:-ms-input-placeholder {
   color: #ebebeb;
 }
-/* line 271, ../sass/components/_feedback.sass */
+/* line 274, ../sass/components/_feedback.sass */
 .challenge md-content label.input-labe:before, .challenge md-autocomplete label.input-labe:before {
   content: "";
   position: absolute;
@@ -2922,7 +2924,7 @@ section.feedback .challenge li h4 {
   transform-origin: 50% 100%;
   transition: transform 0.3s;
 }
-/* line 281, ../sass/components/_feedback.sass */
+/* line 284, ../sass/components/_feedback.sass */
 .challenge md-content label.input-labe:after, .challenge md-autocomplete label.input-labe:after {
   content: "";
   position: absolute;
@@ -2936,38 +2938,38 @@ section.feedback .challenge li h4 {
   transform-origin: 50% 0%;
   transition: transform 0.3s;
 }
-/* line 293, ../sass/components/_feedback.sass */
+/* line 296, ../sass/components/_feedback.sass */
 .challenge md-content input:not(.md-input), .challenge md-autocomplete input:not(.md-input) {
   color: #ebebeb;
   text-align: center;
   padding: 0 3px;
   letter-spacing: -0.03em;
 }
-/* line 299, ../sass/components/_feedback.sass */
+/* line 302, ../sass/components/_feedback.sass */
 .challenge md-content input:not(.md-input)[disabled="disabled"], .challenge md-autocomplete input:not(.md-input)[disabled="disabled"] {
   color: #757575;
 }
-/* line 301, ../sass/components/_feedback.sass */
+/* line 304, ../sass/components/_feedback.sass */
 .challenge md-content .inputMission input:not(.md-input), .challenge md-autocomplete .inputMission input:not(.md-input) {
   padding-left: 24px;
 }
-/* line 303, ../sass/components/_feedback.sass */
+/* line 306, ../sass/components/_feedback.sass */
 .challenge md-content button, .challenge md-autocomplete button {
   margin-left: 0px;
   margin-right: 0px;
   z-index: 3;
 }
 
-/* line 310, ../sass/components/_feedback.sass */
+/* line 313, ../sass/components/_feedback.sass */
 #ul-3 .percentage-icon {
   letter-spacing: -0.1em;
 }
-/* line 312, ../sass/components/_feedback.sass */
+/* line 315, ../sass/components/_feedback.sass */
 #ul-3 .percentage-icon span {
   padding-left: 5px;
 }
 
-/* line 321, ../sass/components/_feedback.sass */
+/* line 324, ../sass/components/_feedback.sass */
 #inputMission01 input[name="autocompleteField-target"] {
   background: url(../../images/target.png);
   background-repeat: no-repeat;
@@ -2975,98 +2977,98 @@ section.feedback .challenge li h4 {
   min-width: 124px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-totalTimeInBed input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-totalTimeInBed.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-totalMinutesAsleep input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-totalMinutesAsleep.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-restingHeartRate input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-restingHeartRate.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-water input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-water.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-foodPlan input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-foodPlan.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-estimatedCaloriesOut input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-estimatedCaloriesOut.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-foodPlan input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-foodPlan.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-logWeight input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-logWeight.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-calories input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-calories.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-steps input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-steps.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-activityCalories input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-activityCalories.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-floors input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-floors.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission01.bg-input-distance input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-distance.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 321, ../sass/components/_feedback.sass */
+/* line 324, ../sass/components/_feedback.sass */
 #inputMission02 input[name="autocompleteField-target"] {
   background: url(../../images/target.png);
   background-repeat: no-repeat;
@@ -3074,98 +3076,98 @@ section.feedback .challenge li h4 {
   min-width: 124px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-totalTimeInBed input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-totalTimeInBed.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-totalMinutesAsleep input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-totalMinutesAsleep.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-restingHeartRate input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-restingHeartRate.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-water input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-water.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-foodPlan input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-foodPlan.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-estimatedCaloriesOut input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-estimatedCaloriesOut.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-foodPlan input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-foodPlan.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-logWeight input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-logWeight.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-calories input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-calories.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-steps input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-steps.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-activityCalories input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-activityCalories.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-floors input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-floors.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission02.bg-input-distance input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-distance.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 321, ../sass/components/_feedback.sass */
+/* line 324, ../sass/components/_feedback.sass */
 #inputMission03 input[name="autocompleteField-target"] {
   background: url(../../images/target.png);
   background-repeat: no-repeat;
@@ -3173,91 +3175,91 @@ section.feedback .challenge li h4 {
   min-width: 124px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-totalTimeInBed input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-totalTimeInBed.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-totalMinutesAsleep input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-totalMinutesAsleep.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-restingHeartRate input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-restingHeartRate.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-water input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-water.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-foodPlan input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-foodPlan.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-estimatedCaloriesOut input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-estimatedCaloriesOut.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-foodPlan input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-foodPlan.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-logWeight input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-logWeight.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-calories input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-calories.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-steps input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-steps.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-activityCalories input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-activityCalories.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-floors input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-floors.svg);
   background-repeat: no-repeat;
   background-position: 3px 4px;
 }
 
-/* line 327, ../sass/components/_feedback.sass */
+/* line 330, ../sass/components/_feedback.sass */
 #inputMission03.bg-input-distance input[name="autocompleteField-target"] {
   background-image: url(../../images/icon-svg/icon-distance.svg);
   background-repeat: no-repeat;

@@ -16,7 +16,7 @@ var DIST_PATH = 'public/assets/stylesheets/css'
 var SCRIPT_PATH = 'public/scripts/**/*.js';
 var SASS_PATH = 'public/assets/stylesheets/sass/**/*.sass';
 var IMAGES_PATH = 'public/images/**/*.{png,jpeg,jpg,gif,svg}';
-//var CSS_PATH = 'public/assets/stylesheets/css/global-ie.css';
+var CSS_PATH = 'public/assets/stylesheets/css/global.css';
 var HTML_PATH = 'public/app/components/**/*.html';
 var INDEX_PATH = 'app/app.server/views/index.hbs';
 
