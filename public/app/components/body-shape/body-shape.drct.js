@@ -39,7 +39,9 @@
 					$win.on('scroll', function (e) {
 						//for debugging
 						var offsetTop = offset(element).top;
-						console.log("document.body.scrollTop: " + document.body.scrollTop );
+						var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+
+						console.log("document.body.scrollTop: " + top );
 						console.log("offsetTop: " + offsetTop);
 
 						if(scope.getWindowDimensions().w < 960) {
@@ -50,9 +52,9 @@
 							followByScroll(350);
 
 						function followByScroll(windowReachPoint) {
-							if(document.body.scrollTop < scope.windowTopPoint && document.body.scrollTop >= 0) {
+							if(top < scope.windowTopPoint && top >= 0) {
 								element.removeClass('fixToTop');
-							} else if (document.body.scrollTop <= windowReachPoint && document.body.scrollTop >= scope.windowTopPoint ) {
+							} else if (top <= windowReachPoint && top >= scope.windowTopPoint ) {
 								element.removeClass('absTopPos');
 								element.addClass('followTop');
 								element.addClass('fixToTop');
