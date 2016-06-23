@@ -43,7 +43,17 @@ section.feedback
             +line-caret(false, 8px, 2px, left, $calm-grey, $medium-grey, $white)
         .select-filter
           @include span(1 last)
-
+      .lte-ie8
+        h3
+          +inline-block
+          color: $calm-grey
+          +adjust-leading-to(2, $base-font-size + 1px)
+          padding-left: 15%
+          letter-spacing: 0.02em
+          word-spacing: 0.3em
+          font-weight: 700
+          *font-weight: 700
+          _font-weight: 700
       h3
         //@extend %h3-part !optional
         +inline-block
@@ -89,9 +99,16 @@ section.feedback
           @include span(1 last)
           position: absolute
           padding-left: 10px
+        .lte-ie8
+          h4
+            color: $white
+            font-weight: 700
+            *font-weight: 700
+            _font-weight: 700
         h4
           color: $white
           font-family: $bold-font
+
   .challenge
     @include span(30 of 89 last)
     padding-left: 7%
@@ -174,6 +191,12 @@ section.feedback
         .desc
           @include span(1 last)
           position: absolute
+        .lte-ie8
+          h4
+            color: $white
+            font-weight: 700
+            *font-weight: 700
+            _font-weight: 700
         h4
           color: $white
           font-family: $bold-font
