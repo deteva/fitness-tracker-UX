@@ -198,7 +198,9 @@
 							"name" : sndImprovementObj.name,
 							"party" : sndImprovementObj.color,
 							"target" : sndImprovementObj.display,
-							"desc" : "3,641 섭취 > 1,124"
+							//"desc" : "3,641 섭취 > 1,124"
+							"desc" : "2,517Cal 초과"
+
 						}
 						,
 						{

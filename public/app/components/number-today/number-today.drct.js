@@ -163,7 +163,7 @@
 						"efficiency" : 100
 					},
 					{
-						"display" : "몸무게 확인",
+						"display" : "체중 측정",
 						"name" : "logWeight",
 						"color" : "#fab657",
 						"src" : "/assets/images/icon-svg/icon-logWeight.svg",

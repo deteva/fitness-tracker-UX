@@ -217,7 +217,6 @@ section.feedback
         color: $stone-grey !important
         font-family: $bold-font !important
 
-
 #ul-3, #ul-4, #ul-5, #ul-6, #ul-7, #ul-8
   li
     background-color: $misty-grey1 !important
@@ -227,8 +226,6 @@ section.feedback
     &:active
       color: $stone-grey !important
       font-family: $bold-font !important
-
-
 //autocompelete
 .challenge
   //ng-form
@@ -298,13 +295,11 @@ section.feedback
       text-align: center
       padding: 0 3px
       letter-spacing: -0.03em
-
       //input placeholder css when disabled
       &[disabled="disabled"]
         color: $deep-gray
     .inputMission input:not(.md-input)
       padding-left: 24px
-
     button
       margin-left: 0px
       margin-right: 0px
@@ -327,7 +322,7 @@ $keyword-list: totalTimeInBed totalMinutesAsleep restingHeartRate water foodPlan
     background: url(../../images/target.png)
     background-repeat: no-repeat
     background-position: 3px 11px
-
+    min-width: 124px
   @each $keyword in $keyword-list
     #inputMission#{$each-id}.bg-input-#{$keyword} input[name="autocompleteField-target"]
       background-image: url(../../images/icon-svg/icon-#{$keyword}.svg)
