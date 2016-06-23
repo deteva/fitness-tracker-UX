@@ -117,13 +117,16 @@
 				var dividedByBMR = 11;
 
 				//$scope.svgIconCanvasSize = "M" + 0 +',' + 0 + 'v' + 50 + 'h' + 40 + 'V'+ 0 + 'H' + 0 + 'z';
-				$scope.svgIconCanvasSize = {
-					'M' : [0, 0],
-					'v' : 50,
-					'h' : 40,
-					'V' : 0,
-					'H' : 0
-				};
+
+				$scope.svgIconCanvasSize = 'M0,0v50h40V0H0z';
+				//data-binding not working in ie
+				//$scope.svgIconCanvasSize = {
+				//	'M' : [0, 0],
+				//	'v' : 50,
+				//	'h' : 40,
+				//	'V' : 0,
+				//	'H' : 0
+				//};
 
 				//all data
 				$scope.targets = [
