@@ -29,7 +29,6 @@ section.number-today
     //+layout-outline($happy-violet)
     padding-top: 0px
     min-width: 65px
-
     ul
       +establish-baseline
       //+margin-trailer(1, $base-font-size + 14px)
@@ -38,7 +37,9 @@ section.number-today
       //+layout-outline($happy-violet)
       //height: initial
       //http://stackoverflow.com/questions/19235832/outerheighttrue-does-not-include-margins
-      overflow: auto
+      //overflow: auto
+      //hide scrollbar ie
+      overflow: hidden
 
       li
         +adjust-leading-to(4, $base-font-size + 12.8px)

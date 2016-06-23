@@ -1578,109 +1578,109 @@ section.number-today .icon-data {
   padding-top: 0px;
   min-width: 65px;
 }
-/* line 33, ../sass/components/_number-today.sass */
+/* line 32, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul {
   margin-bottom: 0.90909em;
-  overflow: auto;
+  overflow: hidden;
 }
 /* line 106, /usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
 section.number-today .icon-data ul html {
   font-size: 87.5%;
   line-height: 1.78571em;
 }
-/* line 43, ../sass/components/_number-today.sass */
+/* line 44, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul li {
   line-height: 3.73134em;
   padding-right: 24%;
 }
 @media (min-width: 1000px) {
-  /* line 43, ../sass/components/_number-today.sass */
+  /* line 44, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul li {
     line-height: 3.63636em;
   }
 }
-/* line 48, ../sass/components/_number-today.sass */
+/* line 49, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul li:last-child {
   padding-bottom: 1.6129em;
 }
 @media (min-width: 1000px) {
-  /* line 48, ../sass/components/_number-today.sass */
+  /* line 49, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul li:last-child {
     padding-bottom: 1.72414em;
   }
 }
-/* line 52, ../sass/components/_number-today.sass */
+/* line 53, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul li h1 {
   text-align: right;
   height: 59px;
 }
 @media (min-width: 1000px) {
-  /* line 52, ../sass/components/_number-today.sass */
+  /* line 53, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul li h1 {
     height: 50px;
   }
-  /* line 58, ../sass/components/_number-today.sass */
+  /* line 59, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul li h1 svg {
     transform: translateY(7%);
   }
 }
 @media (min-width: 1000px) and (min-width: 1000px) {
-  /* line 58, ../sass/components/_number-today.sass */
+  /* line 59, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul li h1 svg {
     transform: none;
   }
 }
 
-/* line 62, ../sass/components/_number-today.sass */
+/* line 63, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul li h1 .none {
   display: none;
 }
-/* line 67, ../sass/components/_number-today.sass */
+/* line 68, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul.energetic-title li:nth-child(2) {
   margin-top: 11px;
 }
 @media (min-width: 1000px) {
-  /* line 67, ../sass/components/_number-today.sass */
+  /* line 68, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul.energetic-title li:nth-child(2) {
     margin-top: 0px;
   }
 }
-/* line 71, ../sass/components/_number-today.sass */
+/* line 72, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul.energetic-title li:nth-child(3) {
   margin-top: -1px;
 }
 @media (min-width: 1000px) {
-  /* line 71, ../sass/components/_number-today.sass */
+  /* line 72, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul.energetic-title li:nth-child(3) {
     margin-top: -3px;
   }
 }
-/* line 75, ../sass/components/_number-today.sass */
+/* line 76, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul.energetic-title li:nth-child(4) {
   margin-top: -4px;
 }
 @media (min-width: 1000px) {
-  /* line 75, ../sass/components/_number-today.sass */
+  /* line 76, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul.energetic-title li:nth-child(4) {
     margin-top: -2px;
   }
 }
-/* line 79, ../sass/components/_number-today.sass */
+/* line 80, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul.energetic-title li:nth-child(5) {
   margin-top: 1px;
 }
 @media (min-width: 1000px) {
-  /* line 79, ../sass/components/_number-today.sass */
+  /* line 80, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul.energetic-title li:nth-child(5) {
     margin-top: 3px;
   }
 }
-/* line 83, ../sass/components/_number-today.sass */
+/* line 84, ../sass/components/_number-today.sass */
 section.number-today .icon-data ul.energetic-title li:nth-child(6) {
   margin-top: 3px;
 }
 @media (min-width: 1000px) {
-  /* line 83, ../sass/components/_number-today.sass */
+  /* line 84, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul.energetic-title li:nth-child(6) {
     margin-top: 4px;
   }
@@ -1720,7 +1720,7 @@ section.number-today .icon-data ul div.title span {
   color: #a0a6a9;
   bottom: -25%;
 }
-/* line 91, ../sass/components/_number-today.sass */
+/* line 92, ../sass/components/_number-today.sass */
 section.number-today .today-container {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1732,7 +1732,7 @@ section.number-today .today-container {
   min-width: 365px;
 }
 @media (min-width: 1000px) {
-  /* line 91, ../sass/components/_number-today.sass */
+  /* line 92, ../sass/components/_number-today.sass */
   section.number-today .today-container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1743,7 +1743,7 @@ section.number-today .today-container {
     margin-right: -100%;
   }
 }
-/* line 99, ../sass/components/_number-today.sass */
+/* line 100, ../sass/components/_number-today.sass */
 section.number-today .gutter {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -1764,7 +1764,7 @@ section.number-today .gutter {
     margin-right: -100%;
     position: absolute;
   }
-  /* line 107, ../sass/components/_number-today.sass */
+  /* line 108, ../sass/components/_number-today.sass */
   section.number-today .icon-data {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1775,11 +1775,11 @@ section.number-today .gutter {
     margin-right: -100%;
     padding-top: 25px;
   }
-  /* line 112, ../sass/components/_number-today.sass */
+  /* line 113, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul div.title {
     height: 50px;
   }
-  /* line 115, ../sass/components/_number-today.sass */
+  /* line 116, ../sass/components/_number-today.sass */
   section.number-today .today-container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1790,7 +1790,7 @@ section.number-today .gutter {
     margin-right: -100%;
     padding-top: 25px;
   }
-  /* line 120, ../sass/components/_number-today.sass */
+  /* line 121, ../sass/components/_number-today.sass */
   section.number-today .gutter {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1813,7 +1813,7 @@ section.number-today .gutter {
     margin-right: -100%;
     position: absolute;
   }
-  /* line 107, ../sass/components/_number-today.sass */
+  /* line 108, ../sass/components/_number-today.sass */
   section.number-today .icon-data {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1824,11 +1824,11 @@ section.number-today .gutter {
     margin-right: -100%;
     padding-top: 25px;
   }
-  /* line 112, ../sass/components/_number-today.sass */
+  /* line 113, ../sass/components/_number-today.sass */
   section.number-today .icon-data ul div.title {
     height: 50px;
   }
-  /* line 115, ../sass/components/_number-today.sass */
+  /* line 116, ../sass/components/_number-today.sass */
   section.number-today .today-container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -1839,7 +1839,7 @@ section.number-today .gutter {
     margin-right: -100%;
     padding-top: 25px;
   }
-  /* line 120, ../sass/components/_number-today.sass */
+  /* line 121, ../sass/components/_number-today.sass */
   section.number-today .gutter {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
