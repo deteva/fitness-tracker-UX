@@ -17,15 +17,10 @@
     <link rel="stylesheet" href="/assets/bower_components/angular-meter-polyfill/dist/angular-meter-polyfill.min.css">
 
     <link rel="stylesheet" href="/assets/stylesheets/css/global.css"/>
-    <!--[if gte IE 6 ]>
-    <p>Only  IE 6 and greater will see this</p>
-    <style>
-        h1 {
-            font-family:"SpoqaHanSans-Regular";
-            font-weight: 700;
-        }
-    </style>
-    <![endif]-->
+    <link rel="stylesheet" href="/assets/stylesheets/custom-css/css-browser-selector.css"/>
+
+
+
 </head>
 <body>
    <div class = "dashboard">
@@ -72,11 +67,10 @@
    <script src="/assets/bower_components/angular-moment/angular-moment.js"></script>
    <!-- korean internationalization support-->
    <script src="/assets/bower_components/moment/locale/ko.js"></script>
+   <!-- css browser selector -->
+   <script src="/assets/stylesheets/js/css_browser_selector.js" type="text/javascript"></script>
 
-   <!--provides to your browser the feature of the tag <meter>-->
-   <script src="/assets/bower_components/angular-meter-polyfill/dist/angular-meter-polyfill.min.js"></script>
-
-    <!-- Bootstrap AngularJS application -->
+   <!-- Bootstrap AngularJS application -->
     <script src="/app/app.js"></script>
     <script src="/app/app.core.js"></script>
     <script src="/app/app.routes.js"></script>
