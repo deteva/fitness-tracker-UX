@@ -41,15 +41,25 @@
 						var offsetTop = offset(element).top;
 						var top = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
 
+						console.log(e);
+						console.log(e.srcElement.activeElement);
 						console.log("document.body.scrollTop: " + top );
 						console.log("offsetTop: " + offsetTop);
 
-						if(scope.getWindowDimensions().w < 960) {
-							followByScroll(440);
-							console.log('getWindowDimensions width is smaller than 960px');
+						if(e.srcElement.activeElement.nodeName.toLowerCase()  === 'body'){
+							//element.removeClass('absTopPos');
+
+							if(scope.getWindowDimensions().w < 960) {
+								followByScroll(440);
+								console.log('getWindowDimensions width is smaller than 960px');
+							}
+							else
+								followByScroll(350);
+						} else {
+							element.addClass('absTopPos');
+							return;
 						}
-						else
-							followByScroll(350);
+
 
 						function followByScroll(windowReachPoint) {
 							if(top < scope.windowTopPoint && top >= 0) {
