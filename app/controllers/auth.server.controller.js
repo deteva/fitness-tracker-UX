@@ -420,7 +420,7 @@ exports.getFitbitData = function(req, res) {
 
 			//req.session.dataFitbit = dataByfitbit;
 			console.log('index in');
-			console.log(req.session.dataFitbit);
+			//console.log(req.session.dataFitbit);
 			res.redirect('/');
 			//res.status(200).json(dataByfitbit);
 
