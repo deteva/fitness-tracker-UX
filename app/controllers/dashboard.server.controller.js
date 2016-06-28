@@ -106,9 +106,9 @@ exports.getSocialDBJson = function(req,res) {
 };
 
 exports.getDataDB = function(req,res) {
-			res.render('index', {
-				title: 'dashboard'
-				});
+	res.render('index', {
+		title: 'dashboard'
+	});
 };
 
 var getErrorMessage = function(err) {

@@ -335,14 +335,14 @@ th {
   width: 0;
 }
 
-/* line 5, ../sass/base/_typography.sass */
+/* line 5, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 h1, h2, h3, h4, h5, h6 {
   font-family: "SpoqaHanSans-Regular", "Roboto", "Helvetica", "Arial", sans-serif;
   color: #193346;
   letter-spacing: 0px;
 }
 
-/* line 10, ../sass/base/_typography.sass */
+/* line 10, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 h1 {
   font-size: 24px;
   font-size: 1.71429rem;
@@ -350,14 +350,14 @@ h1 {
   font-weight: 700;
 }
 @media (min-width: 1000px) {
-  /* line 10, ../sass/base/_typography.sass */
+  /* line 10, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
   h1 {
     font-size: 27px;
     font-size: 1.92857rem;
   }
 }
 
-/* line 17, ../sass/base/_typography.sass */
+/* line 17, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 h2 {
   font-family: "SpoqaHanSans-Thin";
   font-weight: lighter;
@@ -365,44 +365,44 @@ h2 {
   font-size: 1.35714rem;
 }
 @media (min-width: 1000px) {
-  /* line 17, ../sass/base/_typography.sass */
+  /* line 17, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
   h2 {
     font-size: 20px;
     font-size: 1.42857rem;
   }
 }
 
-/* line 23, ../sass/base/_typography.sass */
+/* line 24, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 h3 {
   font-size: 13px;
   font-size: 0.92857rem;
 }
 @media (min-width: 1000px) {
-  /* line 23, ../sass/base/_typography.sass */
+  /* line 24, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
   h3 {
     font-size: 14px;
     font-size: 1rem;
   }
 }
 
-/* line 27, ../sass/base/_typography.sass */
+/* line 28, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 h4 {
   font-size: 14px;
 }
 
-/* line 30, ../sass/base/_typography.sass */
+/* line 31, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 h5 {
   font-size: 12px;
   font-size: 0.85714rem;
 }
 
-/* line 32, ../sass/base/_typography.sass */
+/* line 33, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 p, span {
   font-size: 12px;
   font-size: 0.85714rem;
 }
 
-/* line 34, ../sass/base/_typography.sass */
+/* line 35, /Users/tmin_lim/bel-body/bodybel/public/assets/stylesheets/sass/base/_typography.sass */
 strong {
   font-family: "SpoqaHanSans-Bold";
 }
