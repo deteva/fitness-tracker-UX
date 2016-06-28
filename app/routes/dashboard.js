@@ -12,6 +12,6 @@ module.exports = function(app) {
   app.get('/sleep/json', dashboardCtrl.getSleepDBJson);
   app.get('/social/json', dashboardCtrl.getSocialDBJson);
 
-  app.get('/dashboard', dashboardCtrl.getTodayData);
+  //app.get('/dashboard', dashboardCtrl.getTodayData);
 };
 

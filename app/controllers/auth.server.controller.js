@@ -418,7 +418,7 @@ exports.getFitbitData = function(req, res) {
 			dataByfitbit.sleep = sleep;
 			dataByfitbit.friends = social;
 
-			req.session.dataFitbit = dataByfitbit;
+			//req.session.dataFitbit = dataByfitbit;
 			console.log('index in');
 			console.log(req.session.dataFitbit);
 			res.redirect('/');

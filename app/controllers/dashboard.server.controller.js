@@ -10,15 +10,15 @@ var mongoose = require('mongoose'),
 	 Sleep = mongoose.model('Sleep'),
 	 Social = mongoose.model('Social');
 
-exports.getTodayData = function(req, res) {
-	winston.info('dashboard in');
-	console.log(req.session.dataFitbit);
-
-	var todayData = req.session.dataFitbit;
-	req.session.dataFitbit = null;
-	//res.status(200).json(todayData);
-	res.render('index', {data: todayData});
-};
+//exports.getTodayData = function(req, res) {
+//	winston.info('dashboard in');
+//	console.log(req.session.dataFitbit);
+//
+//	var todayData = req.session.dataFitbit;
+//	req.session.dataFitbit = null;
+//	//res.status(200).json(todayData);
+//	res.render('index', {data: todayData});
+//};
 
 exports.getActivityDBJson = function(req,res) {
 	Activity.find({})

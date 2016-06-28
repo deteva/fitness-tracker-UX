@@ -7,6 +7,13 @@
     <title>{{title}}</title>
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <base href="/">
+
+    <script type="text/javascript">
+        if (window.location.hash && window.location.hash == '#_=_') {
+            window.location.hash = '';
+        }
+    </script>
+
     <!--<link rel ="stylesheet"  href="/assets/bower_components/angular-material/angular-material.css" />-->
     <link rel ="stylesheet" href="/assets/custom-angular-material/core/core.css" />
     <link rel ="stylesheet" href="/assets/custom-angular-material/icon/icon.css" />
@@ -17,14 +24,6 @@
     <link rel ="stylesheet" href="/assets/stylesheets/custom-css/nv.d3.css"/>
 
     <link rel="stylesheet" href="/assets/stylesheets/css/global.css"/>
-
-    <!--[if IE]>
-    <h1 style="color: #512b8d;">
-        건강한 습관을 만들어주는 대시보드
-        디자인은, chrome에서
-        보기를 추천합니다.
-    </h1>
-    <![endif]-->
 </head>
 <body>
    <div class = "dashboard">
